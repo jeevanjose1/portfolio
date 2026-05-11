@@ -1,0 +1,39 @@
+
+> portfolio@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.35
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/15) ...
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+   Generating static pages (11/15) 
+ ✓ Generating static pages (15/15)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    4.95 kB         153 kB
+├ ○ /_not-found                          873 B          88.2 kB
+├ ○ /about                               4.71 kB         153 kB
+├ ○ /contact                             7.03 kB         137 kB
+├ ○ /services                            5.73 kB         154 kB
+├ ○ /works                               4.94 kB         153 kB
+└ ● /works/[slug]                        9.22 kB         157 kB
+    ├ /works/ecommerce-platform
+    ├ /works/saas-analytics
+    ├ /works/flutter-shopping
+    └ [+3 more paths]
++ First Load JS shared by all            87.3 kB
+  ├ chunks/117-4f5b424f20efdcae.js       31.7 kB
+  ├ chunks/fd9d1056-b11b2651f33aae7f.js  53.6 kB
+  └ other shared chunks (total)          1.95 kB
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses getStaticProps)
+
