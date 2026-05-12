@@ -155,7 +155,7 @@ export const featuredWorksData = [
     description:
       "A full-featured e-commerce platform with real-time inventory management, payment processing, and an admin dashboard for store owners.",
     tags: ["React", "Node.js", "MongoDB"],
-    image: "/images/project-1.svg",
+    image: "/images/project-1.jpg",
     linkHref: "/works/ecommerce-platform",
   },
   {
@@ -163,7 +163,7 @@ export const featuredWorksData = [
     description:
       "An analytics dashboard for SaaS companies to track user engagement, revenue metrics, and funnel performance with interactive data visualizations.",
     tags: ["React", "PostgreSQL", "AWS"],
-    image: "/images/project-2.svg",
+    image: "/images/project-2.jpg",
     linkHref: "/works/saas-analytics",
   },
 ];
@@ -910,6 +910,7 @@ export interface ProjectItem {
   metrics: ProjectMetric[];
   projectInfo: ProjectInfo;
   techStack: TechStack;
+  image: string;
 }
 
 export const projectsData: ProjectItem[] = [
@@ -952,7 +953,8 @@ export const projectsData: ProjectItem[] = [
       backend: ["Node.js", "Express", "Stripe API"],
       database: ["MongoDB", "Redis"],
       devops: ["AWS EC2", "Docker", "GitHub Actions"],
-    }
+    },
+    image: "/images/project-1.jpg"
   },
   {
     id: "saas-analytics",
@@ -993,7 +995,8 @@ export const projectsData: ProjectItem[] = [
       backend: ["Python", "FastAPI"],
       database: ["PostgreSQL", "ClickHouse"],
       devops: ["AWS ECS", "Terraform", "Datadog"],
-    }
+    },
+    image: "/images/project-2.jpg"
   },
   {
     id: "flutter-shopping",
@@ -1034,7 +1037,8 @@ export const projectsData: ProjectItem[] = [
       backend: ["Firebase Cloud Functions", "Node.js"],
       database: ["Cloud Firestore"],
       devops: ["Codemagic CI/CD", "Firebase Crashlytics"],
-    }
+    },
+    image: "/images/project-3.jpg"
   },
   {
     id: "rest-api",
@@ -1074,7 +1078,8 @@ export const projectsData: ProjectItem[] = [
       backend: ["Node.js", "Express", "TypeScript", "Zod"],
       database: ["PostgreSQL", "Prisma ORM", "Redis"],
       devops: ["Docker", "Kubernetes", "Prometheus"],
-    }
+    },
+    image: "/images/project-1.jpg"
   },
   {
     id: "real-estate",
@@ -1115,7 +1120,8 @@ export const projectsData: ProjectItem[] = [
       backend: ["Node.js", "GraphQL", "Apollo Server"],
       database: ["MongoDB", "Elasticsearch"],
       devops: ["Vercel", "AWS S3", "Cloudflare"],
-    }
+    },
+    image: "/images/project-2.jpg"
   },
   {
     id: "hr-management",
@@ -1155,6 +1161,7 @@ export const projectsData: ProjectItem[] = [
       backend: ["Node.js", "NestJS"],
       database: ["MongoDB", "Redis"],
       devops: ["AWS EKS", "GitLab CI/CD"],
-    }
+    },
+    image: "/images/project-3.jpg"
   },
 ];

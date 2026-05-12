@@ -1,35 +1,33 @@
 import type { Metadata } from "next";
-import { Inter, Sora } from "next/font/google";
+import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Sidebar from "@/components/Sidebar";
+import MobileNav from "@/components/MobileNav";
 import PageTransition from "@/components/PageTransition";
-
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
   display: "swap",
 });
 
-const sora = Sora({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-display",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Jeevan Jose — Full-Stack Developer Portfolio",
+  title: "Jeevan Jose — Full-Stack & Mobile Developer",
   description:
-    "Portfolio of a full-stack developer specializing in modern web applications, clean architecture, and exceptional user experiences.",
-  keywords: ["full-stack developer", "web developer", "portfolio", "React", "Next.js"],
-  openGraph: {
-    title: "Jeevan Jose — Full-Stack Developer Portfolio",
-    description:
-      "Portfolio of a full-stack developer specializing in modern web applications.",
-    type: "website",
-  },
+    "Full-stack developer crafting modern, scalable web applications with clean code and thoughtful design. Based in Vadodara, India.",
 };
 
 export default function RootLayout({
@@ -38,14 +36,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`} suppressHydrationWarning>
-      <body className="font-body antialiased bg-background text-foreground transition-colors duration-300">
-        <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem={false}>
-          <Navbar />
-          <main className="pt-16">
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
+    <html lang="en" className={`${inter.variable} ${bricolage.variable} ${jetbrains.variable}`} suppressHydrationWarning>
+      <body className="font-body antialiased bg-primary text-primary transition-colors duration-300">
+        <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
+          {/* Mobile Navigation */}
+          <MobileNav />
+          
+          <div className="flex flex-col lg:flex-row min-h-screen">
+            {/* Desktop Sidebar */}
+            <Sidebar />
+            
+            {/* Main Content Area */}
+            <main className="flex-1 lg:ml-sidebar-w min-h-screen relative">
+              <PageTransition>{children}</PageTransition>
+            </main>
+          </div>
         </ThemeProvider>
       </body>
     </html>

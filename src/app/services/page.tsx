@@ -1,26 +1,15 @@
-import ServicesHero from "@/components/services/ServicesHero";
-import MainServices from "@/components/services/MainServices";
-import AdditionalServices from "@/components/services/AdditionalServices";
-import Process from "@/components/services/Process";
-import FAQ from "@/components/services/FAQ";
-import CTABanner from "@/components/home/CTABanner";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Services — Your Name | Full-Stack Developer",
-  description:
-    "End-to-End Development Services including Web Apps, Mobile Apps, and Cloud infrastructure. From idea to deployment, I handle the full product lifecycle.",
-};
+import ServicesHeroNew from "@/components/services/ServicesHeroNew";
+import MainServicesAccordion from "@/components/services/MainServicesAccordion";
+import ProcessList from "@/components/services/ProcessList";
+import ContactCTA from "@/components/home/ContactCTA";
 
 export default function ServicesPage() {
   return (
-    <>
-      <ServicesHero />
-      <MainServices />
-      <AdditionalServices />
-      <Process />
-      <FAQ />
-      <CTABanner />
-    </>
+    <div className="flex flex-col">
+      <ServicesHeroNew />
+      <MainServicesAccordion />
+      <ProcessList />
+      <ContactCTA />
+    </div>
   );
 }
