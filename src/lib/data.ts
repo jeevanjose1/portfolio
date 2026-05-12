@@ -524,7 +524,7 @@ export const mainServicesData: MainServiceItem[] = [
       { category: "Infrastructure", techs: ["Vercel", "AWS", "Docker"] }
     ],
     process: [
-      { step: "01", title: "Discovery Call", duration: "Day 1", description: "We discuss your vision, target audience, technical requirements, and business goals to ensure perfect alignment." },
+      { step: "01", title: "Discovery Call", duration: "Day 1", description: "I discuss your vision, target audience, technical requirements, and business goals to ensure perfect alignment." },
       { step: "02", title: "Architecture & Planning", duration: "Day 2-3", description: "I create a technical architecture document, database schema, and project roadmap with clear milestones." },
       { step: "03", title: "UI/UX Prototyping", duration: "Week 1", description: "Designing high-fidelity Figma mockups for your approval before writing any code." },
       { step: "04", title: "Development Sprints", duration: "Week 2-5", description: "Agile development with weekly updates and a staging environment where you can track progress." },
@@ -616,7 +616,7 @@ export const mainServicesData: MainServiceItem[] = [
       { category: "Storage", techs: ["Firebase Storage", "AWS S3"] }
     ],
     process: [
-      { step: "01", title: "Discovery Call", duration: "Day 1", description: "We discuss your app idea, target users, core features, and business goals. I ask the right questions to understand what success looks like for you." },
+      { step: "01", title: "Discovery Call", duration: "Day 1", description: "I discuss your app idea, target users, core features, and business goals. I ask the right questions to understand what success looks like for you." },
       { step: "02", title: "Proposal & Planning", duration: "Day 2–3", description: "I send a detailed proposal with wireframe sketches, tech recommendations, timeline, and fixed-price quote. No surprises." },
       { step: "03", title: "UI/UX Design", duration: "Week 1", description: "I design all app screens in Figma. You review, give feedback, and approve before development starts." },
       { step: "04", title: "Development Sprints", duration: "Week 2–6", description: "I build in weekly sprints with a working demo every Friday. You can test on your real device throughout." },
@@ -678,7 +678,7 @@ export const mainServicesData: MainServiceItem[] = [
       { question: "Do I own the source code after the project?", answer: "Yes, the source code is entirely yours upon final payment. I provide full transfer of the GitHub repository and all associated assets." },
       { question: "How do you handle app updates after launch?", answer: "I offer 30 days of free bug-fixing post-launch. For ongoing feature updates and OS compatibility maintenance, I offer competitive monthly retainer packages." },
       { question: "Can you integrate with my existing backend/API?", answer: "Absolutely. I can connect the mobile app to any existing REST or GraphQL APIs, handling authentication, state management, and offline caching." },
-      { question: "What if I need changes during development?", answer: "My agile sprint process includes weekly reviews. Minor changes are accommodated easily. For significant scope changes, we discuss the impact on timeline and budget before proceeding." }
+      { question: "What if I need changes during development?", answer: "My agile sprint process includes weekly reviews. Minor changes are accommodated easily. For significant scope changes, I discuss the impact on timeline and budget before proceeding." }
     ]
   },
   {
@@ -766,7 +766,7 @@ export const mainServicesData: MainServiceItem[] = [
     ],
     faqs: [
       { question: "Which cloud provider do you recommend?", answer: "It depends on your needs and budget. Vercel is great for React/Next.js frontends. DigitalOcean is excellent for cost-effective monoliths. AWS is best for complex, highly scalable enterprise architectures." },
-      { question: "Will my site go down during migration?", answer: "No. I use zero-downtime migration strategies. We set up the new infrastructure in parallel, sync the databases, and simply switch DNS records when everything is tested and ready." },
+      { question: "Will my site go down during migration?", answer: "No. I use zero-downtime migration strategies. I set up the new infrastructure in parallel, sync the databases, and simply switch DNS records when everything is tested and ready." },
       { question: "Can you help lower our AWS bill?", answer: "Yes! Infrastructure optimization is a key service. I audit oversized instances, implement auto-scaling to match traffic, and identify orphaned resources to reduce costs." },
       { question: "Do you provide emergency support?", answer: "I offer retained SLA agreements for enterprise clients that guarantee rapid response times for infrastructure emergencies." }
     ]

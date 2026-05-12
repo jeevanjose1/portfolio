@@ -32,7 +32,7 @@ export default function ProcessTimeline({ service }: { service: MainServiceItem 
             {"//"} Step by Step
           </p>
           <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">
-            How We Work Together.
+            My Working Process.
           </h2>
         </motion.div>
 

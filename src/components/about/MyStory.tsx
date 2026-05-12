@@ -38,10 +38,14 @@ export default function MyStory() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="lg:col-span-7 bg-white rounded-lg border border-gray-100 shadow-sm shadow-gray-200/50 h-full relative"
           >
-            {/* Background wrapper to clip the blur without breaking sticky positioning */}
-            <div className="absolute inset-0 rounded-lg overflow-hidden pointer-events-none">
-              {/* Abstract background shape from Figma */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-lg blur-3xl opacity-50 -mr-10 -mt-10" />
+            {/* Background wrapper to clip the image */}
+            <div className="absolute inset-0 rounded-lg overflow-hidden pointer-events-none opacity-20">
+               <img 
+                src="/images/workspace.png" 
+                alt="Workspace" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-white/60" />
             </div>
 
             {/* Sticky Content Wrapper */}
@@ -60,11 +64,11 @@ export default function MyStory() {
               </div>
 
               <div className="mt-12 flex items-center gap-4 relative z-10">
-                <div className="w-12 h-12 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center">
-                  <span className="text-accent font-black tracking-widest text-xs">Y N</span>
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-blue-100 flex items-center justify-center">
+                   <img src="/images/headshot.png" alt="Avatar" className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <p className="text-sm font-black uppercase tracking-widest text-primary">Your Name</p>
+                  <p className="text-sm font-black uppercase tracking-widest text-primary">Jeevan Jose</p>
                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Full-Stack Engineer</p>
                 </div>
               </div>

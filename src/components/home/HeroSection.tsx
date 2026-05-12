@@ -55,11 +55,11 @@ export default function HeroSection() {
           animate="visible"
           className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-auto"
         >
-          {/* ── Main Intro Card (large, spans 8 cols) ── */}
+          {/* ── Main Intro Card (large, spans 7 cols) ── */}
           <motion.div
             custom={0}
             variants={fadeUp}
-            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-gray-100"
+            className="md:col-span-7 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[450px] border border-gray-100"
           >
             <div>
               {/* Badge */}
@@ -83,68 +83,54 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Social Row */}
-            <div className="flex items-center gap-3 mt-8">
-              {socialLinks.map((link) => (
-                <SocialIcon key={link.label} link={link} />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* ── Right Column — stacked cards ── */}
-          <div className="md:col-span-4 flex flex-col gap-4">
-            {/* Nav-style action card */}
-            <motion.div
-              custom={1}
-              variants={fadeUp}
-              className="bg-primary rounded-lg p-6 flex flex-col gap-3 border border-gray-800"
-            >
-              <Link
-                href="/works"
-                className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium"
-              >
-                <Palette size={16} />
-                Latest Work
-              </Link>
-              <Link
-                href="/about"
-                className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium"
-              >
-                <Code2 size={16} />
-                About Me
-              </Link>
-              <Link
-                href="/contact"
-                className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium"
-              >
-                <Briefcase size={16} />
-                Book A Call
-              </Link>
-            </motion.div>
-
-            {/* CTA Buttons card */}
-            <motion.div
-              custom={2}
-              variants={fadeUp}
-              className="bg-section-alt rounded-lg p-6 flex flex-col gap-3 border border-gray-100"
-            >
-              <Link
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+               <Link
                 href={heroData.ctaPrimary.href}
-                className="btn-primary text-center flex items-center justify-center gap-2"
+                className="btn-primary flex items-center justify-center gap-2"
               >
                 {heroData.ctaPrimary.label}
                 <ArrowRight size={16} />
               </Link>
-              <a
-                href={heroData.ctaSecondary.href}
-                download
-                className="btn-secondary text-center flex items-center justify-center gap-2"
-              >
-                {heroData.ctaSecondary.label}
-                <Download size={16} />
-              </a>
-            </motion.div>
-          </div>
+              {/* Social Row */}
+              <div className="flex items-center gap-3">
+                {socialLinks.map((link) => (
+                  <SocialIcon key={link.label} link={link} />
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ── Personal Photo Card (spans 5 cols) ── */}
+          <motion.div
+            custom={1}
+            variants={fadeUp}
+            className="md:col-span-5 bg-primary rounded-lg overflow-hidden relative group min-h-[450px] border border-gray-800"
+          >
+            <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700">
+              <img 
+                src="/images/headshot.png" 
+                alt="Portrait" 
+                className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
+              />
+            </div>
+            
+            {/* Overlay Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent opacity-60" />
+            
+            {/* Status Badge */}
+            <div className="absolute top-6 right-6">
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg px-4 py-2 flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-white">Available for Hire</span>
+              </div>
+            </div>
+
+            {/* Bottom Content */}
+            <div className="absolute bottom-0 left-0 right-0 p-8">
+              <p className="text-white/60 text-xs font-black uppercase tracking-widest mb-2">Location</p>
+              <p className="text-white text-lg font-heading font-bold">Based in Your City</p>
+            </div>
+          </motion.div>
 
           {/* ── Bottom Stat Bar ── */}
           <motion.div

@@ -58,22 +58,24 @@ export default function AboutHero() {
             </div>
           </motion.div>
 
-          {/* Right Column Stacked Cards */}
+          {/* ── Personal Photo Card ── */}
           <div className="md:col-span-4 flex flex-col gap-4">
-            {/* Visual/Icon Card */}
             <motion.div
               custom={0}
               variants={fadeUp}
-              className="bg-primary rounded-lg p-8 sm:p-10 border border-gray-800 flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group"
+              className="bg-primary rounded-lg overflow-hidden relative group min-h-[300px] border border-gray-800"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-accent/10 opacity-50" />
-              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
-              <div className="w-16 h-16 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20 group-hover:scale-110 transition-transform duration-500 relative z-10">
-                <Zap size={28} className="text-accent" />
+              <img 
+                src="/images/headshot.png" 
+                alt="Portrait" 
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                 <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-tight">
+                    Focusing on <br /> Result.
+                 </p>
               </div>
-              <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-snug relative z-10">
-                Innovation <br /> First.
-              </p>
             </motion.div>
 
             {/* Stats Card */}
