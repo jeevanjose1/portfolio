@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
-import HangingCat from "@/components/HangingCat";
 
 const inter = Inter({
   subsets: ["latin"],

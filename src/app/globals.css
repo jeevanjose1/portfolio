@@ -5,126 +5,126 @@
 /* ─── Design System CSS Variables ─── */
 :root {
   /* Default Palette: Neutral */
-  --color-primary: #222222;
-  --color-accent: #222222;
-  --color-accent-hover: #000000;
-  --color-background: #EDEDED;
-  --color-section-alt: #F8F8F8;
-  --color-text: #222222;
-  --color-text-muted: #666666;
-  --color-border: #D1D1D1;
-  --color-card-border: #D8D8D8;
-  --card-spotlight-color: rgba(34, 34, 34, 0.05);
-  --color-contrast-bg: #111111;
+  --color-primary: #202124;
+  --color-accent: #202124;
+  --color-accent-hover: #0f1115;
+  --color-background: #f5f4f1;
+  --color-section-alt: #ffffff;
+  --color-text: #202124;
+  --color-text-muted: #62666d;
+  --color-border: #dedbd3;
+  --color-card-border: #d7d3ca;
+  --card-spotlight-color: rgba(32, 33, 36, 0.05);
+  --color-contrast-bg: #111214;
 
   --font-heading: var(--font-sora), sans-serif;
   --font-body: var(--font-inter), sans-serif;
 
-  --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-card: 0 18px 45px -32px rgb(16 24 40 / 0.45), 0 1px 2px rgb(16 24 40 / 0.06);
   --radius-card: 0.5rem;
 }
 
 /* ─── Midnight Palette ─── */
 [data-palette='midnight'] {
-  --color-primary: #1E293B;
-  --color-accent: #334155;
-  --color-accent-hover: #0F172A;
-  --color-background: #F1F5F9;
-  --color-section-alt: #F8FAFC;
-  --color-text: #0F172A;
-  --color-text-muted: #64748B;
-  --color-border: #E2E8F0;
-  --color-card-border: #CBD5E1;
-  --card-spotlight-color: rgba(30, 41, 59, 0.05);
-  --color-contrast-bg: #0F172A;
+  --color-primary: #172033;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-background: #f4f7fb;
+  --color-section-alt: #ffffff;
+  --color-text: #111827;
+  --color-text-muted: #667085;
+  --color-border: #d9e2ef;
+  --color-card-border: #cdd8e8;
+  --card-spotlight-color: rgba(37, 99, 235, 0.06);
+  --color-contrast-bg: #0f172a;
 }
 
 /* ─── Forest Palette ─── */
 [data-palette='forest'] {
-  --color-primary: #064E3B;
-  --color-accent: #065F46;
-  --color-accent-hover: #064E3B;
-  --color-background: #F0FDF4;
-  --color-section-alt: #F7FEE7;
-  --color-text: #064E3B;
-  --color-text-muted: #34495E;
-  --color-border: #D1FAE5;
-  --color-card-border: #A7F3D0;
-  --card-spotlight-color: rgba(6, 78, 59, 0.05);
-  --color-contrast-bg: #064E3B;
+  --color-primary: #18392f;
+  --color-accent: #047857;
+  --color-accent-hover: #065f46;
+  --color-background: #f3f8f4;
+  --color-section-alt: #ffffff;
+  --color-text: #1f2a24;
+  --color-text-muted: #5f6f66;
+  --color-border: #d7e4dc;
+  --color-card-border: #c9d9d0;
+  --card-spotlight-color: rgba(4, 120, 87, 0.06);
+  --color-contrast-bg: #10231d;
 }
 
 /* ─── Rose Palette ─── */
 [data-palette='rose'] {
-  --color-primary: #881337;
-  --color-accent: #9F1239;
-  --color-accent-hover: #881337;
-  --color-background: #FFF1F2;
-  --color-section-alt: #FFF5F5;
-  --color-text: #881337;
-  --color-text-muted: #9F1239;
-  --color-border: #FFE4E6;
-  --color-card-border: #FECDD3;
-  --card-spotlight-color: rgba(136, 19, 55, 0.05);
-  --color-contrast-bg: #4C0519;
+  --color-primary: #4c2332;
+  --color-accent: #be123c;
+  --color-accent-hover: #9f1239;
+  --color-background: #faf4f5;
+  --color-section-alt: #ffffff;
+  --color-text: #2d2025;
+  --color-text-muted: #745c65;
+  --color-border: #ead6dc;
+  --color-card-border: #dfc5ce;
+  --card-spotlight-color: rgba(190, 18, 60, 0.06);
+  --color-contrast-bg: #2a111a;
 }
 
 /* ─── Dark Mode Overrides ─── */
 [data-theme='dark'] {
-  --color-primary: #EDEDED;
-  --color-accent: #FFFFFF;
-  --color-accent-hover: #FFFFFF;
-  --color-background: #0A0A0A;
-  --color-section-alt: #121212;
-  --color-text: #EDEDED;
-  --color-text-muted: #888888;
-  --color-border: #1A1A1A;
-  --color-card-border: #121212;
+  --color-primary: #f3f4f6;
+  --color-accent: #f4f4f5;
+  --color-accent-hover: #ffffff;
+  --color-background: #0d0e10;
+  --color-section-alt: #15171a;
+  --color-text: #f2f3f5;
+  --color-text-muted: #a1a6ae;
+  --color-border: #262a30;
+  --color-card-border: #30343b;
   --card-spotlight-color: rgba(255, 255, 255, 0.02);
-  --shadow-card: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
-  --color-contrast-bg: #050505;
+  --shadow-card: 0 22px 60px -38px rgb(0 0 0 / 0.9), 0 1px 0 rgb(255 255 255 / 0.03);
+  --color-contrast-bg: #07080a;
 }
 
 [data-theme='dark'][data-palette='midnight'] {
-  --color-primary: #F1F5F9;
-  --color-accent: #38BDF8;
-  --color-accent-hover: #7DD3FC;
-  --color-background: #020617;
-  --color-section-alt: #0F172A;
-  --color-text: #F1F5F9;
-  --color-text-muted: #94A3B8;
-  --color-border: #0F172A;
-  --color-card-border: #1E293B;
-  --card-spotlight-color: rgba(56, 189, 248, 0.05);
-  --color-contrast-bg: #000000;
+  --color-primary: #edf4ff;
+  --color-accent: #60a5fa;
+  --color-accent-hover: #93c5fd;
+  --color-background: #0a1020;
+  --color-section-alt: #121a2c;
+  --color-text: #edf4ff;
+  --color-text-muted: #a8b3c7;
+  --color-border: #243049;
+  --color-card-border: #2f3d5a;
+  --card-spotlight-color: rgba(96, 165, 250, 0.06);
+  --color-contrast-bg: #060a13;
 }
 
 [data-theme='dark'][data-palette='forest'] {
-  --color-primary: #F0FDF4;
-  --color-accent: #10B981;
-  --color-accent-hover: #34D399;
-  --color-background: #022C22;
-  --color-section-alt: #064E3B;
-  --color-text: #F0FDF4;
-  --color-text-muted: #A7F3D0;
-  --color-border: #064E3B;
-  --color-card-border: #065F46;
-  --card-spotlight-color: rgba(16, 185, 129, 0.05);
-  --color-contrast-bg: #011C16;
+  --color-primary: #ecfdf5;
+  --color-accent: #34d399;
+  --color-accent-hover: #6ee7b7;
+  --color-background: #091411;
+  --color-section-alt: #111f1a;
+  --color-text: #ecfdf5;
+  --color-text-muted: #a8c7ba;
+  --color-border: #243b32;
+  --color-card-border: #315246;
+  --card-spotlight-color: rgba(52, 211, 153, 0.06);
+  --color-contrast-bg: #050d0a;
 }
 
 [data-theme='dark'][data-palette='rose'] {
-  --color-primary: #FFF1F2;
-  --color-accent: #F43F5E;
-  --color-accent-hover: #FB7185;
-  --color-background: #450A0A;
-  --color-section-alt: #881337;
-  --color-text: #FFF1F2;
-  --color-text-muted: #FDA4AF;
-  --color-border: #881337;
-  --color-card-border: #9F1239;
-  --card-spotlight-color: rgba(244, 63, 94, 0.05);
-  --color-contrast-bg: #2D0505;
+  --color-primary: #fff1f3;
+  --color-accent: #fb7185;
+  --color-accent-hover: #fda4af;
+  --color-background: #170c10;
+  --color-section-alt: #211219;
+  --color-text: #fff1f3;
+  --color-text-muted: #d4aab5;
+  --color-border: #3d222d;
+  --color-card-border: #53303d;
+  --card-spotlight-color: rgba(251, 113, 133, 0.06);
+  --color-contrast-bg: #10070a;
 }
 
 /* ─── Base Resets ─── */
@@ -163,19 +163,19 @@ h6 {
 /* ─── Utility Classes ─── */
 @layer components {
   .section-container {
-    @apply max-w-6xl mx-auto px-6 py-10;
+    @apply max-w-6xl mx-auto px-5 sm:px-6 py-12 sm:py-14 lg:py-16;
   }
 
   .card {
-    @apply bg-background shadow-card border border-border rounded-lg transition-colors duration-300;
+    @apply bg-section-alt shadow-card border border-border rounded-lg transition-colors duration-300;
   }
 
   .btn-primary {
-    @apply bg-accent text-background rounded-lg px-8 py-4 font-heading font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:bg-accent-hover hover:shadow-xl active:scale-[0.98] inline-flex items-center justify-center;
+    @apply bg-accent text-background rounded-lg px-7 py-3.5 font-heading font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:bg-accent-hover hover:shadow-xl active:scale-[0.98] inline-flex items-center justify-center;
   }
 
   .btn-secondary {
-    @apply bg-background border border-border text-foreground rounded-lg px-8 py-4 font-heading font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:bg-section-alt active:scale-[0.98] inline-flex items-center justify-center;
+    @apply bg-background border border-border text-foreground rounded-lg px-7 py-3.5 font-heading font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:bg-section-alt active:scale-[0.98] inline-flex items-center justify-center;
   }
 }
 

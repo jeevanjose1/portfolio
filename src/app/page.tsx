@@ -1,5 +1,4 @@
 import HeroSection from "@/components/home/HeroSection";
-import TechStack from "@/components/home/TechStack";
 import ServicesPreview from "@/components/home/ServicesPreview";
 import FeaturedWorks from "@/components/home/FeaturedWorks";
 import Testimonials from "@/components/home/Testimonials";
@@ -13,7 +12,6 @@ export default function Home() {
 
       <div className="relative z-[200]">
         <HeroSection />
-        <TechStack />
         <ServicesPreview />
         <FeaturedWorks />
         <Testimonials />

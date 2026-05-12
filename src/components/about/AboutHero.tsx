@@ -1,107 +1,115 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, Info, Zap, Award } from "lucide-react";
+import { ArrowRight, Award, Download, MapPin, Sparkles } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { aboutHeroData } from "@/lib/data";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 28 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: "easeInOut" as const },
+    transition: { delay: i * 0.08, duration: 0.5, ease: "easeOut" as const },
   }),
 };
 
 export default function AboutHero() {
   return (
-    <section className="min-h-[80vh] flex items-center  pb-10">
+    <section className="min-h-[84vh] flex items-center pb-8 transition-colors duration-300">
       <div className="section-container w-full">
         <motion.div
           initial="hidden"
           animate="visible"
           className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-auto"
         >
-          {/* Main Title Card */}
           <motion.div
             custom={0}
             variants={fadeUp}
-            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-border"
+            className="md:col-span-7 bg-section-alt rounded-lg p-7 sm:p-10 min-h-[430px] border border-border shadow-card flex flex-col justify-between"
           >
             <div>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent text-background text-[10px] font-black uppercase tracking-widest mb-6 border border-border shadow-sm">
-                <Info size={14} />
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent text-background text-[10px] font-black uppercase tracking-widest mb-6">
+                <Sparkles size={14} />
                 {aboutHeroData.badge}
               </span>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-foreground leading-[1.1] mb-6">
-                Turning Ideas into <br />
-                <span className="text-accent italic font-serif">Scalable Reality.</span>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-[1.08] mb-5">
+                Engineer with a product eye and a builder&apos;s pace.
               </h1>
-              <div className="space-y-4 max-w-lg">
-                {aboutHeroData.paragraphs.slice(0, 1).map((para, i) => (
-                  <p key={i} className="text-muted-foreground text-lg leading-relaxed font-body">
-                    {para}
-                  </p>
-                ))}
-              </div>
+
+              <p className="text-muted-foreground text-base sm:text-lg max-w-xl leading-relaxed">
+                {aboutHeroData.paragraphs[0]}
+              </p>
             </div>
 
-            <div className="mt-8">
-              <a
-                href="/cv.pdf"
-                download
-                className="btn-primary inline-flex items-center gap-3"
-              >
-                Download My Story
-                <Download size={18} />
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a href="/resume.pdf" download className="btn-primary gap-2">
+                Download Resume
+                <Download size={16} />
               </a>
+              <Link href="/contact" className="btn-secondary gap-2">
+                Start a Conversation
+                <ArrowRight size={16} />
+              </Link>
             </div>
           </motion.div>
 
-          {/* ── Personal Photo Card ── */}
-          <div className="md:col-span-4 flex flex-col gap-4">
-            <motion.div
-              custom={0}
-              variants={fadeUp}
-              className="bg-section-alt rounded-lg overflow-hidden relative group min-h-[300px] border border-border"
-            >
-              <img
-                src="/images/headshot.png"
-                alt="Portrait"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-tight">
-                  Focusing on <br /> Result.
-                </p>
-              </div>
-            </motion.div>
+          <motion.div
+            custom={1}
+            variants={fadeUp}
+            className="md:col-span-5 bg-section-alt rounded-lg overflow-hidden relative group min-h-[430px] border border-border shadow-card"
+          >
+            <Image
+              src="/images/headshot.png"
+              alt="Jeevan Jose portrait"
+              fill
+              sizes="(min-width: 768px) 420px, 100vw"
+              priority
+              className="object-cover grayscale group-hover:grayscale-0 scale-105 group-hover:scale-100 transition-all duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
-            {/* Stats Card */}
-            <motion.div
-              custom={0}
-              variants={fadeUp}
-              className="bg-section-alt rounded-lg p-6 text-foreground flex flex-col justify-center border border-border shadow-lg"
-            >
-              <div className="flex justify-between items-center mb-4">
-                <Award size={24} className="text-accent" />
-                <span className="text-[10px] font-black uppercase tracking-widest bg-background/50 px-3 py-1 rounded-lg backdrop-blur-md border border-border">
-                  Milestones
-                </span>
+            <div className="absolute top-6 left-6 right-6 flex items-center justify-between gap-4">
+              <div className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-black/25 px-4 py-2 text-white backdrop-blur-md">
+                <MapPin size={14} />
+                <span className="text-[10px] font-black uppercase tracking-widest">Vadodara, India</span>
               </div>
-              <div className="grid grid-cols-3 gap-2 text-center">
-                {aboutHeroData.stats.slice(0, 3).map((stat) => (
-                  <div key={stat.label}>
-                    <p className="text-2xl font-heading font-black text-foreground">{stat.value}</p>
-                    <p className="text-[8px] font-black uppercase tracking-widest text-muted-foreground mt-1">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
+            </div>
+
+            <div className="absolute bottom-0 left-0 right-0 p-7 sm:p-8">
+              <p className="text-white/60 text-[10px] font-black uppercase tracking-widest mb-3">
+                Working Style
+              </p>
+              <p className="text-white text-2xl font-heading font-black leading-tight max-w-xs">
+                Calm execution, clean systems, thoughtful product decisions.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            custom={2}
+            variants={fadeUp}
+            className="md:col-span-12 grid grid-cols-1 sm:grid-cols-3 gap-4"
+          >
+            {aboutHeroData.stats.slice(0, 3).map((stat) => (
+              <div
+                key={stat.label}
+                className="bg-section-alt rounded-lg p-5 sm:p-6 border border-border shadow-card flex items-center justify-between gap-4"
+              >
+                <div>
+                  <p className="text-3xl sm:text-4xl font-heading font-black text-foreground">
+                    {stat.value}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1 font-medium">{stat.label}</p>
+                </div>
+                <div className="h-11 w-11 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+                  <Award size={20} />
+                </div>
               </div>
-            </motion.div>
-          </div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>

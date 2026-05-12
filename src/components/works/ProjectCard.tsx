@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import type { ProjectItem } from "@/lib/data";
 import GradientCard from "@/components/GradientCard";
@@ -28,7 +29,15 @@ interface ProjectCardProps {
   project: ProjectItem;
 }
 
+const projectVisuals: Record<string, string> = {
+  "ecommerce-platform": "/images/project-1.svg",
+  "saas-analytics": "/images/project-2.svg",
+  "flutter-shopping": "/images/project-3.svg",
+};
+
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const visualSrc = projectVisuals[project.slug] ?? "/images/project-1.svg";
+
   return (
     <Link href={`/works/${project.slug}`} className="block h-full outline-none focus:ring-2 focus:ring-accent rounded-lg group">
       <motion.div
@@ -40,18 +49,22 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         className="h-full"
       >
         <GradientCard className="bg-background border border-border overflow-hidden group-hover:border-accent/30 group-hover:shadow-2xl group-hover:shadow-black/5 transition-all duration-500 flex flex-col h-full p-2">
-          {/* Image Container — Inspired by Figma Variation 1/2 */}
           <div className="relative aspect-[16/10] bg-section-alt rounded-lg overflow-hidden m-1">
-            <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 to-accent/10" />
+            <Image
+              src={visualSrc}
+              alt={`${project.title} preview`}
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-background/10 to-accent/10" />
 
-            {/* Category Badge on top of image */}
             <div className="absolute top-4 left-4 z-20">
               <span className="px-4 py-1.5 rounded-lg bg-accent text-background text-[10px] font-black uppercase tracking-widest shadow-sm">
                 {project.categories[0]}
               </span>
             </div>
 
-            {/* Hover Overlay */}
             <div className="absolute inset-0 bg-accent/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px] z-10">
               <div className="w-14 h-14 rounded-full bg-background flex items-center justify-center text-accent transform scale-75 group-hover:scale-100 transition-transform duration-500 shadow-xl">
                 <ArrowUpRight size={24} />
@@ -59,9 +72,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             </div>
           </div>
 
-          {/* Content */}
           <div className="p-8 flex flex-col flex-grow">
-            {/* Tags — Small pill tags from Figma */}
             <div className="flex flex-wrap gap-2 mb-5">
               {project.tags.slice(0, 3).map((tag) => (
                 <span
@@ -81,7 +92,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {project.description}
             </p>
 
-            {/* Links Row */}
             <div className="flex items-center justify-between pt-6 border-t border-border mt-auto">
               <div className="flex items-center gap-4">
                 {project.liveUrl && (

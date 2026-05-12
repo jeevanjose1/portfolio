@@ -32,7 +32,6 @@ export default function ExperienceCards() {
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="relative pl-12 sm:pl-16 group"
             >
-              {/* Vertical Line with Bullet — Inspired by Figma Variation 1/2 */}
               <div className="absolute left-0 top-0 bottom-0 w-px bg-border group-hover:bg-accent group-hover:bg-opacity-30 transition-colors" />
               <div className="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-accent ring-4 ring-background transition-transform group-hover:scale-125" />
 
@@ -59,7 +58,6 @@ export default function ExperienceCards() {
                 </div>
               </div>
 
-              {/* Hover Divider line — Inspired by Figma Variation 1 */}
               <div className="mt-12 h-px bg-border w-full group-hover:bg-accent/10 transition-colors" />
             </motion.div>
           ))}

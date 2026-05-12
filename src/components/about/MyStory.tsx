@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Timeline from "@/components/Timeline";
 import { timelineData, myStoryText } from "@/lib/data";
 
 export default function MyStory() {
   return (
-    <section className="bg-background relative py-16 transition-colors duration-300">
+    <section className="bg-background relative pb-16 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,14 +40,7 @@ export default function MyStory() {
             className="lg:col-span-7 bg-background rounded-lg border border-border shadow-sm shadow-black/5 h-full relative"
           >
             {/* Background wrapper to clip the image */}
-            <div className="absolute inset-0 rounded-lg overflow-hidden pointer-events-none opacity-20">
-              <img
-                src="/images/workspace.png"
-                alt="Workspace"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-background/60" />
-            </div>
+
 
             {/* Sticky Content Wrapper */}
             <div className="sticky top-32 p-10 sm:p-14">
@@ -65,7 +59,7 @@ export default function MyStory() {
 
               <div className="mt-12 flex items-center gap-4 relative z-10">
                 <div className="w-12 h-12 rounded-full overflow-hidden border border-border flex items-center justify-center">
-                  <img src="/images/headshot.png" alt="Avatar" className="w-full h-full object-cover" />
+                  <Image src="/images/headshot.png" alt="Avatar" width={48} height={48} className="h-full w-full object-cover" />
                 </div>
                 <div>
                   <p className="text-sm font-black uppercase tracking-widest text-foreground">Jeevan Jose</p>

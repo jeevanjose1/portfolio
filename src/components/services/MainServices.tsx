@@ -21,11 +21,11 @@ function MainServiceCard({ service, index }: { service: MainServiceItem; index: 
       transition={{ delay: index * 0.15, duration: 0.5 }}
       className="h-full"
     >
-      <GradientCard className="h-full border border-border p-8 flex flex-col bg-background transition-all duration-500 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/5">
+      <GradientCard className="h-full border border-border p-8 flex hover:border-3! flex-col bg-background transition-all duration-500 hover:border-accent/30 ">
         <div className="w-14 h-14 rounded-lg bg-section-alt border border-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300">
           <Icon size={28} className="text-accent group-hover:text-background transition-colors" />
         </div>
-        
+
         <h3 className="text-2xl font-heading font-black text-foreground mb-3 group-hover:text-accent transition-colors duration-300 uppercase tracking-tight">
           {service.title}
         </h3>
@@ -43,10 +43,9 @@ function MainServiceCard({ service, index }: { service: MainServiceItem; index: 
         </ul>
 
         <div className="pt-6 border-t border-border mt-auto flex items-center justify-between relative z-10">
-          <span className="text-sm font-black uppercase tracking-widest text-foreground">Starts at {service.startingPrice}</span>
           <Link
             href={`/services/${service.slug}`}
-            className="group/btn flex items-center gap-2 text-sm font-black uppercase tracking-widest text-accent hover:text-foreground transition-colors duration-300"
+            className="group/btn flex items-center hover:underline  gap-2 text-sm font-black uppercase tracking-widest text-accent hover:text-foreground transition-colors duration-300"
           >
             Learn More
             <ArrowUpRight size={18} className="group-hover/btn:rotate-45 transition-transform duration-300" />
@@ -59,7 +58,7 @@ function MainServiceCard({ service, index }: { service: MainServiceItem; index: 
 
 export default function MainServices() {
   return (
-    <section className="bg-background py-16 relative z-20 transition-colors duration-300">
+    <section className="bg-background pb-16 relative z-20 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -11,7 +11,7 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
   const Icon = iconMap[service.iconName];
 
   return (
-    <section className="min-h-[80vh] flex items-center">
+    <section className="min-h-[72vh] flex items-center">
       <div className="section-container w-full">
         <motion.div
           initial="hidden"
@@ -23,7 +23,7 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-border"
+            className="md:col-span-8 bg-section-alt rounded-lg p-7 sm:p-10 flex flex-col justify-between min-h-[320px] border border-border shadow-card"
           >
             <div>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-accent/20 shadow-sm">
@@ -73,10 +73,10 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-section-alt rounded-lg p-8 sm:p-10 border border-border flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[220px]"
+              className="bg-section-alt rounded-lg p-8 sm:p-10 border border-border flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[220px] shadow-card"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-50" />
-              <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07] bg-[radial-gradient(var(--color-primary)_1px,transparent_1px)] [background-size:20px_20px]" />
+              <div className="absolute inset-0 opacity-[0.045] dark:opacity-[0.06] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />
 
               <div className="w-16 h-16 rounded-lg bg-background flex items-center justify-center mb-4 border border-border group-hover:scale-110 transition-transform duration-500 relative z-10 shadow-sm">
                 <Icon size={28} className="text-accent" />
@@ -93,7 +93,7 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-accent rounded-lg p-6 text-background flex flex-col justify-center border border-accent/20 shadow-lg"
+              className="bg-accent rounded-lg p-6 text-background flex flex-col justify-center border border-accent/20 shadow-card"
             >
               <div className="flex justify-between items-center mb-4">
                 <span className="text-[10px] font-black uppercase tracking-widest bg-background/20 px-3 py-1 rounded-lg backdrop-blur-sm">

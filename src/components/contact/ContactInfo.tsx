@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Mail, MapPin, Clock, Briefcase, ArrowUpRight } from "lucide-react";
+import { siteConfig } from "@/lib/constants";
 
 const GithubIcon = ({ size, className }: { size: number; className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -28,7 +29,7 @@ export default function ContactInfo() {
       initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-background rounded-lg p-10 border border-border shadow-2xl shadow-black/5"
+      className="bg-background rounded-lg p-7 sm:p-10 border border-border shadow-card"
     >
       <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Information</h2>
 
@@ -59,14 +60,20 @@ export default function ContactInfo() {
 
       <div className="h-px bg-border mb-10" />
 
-      <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Social Directories</h2>
+      <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Profiles</h2>
       <div className="grid grid-cols-1 gap-3 mb-10">
         {[
-          { icon: UpworkIcon, name: "Upwork", color: "text-foreground" },
-          { icon: LinkedinIcon, name: "LinkedIn", color: "text-foreground" },
-          { icon: GithubIcon, name: "GitHub", color: "text-foreground" }
+          { icon: UpworkIcon, name: "Upwork", href: siteConfig.socials.upwork, color: "text-foreground" },
+          { icon: LinkedinIcon, name: "LinkedIn", href: siteConfig.socials.linkedin, color: "text-foreground" },
+          { icon: GithubIcon, name: "GitHub", href: siteConfig.socials.github, color: "text-foreground" }
         ].map((social) => (
-          <a key={social.name} href="#" className="flex items-center justify-between p-5 bg-section-alt border border-border rounded-lg hover:border-accent hover:bg-background transition-all duration-300 group">
+          <a
+            key={social.name}
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-between p-5 bg-section-alt border border-border rounded-lg hover:border-accent hover:bg-background transition-all duration-300 group"
+          >
             <span className="flex items-center gap-4 text-sm font-black uppercase tracking-widest text-foreground">
               <social.icon size={20} className={`${social.color} group-hover:scale-110 transition-transform`} />
               {social.name}
@@ -77,9 +84,6 @@ export default function ContactInfo() {
       </div>
 
       <div className="bg-primary rounded-lg p-8 text-background relative overflow-hidden">
-        {/* Decorative background circle */}
-        <div className="absolute top-0 right-0 w-24 h-24 bg-accent/20 rounded-lg blur-2xl -mr-8 -mt-8" />
-
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-6">
             <span className="relative flex h-3 w-3">

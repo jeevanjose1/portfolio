@@ -27,7 +27,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   }
 
   return {
-    title: `${project.title} — Case Study | Your Name`,
+    title: `${project.title} — Case Study | Jeevan Jose`,
     description: project.longDescription,
   };
 }

@@ -6,7 +6,7 @@ import { processData } from "@/lib/data";
 
 export default function Process() {
   return (
-    <section className="bg-background py-16 lg:py-24 transition-colors duration-300">
+    <section className="bg-background py-12 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

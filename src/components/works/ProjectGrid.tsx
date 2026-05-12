@@ -15,7 +15,7 @@ export default function ProjectGrid() {
   );
 
   return (
-    <section className="bg-section-alt pb-10 relative z-10 transition-colors duration-300">
+    <section id="projects" className="bg-section-alt pb-10 relative z-10 transition-colors duration-300">
       <FilterBar
         categories={filterCategoriesData}
         activeFilter={activeFilter}

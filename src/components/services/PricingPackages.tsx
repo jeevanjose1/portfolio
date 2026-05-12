@@ -35,7 +35,7 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
               className={`relative rounded-2xl flex flex-col transition-transform duration-500 hover:-translate-y-2 ${pkg.highlighted
                 ? "bg-accent text-white shadow-2xl shadow-accent/20 scale-105 z-10 border border-white/20"
                 : pkg.name === "Enterprise"
-                  ? "bg-slate-950 text-white shadow-xl border border-white/5"
+                  ? "bg-primary text-background shadow-card border border-border"
                   : "bg-background text-foreground border border-border shadow-lg"
                 }`}
             >

@@ -1,189 +1,243 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { motion, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+
+type CatMood = "idle" | "curious" | "happy" | "booped";
 
 export default function HangingCat() {
-  const [isMeowing, setIsMeowing] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [mood, setMood] = useState<CatMood>("idle");
+  const [blink, setBlink] = useState(false);
+  const [message, setMessage] = useState("");
+  const catRef = useRef<HTMLButtonElement>(null);
+  const messageTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const reduceMotion = useReducedMotion();
 
-  // Mouse position tracking
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  // Smooth springs for eye movement
-  const eyeX = useSpring(mouseX, { stiffness: 150, damping: 15 });
-  const eyeY = useSpring(mouseY, { stiffness: 150, damping: 15 });
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const smoothX = useSpring(pointerX, { stiffness: 140, damping: 18, mass: 0.35 });
+  const smoothY = useSpring(pointerY, { stiffness: 140, damping: 18, mass: 0.35 });
+  const rotate = useTransform(smoothX, [-6, 6], [-4, 4]);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
+    const handlePointerMove = (event: PointerEvent) => {
+      if (!catRef.current) return;
 
-        const x = (e.clientX - centerX) / 200;
-        const y = (e.clientY - centerY) / 200;
+      const rect = catRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const x = Math.max(-1, Math.min(1, (event.clientX - centerX) / 190));
+      const y = Math.max(-1, Math.min(1, (event.clientY - centerY) / 180));
 
-        // Clamp values so pupils don't leave the eyes
-        mouseX.set(Math.max(-1, Math.min(1, x)) * 5);
-        mouseY.set(Math.max(-1, Math.min(1, y)) * 3);
-      }
+      pointerX.set(x * 6);
+      pointerY.set(y * 4);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+    window.addEventListener("pointermove", handlePointerMove);
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, [pointerX, pointerY]);
 
-  const handleMeow = () => {
-    if (isMeowing) return;
-    setIsMeowing(true);
-    setTimeout(() => setIsMeowing(false), 2000);
+  useEffect(() => {
+    if (reduceMotion) return;
+
+    const blinkLoop = window.setInterval(() => {
+      setBlink(true);
+      window.setTimeout(() => setBlink(false), 140);
+    }, 3600);
+
+    return () => window.clearInterval(blinkLoop);
+  }, [reduceMotion]);
+
+  const showMessage = (text: string, timeout = 1600) => {
+    setMessage(text);
+    if (messageTimer.current) clearTimeout(messageTimer.current);
+    messageTimer.current = setTimeout(() => setMessage(""), timeout);
   };
 
-  // Theme-aware Cat Colors
+  const handleBoop = () => {
+    setMood("booped");
+    setBlink(true);
+    showMessage("meow");
+
+    window.setTimeout(() => {
+      setBlink(false);
+      setMood("happy");
+    }, 260);
+
+    window.setTimeout(() => setMood("curious"), 1200);
+  };
+
   const colors = {
-    base: "var(--color-primary)",
-    stripes: "var(--color-accent)",
-    snout: "var(--color-background)",
+    fur: "var(--color-primary)",
+    furSoft: "var(--color-text-muted)",
+    accent: "var(--color-accent)",
+    muzzle: "var(--color-background)",
+    line: "var(--color-border)",
     eye: "var(--color-accent)",
-    pupil: "var(--color-background)", // Darkest color for pupil
-    nose: "var(--color-accent)",
-    ledge: "transparent"
+    pupil: "var(--color-background)",
+    white: "#ffffff",
   };
+
+  const isHappy = mood === "happy";
+  const isBooped = mood === "booped";
 
   return (
     <div
-      ref={containerRef}
-      // Positioned to hang exactly off the bottom of its parent container
-      className="absolute top-[90%] right-24 -z-[10] pointer-events-none"
-      style={{ width: "70px", height: "100px" }}
+      className="absolute top-[78%] right-24 -z-[10] pointer-events-none"
+      style={{ width: 86, height: 124 }}
     >
-      <motion.div
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 60, damping: 12 }}
-        className="relative w-full h-full pointer-events-auto cursor-pointer group"
-        onClick={handleMeow}
+      <motion.button
+        ref={catRef}
+        type="button"
+        aria-label="Interactive hanging cat"
+        onPointerEnter={() => {
+          setMood("curious");
+          showMessage("hello", 1200);
+        }}
+        onPointerLeave={() => setMood("idle")}
+        onPointerDown={handleBoop}
+        className="relative h-full w-full cursor-pointer bg-transparent p-0 pointer-events-auto outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        initial={{ y: -46, opacity: 0 }}
+        animate={{
+          y: isBooped ? 7 : 0,
+          opacity: 1,
+          rotate: isBooped ? [0, -5, 4, 0] : 0,
+        }}
+        whileHover={reduceMotion ? undefined : { y: -3 }}
+        transition={{
+          y: { type: "spring", stiffness: 90, damping: 13 },
+          opacity: { duration: 0.2 },
+          rotate: { duration: 0.34, ease: "easeOut" },
+        }}
+        style={{ rotate }}
       >
         <svg
-          viewBox="0 0 100 140"
-          className="w-full h-full  overflow-visible"
+          viewBox="0 0 120 170"
+          className="h-full w-full overflow-visible drop-shadow-[0_18px_18px_rgba(0,0,0,0.16)]"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* --- DANGLING TAIL (Behind the body) --- */}
-          <motion.path
-            d="M 50 85 Q 70 110 40 130"
-            stroke={colors.base}
-            strokeWidth="10"
-            strokeLinecap="round"
-            fill="none"
-            className={'-translate-y-2'}
-            animate={{
-              d: [
-                "M 50 85 Q 70 110 40 130",
-                "M 50 85 Q 30 110 60 130",
-                "M 50 85 Q 70 110 40 130"
-              ]
-            }}
-            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-          />
-
-          {/* --- THE LEDGE IT HANGS FROM --- */}
-          <rect x="10" y="0" width="80" height="10" rx="2" fill={colors.ledge} />
-
-          {/* --- HEAD AND EARS --- */}
-          {/* Left Ear */}
-          <path d="M 22 45 L 12 12 L 40 28 Z" fill={colors.base} stroke={colors.base} strokeWidth="2" strokeLinejoin="round" />
-          <path d="M 24 40 L 16 18 L 36 28 Z" fill={colors.nose} opacity="0.5" />
-
-          {/* Right Ear */}
-          <path d="M 78 45 L 88 12 L 60 28 Z" fill={colors.base} stroke={colors.base} strokeWidth="2" strokeLinejoin="round" />
-          <path d="M 76 40 L 84 18 L 64 28 Z" fill={colors.nose} opacity="0.5" />
-
-          {/* Main Head Shape (Wide oval) */}
-          <ellipse cx="50" cy="52" rx="38" ry="30" fill={colors.base} />
-
-          {/* Top Head Stripes */}
-          <path d="M 40 25 L 45 35 M 50 22 L 50 35 M 60 25 L 55 35" stroke={colors.stripes} strokeWidth="3" strokeLinecap="round" opacity="0.6" />
-
-          {/* Cheek Stripes */}
-          <path d="M 12 45 L 22 50 M 12 55 L 25 58 M 88 45 L 78 50 M 88 55 L 75 58" stroke={colors.stripes} strokeWidth="3" strokeLinecap="round" opacity="0.6" />
-
-          {/* Snout / Muzzle Area */}
-          <ellipse cx="50" cy="65" rx="16" ry="12" fill={colors.snout} />
-
-          {/* --- GRIPPING PAWS (In front of the ledge and head) --- */}
-          {/* Left Paw extending from behind the head to over the ledge */}
-          <path d="M 35 30 L 28 0 L 38 0 L 45 20 Z" fill={colors.base} />
-          <rect x="26" y="-2" width="14" height="18" rx="6" fill={colors.snout} />
-          {/* Claw lines */}
-          <line x1="30" y1="1" x2="30" y2="8" stroke={colors.stripes} strokeWidth="1" strokeLinecap="round" />
-          <line x1="34" y1="1" x2="34" y2="8" stroke={colors.stripes} strokeWidth="1" strokeLinecap="round" />
-
-          {/* Right Paw extending from behind the head to over the ledge */}
-          <path d="M 65 30 L 72 0 L 62 0 L 55 20 Z" fill={colors.base} />
-          <rect x="60" y="-2" width="14" height="18" rx="6" fill={colors.snout} />
-          {/* Claw lines */}
-          <line x1="66" y1="1" x2="66" y2="8" stroke={colors.stripes} strokeWidth="1" strokeLinecap="round" />
-          <line x1="70" y1="1" x2="70" y2="8" stroke={colors.stripes} strokeWidth="1" strokeLinecap="round" />
-
-          {/* --- DYNAMIC FACE (Only Eyes follow mouse) --- */}
-          {/* White part of eyes (Fixed) */}
-          <circle cx="34" cy="50" r="10" fill="white" />
-          <circle cx="66" cy="50" r="10" fill="white" />
-
-          {/* --- DYNAMIC EYE BALLS (Only Iris/Pupils follow mouse) --- */}
-          <motion.g style={{ x: eyeX, y: eyeY }}>
-            {/* Iris */}
-            <circle cx="34" cy="50" r="8" fill={colors.eye} />
-            <circle cx="66" cy="50" r="8" fill={colors.eye} />
-
-            {/* Pupils & Glint (Animate on meow) */}
-            <motion.g animate={isMeowing ? { scaleY: 0.1, y: 3 } : { scaleY: 1, y: 0 }}>
-              <circle cx="34" cy="50" r="4" fill={colors.pupil} />
-              <circle cx="66" cy="50" r="4" fill={colors.pupil} />
-            </motion.g>
-
-            {/* White Glints (Reflections) */}
-            <circle cx="36" cy="46" r="1.5" fill="white" />
-            <circle cx="68" cy="46" r="1.5" fill="white" />
-          </motion.g>
-
-          {/* Stable Face Elements (Nose, Mouth, Whiskers) */}
-          <g>
-            {/* Nose */}
-            <polygon points="46,62 54,62 50,66" fill={colors.nose} />
-
-            {/* Mouth (Inverted Y) - Fixed, no animation */}
-            <path
-              d="M 50 66 L 50 69 M 50 69 Q 47 73 44 70 M 50 69 Q 53 73 56 70"
-              stroke={colors.pupil}
-              strokeWidth="1.5"
+          <motion.g
+            animate={
+              reduceMotion
+                ? undefined
+                : {
+                    rotate: isHappy ? [0, 1.5, -1.5, 0] : [0, 0.8, -0.8, 0],
+                    y: isHappy ? [0, -1, 0] : [0, 1, 0],
+                  }
+            }
+            transition={{ repeat: Infinity, duration: isHappy ? 1.8 : 4.2, ease: "easeInOut" }}
+            style={{ transformOrigin: "60px 64px" }}
+          >
+            <motion.path
+              d="M59 90 C83 112 76 144 50 157"
+              stroke={colors.fur}
+              strokeWidth="12"
               strokeLinecap="round"
-              fill="none"
+              animate={
+                reduceMotion
+                  ? undefined
+                  : {
+                      d:
+                        mood === "curious"
+                          ? [
+                              "M59 90 C83 112 76 144 50 157",
+                              "M59 90 C36 113 44 144 70 157",
+                              "M59 90 C83 112 76 144 50 157",
+                            ]
+                          : [
+                              "M59 90 C78 114 74 143 52 157",
+                              "M59 90 C46 116 46 142 68 157",
+                              "M59 90 C78 114 74 143 52 157",
+                            ],
+                    }
+              }
+              transition={{ repeat: Infinity, duration: mood === "curious" ? 2.2 : 4.8, ease: "easeInOut" }}
             />
 
-            {/* Whiskers */}
-            <path d="M 32 64 L 15 62 M 32 68 L 15 70 M 68 64 L 85 62 M 68 68 L 85 70" stroke={colors.pupil} strokeWidth="1.5" strokeLinecap="round" opacity="0.4" />
-          </g>
+            <path d="M25 50 L14 12 L47 31 Z" fill={colors.fur} stroke={colors.fur} strokeWidth="2" strokeLinejoin="round" />
+            <path d="M95 50 L106 12 L73 31 Z" fill={colors.fur} stroke={colors.fur} strokeWidth="2" strokeLinejoin="round" />
+            <motion.path
+              d="M28 42 L20 20 L43 31 Z"
+              fill={colors.accent}
+              opacity="0.32"
+              animate={reduceMotion ? undefined : { scale: mood === "curious" ? [1, 1.08, 1] : 1 }}
+              transition={{ repeat: mood === "curious" ? Infinity : 0, duration: 1.1 }}
+              style={{ transformOrigin: "31px 30px" }}
+            />
+            <motion.path
+              d="M92 42 L100 20 L77 31 Z"
+              fill={colors.accent}
+              opacity="0.32"
+              animate={reduceMotion ? undefined : { scale: mood === "curious" ? [1, 1.08, 1] : 1 }}
+              transition={{ repeat: mood === "curious" ? Infinity : 0, duration: 1.1, delay: 0.16 }}
+              style={{ transformOrigin: "89px 30px" }}
+            />
+
+            <ellipse cx="60" cy="64" rx="43" ry="34" fill={colors.fur} />
+            <path d="M45 31 L51 44 M60 28 L60 43 M75 31 L69 44" stroke={colors.accent} strokeWidth="3" strokeLinecap="round" opacity="0.5" />
+            <path d="M20 58 L34 62 M19 70 L35 70 M100 58 L86 62 M101 70 L85 70" stroke={colors.accent} strokeWidth="3" strokeLinecap="round" opacity="0.42" />
+
+            <motion.g
+              animate={reduceMotion ? undefined : { y: isBooped ? -3 : 0 }}
+              transition={{ type: "spring", stiffness: 220, damping: 12 }}
+            >
+              <ellipse cx="60" cy="78" rx="18" ry="13" fill={colors.muzzle} />
+              <polygon points="55,73 65,73 60,78" fill={colors.accent} />
+              <motion.path
+                d={isHappy ? "M60 80 Q54 88 48 82 M60 80 Q66 88 72 82" : "M60 78 L60 83 M60 83 Q56 88 51 84 M60 83 Q64 88 69 84"}
+                stroke={colors.pupil}
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <path d="M40 76 L18 73 M40 82 L18 86 M80 76 L102 73 M80 82 L102 86" stroke={colors.pupil} strokeWidth="1.6" strokeLinecap="round" opacity="0.45" />
+            </motion.g>
+
+            <circle cx="42" cy="61" r="10.5" fill={colors.white} />
+            <circle cx="78" cy="61" r="10.5" fill={colors.white} />
+
+            <motion.g style={{ x: smoothX, y: smoothY }}>
+              <circle cx="42" cy="61" r="7.8" fill={colors.eye} />
+              <circle cx="78" cy="61" r="7.8" fill={colors.eye} />
+              <motion.g animate={blink || isBooped ? { scaleY: 0.08, y: 4 } : { scaleY: 1, y: 0 }} transition={{ duration: 0.12 }}>
+                <ellipse cx="42" cy="61" rx="3.4" ry="5" fill={colors.pupil} />
+                <ellipse cx="78" cy="61" rx="3.4" ry="5" fill={colors.pupil} />
+              </motion.g>
+              <circle cx="44" cy="56.5" r="1.5" fill={colors.white} />
+              <circle cx="80" cy="56.5" r="1.5" fill={colors.white} />
+            </motion.g>
+
+            <motion.g animate={isBooped ? { y: -2 } : { y: 0 }} transition={{ type: "spring", stiffness: 260, damping: 13 }}>
+              <path d="M40 38 L32 2 L44 2 L52 30 Z" fill={colors.fur} />
+              <path d="M80 38 L88 2 L76 2 L68 30 Z" fill={colors.fur} />
+              <rect x="29" y="-2" width="18" height="23" rx="8" fill={colors.muzzle} stroke={colors.line} strokeWidth="1" />
+              <rect x="73" y="-2" width="18" height="23" rx="8" fill={colors.muzzle} stroke={colors.line} strokeWidth="1" />
+              <path d="M35 3 L35 11 M41 3 L41 11 M79 3 L79 11 M85 3 L85 11" stroke={colors.accent} strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+            </motion.g>
+          </motion.g>
         </svg>
 
-        {/* Meow Tooltip/Bubble (Closer to cat) */}
         <AnimatePresence>
-          {isMeowing && (
+          {message && (
             <motion.div
-              initial={{ opacity: 0, scale: 0, x: 20, y: 50 }}
-              animate={{ opacity: 1, scale: 1, x: 25, y: 60 }}
-              exit={{ opacity: 0, scale: 0 }}
-              className="absolute -top-5 -right-10 bg-accent text-background text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full rounded-tl-none border border-border shadow-2xl z-50 whitespace-nowrap"
+              initial={{ opacity: 0, scale: 0.85, x: 10, y: 12 }}
+              animate={{ opacity: 1, scale: 1, x: 18, y: 20 }}
+              exit={{ opacity: 0, scale: 0.85, y: 8 }}
+              className="absolute -top-3 -right-12 rounded-full rounded-tl-none border border-border bg-accent px-3 py-1 text-[9px] font-black uppercase tracking-widest text-background shadow-2xl"
             >
-              Meow!
+              {message}
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.div>
+      </motion.button>
     </div>
   );
 }

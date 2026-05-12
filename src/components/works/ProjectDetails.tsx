@@ -69,7 +69,7 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="lg:w-[55%] bg-section-alt rounded-lg p-10 sm:p-14 border border-border"
+              className="lg:w-[55%] bg-section-alt rounded-lg p-8 sm:p-12 border border-border shadow-card"
             >
               <div className="mb-8">
                 <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-[10px] font-black uppercase tracking-widest">
@@ -115,9 +115,9 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
               className="lg:w-[45%] w-full flex flex-col gap-6"
             >
               {/* Main Visual */}
-              <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl shadow-black/5 border border-border bg-section-alt group">
+              <div className="relative aspect-video rounded-lg overflow-hidden shadow-card border border-border bg-section-alt group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 to-accent/5 group-hover:scale-105 transition-transform duration-1000" />
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(var(--color-primary)_1px,transparent_1px)] [background-size:20px_20px]" />
+                <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />
               </div>
 
               {/* Quick Info Grid */}
@@ -159,9 +159,7 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
           </div>
 
           <div className="lg:w-[40%]">
-            <div className="bg-background border border-border rounded-lg p-10 shadow-2xl shadow-black/5 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-lg blur-3xl opacity-50 -mr-16 -mt-16" />
-
+            <div className="bg-background border border-border rounded-lg p-8 sm:p-10 shadow-card relative overflow-hidden">
               <h3 className="text-sm font-black uppercase tracking-widest text-foreground mb-8 relative z-10">Project Intelligence</h3>
               <div className="space-y-6 mb-10 relative z-10">
                 {[
@@ -263,8 +261,7 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
         className="py-12 lg:py-16 relative overflow-hidden transition-colors duration-300 border-y border-white/5"
         style={{ backgroundColor: 'var(--color-contrast-bg)' }}
       >
-        {/* Decorative Grid */}
-        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
+        <div className="absolute inset-0 opacity-[0.035] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] [background-size:28px_28px]" />
 
         <div className="section-container relative z-10">
           <div className="text-center mb-20">

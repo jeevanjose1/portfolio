@@ -6,7 +6,7 @@ import { faqData } from "@/lib/data";
 
 export default function FAQ() {
   return (
-    <section className="bg-section-alt py-16 lg:py-24 transition-colors duration-300">
+    <section className="bg-section-alt py-12 transition-colors duration-300">
       <div className="section-container max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

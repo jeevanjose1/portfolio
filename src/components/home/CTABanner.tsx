@@ -7,18 +7,16 @@ import { ctaBannerData } from "@/lib/data";
 
 export default function CTABanner() {
   return (
-    <section className=" pb-10">
-      <div className="section-container ">
+    <section id="contact-cta" className="pb-8">
+      <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="bg-section-alt rounded-lg py-16 lg:py-16 px-12 relative overflow-hidden transition-colors duration-300 border border-border flex flex-col lg:flex-row items-center justify-between gap-12"
+          className="bg-section-alt rounded-lg py-12 lg:py-14 px-6 sm:px-10 lg:px-12 relative overflow-hidden transition-colors duration-300 border border-border flex flex-col lg:flex-row items-center justify-between gap-10 shadow-card"
         >
-          {/* Decorative background grid */}
-          <div className="absolute inset-0 opacity-5 bg-[radial-gradient(var(--color-primary)_1px,transparent_1px)] [background-size:20px_20px]" />
-          <div className="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-[100px] -mr-32 -mt-32" />
+          <div className="absolute inset-0 opacity-[0.045] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />
 
           <div className="relative z-10 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-background/10 text-foreground font-black text-[10px] uppercase tracking-widest mb-8 border border-border backdrop-blur-sm">
@@ -26,12 +24,12 @@ export default function CTABanner() {
               Direct Engagement
             </div>
 
-            <h2 className="text-5xl sm:text-6xl lg:text-8xl font-heading font-black text-foreground leading-[0.9] tracking-tighter mb-10">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-tight mb-8">
               Let&apos;s Work<br />
               <span className="text-accent italic font-serif">Together.</span>
             </h2>
 
-            <p className="text-muted-foreground max-w-lg mx-auto mb-12 text-lg font-body leading-relaxed">
+            <p className="text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-10 text-base sm:text-lg font-body leading-relaxed">
               {ctaBannerData.subtext}
             </p>
 

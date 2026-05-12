@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, ArrowRight, CheckCircle2, Send } from "lucide-react";
+import { ArrowRight, CheckCircle2, Send } from "lucide-react";
 
 interface FormData {
   name: string;
@@ -52,9 +52,7 @@ export default function ContactForm() {
 
     setIsSubmitting(true);
 
-    // Simulate API call
     setTimeout(() => {
-      console.log("Form submitted successfully:", formData);
       setIsSubmitting(false);
       setIsSuccess(true);
     }, 1500);
@@ -65,7 +63,7 @@ export default function ContactForm() {
       initial={{ opacity: 0, x: 30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="bg-background rounded-lg p-10 sm:p-14 border border-border shadow-2xl shadow-black/5 relative overflow-hidden"
+      className="bg-background rounded-lg p-7 sm:p-10 lg:p-12 border border-border shadow-card relative overflow-hidden"
     >
       <AnimatePresence mode="wait">
         {isSuccess ? (
@@ -75,12 +73,12 @@ export default function ContactForm() {
             animate={{ opacity: 1, scale: 1 }}
             className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center bg-background z-10"
           >
-            <div className="w-24 h-24 rounded-lg bg-green-500/10 flex items-center justify-center mb-8 border border-green-500/20">
-              <CheckCircle2 size={48} className="text-green-500" />
+            <div className="w-20 h-20 rounded-lg bg-accent/10 flex items-center justify-center mb-8 border border-accent/20">
+              <CheckCircle2 size={42} className="text-accent" />
             </div>
-            <h3 className="text-3xl font-heading font-black text-foreground mb-4">Transmission Success!</h3>
-            <p className="text-muted-foreground text-lg mb-10 max-w-sm font-body">
-              Your brief has been received. Expect a response within the next 24 business hours.
+            <h3 className="text-3xl font-heading font-black text-foreground mb-4">Message Sent</h3>
+            <p className="text-muted-foreground text-base sm:text-lg mb-10 max-w-sm font-body">
+              Thanks for sharing the brief. I&apos;ll review it and respond within 24 business hours.
             </p>
             <button
               onClick={() => {
@@ -100,9 +98,9 @@ export default function ContactForm() {
             exit={{ opacity: 0 }}
             className="flex flex-col h-full"
           >
-            <div className="mb-16">
-              <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">{"//"} The Brief</p>
-              <h2 className="text-3xl font-heading font-black text-foreground">Describe Your Project.</h2>
+            <div className="mb-10 sm:mb-12">
+              <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">{"//"} Project Brief</p>
+              <h2 className="text-3xl font-heading font-black text-foreground">Tell me what you need.</h2>
             </div>
 
             <div className="space-y-6 flex-grow">
@@ -112,7 +110,7 @@ export default function ContactForm() {
                   <input
                     id="name"
                     type="text"
-                    placeholder="John Doe"
+                    placeholder="Your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className={`w-full px-6 py-4 rounded-lg border ${errors.name ? 'border-red-500 focus:ring-red-500' : 'border-border focus:border-accent focus:ring-accent'} outline-none focus:ring-4 focus:ring-accent/5 transition-all bg-section-alt font-medium text-foreground placeholder:text-muted-foreground/50`}
@@ -126,7 +124,7 @@ export default function ContactForm() {
                   <input
                     id="email"
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder="you@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className={`w-full px-6 py-4 rounded-lg border ${errors.email ? 'border-red-500 focus:ring-red-500' : 'border-border focus:border-accent focus:ring-accent'} outline-none focus:ring-4 focus:ring-accent/5 transition-all bg-section-alt font-medium text-foreground placeholder:text-muted-foreground/50`}
@@ -198,7 +196,7 @@ export default function ContactForm() {
               </div>
             </div>
 
-            <div className="mt-12 flex flex-col sm:flex-row items-center gap-6">
+            <div className="mt-10 flex flex-col sm:flex-row items-center gap-5">
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
@@ -208,16 +206,15 @@ export default function ContactForm() {
                   <div className="w-5 h-5 border-2 border-background border-t-transparent rounded-lg animate-spin" />
                 ) : (
                   <>
-                    Deploy Message
+                    Send Message
                     <Send size={16} />
                   </>
                 )}
               </button>
 
-              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                <Lock size={12} />
-                <span>Encrypted Transmission</span>
-              </div>
+              <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+                No spam. Just a practical reply.
+              </p>
             </div>
           </motion.div>
         )}

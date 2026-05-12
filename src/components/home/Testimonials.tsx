@@ -6,7 +6,7 @@ import { testimonialsData } from "@/lib/data";
 
 export default function Testimonials() {
   return (
-    <section className="py-12 lg:py-24 transition-colors duration-300">
+    <section id="testimonials" className="py-10 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -15,8 +15,8 @@ export default function Testimonials() {
           transition={{ duration: 0.5 }}
           className="text-center mb-20"
         >
-          <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-4">{"//"} Proof of Concept</p>
-          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">Client Feedback.</h2>
+          <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-4">{"//"} Client Feedback</p>
+          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">What Clients Say.</h2>
           <div className="w-16 h-px bg-accent/30 mx-auto mt-8" />
         </motion.div>
 

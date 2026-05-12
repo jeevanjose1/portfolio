@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Mail } from "lucide-react";
+import { siteConfig } from "@/lib/constants";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -12,10 +13,9 @@ const quickLinks = [
 ];
 
 const socialPills = [
-  { label: "GitHub", href: "https://github.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "Upwork", href: "https://upwork.com" },
-  { label: "Dribbble", href: "https://dribbble.com" },
+  { label: "GitHub", href: siteConfig.socials.github },
+  { label: "LinkedIn", href: siteConfig.socials.linkedin },
+  { label: "Upwork", href: siteConfig.socials.upwork },
 ];
 
 export default function Footer() {
@@ -37,11 +37,10 @@ export default function Footer() {
               Full-stack developer crafting modern, scalable web applications
               with clean code and thoughtful design.
             </p>
-            {/* Contact info — inspired by Figma tech template footer */}
             <div className="flex items-center gap-2 text-sm text-white/60 mt-4">
               <Mail size={14} />
-              <a href="mailto:hello@jeevanjose.com" className="hover:text-white transition-colors">
-                hello@jeevanjose.com
+              <a href={`mailto:${siteConfig.email}`} className="hover:text-white transition-colors">
+                {siteConfig.email}
               </a>
             </div>
           </div>
@@ -65,7 +64,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social — Pill-shaped buttons (Figma portfolio style) */}
           <div className="md:col-span-4">
             <h4 className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-6">
               Connect

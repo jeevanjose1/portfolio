@@ -23,7 +23,6 @@ export default function ProcessStep({
 
   return (
     <div className="relative flex-1 flex flex-col items-center text-center px-4 transition-colors duration-300">
-      {/* Connecting Line from Figma Variation 1/2 */}
       {!isLast && (
         <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-px bg-border dark:bg-border/30 z-0" />
       )}

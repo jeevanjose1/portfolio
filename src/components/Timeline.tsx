@@ -10,7 +10,6 @@ interface TimelineProps {
 export default function Timeline({ items }: TimelineProps) {
   return (
     <div className="relative">
-      {/* Vertical line with gradient end */}
       <div className="absolute left-[7px] top-2 bottom-2 w-[1px] bg-border dark:bg-accent/20" />
 
       <div className="space-y-12">
@@ -23,7 +22,6 @@ export default function Timeline({ items }: TimelineProps) {
             transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
             className="relative pl-10 group"
           >
-            {/* Minimalist Dot from Figma */}
             <div className="absolute left-0 top-[6px] w-[15px] h-[15px] rounded-lg bg-background border border-border dark:border-accent/30 flex items-center justify-center group-hover:border-accent transition-colors duration-300">
               <div className="w-[5px] h-[5px] rounded-lg bg-border dark:bg-accent/50 group-hover:bg-accent transition-colors duration-300" />
             </div>

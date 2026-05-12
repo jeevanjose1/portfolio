@@ -23,19 +23,17 @@ export default function AvailabilityBanner() {
               <span className="text-[10px] font-black text-foreground uppercase tracking-widest">Active Availability</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-foreground leading-tight">
-              Booking for <span className="text-accent italic font-serif">June 2025</span> onwards.
+              Currently booking <span className="text-accent italic font-serif">select projects</span>.
             </h2>
           </div>
 
           <div className="flex-shrink-0">
             <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-accent text-background hover:opacity-90 px-10 py-5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group shadow-2xl shadow-accent/10"
+              href="mailto:hello@jeevanjose.com?subject=Strategy%20Call%20Request"
+              className="bg-accent text-background hover:opacity-90 px-8 py-4 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group shadow-card"
             >
               <Calendar size={18} />
-              Book a Strategy Call
+              Request a Strategy Call
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

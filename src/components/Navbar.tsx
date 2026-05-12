@@ -65,7 +65,7 @@ export default function Navbar() {
           </div>
 
           <Link href="/contact" className="hidden md:inline-flex btn-primary py-2.5 px-6 rounded-full ml-1">
-            Let's Talk
+            Let&apos;s Talk
           </Link>
 
           <button
