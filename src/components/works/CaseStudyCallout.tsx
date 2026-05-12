@@ -5,8 +5,8 @@ import { ArrowRight } from "lucide-react";
 
 export default function CaseStudyCallout() {
   return (
-    <section className="bg-accent text-white">
-      <div className="section-container py-20 lg:py-24">
+    <section className="bg-accent text-white  mb-10">
+      <div className="section-container py-16 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -22,8 +22,8 @@ export default function CaseStudyCallout() {
               Scaling an E-commerce Platform to 2,000+ Daily Users
             </h2>
             <p className="text-blue-100 text-lg leading-relaxed mb-8">
-              Discover how I completely re-architected a legacy monolith into a modern, 
-              scalable microservices architecture, improving performance by 40% and 
+              Discover how I completely re-architected a legacy monolith into a modern,
+              scalable microservices architecture, improving performance by 40% and
               significantly reducing infrastructure costs.
             </p>
             <button className="bg-white text-accent hover:bg-gray-50 px-8 py-3.5 rounded-lg font-semibold inline-flex items-center gap-2 transition-colors">
@@ -40,19 +40,19 @@ export default function CaseStudyCallout() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="grid grid-cols-2 gap-4 sm:gap-6"
           >
-            <div className="bg-white rounded-2xl p-6 shadow-xl shadow-blue-900/20 text-center">
+            <div className="bg-white rounded-lg p-6 shadow-xl shadow-blue-900/20 text-center">
               <p className="text-4xl font-bold font-heading text-accent mb-1">2,000+</p>
               <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">Daily Users</p>
             </div>
-            <div className="bg-white rounded-2xl p-6 shadow-xl shadow-blue-900/20 text-center">
+            <div className="bg-white rounded-lg p-6 shadow-xl shadow-blue-900/20 text-center">
               <p className="text-4xl font-bold font-heading text-accent mb-1">98/100</p>
               <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">Lighthouse</p>
             </div>
-            <div className="bg-white rounded-2xl p-6 shadow-xl shadow-blue-900/20 text-center">
+            <div className="bg-white rounded-lg p-6 shadow-xl shadow-blue-900/20 text-center">
               <p className="text-4xl font-bold font-heading text-accent mb-1">99.9%</p>
               <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">Uptime</p>
             </div>
-            <div className="bg-white rounded-2xl p-6 shadow-xl shadow-blue-900/20 text-center">
+            <div className="bg-white rounded-lg p-6 shadow-xl shadow-blue-900/20 text-center">
               <p className="text-4xl font-bold font-heading text-accent mb-1">1.2s</p>
               <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">Load Time</p>
             </div>

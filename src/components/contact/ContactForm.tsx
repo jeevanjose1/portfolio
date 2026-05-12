@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Lock, ArrowRight, CheckCircle2, Send } from "lucide-react";
 
 interface FormData {
   name: string;
@@ -28,7 +28,7 @@ export default function ContactForm() {
     timeline: "1–3 months",
     message: "",
   });
-  
+
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -42,7 +42,7 @@ export default function ContactForm() {
       newErrors.email = "Please enter a valid email address";
     }
     if (!formData.message.trim()) newErrors.message = "Message is required";
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -51,7 +51,7 @@ export default function ContactForm() {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       console.log("Form submitted successfully:", formData);
@@ -62,10 +62,10 @@ export default function ContactForm() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: 20 }}
+      initial={{ opacity: 0, x: 30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 h-full relative overflow-hidden"
+      className="bg-white rounded-lg p-10 sm:p-14 border border-gray-100 shadow-2xl shadow-gray-200/50  relative overflow-hidden"
     >
       <AnimatePresence mode="wait">
         {isSuccess ? (
@@ -73,21 +73,21 @@ export default function ContactForm() {
             key="success"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-white z-10"
+            className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center bg-white z-10"
           >
-            <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mb-6">
-              <CheckCircle2 size={40} className="text-green-500" />
+            <div className="w-24 h-24 rounded-lg bg-green-50 flex items-center justify-center mb-8 border border-green-100">
+              <CheckCircle2 size={48} className="text-green-500" />
             </div>
-            <h3 className="text-3xl font-heading font-bold text-primary mb-4">Message Sent!</h3>
-            <p className="text-gray-600 text-lg mb-8 max-w-sm">
-              Thank you for reaching out. I&apos;ve received your message and will get back to you within 24 hours.
+            <h3 className="text-3xl font-heading font-black text-primary mb-4">Transmission Success!</h3>
+            <p className="text-gray-500 text-lg mb-10 max-w-sm font-body">
+              Your brief has been received. Expect a response within the next 24 business hours.
             </p>
             <button
               onClick={() => {
                 setFormData({ ...formData, message: "" });
                 setIsSuccess(false);
               }}
-              className="btn-secondary"
+              className="px-8 py-4 rounded-lg bg-primary text-white font-black uppercase tracking-widest text-xs hover:bg-accent transition-colors"
             >
               Send Another Message
             </button>
@@ -100,127 +100,123 @@ export default function ContactForm() {
             exit={{ opacity: 0 }}
             className="flex flex-col h-full"
           >
-            <h2 className="text-2xl font-heading font-bold text-primary mb-6">Tell me about your project</h2>
-            
-            <div className="space-y-5 flex-grow">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="mb-16">
+              <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">{"//"} The Brief</p>
+              <h2 className="text-3xl font-heading font-black text-primary">Describe Your Project.</h2>
+            </div>
+
+            <div className="space-y-6 flex-grow">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">Full Name *</label>
+                  <label htmlFor="name" className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Full Name *</label>
                   <input
                     id="name"
                     type="text"
                     placeholder="John Doe"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className={`w-full px-4 py-3 rounded-lg border ${errors.name ? 'border-red-500 focus:ring-red-500' : 'border-gray-200 focus:border-accent focus:ring-accent'} outline-none focus:ring-2 focus:ring-opacity-20 transition-all bg-gray-50 focus:bg-white`}
+                    className={`w-full px-6 py-4 rounded-lg border ${errors.name ? 'border-red-500 focus:ring-red-500' : 'border-gray-100 focus:border-accent focus:ring-accent'} outline-none focus:ring-4 focus:ring-accent/5 transition-all bg-gray-50/50 font-medium text-primary`}
                     aria-label="Full Name"
                     aria-invalid={!!errors.name}
                   />
-                  {errors.name && <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.name}</p>}
+                  {errors.name && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2 ml-1">{errors.name}</p>}
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">Email Address *</label>
+                  <label htmlFor="email" className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Email Address *</label>
                   <input
                     id="email"
                     type="email"
                     placeholder="john@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className={`w-full px-4 py-3 rounded-lg border ${errors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-200 focus:border-accent focus:ring-accent'} outline-none focus:ring-2 focus:ring-opacity-20 transition-all bg-gray-50 focus:bg-white`}
+                    className={`w-full px-6 py-4 rounded-lg border ${errors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-100 focus:border-accent focus:ring-accent'} outline-none focus:ring-4 focus:ring-accent/5 transition-all bg-gray-50/50 font-medium text-primary`}
                     aria-label="Email Address"
                     aria-invalid={!!errors.email}
                   />
-                  {errors.email && <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.email}</p>}
+                  {errors.email && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2 ml-1">{errors.email}</p>}
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-1.5">Project Type</label>
-                  <select
-                    id="projectType"
-                    value={formData.projectType}
-                    onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent focus:ring-opacity-20 outline-none transition-all bg-gray-50 focus:bg-white appearance-none"
-                    aria-label="Project Type"
-                  >
-                    <option>Web App</option>
-                    <option>Mobile App</option>
-                    <option>E-commerce</option>
-                    <option>DevOps</option>
-                    <option>Consulting</option>
-                    <option>Other</option>
-                  </select>
+                  <label htmlFor="projectType" className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Project Type</label>
+                  <div className="relative">
+                    <select
+                      id="projectType"
+                      value={formData.projectType}
+                      onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                      className="w-full px-6 py-4 rounded-lg border border-gray-100 focus:border-accent focus:ring-4 focus:ring-accent/5 outline-none transition-all bg-gray-50/50 font-medium text-primary appearance-none cursor-pointer"
+                      aria-label="Project Type"
+                    >
+                      <option>Web App</option>
+                      <option>Mobile App</option>
+                      <option>E-commerce</option>
+                      <option>DevOps</option>
+                      <option>Consulting</option>
+                      <option>Other</option>
+                    </select>
+                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                      <ArrowRight size={14} className="rotate-90" />
+                    </div>
+                  </div>
                 </div>
                 <div>
-                  <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 mb-1.5">Timeline</label>
-                  <select
-                    id="timeline"
-                    value={formData.timeline}
-                    onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent focus:ring-opacity-20 outline-none transition-all bg-gray-50 focus:bg-white appearance-none"
-                    aria-label="Project Timeline"
-                  >
-                    <option>ASAP</option>
-                    <option>1 month</option>
-                    <option>1–3 months</option>
-                    <option>3+ months</option>
-                  </select>
+                  <label htmlFor="timeline" className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Timeline</label>
+                  <div className="relative">
+                    <select
+                      id="timeline"
+                      value={formData.timeline}
+                      onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
+                      className="w-full px-6 py-4 rounded-lg border border-gray-100 focus:border-accent focus:ring-4 focus:ring-accent/5 outline-none transition-all bg-gray-50/50 font-medium text-primary appearance-none cursor-pointer"
+                      aria-label="Project Timeline"
+                    >
+                      <option>ASAP</option>
+                      <option>1 month</option>
+                      <option>1–3 months</option>
+                      <option>3+ months</option>
+                    </select>
+                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                      <ArrowRight size={14} className="rotate-90" />
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <div>
-                <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-1.5">Budget Range</label>
-                <select
-                  id="budget"
-                  value={formData.budget}
-                  onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent focus:ring-opacity-20 outline-none transition-all bg-gray-50 focus:bg-white appearance-none"
-                  aria-label="Budget Range"
-                >
-                  <option>Under $500</option>
-                  <option>$500–$1000</option>
-                  <option>$1000–$3000</option>
-                  <option>$3000+</option>
-                  <option>Let&apos;s discuss</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">Message *</label>
+                <label htmlFor="message" className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Message *</label>
                 <textarea
                   id="message"
-                  rows={5}
+                  rows={4}
                   placeholder="Tell me about your project, goals, and any specific requirements..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className={`w-full px-4 py-3 rounded-lg border ${errors.message ? 'border-red-500 focus:ring-red-500' : 'border-gray-200 focus:border-accent focus:ring-accent'} outline-none focus:ring-2 focus:ring-opacity-20 transition-all bg-gray-50 focus:bg-white resize-none`}
+                  className={`w-full px-6 py-4 rounded-lg border ${errors.message ? 'border-red-500 focus:ring-red-500' : 'border-gray-100 focus:border-accent focus:ring-accent'} outline-none focus:ring-4 focus:ring-accent/5 transition-all bg-gray-50/50 font-medium text-primary resize-none`}
                   aria-label="Message"
                   aria-invalid={!!errors.message}
                 />
-                {errors.message && <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.message}</p>}
+                {errors.message && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2 ml-1">{errors.message}</p>}
               </div>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-12 flex flex-col sm:flex-row items-center gap-6">
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="w-full btn-primary py-4 text-base flex justify-center items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto px-10 py-5 rounded-lg bg-primary text-white font-black uppercase tracking-widest text-xs flex justify-center items-center gap-3 hover:bg-accent transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-primary/10"
               >
                 {isSubmitting ? (
-                  <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-lg animate-spin" />
                 ) : (
                   <>
-                    Send Message
-                    <ArrowRight size={20} />
+                    Deploy Message
+                    <Send size={16} />
                   </>
                 )}
               </button>
-              
-              <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
-                <Lock size={14} />
-                <span>Your information is safe and never shared</span>
+
+              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400">
+                <Lock size={12} />
+                <span>Encrypted Transmission</span>
               </div>
             </div>
           </motion.div>

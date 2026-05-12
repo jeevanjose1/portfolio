@@ -1,26 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Briefcase, Code2, Palette } from "lucide-react";
 import Link from "next/link";
 import { heroData, statsData, socialLinks } from "@/lib/data";
 import type { SocialLink } from "@/lib/data";
+import AnimatedNumber from "@/components/AnimatedNumber";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.12, duration: 0.5, ease: "easeOut" as const },
-  }),
-};
-
-const statFade = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { delay: 0.6 + i * 0.15, duration: 0.45, ease: "easeOut" as const },
+    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" as const },
   }),
 };
 
@@ -31,13 +23,13 @@ function SocialIcon({ link }: { link: SocialLink }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={link.label}
-      className="p-2.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-blue-50 hover:text-accent transition-colors duration-200"
-      whileHover={{ scale: 1.15 }}
+      className="w-10 h-10 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-accent hover:text-white hover:border-accent transition-all duration-200"
+      whileHover={{ y: -2 }}
       whileTap={{ scale: 0.95 }}
     >
       <svg
-        width="20"
-        height="20"
+        width="18"
+        height="18"
         viewBox="0 0 24 24"
         fill={link.label === "Upwork" ? "currentColor" : "none"}
         stroke={link.label === "Upwork" ? "none" : "currentColor"}
@@ -48,76 +40,97 @@ function SocialIcon({ link }: { link: SocialLink }) {
         {link.svgPaths.map((d, i) => (
           <path key={i} d={d} />
         ))}
-        {link.svgExtras?.map((extra, i) => {
-          if (extra.type === "rect") {
-            return <rect key={`e-${i}`} {...extra.attrs} />;
-          }
-          if (extra.type === "circle") {
-            return <circle key={`e-${i}`} {...extra.attrs} />;
-          }
-          return null;
-        })}
       </svg>
     </motion.a>
   );
 }
 
 export default function HeroSection() {
-  const headingLines = heroData.heading.split("\n");
-
   return (
-    <section id="home" className="relative overflow-hidden bg-white">
-      {/* Background gradient orb */}
-      <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-blue-500/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-blue-500/3 blur-3xl pointer-events-none" />
-
-      <div className="section-container min-h-[calc(100vh-4rem)] flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-8 items-center w-full">
-          {/* ─── Left Column (3/5 = 60%) ─── */}
+    <section id="home" className=" min-h-screen flex items-center  pb-10">
+      <div className="section-container w-full">
+        {/* ─── Bento Grid Layout (Figma Portfolio Style) ─── */}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-auto"
+        >
+          {/* ── Main Intro Card (large, spans 8 cols) ── */}
           <motion.div
-            initial="hidden"
-            animate="visible"
-            className="lg:col-span-3"
+            custom={0}
+            variants={fadeUp}
+            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-gray-100"
           >
-            {/* Badge */}
-            <motion.div custom={0} variants={fadeUp} className="mb-6">
-              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#EFF6FF] text-accent text-sm font-medium">
+            <div>
+              {/* Badge */}
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-blue-50 text-accent text-sm font-medium mb-6">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span className="relative inline-flex rounded-lg h-2 w-2 bg-accent"></span>
+                </span>
                 {heroData.badge}
               </span>
-            </motion.div>
 
-            {/* Heading */}
-            <motion.h1
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-primary leading-[1.1] mb-4">
+                Full-Stack Developer & <br />
+                <span className="text-accent italic font-serif">
+                  Mobile Engineer
+                </span>
+              </h1>
+
+              <div className="text-gray-500 text-lg max-w-lg leading-relaxed font-body">
+                {heroData.subheadline}
+              </div>
+            </div>
+
+            {/* Social Row */}
+            <div className="flex items-center gap-3 mt-8">
+              {socialLinks.map((link) => (
+                <SocialIcon key={link.label} link={link} />
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ── Right Column — stacked cards ── */}
+          <div className="md:col-span-4 flex flex-col gap-4">
+            {/* Nav-style action card */}
+            <motion.div
               custom={1}
               variants={fadeUp}
-              className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-5xl font-heading font-bold text-gray-900 leading-tight mb-6"
+              className="bg-primary rounded-lg p-6 flex flex-col gap-3 border border-gray-800"
             >
-              {headingLines.map((line, i) => (
-                <span key={i}>
-                  {line}
-                  {i < headingLines.length - 1 && <br />}
-                </span>
-              ))}
-            </motion.h1>
+              <Link
+                href="/works"
+                className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium"
+              >
+                <Palette size={16} />
+                Latest Work
+              </Link>
+              <Link
+                href="/about"
+                className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium"
+              >
+                <Code2 size={16} />
+                About Me
+              </Link>
+              <Link
+                href="/contact"
+                className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium"
+              >
+                <Briefcase size={16} />
+                Book A Call
+              </Link>
+            </motion.div>
 
-            {/* Subheadline */}
-            <motion.p
+            {/* CTA Buttons card */}
+            <motion.div
               custom={2}
               variants={fadeUp}
-              className="text-gray-500 text-lg max-w-lg mb-8 leading-relaxed"
-            >
-              {heroData.subheadline}
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              custom={3}
-              variants={fadeUp}
-              className="flex flex-wrap gap-4 mb-8"
+              className="bg-section-alt rounded-lg p-6 flex flex-col gap-3 border border-gray-100"
             >
               <Link
                 href={heroData.ctaPrimary.href}
-                className="btn-primary inline-flex items-center gap-2"
+                className="btn-primary text-center flex items-center justify-center gap-2"
               >
                 {heroData.ctaPrimary.label}
                 <ArrowRight size={16} />
@@ -125,145 +138,38 @@ export default function HeroSection() {
               <a
                 href={heroData.ctaSecondary.href}
                 download
-                className="btn-secondary inline-flex items-center gap-2"
+                className="btn-secondary text-center flex items-center justify-center gap-2"
               >
                 {heroData.ctaSecondary.label}
                 <Download size={16} />
               </a>
             </motion.div>
+          </div>
 
-            {/* Social Icons */}
-            <motion.div
-              custom={4}
-              variants={fadeUp}
-              className="flex items-center gap-3"
-            >
-              {socialLinks.map((link) => (
-                <SocialIcon key={link.label} link={link} />
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* ─── Right Column (2/5 = 40%) ─── */}
+          {/* ── Bottom Stat Bar ── */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-2 relative hidden lg:block"
+            custom={3}
+            variants={fadeUp}
+            className="md:col-span-12 grid grid-cols-3 gap-4"
           >
-            {/* Code-themed SVG Illustration */}
-            <div className="relative w-full aspect-square max-w-md mx-auto">
-              <svg viewBox="0 0 400 400" fill="none" className="w-full h-full">
-                {/* Background circle */}
-                <circle cx="200" cy="200" r="180" fill="#EFF6FF" opacity="0.5" />
-                <circle cx="200" cy="200" r="140" fill="#DBEAFE" opacity="0.4" />
+            {statsData.map((stat) => {
+              const numericValue = parseInt(stat.value.replace(/\D/g, ''));
+              const suffix = stat.value.replace(/[0-9]/g, '');
 
-                {/* Code bracket left < */}
-                <path
-                  d="M140 160L100 200L140 240"
-                  stroke="#2563EB"
-                  strokeWidth="8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  opacity="0.8"
-                />
-
-                {/* Code bracket right > */}
-                <path
-                  d="M260 160L300 200L260 240"
-                  stroke="#2563EB"
-                  strokeWidth="8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  opacity="0.8"
-                />
-
-                {/* Forward slash / */}
-                <path
-                  d="M220 140L180 260"
-                  stroke="#93C5FD"
-                  strokeWidth="6"
-                  strokeLinecap="round"
-                  opacity="0.7"
-                />
-
-                {/* Decorative dots */}
-                <circle cx="120" cy="120" r="6" fill="#2563EB" opacity="0.3" />
-                <circle cx="300" cy="130" r="4" fill="#93C5FD" opacity="0.5" />
-                <circle cx="80" cy="280" r="5" fill="#BFDBFE" opacity="0.6" />
-                <circle cx="320" cy="290" r="7" fill="#2563EB" opacity="0.2" />
-
-                {/* Decorative rectangles (code blocks) */}
-                <rect x="150" y="290" width="100" height="8" rx="4" fill="#BFDBFE" opacity="0.5" />
-                <rect x="170" y="306" width="60" height="8" rx="4" fill="#DBEAFE" opacity="0.4" />
-                <rect x="150" y="90" width="80" height="8" rx="4" fill="#BFDBFE" opacity="0.4" />
-                <rect x="165" y="106" width="50" height="8" rx="4" fill="#DBEAFE" opacity="0.3" />
-
-                {/* Floating geometric shapes */}
-                <rect x="60" cy="180" y="180" width="24" height="24" rx="4" fill="#2563EB" opacity="0.15" transform="rotate(15 72 192)" />
-                <rect x="310" y="170" width="20" height="20" rx="4" fill="#93C5FD" opacity="0.25" transform="rotate(-10 320 180)" />
-
-                {/* Terminal-like element */}
-                <rect x="160" y="170" width="80" height="60" rx="8" fill="white" stroke="#DBEAFE" strokeWidth="2" />
-                <circle cx="175" cy="183" r="3" fill="#EF4444" opacity="0.6" />
-                <circle cx="187" cy="183" r="3" fill="#F59E0B" opacity="0.6" />
-                <circle cx="199" cy="183" r="3" fill="#22C55E" opacity="0.6" />
-                <rect x="170" y="198" width="30" height="4" rx="2" fill="#2563EB" opacity="0.4" />
-                <rect x="170" y="208" width="50" height="4" rx="2" fill="#93C5FD" opacity="0.3" />
-                <rect x="170" y="218" width="20" height="4" rx="2" fill="#BFDBFE" opacity="0.3" />
-              </svg>
-
-              {/* Floating Stat Cards */}
-              {statsData.map((stat, i) => {
-                const positions = [
-                  "top-4 -left-4",
-                  "top-1/2 -right-6 -translate-y-1/2",
-                  "bottom-8 -left-2",
-                ];
-                return (
-                  <motion.div
-                    key={stat.label}
-                    custom={i}
-                    initial="hidden"
-                    animate="visible"
-                    variants={statFade}
-                    className={`absolute ${positions[i]} bg-white rounded-xl shadow-lg border border-gray-100 px-5 py-3.5`}
-                  >
-                    <p className="text-2xl font-heading font-bold text-accent">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-gray-500 font-medium">
-                      {stat.label}
-                    </p>
-                  </motion.div>
-                );
-              })}
-            </div>
+              return (
+                <div
+                  key={stat.label}
+                  className="bg-section-alt rounded-lg p-6 text-center border border-gray-100 hover:border-accent/30 transition-colors"
+                >
+                  <p className="text-3xl sm:text-4xl font-heading font-black text-primary">
+                    <AnimatedNumber value={numericValue} suffix={suffix} />
+                  </p>
+                  <p className="text-sm text-gray-400 mt-1 font-medium">{stat.label}</p>
+                </div>
+              );
+            })}
           </motion.div>
-
-          {/* Mobile Stats Row */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            className="lg:hidden col-span-1 grid grid-cols-3 gap-4"
-          >
-            {statsData.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                custom={i}
-                variants={statFade}
-                className="bg-white rounded-xl shadow-md border border-gray-100 px-4 py-4 text-center"
-              >
-                <p className="text-2xl font-heading font-bold text-accent">
-                  {stat.value}
-                </p>
-                <p className="text-xs text-gray-500 font-medium">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import type { ProjectItem } from "@/lib/data";
+import GradientCard from "@/components/GradientCard";
 
 const GithubIcon = ({ size, className }: { size: number; className?: string }) => (
   <svg
@@ -29,66 +30,77 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Link href={`/works/${project.slug}`} className="block h-full outline-none focus:ring-2 focus:ring-accent rounded-2xl group">
+    <Link href={`/works/${project.slug}`} className="block h-full outline-none focus:ring-2 focus:ring-accent rounded-lg group">
       <motion.div
         layout
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.9 }}
-        transition={{ duration: 0.3 }}
-        className="bg-white rounded-2xl border border-gray-100 overflow-hidden group-hover:-translate-y-2 group-hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.4 }}
+        className="h-full"
       >
-        {/* Image Placeholder */}
-        <div className="relative aspect-video bg-gray-100 overflow-hidden">
-          {/* Placeholder gradient mimicking an image */}
+        <GradientCard className="bg-white border border-gray-100 overflow-hidden group-hover:border-accent/30 group-hover:shadow-2xl group-hover:shadow-accent/5 transition-all duration-500 flex flex-col h-full p-2">
+        {/* Image Container — Inspired by Figma Variation 1/2 */}
+        <div className="relative aspect-[16/10] bg-gray-50 rounded-lg overflow-hidden m-1">
           <div className="absolute inset-0 bg-gradient-to-tr from-gray-200 to-gray-100" />
           
+          {/* Category Badge on top of image */}
+          <div className="absolute top-4 left-4 z-20">
+             <span className="px-4 py-1.5 rounded-lg bg-white/90 backdrop-blur-sm text-accent text-[10px] font-black uppercase tracking-widest shadow-sm">
+                {project.categories[0]}
+             </span>
+          </div>
+
           {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-10">
-            <span className="bg-white text-primary px-6 py-2.5 rounded-full font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-              View Project
-            </span>
+          <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px] z-10">
+            <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-primary transform scale-75 group-hover:scale-100 transition-transform duration-500 shadow-xl">
+              <ArrowUpRight size={24} />
+            </div>
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-6 flex flex-col flex-grow">
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.map((tag) => (
+        <div className="p-8 flex flex-col flex-grow">
+          {/* Tags — Small pill tags from Figma */}
+          <div className="flex flex-wrap gap-2 mb-5">
+            {project.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="text-xs font-semibold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full"
+                className="text-[10px] font-bold uppercase tracking-wider bg-gray-50 text-gray-400 px-3 py-1 rounded-lg border border-gray-100"
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          <h3 className="text-xl font-heading font-bold text-primary mb-2 line-clamp-1">
+          <h3 className="text-2xl font-heading font-black text-primary mb-3 group-hover:text-accent transition-colors duration-300">
             {project.title}
           </h3>
           
-          <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-6 flex-grow">
+          <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-8 flex-grow font-body">
             {project.description}
           </p>
 
-          {/* Links */}
-          <div className="flex items-center gap-4 pt-4 border-t border-gray-100 mt-auto">
-            {project.liveUrl && (
-              <div className="text-gray-500 hover:text-accent transition-colors flex items-center gap-1.5 text-sm font-medium">
-                <ExternalLink size={18} />
-                Live Demo
-              </div>
-            )}
-            {project.githubUrl && (
-              <div className="text-gray-500 hover:text-accent transition-colors flex items-center gap-1.5 text-sm font-medium">
-                <GithubIcon size={18} />
-                GitHub
-              </div>
-            )}
+          {/* Links Row */}
+          <div className="flex items-center justify-between pt-6 border-t border-gray-50 mt-auto">
+            <div className="flex items-center gap-4">
+               {project.liveUrl && (
+                 <div className="text-gray-400 hover:text-accent transition-colors">
+                    <ExternalLink size={18} />
+                 </div>
+               )}
+               {project.githubUrl && (
+                 <div className="text-gray-400 hover:text-accent transition-colors">
+                    <GithubIcon size={18} />
+                 </div>
+               )}
+            </div>
+            <div className="text-xs font-bold uppercase tracking-widest text-accent group-hover:translate-x-1 transition-transform">
+               View Details →
+            </div>
           </div>
         </div>
+        </GradientCard>
       </motion.div>
     </Link>
   );

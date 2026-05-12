@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GitBranch, Users, BookOpen } from "lucide-react";
+import { GitBranch, Users, BookOpen, Sparkles } from "lucide-react";
 import { beyondCodeData } from "@/lib/data";
 import type { BeyondCodeItem } from "@/lib/data";
 
@@ -11,19 +11,22 @@ function BeyondCard({ item, index }: { item: BeyondCodeItem; index: number }) {
   const Icon = iconMap[item.iconName];
   return (
     <motion.div
-      initial={{ opacity: 0, y: 25 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ delay: index * 0.12, duration: 0.45 }}
-      className="card p-7 group hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      className="bg-white rounded-lg p-10 border border-gray-100 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500 group relative overflow-hidden"
     >
-      <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center mb-5 group-hover:bg-blue-100 transition-colors duration-300">
-        <Icon size={24} className="text-accent" />
+      {/* Decorative sparkle from Figma style */}
+      <Sparkles size={48} className="absolute -top-4 -right-4 text-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
+      <div className="w-14 h-14 rounded-full bg-gray-50 flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-gray-100">
+        <Icon size={26} className="text-accent group-hover:text-white transition-colors" />
       </div>
-      <h3 className="text-lg font-heading font-semibold text-primary mb-3">
+      <h3 className="text-xl font-heading font-black text-primary mb-4 group-hover:text-accent transition-colors duration-300">
         {item.title}
       </h3>
-      <p className="text-gray-500 text-sm leading-relaxed">
+      <p className="text-gray-500 text-sm leading-relaxed font-body">
         {item.description}
       </p>
     </motion.div>
@@ -32,25 +35,24 @@ function BeyondCard({ item, index }: { item: BeyondCodeItem; index: number }) {
 
 export default function BeyondCode() {
   return (
-    <section className="bg-white">
+    <section className="bg-white py-16">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-14"
+          className="mb-16"
         >
-          <p className="text-accent text-sm font-medium uppercase tracking-wide mb-2">
-            Interests
+          <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
+            {"//"} Personal
           </p>
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-primary">
-            Beyond Code
+          <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">
+            Beyond the IDE.
           </h2>
-          <div className="w-12 h-1 bg-accent rounded-full mx-auto mt-4" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {beyondCodeData.map((item, i) => (
             <BeyondCard key={item.title} item={item} index={i} />
           ))}

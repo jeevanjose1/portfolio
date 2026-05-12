@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download } from "lucide-react";
+import { Download, Info, Zap, Award } from "lucide-react";
 import { aboutHeroData } from "@/lib/data";
 
 const fadeUp = {
@@ -9,132 +9,98 @@ const fadeUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.12, duration: 0.5, ease: "easeOut" as const },
+    transition: { delay: i * 0.1, duration: 0.5, ease: "easeInOut" as const },
   }),
 };
 
 export default function AboutHero() {
-  const headingLines = aboutHeroData.heading.split("\n");
-
   return (
-    <section className="bg-section-alt">
-      <div className="section-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* ─── Photo Placeholder ─── */}
+    <section className="min-h-[80vh] flex items-center  pb-10">
+      <div className="section-container w-full">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-auto"
+        >
+          {/* Main Title Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative mx-auto lg:mx-0 max-w-sm w-full"
+            custom={0}
+            variants={fadeUp}
+            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-gray-100"
           >
-            <div className="aspect-[3/4] rounded-2xl shadow-lg bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden flex items-center justify-center relative">
-              {/* Abstract developer illustration */}
-              <svg viewBox="0 0 300 400" fill="none" className="w-full h-full absolute inset-0">
-                <rect width="300" height="400" fill="url(#aboutGrad)" />
-                <defs>
-                  <linearGradient id="aboutGrad" x1="0" y1="0" x2="300" y2="400">
-                    <stop offset="0%" stopColor="#E0E7FF" />
-                    <stop offset="100%" stopColor="#DBEAFE" />
-                  </linearGradient>
-                </defs>
-                {/* Abstract shapes */}
-                <circle cx="150" cy="140" r="60" fill="#BFDBFE" opacity="0.6" />
-                <circle cx="150" cy="140" r="40" fill="#93C5FD" opacity="0.4" />
-                <rect x="100" y="210" width="100" height="120" rx="12" fill="#BFDBFE" opacity="0.5" />
-                <rect x="110" y="230" width="80" height="8" rx="4" fill="#2563EB" opacity="0.3" />
-                <rect x="110" y="248" width="60" height="8" rx="4" fill="#2563EB" opacity="0.2" />
-                <rect x="110" y="266" width="70" height="8" rx="4" fill="#2563EB" opacity="0.25" />
-                <rect x="110" y="284" width="40" height="8" rx="4" fill="#2563EB" opacity="0.15" />
-                {/* Code brackets */}
-                <path d="M70 180L50 200L70 220" stroke="#2563EB" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" opacity="0.3" />
-                <path d="M230 180L250 200L230 220" stroke="#2563EB" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" opacity="0.3" />
-              </svg>
-              <div className="relative z-10 text-center">
-                <div className="w-20 h-20 rounded-full bg-white/60 mx-auto flex items-center justify-center mb-3">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                </div>
-                <p className="text-sm font-medium text-blue-600/60">Your Photo</p>
-              </div>
-            </div>
-            {/* Decorative element */}
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-accent/10 -z-10" />
-            <div className="absolute -top-4 -left-4 w-16 h-16 rounded-xl bg-blue-100/50 -z-10" />
-          </motion.div>
-
-          {/* ─── Content ─── */}
-          <motion.div initial="hidden" animate="visible">
-            {/* Badge */}
-            <motion.div custom={0} variants={fadeUp} className="mb-5">
-              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#EFF6FF] text-accent text-sm font-medium">
+            <div>
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-blue-50 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
+                <Info size={14} />
                 {aboutHeroData.badge}
               </span>
-            </motion.div>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-primary leading-[1.1] mb-6">
+                Turning Ideas into <br />
+                <span className="text-accent italic font-serif">Scalable Reality.</span>
+              </h1>
+              <div className="space-y-4 max-w-lg">
+                {aboutHeroData.paragraphs.slice(0, 1).map((para, i) => (
+                  <p key={i} className="text-gray-500 text-lg leading-relaxed font-body">
+                    {para}
+                  </p>
+                ))}
+              </div>
+            </div>
 
-            {/* Heading */}
-            <motion.h1
-              custom={1}
-              variants={fadeUp}
-              className="text-3xl sm:text-4xl lg:text-[2.75rem] font-heading font-bold text-gray-900 leading-tight mb-6"
-            >
-              {headingLines.map((line, i) => (
-                <span key={i}>
-                  {line}
-                  {i < headingLines.length - 1 && <br />}
-                </span>
-              ))}
-            </motion.h1>
-
-            {/* Paragraphs */}
-            {aboutHeroData.paragraphs.map((para, i) => (
-              <motion.p
-                key={i}
-                custom={2 + i}
-                variants={fadeUp}
-                className="text-gray-500 leading-relaxed mb-4"
-              >
-                {para}
-              </motion.p>
-            ))}
-
-            {/* Stat Row */}
-            <motion.div
-              custom={4}
-              variants={fadeUp}
-              className="flex items-center gap-6 mt-6 mb-8"
-            >
-              {aboutHeroData.stats.map((stat, i) => (
-                <div key={stat.label} className="flex items-center gap-6">
-                  <div className="text-center">
-                    <p className="text-2xl font-heading font-bold text-accent">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-gray-400 font-medium mt-0.5">
-                      {stat.label}
-                    </p>
-                  </div>
-                  {i < aboutHeroData.stats.length - 1 && (
-                    <div className="w-px h-10 bg-gray-200" />
-                  )}
-                </div>
-              ))}
-            </motion.div>
-
-            {/* CTA */}
-            <motion.div custom={5} variants={fadeUp}>
+            <div className="mt-8">
               <a
                 href="/cv.pdf"
                 download
-                className="btn-primary inline-flex items-center gap-2"
+                className="btn-primary inline-flex items-center gap-3"
               >
-                Download CV
-                <Download size={16} />
+                Download My Story
+                <Download size={18} />
               </a>
-            </motion.div>
+            </div>
           </motion.div>
-        </div>
+
+          {/* Right Column Stacked Cards */}
+          <div className="md:col-span-4 flex flex-col gap-4">
+            {/* Visual/Icon Card */}
+            <motion.div
+              custom={0}
+              variants={fadeUp}
+              className="bg-primary rounded-lg p-8 sm:p-10 border border-gray-800 flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-accent/10 opacity-50" />
+              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
+              <div className="w-16 h-16 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20 group-hover:scale-110 transition-transform duration-500 relative z-10">
+                <Zap size={28} className="text-accent" />
+              </div>
+              <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-snug relative z-10">
+                Innovation <br /> First.
+              </p>
+            </motion.div>
+
+            {/* Stats Card */}
+            <motion.div
+              custom={0}
+              variants={fadeUp}
+              className="bg-accent rounded-lg p-6 text-white flex flex-col justify-center border border-accent/20 shadow-lg"
+            >
+              <div className="flex justify-between items-center mb-4">
+                <Award size={24} className="text-white/80" />
+                <span className="text-[10px] font-black uppercase tracking-widest bg-white/20 px-3 py-1 rounded-lg backdrop-blur-md">
+                  Milestones
+                </span>
+              </div>
+              <div className="grid grid-cols-3 gap-2 text-center">
+                {aboutHeroData.stats.slice(0, 3).map((stat) => (
+                  <div key={stat.label}>
+                    <p className="text-2xl font-heading font-black">{stat.value}</p>
+                    <p className="text-[8px] font-black uppercase tracking-widest text-white/70 mt-1">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

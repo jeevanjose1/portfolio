@@ -22,32 +22,35 @@ export default function ProcessStep({
   const Icon = iconMap[iconName];
 
   return (
-    <div className="relative flex-1 flex flex-col items-center text-center">
-      {/* Connecting Line (hidden on mobile, visible on desktop) */}
+    <div className="relative flex-1 flex flex-col items-center text-center px-4">
+      {/* Connecting Line from Figma Variation 1/2 */}
       {!isLast && (
-        <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-[2px] border-t-2 border-dashed border-gray-200 z-0" />
+        <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-px bg-gray-100 z-0" />
       )}
 
-      {/* Step Circle */}
-      <div className="relative z-10 w-16 h-16 rounded-full bg-accent flex items-center justify-center shadow-lg shadow-blue-500/20 mb-6 group transition-transform duration-300 hover:scale-110">
-        <Icon size={28} className="text-white" />
-        {/* Number Badge */}
-        <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center border-2 border-white shadow-sm">
-          {number}
+      {/* Step Circle — Minimalist Style */}
+      <div className="relative z-10 w-20 h-20 rounded-lg bg-white border border-gray-100 flex items-center justify-center shadow-xl shadow-gray-200/20 mb-8 group transition-all duration-500 hover:border-accent hover:shadow-accent/5">
+        <Icon size={32} className="text-accent group-hover:scale-110 transition-transform" />
+        {/* Number Badge — Bold uppercase pill */}
+        <div className="absolute -top-3 -right-3 px-3 py-1 rounded-lg bg-primary text-white text-[9px] font-black uppercase tracking-widest border-2 border-white">
+          Step {number}
         </div>
       </div>
 
       {/* Content */}
-      <h3 className="text-lg font-heading font-semibold text-primary mb-2">
+      <h3 className="text-xl font-heading font-black text-primary mb-4 uppercase tracking-tight">
         {title}
       </h3>
-      <p className="text-sm text-gray-500 leading-relaxed max-w-[200px] mx-auto">
+      <p className="text-xs text-gray-400 font-black uppercase tracking-widest mb-4 opacity-50">
+         Execution
+      </p>
+      <p className="text-sm text-gray-500 leading-relaxed max-w-[220px] mx-auto font-body">
         {description}
       </p>
 
-      {/* Mobile Connector (visible only on mobile) */}
+      {/* Mobile Connector */}
       {!isLast && (
-        <div className="md:hidden w-[2px] h-12 border-l-2 border-dashed border-gray-200 my-4" />
+        <div className="md:hidden w-px h-16 bg-gray-100 my-8" />
       )}
     </div>
   );

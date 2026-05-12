@@ -43,7 +43,12 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
@@ -52,23 +57,19 @@ h1, h2, h3, h4, h5, h6 {
 /* ─── Utility Classes ─── */
 @layer components {
   .section-container {
-    @apply max-w-6xl mx-auto px-6 py-20;
+    @apply max-w-6xl mx-auto px-6 py-10;
   }
 
   .card {
-    @apply bg-white shadow-md border border-gray-100 rounded-xl;
+    @apply bg-white shadow-md border border-gray-100 rounded-lg;
   }
 
   .btn-primary {
-    @apply bg-blue-600 text-white rounded-lg px-6 py-2.5 font-medium 
-           transition-all duration-200 hover:bg-blue-700 hover:shadow-lg
-           active:scale-[0.98];
+    @apply bg-blue-600 text-white rounded-lg px-7 py-3 font-medium transition-all duration-200 hover:bg-blue-700 hover:shadow-lg active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply border border-gray-900 text-gray-900 rounded-lg px-6 py-2.5 font-medium 
-           transition-all duration-200 hover:bg-gray-50
-           active:scale-[0.98];
+    @apply border border-gray-200 text-gray-900 rounded-lg px-7 py-3 font-medium transition-all duration-200 hover:bg-gray-50 active:scale-[0.98];
   }
 }
 
@@ -83,6 +84,7 @@ h1, h2, h3, h4, h5, h6 {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }

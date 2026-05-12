@@ -22,6 +22,9 @@ const config: Config = {
       },
       borderRadius: {
         xl: "0.75rem",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+        "4xl": "2.5rem",
       },
       boxShadow: {
         card: "0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07)",

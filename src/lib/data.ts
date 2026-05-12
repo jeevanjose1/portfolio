@@ -445,11 +445,26 @@ export interface ServicesHeroData {
 
 export interface MainServiceItem {
   iconName: "Monitor" | "Smartphone" | "Cloud";
+  slug: string;
   title: string;
+  tagline: string;
   description: string;
   features: string[];
+  heroFeatures: string[];
   startingPrice: string;
   linkHref: string;
+  whatYouGet: Array<{ icon: string; title: string; description: string }>;
+  techStack: Array<{ category: string; techs: string[] }>;
+  process: Array<{ step: string; title: string; description: string; duration: string }>;
+  packages: Array<{
+    name: string;
+    price: string;
+    label: string;
+    features: Array<{ text: string; included: boolean }>;
+    highlighted: boolean;
+  }>;
+  faqs: Array<{ question: string; answer: string }>;
+  relatedCategory: string;
 }
 
 export interface AdditionalServiceItem {
@@ -479,28 +494,283 @@ export const servicesHeroData: ServicesHeroData = {
 export const mainServicesData: MainServiceItem[] = [
   {
     iconName: "Monitor",
+    slug: "web-app-development",
     title: "Web App Development",
+    tagline: "Scalable, high-performance web applications built for growth.",
     description: "Custom web applications built with modern frameworks to deliver fast, secure, and scalable experiences.",
     features: ["Responsive UI", "REST APIs", "Database Design", "Authentication", "Cloud Deployment"],
+    heroFeatures: [
+      "SEO-Optimized SPAs & SSR",
+      "Sub-second load times",
+      "Responsive across all devices",
+      "Secure authentication",
+      "Scalable cloud architecture"
+    ],
     startingPrice: "From $500",
-    linkHref: "/contact",
+    linkHref: "/services/web-app-development",
+    relatedCategory: "Web Apps",
+    whatYouGet: [
+      { icon: "Palette", title: "Custom UI/UX Design", description: "Bespoke user interfaces tailored to your brand identity with a focus on conversion and accessibility." },
+      { icon: "Zap", title: "High-Performance Frontend", description: "Built with React and Next.js for blazing fast rendering and excellent SEO capabilities." },
+      { icon: "Server", title: "Robust Backend APIs", description: "Secure and scalable RESTful or GraphQL APIs powered by Node.js and Express/NestJS." },
+      { icon: "Database", title: "Database Architecture", description: "Optimized database design using PostgreSQL or MongoDB for data integrity and speed." },
+      { icon: "Shield", title: "Enterprise Security", description: "Implementation of JWT authentication, role-based access, and data encryption." },
+      { icon: "Gauge", title: "Analytics & Monitoring", description: "Integration with tools like Google Analytics and Sentry to track performance and errors." }
+    ],
+    techStack: [
+      { category: "Frontend", techs: ["React", "Next.js", "Tailwind CSS", "TypeScript"] },
+      { category: "Backend", techs: ["Node.js", "Express", "GraphQL", "Prisma"] },
+      { category: "Database", techs: ["PostgreSQL", "MongoDB", "Redis"] },
+      { category: "Infrastructure", techs: ["Vercel", "AWS", "Docker"] }
+    ],
+    process: [
+      { step: "01", title: "Discovery Call", duration: "Day 1", description: "We discuss your vision, target audience, technical requirements, and business goals to ensure perfect alignment." },
+      { step: "02", title: "Architecture & Planning", duration: "Day 2-3", description: "I create a technical architecture document, database schema, and project roadmap with clear milestones." },
+      { step: "03", title: "UI/UX Prototyping", duration: "Week 1", description: "Designing high-fidelity Figma mockups for your approval before writing any code." },
+      { step: "04", title: "Development Sprints", duration: "Week 2-5", description: "Agile development with weekly updates and a staging environment where you can track progress." },
+      { step: "05", title: "QA & Testing", duration: "Week 6", description: "Comprehensive testing including unit tests, integration tests, and cross-browser compatibility checks." },
+      { step: "06", title: "Launch & Handover", duration: "Week 7", description: "Deployment to production, DNS configuration, and handing over all documentation and source code." }
+    ],
+    packages: [
+      {
+        name: "Starter",
+        price: "$500",
+        label: "Landing Page",
+        highlighted: false,
+        features: [
+          { text: "Up to 5 Pages", included: true },
+          { text: "Mobile Responsive", included: true },
+          { text: "Contact Form Integration", included: true },
+          { text: "CMS Integration", included: false },
+          { text: "User Authentication", included: false },
+          { text: "Custom Backend", included: false }
+        ]
+      },
+      {
+        name: "Professional",
+        price: "$1,500",
+        label: "Business Web App",
+        highlighted: true,
+        features: [
+          { text: "Up to 15 Pages", included: true },
+          { text: "Mobile Responsive", included: true },
+          { text: "User Authentication", included: true },
+          { text: "Custom Dashboard", included: true },
+          { text: "Database Integration", included: true },
+          { text: "Payment Processing", included: false }
+        ]
+      },
+      {
+        name: "Enterprise",
+        price: "Custom",
+        label: "SaaS Platform",
+        highlighted: false,
+        features: [
+          { text: "Unlimited Pages", included: true },
+          { text: "Complex Architectures", included: true },
+          { text: "Multi-tenant Support", included: true },
+          { text: "Payment Subscriptions", included: true },
+          { text: "Advanced Analytics", included: true },
+          { text: "Post-launch Support", included: true }
+        ]
+      }
+    ],
+    faqs: [
+      { question: "Do you use templates or custom code?", answer: "I build entirely custom solutions tailored to your specific needs. While I use UI libraries like Tailwind CSS for efficiency, the architecture and design are bespoke to your project." },
+      { question: "Will the web app be mobile-friendly?", answer: "Yes, 100%. I use a mobile-first approach ensuring your web application looks and functions perfectly on smartphones, tablets, and desktop displays." },
+      { question: "Can you integrate with our existing CRM/ERP?", answer: "Absolutely. I have extensive experience integrating with third-party APIs including Salesforce, HubSpot, Stripe, and custom internal systems." },
+      { question: "Who owns the source code?", answer: "You do. Upon final payment, full intellectual property rights and source code are transferred to you. I will provide access to the Git repository." }
+    ]
   },
   {
     iconName: "Smartphone",
+    slug: "mobile-app-development",
     title: "Mobile App Development",
+    tagline: "Cross-platform iOS & Android apps that users love — built with Flutter.",
     description: "Cross-platform mobile applications that provide native-like performance and seamless user experiences.",
     features: ["iOS + Android", "Flutter/React Native", "Firebase", "Push Notifications", "App Store Deployment"],
+    heroFeatures: [
+      "Cross-platform (iOS + Android)",
+      "60fps smooth performance",
+      "Offline-first capability",
+      "Push notifications",
+      "App Store & Play Store deployment"
+    ],
     startingPrice: "From $800",
-    linkHref: "/contact",
+    linkHref: "/services/mobile-app-development",
+    relatedCategory: "Mobile Apps",
+    whatYouGet: [
+      { icon: "Palette", title: "Beautiful UI/UX Design", description: "Custom wireframes and pixel-perfect designs before a single line of code is written." },
+      { icon: "Smartphone", title: "iOS & Android from One Codebase", description: "Built with Flutter for native performance on both platforms, saving time and cost." },
+      { icon: "Server", title: "Full Backend Integration", description: "Connect to REST APIs, Firebase, or custom Node.js backends seamlessly." },
+      { icon: "Shield", title: "Secure Authentication", description: "Email, Google, Apple Sign-In with biometric support and session management." },
+      { icon: "Bell", title: "Push Notifications", description: "Firebase Cloud Messaging for real-time engagement and re-targeting." },
+      { icon: "Upload", title: "Store Submission & Deployment", description: "Full App Store and Play Store submission handling including metadata and screenshots." }
+    ],
+    techStack: [
+      { category: "Primary", techs: ["Flutter", "Dart"] },
+      { category: "State Management", techs: ["Riverpod", "Bloc", "Provider"] },
+      { category: "Backend", techs: ["Firebase", "Node.js", "REST APIs"] },
+      { category: "Payments", techs: ["Razorpay", "Stripe", "PayPal"] },
+      { category: "Maps", techs: ["Google Maps", "Mapbox"] },
+      { category: "Storage", techs: ["Firebase Storage", "AWS S3"] }
+    ],
+    process: [
+      { step: "01", title: "Discovery Call", duration: "Day 1", description: "We discuss your app idea, target users, core features, and business goals. I ask the right questions to understand what success looks like for you." },
+      { step: "02", title: "Proposal & Planning", duration: "Day 2–3", description: "I send a detailed proposal with wireframe sketches, tech recommendations, timeline, and fixed-price quote. No surprises." },
+      { step: "03", title: "UI/UX Design", duration: "Week 1", description: "I design all app screens in Figma. You review, give feedback, and approve before development starts." },
+      { step: "04", title: "Development Sprints", duration: "Week 2–6", description: "I build in weekly sprints with a working demo every Friday. You can test on your real device throughout." },
+      { step: "05", title: "Testing & QA", duration: "Week 7", description: "Full testing on multiple devices, OS versions, and screen sizes. Bug fixes until it's perfect." },
+      { step: "06", title: "Launch & Handover", duration: "Week 8", description: "App Store & Play Store submission. I hand over all source code, credentials, and documentation." }
+    ],
+    packages: [
+      {
+        name: "Starter",
+        price: "$800",
+        label: "Simple App",
+        highlighted: false,
+        features: [
+          { text: "Up to 5 screens", included: true },
+          { text: "iOS + Android", included: true },
+          { text: "Basic authentication", included: true },
+          { text: "Firebase backend", included: true },
+          { text: "1 revision round", included: true },
+          { text: "Custom animations", included: false },
+          { text: "Payment integration", included: false }
+        ]
+      },
+      {
+        name: "Professional",
+        price: "$1,800",
+        label: "Business App",
+        highlighted: true,
+        features: [
+          { text: "Up to 15 screens", included: true },
+          { text: "iOS + Android", included: true },
+          { text: "Social login + biometrics", included: true },
+          { text: "Custom backend API", included: true },
+          { text: "Payment integration", included: true },
+          { text: "Push notifications", included: true },
+          { text: "3 revision rounds", included: true },
+          { text: "Admin dashboard", included: false }
+        ]
+      },
+      {
+        name: "Enterprise",
+        price: "Custom",
+        label: "Full Product",
+        highlighted: false,
+        features: [
+          { text: "Unlimited screens", included: true },
+          { text: "iOS + Android + Web", included: true },
+          { text: "Full auth system", included: true },
+          { text: "Custom backend + admin panel", included: true },
+          { text: "Payment + subscriptions", included: true },
+          { text: "Analytics dashboard", included: true },
+          { text: "Unlimited revisions", included: true },
+          { text: "3 months post-launch support", included: true }
+        ]
+      }
+    ],
+    faqs: [
+      { question: "Flutter vs React Native — which do you use and why?", answer: "I primarily use Flutter. It offers superior performance with its customized rendering engine (Impeller/Skia), incredibly smooth 60fps animations, and a more consistent UI across iOS and Android without native bridge bottlenecks." },
+      { question: "Will my app work on both iPhone and Android?", answer: "Yes, 100%. Writing the code once in Flutter generates native binaries for both iOS and Android, ensuring identical feature sets and rapid updates." },
+      { question: "Do I own the source code after the project?", answer: "Yes, the source code is entirely yours upon final payment. I provide full transfer of the GitHub repository and all associated assets." },
+      { question: "How do you handle app updates after launch?", answer: "I offer 30 days of free bug-fixing post-launch. For ongoing feature updates and OS compatibility maintenance, I offer competitive monthly retainer packages." },
+      { question: "Can you integrate with my existing backend/API?", answer: "Absolutely. I can connect the mobile app to any existing REST or GraphQL APIs, handling authentication, state management, and offline caching." },
+      { question: "What if I need changes during development?", answer: "My agile sprint process includes weekly reviews. Minor changes are accommodated easily. For significant scope changes, we discuss the impact on timeline and budget before proceeding." }
+    ]
   },
   {
     iconName: "Cloud",
+    slug: "cloud-devops",
     title: "Cloud & DevOps",
+    tagline: "Scalable, secure, and automated infrastructure for your applications.",
     description: "Robust cloud infrastructure and automated pipelines to ensure your applications run reliably and scale effortlessly.",
     features: ["AWS/GCP Setup", "Docker & Kubernetes", "CI/CD Pipelines", "Monitoring", "Security Hardening"],
+    heroFeatures: [
+      "Zero-downtime deployments",
+      "Automated CI/CD pipelines",
+      "High availability architecture",
+      "Infrastructure as Code (IaC)",
+      "24/7 Monitoring setup"
+    ],
     startingPrice: "From $300",
-    linkHref: "/contact",
-  },
+    linkHref: "/services/cloud-devops",
+    relatedCategory: "APIs",
+    whatYouGet: [
+      { icon: "Server", title: "Server Provisioning", description: "Setup and configuration of robust cloud servers on AWS, GCP, or DigitalOcean." },
+      { icon: "Box", title: "Containerization", description: "Dockerizing your applications for consistent environments across development and production." },
+      { icon: "Workflow", title: "CI/CD Pipelines", description: "Automated testing and deployment workflows using GitHub Actions or GitLab CI." },
+      { icon: "Shield", title: "Security Hardening", description: "Implementation of firewalls, SSL, VPCs, and secure IAM policies." },
+      { icon: "Activity", title: "Monitoring & Logging", description: "Setting up Datadog, Prometheus, or Grafana for real-time observability." },
+      { icon: "Database", title: "Database Management", description: "Automated backups, replication, and performance tuning for your databases." }
+    ],
+    techStack: [
+      { category: "Cloud Providers", techs: ["AWS", "Google Cloud", "DigitalOcean", "Vercel"] },
+      { category: "Containerization", techs: ["Docker", "Kubernetes", "Docker Compose"] },
+      { category: "CI/CD", techs: ["GitHub Actions", "GitLab CI", "Jenkins"] },
+      { category: "Infrastructure as Code", techs: ["Terraform", "AWS CloudFormation"] }
+    ],
+    process: [
+      { step: "01", title: "Infrastructure Audit", duration: "Day 1", description: "Reviewing your current deployment process, architecture, and identifying bottlenecks." },
+      { step: "02", title: "Architecture Design", duration: "Day 2", description: "Designing a scalable and secure cloud architecture diagram tailored to your traffic needs." },
+      { step: "03", title: "Containerization", duration: "Week 1", description: "Writing Dockerfiles and docker-compose configurations for your application services." },
+      { step: "04", title: "CI/CD Implementation", duration: "Week 2", description: "Building automated pipelines for code linting, testing, and zero-downtime deployments." },
+      { step: "05", title: "Cloud Provisioning", duration: "Week 3", description: "Setting up VPCs, Load Balancers, SSL, and databases in your chosen cloud provider." },
+      { step: "06", title: "Migration & Handover", duration: "Week 4", description: "Smoothly migrating traffic to the new infrastructure and providing runbooks." }
+    ],
+    packages: [
+      {
+        name: "Basic Setup",
+        price: "$300",
+        label: "Startup",
+        highlighted: false,
+        features: [
+          { text: "Single Server Setup", included: true },
+          { text: "Basic Dockerization", included: true },
+          { text: "SSL Certificate", included: true },
+          { text: "Simple CI/CD Pipeline", included: true },
+          { text: "Load Balancing", included: false },
+          { text: "Auto-scaling", included: false }
+        ]
+      },
+      {
+        name: "Professional",
+        price: "$900",
+        label: "Growing Business",
+        highlighted: true,
+        features: [
+          { text: "Multi-server Architecture", included: true },
+          { text: "Advanced CI/CD Pipeline", included: true },
+          { text: "Managed Database Setup", included: true },
+          { text: "Load Balancing", included: true },
+          { text: "Basic Monitoring", included: true },
+          { text: "Auto-scaling", included: false }
+        ]
+      },
+      {
+        name: "Enterprise",
+        price: "Custom",
+        label: "High Traffic",
+        highlighted: false,
+        features: [
+          { text: "Kubernetes Cluster", included: true },
+          { text: "Auto-scaling Infrastructure", included: true },
+          { text: "High Availability Setup", included: true },
+          { text: "Advanced Observability", included: true },
+          { text: "Infrastructure as Code", included: true },
+          { text: "24/7 SLA Support", included: true }
+        ]
+      }
+    ],
+    faqs: [
+      { question: "Which cloud provider do you recommend?", answer: "It depends on your needs and budget. Vercel is great for React/Next.js frontends. DigitalOcean is excellent for cost-effective monoliths. AWS is best for complex, highly scalable enterprise architectures." },
+      { question: "Will my site go down during migration?", answer: "No. I use zero-downtime migration strategies. We set up the new infrastructure in parallel, sync the databases, and simply switch DNS records when everything is tested and ready." },
+      { question: "Can you help lower our AWS bill?", answer: "Yes! Infrastructure optimization is a key service. I audit oversized instances, implement auto-scaling to match traffic, and identify orphaned resources to reduce costs." },
+      { question: "Do you provide emergency support?", answer: "I offer retained SLA agreements for enterprise clients that guarantee rapid response times for infrastructure emergencies." }
+    ]
+  }
 ];
 
 export const additionalServicesData: AdditionalServiceItem[] = [

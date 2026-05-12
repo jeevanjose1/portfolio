@@ -1,28 +1,79 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MessageSquare, Mail, Calendar } from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" as const },
+  }),
+};
 
 export default function ContactHero() {
   return (
-    <section className="bg-gray-50 pt-32 pb-16 lg:pt-40 lg:pb-24 border-b border-gray-100">
-      <div className="section-container text-center">
+    <section className="min-h-[80vh] flex items-center  pb-10">
+      <div className="section-container w-full">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-3xl mx-auto"
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-auto"
         >
-          <div className="mb-6">
-            <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 font-semibold text-sm">
-              Get In Touch
-            </span>
+          {/* Main Title Card */}
+          <motion.div
+            custom={0}
+            variants={fadeUp}
+            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-gray-100"
+          >
+            <div>
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-blue-50 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
+                <MessageSquare size={14} />
+                Get In Touch
+              </span>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-primary leading-[1.1] mb-6">
+                Let&apos;s Build <br />
+                <span className="text-accent italic font-serif">Something</span> Great.
+              </h1>
+              <p className="text-gray-500 text-lg max-w-lg leading-relaxed font-body">
+                Have a project in mind? I&apos;d love to hear about it. I typically respond to all inquiries within 24 hours.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Right Column Stacked Cards */}
+          <div className="md:col-span-4 flex flex-col gap-4">
+            {/* Visual/Icon Card */}
+            <motion.div
+              custom={1}
+              variants={fadeUp}
+              className="bg-accent rounded-lg p-8 sm:p-10 flex-1 flex flex-col items-center justify-center text-center shadow-lg border border-accent/20 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
+              <div className="w-16 h-16 rounded-lg bg-white/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 backdrop-blur-md">
+                <Mail size={28} className="text-white" />
+              </div>
+              <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-snug relative z-10">
+                Always <br /> Online
+              </p>
+            </motion.div>
+
+            {/* Quick action Card */}
+            <motion.div
+              custom={2}
+              variants={fadeUp}
+              className="bg-primary rounded-lg p-6 flex items-center justify-between border border-gray-800 text-white"
+            >
+              <div>
+                <p className="font-black uppercase tracking-widest text-xs">Book a Call</p>
+                <p className="text-gray-400 text-sm mt-1">Schedule directly</p>
+              </div>
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                <Calendar size={18} className="text-accent" />
+              </div>
+            </motion.div>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-primary leading-tight mb-6">
-            Let&apos;s Build Something Together
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto">
-            Have a project in mind? I&apos;d love to hear about it. I&apos;ll respond within 24 hours.
-          </p>
         </motion.div>
       </div>
     </section>

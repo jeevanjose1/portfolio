@@ -15,7 +15,7 @@ export default function ProjectGrid() {
   );
 
   return (
-    <section className="bg-section-alt pb-24 relative z-10">
+    <section className="bg-section-alt pb-10 relative z-10">
       <FilterBar
         categories={filterCategoriesData}
         activeFilter={activeFilter}
@@ -35,7 +35,7 @@ export default function ProjectGrid() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-20 text-gray-500"
+            className="text-center py-16 text-gray-500"
           >
             No projects found in this category.
           </motion.div>

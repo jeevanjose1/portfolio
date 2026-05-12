@@ -17,7 +17,6 @@ export default function WorksPage() {
       <WorksHero />
       <ProjectGrid />
       <CaseStudyCallout />
-      <GitHubStrip />
       <CTABanner />
     </>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Clock, Briefcase, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Clock, Briefcase, ArrowUpRight } from "lucide-react";
 
 const GithubIcon = ({ size, className }: { size: number; className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -25,104 +25,75 @@ const LinkedinIcon = ({ size, className }: { size: number; className?: string })
 export default function ContactInfo() {
   return (
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8"
+      className="bg-white rounded-lg p-10 border border-gray-100 shadow-2xl shadow-gray-200/50"
     >
-      <h2 className="text-2xl font-heading font-bold text-primary mb-6">Contact Details</h2>
+      <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Information</h2>
       
-      <div className="space-y-6 mb-8">
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-accent shrink-0">
-            <Mail size={20} />
+      <div className="space-y-8 mb-16">
+        {[
+          { icon: Mail, label: "Email", value: "hello@yourname.com", href: "mailto:hello@yourname.com" },
+          { icon: MapPin, label: "Location", value: "Vadodara, Gujarat, India" },
+          { icon: Clock, label: "Response", value: "Within 24 hours" },
+          { icon: Briefcase, label: "Availability", value: "Open for projects" }
+        ].map((item) => (
+          <div key={item.label} className="flex items-start gap-5">
+            <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-accent shrink-0 border border-blue-100">
+              <item.icon size={22} />
+            </div>
+            <div>
+              <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">{item.label}</p>
+              {item.href ? (
+                <a href={item.href} className="text-lg font-heading font-black text-primary hover:text-accent transition-colors">
+                  {item.value}
+                </a>
+              ) : (
+                <p className="text-lg font-heading font-black text-primary">{item.value}</p>
+              )}
+            </div>
           </div>
-          <div>
-            <p className="text-sm font-semibold text-gray-500 mb-1">Email</p>
-            <a href="mailto:hello@yourname.com" className="text-primary font-medium hover:text-accent transition-colors">
-              hello@yourname.com
-            </a>
-          </div>
-        </div>
-        
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-accent shrink-0">
-            <MapPin size={20} />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-gray-500 mb-1">Location</p>
-            <p className="text-primary font-medium">Vadodara, Gujarat, India</p>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-accent shrink-0">
-            <Clock size={20} />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-gray-500 mb-1">Response Time</p>
-            <p className="text-primary font-medium">Within 24 hours</p>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-accent shrink-0">
-            <Briefcase size={20} />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-gray-500 mb-1">Status</p>
-            <p className="text-primary font-medium">Open to freelance projects</p>
-          </div>
-        </div>
+        ))}
       </div>
 
-      <div className="border-t border-gray-100 my-8" />
+      <div className="h-px bg-gray-50 mb-10" />
 
-      <h2 className="text-xl font-heading font-bold text-primary mb-6">Find Me On</h2>
-      <div className="grid grid-cols-2 gap-4 mb-8">
-        <a href="#" className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-accent hover:text-accent text-gray-700 transition-colors group">
-          <span className="flex items-center gap-2 text-sm font-semibold">
-            <UpworkIcon size={16} className="text-green-600 group-hover:text-accent" />
-            Upwork
-          </span>
-          <ExternalLink size={14} className="text-gray-400 group-hover:text-accent" />
-        </a>
-        <a href="#" className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-accent hover:text-accent text-gray-700 transition-colors group">
-          <span className="flex items-center gap-2 text-sm font-semibold">
-            <LinkedinIcon size={16} className="text-blue-700 group-hover:text-accent" />
-            LinkedIn
-          </span>
-          <ExternalLink size={14} className="text-gray-400 group-hover:text-accent" />
-        </a>
-        <a href="#" className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-accent hover:text-accent text-gray-700 transition-colors group">
-          <span className="flex items-center gap-2 text-sm font-semibold">
-            <GithubIcon size={16} className="text-gray-900 group-hover:text-accent" />
-            GitHub
-          </span>
-          <ExternalLink size={14} className="text-gray-400 group-hover:text-accent" />
-        </a>
-        <a href="#" className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-accent hover:text-accent text-gray-700 transition-colors group">
-          <span className="flex items-center gap-2 text-sm font-semibold">
-            <span className="w-4 h-4 rounded-full bg-black text-white flex items-center justify-center text-[10px] group-hover:bg-accent">C</span>
-            Contra
-          </span>
-          <ExternalLink size={14} className="text-gray-400 group-hover:text-accent" />
-        </a>
+      <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Social Directories</h2>
+      <div className="grid grid-cols-1 gap-3 mb-10">
+        {[
+          { icon: UpworkIcon, name: "Upwork", color: "text-green-600" },
+          { icon: LinkedinIcon, name: "LinkedIn", color: "text-blue-700" },
+          { icon: GithubIcon, name: "GitHub", color: "text-gray-900" }
+        ].map((social) => (
+          <a key={social.name} href="#" className="flex items-center justify-between p-5 bg-gray-50 border border-gray-100 rounded-lg hover:border-accent hover:bg-white transition-all duration-300 group">
+            <span className="flex items-center gap-4 text-sm font-black uppercase tracking-widest text-primary">
+              <social.icon size={20} className={`${social.color} group-hover:scale-110 transition-transform`} />
+              {social.name}
+            </span>
+            <ArrowUpRight size={18} className="text-gray-300 group-hover:text-accent transition-colors" />
+          </a>
+        ))}
       </div>
 
-      <div className="border-t border-gray-100 my-8" />
-
-      <h2 className="text-xl font-heading font-bold text-primary mb-4">Working Hours</h2>
-      <p className="text-gray-600 text-sm leading-relaxed mb-6">
-        Mon–Fri 6PM–10PM IST<br />
-        + Weekends fully available
-      </p>
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-50 rounded-full border border-green-100">
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-        </span>
-        <span className="text-xs font-bold text-green-700 uppercase tracking-wide">Currently Available</span>
+      <div className="bg-primary rounded-lg p-8 text-white relative overflow-hidden">
+         {/* Decorative background circle */}
+         <div className="absolute top-0 right-0 w-24 h-24 bg-accent/20 rounded-lg blur-2xl -mr-8 -mt-8" />
+         
+         <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-6">
+               <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span className="relative inline-flex rounded-lg h-3 w-3 bg-accent"></span>
+               </span>
+               <span className="text-[10px] font-black uppercase tracking-widest text-white">Live Availability</span>
+            </div>
+            <p className="text-2xl font-heading font-black mb-2">I&apos;m Online.</p>
+            <p className="text-xs text-white/60 font-medium tracking-wide">
+               Mon–Fri 6PM–10PM IST<br />
+               Weekends Available
+            </p>
+         </div>
       </div>
     </motion.div>
   );

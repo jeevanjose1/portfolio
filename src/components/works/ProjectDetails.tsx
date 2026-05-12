@@ -3,7 +3,7 @@
 import { useRef, useEffect } from "react";
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Activity, BarChart3, Bell, BellRing, Bookmark, BookOpen, Calendar, Camera, Clock, CreditCard, Database, DollarSign, Download, FileCode, FileText, Filter, Heart, Key, LayoutDashboard, Lock, Map, MessageSquare, Package, Search, Shield, ShieldCheck, ShoppingCart, Smartphone, TrendingUp, Truck, UserCircle, Users, Zap } from "lucide-react";
+import { ArrowLeft, Activity, BarChart3, Bell, BellRing, Bookmark, BookOpen, Calendar, Camera, Clock, CreditCard, Database, DollarSign, Download, FileCode, FileText, Filter, Heart, Key, LayoutDashboard, Lock, Map, MessageSquare, Package, Search, Shield, ShieldCheck, ShoppingCart, Smartphone, TrendingUp, Truck, UserCircle, Users, Zap, Globe } from "lucide-react";
 import { projectsData } from "@/lib/data";
 import ProjectCard from "@/components/works/ProjectCard";
 import CTABanner from "@/components/home/CTABanner";
@@ -48,44 +48,44 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
   return (
     <div className="bg-white">
       {/* SECTION 1 — BACK NAVIGATION */}
-      <div className="sticky top-20 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 py-4">
+      <div className="  bg-white/80 backdrop-blur-md pt-6 border-b border-gray-100">
         <div className="section-container flex items-center justify-between">
-          <Link href="/works" className="text-gray-600 hover:text-accent font-medium flex items-center gap-2 transition-colors">
-            <ArrowLeft size={18} />
+          <Link href="/works" className="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-accent flex items-center gap-2 transition-colors">
+            <ArrowLeft size={14} />
             Back to Works
           </Link>
-          <span className="hidden sm:block text-sm font-semibold text-gray-400 truncate max-w-xs">
+          <span className="hidden sm:block text-[10px] font-black text-accent uppercase tracking-widest truncate max-w-xs">
             {project.title}
           </span>
         </div>
       </div>
 
       {/* SECTION 2 — PROJECT HERO */}
-      <section className="bg-gray-50 pt-16 pb-20">
+      <section className="bg-white pt-10 pb-6">
         <div className="section-container">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
-            {/* Left Column */}
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+            {/* Left Column — Info Card Style */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="lg:w-[55%]"
+              className="lg:w-[55%] bg-section-alt rounded-lg p-10 sm:p-14 border border-gray-100"
             >
-              <div className="mb-6">
-                <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold">
-                  {project.categories.filter(c => c !== "All").join(" · ")}
+              <div className="mb-8">
+                <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-blue-50 text-accent text-[10px] font-black uppercase tracking-widest">
+                  {project.categories.filter(c => c !== "All")[0]}
                 </span>
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-primary leading-tight mb-6">
-                {project.title}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-primary leading-tight mb-8">
+                {project.title.split(' ').map((word, i) => i === 1 ? <span key={i} className="text-accent">{word} </span> : word + ' ')}
               </h1>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                {project.longDescription}
+              <p className="text-lg text-gray-500 leading-relaxed mb-10 font-body italic">
+                &ldquo;{project.longDescription}&rdquo;
               </p>
-              
-              <div className="flex flex-wrap gap-2 mb-10">
+
+              <div className="flex flex-wrap gap-2 mb-16">
                 {project.tags.map(tag => (
-                  <span key={tag} className="text-sm font-semibold bg-white border border-gray-200 text-gray-700 px-3 py-1.5 rounded-full shadow-sm">
+                  <span key={tag} className="text-[10px] font-black uppercase tracking-widest bg-white border border-gray-100 text-gray-400 px-4 py-2 rounded-lg shadow-sm">
                     {tag}
                   </span>
                 ))}
@@ -93,48 +93,46 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
 
               <div className="flex flex-wrap items-center gap-4">
                 {project.liveUrl && (
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2">
-                    Live Demo
-                    <ExternalLink size={18} />
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-3">
+                    Visit Live Site
+                    <Globe size={18} />
                   </a>
                 )}
                 {project.githubUrl && (
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-2 bg-white">
-                    View Code
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-3 bg-white">
+                    Explore Source
                     <GithubIcon size={18} />
                   </a>
                 )}
               </div>
             </motion.div>
 
-            {/* Right Column */}
+            {/* Right Column — Bento Visuals */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:w-[45%] w-full"
+              className="lg:w-[45%] w-full flex flex-col gap-6"
             >
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10 mb-6 bg-gray-200 group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-gray-300 to-gray-100 group-hover:scale-105 transition-transform duration-700" />
+              {/* Main Visual */}
+              <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl shadow-gray-200 border border-gray-100 bg-gray-50 group">
+                <div className="absolute inset-0 bg-gradient-to-tr from-gray-200 to-gray-50 group-hover:scale-105 transition-transform duration-1000" />
+                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#111827_1px,transparent_1px)] [background-size:20px_20px]" />
               </div>
-              
+
+              {/* Quick Info Grid */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
-                  <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Timeline</p>
-                  <p className="text-primary font-medium">{project.projectInfo.duration}</p>
-                </div>
-                <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
-                  <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Role</p>
-                  <p className="text-primary font-medium">{project.projectInfo.role}</p>
-                </div>
-                <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
-                  <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Team Size</p>
-                  <p className="text-primary font-medium">{project.projectInfo.teamSize}</p>
-                </div>
-                <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
-                  <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Status</p>
-                  <p className="text-primary font-medium">{project.projectInfo.status}</p>
-                </div>
+                {[
+                  { label: "Timeline", value: project.projectInfo.duration },
+                  { label: "Role", value: project.projectInfo.role },
+                  { label: "Team Size", value: project.projectInfo.teamSize },
+                  { label: "Status", value: project.projectInfo.status }
+                ].map((info) => (
+                  <div key={info.label} className="bg-section-alt p-6 rounded-lg border border-gray-100">
+                    <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-2">{info.label}</p>
+                    <p className="text-primary font-black font-heading tracking-tight">{info.value}</p>
+                  </div>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -142,48 +140,46 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
       </section>
 
       {/* SECTION 3 — PROJECT OVERVIEW */}
-      <section className="py-20 lg:py-24 border-b border-gray-100">
-        <div className="section-container flex flex-col lg:flex-row gap-16">
-          <div className="lg:w-[65%]">
-            <h2 className="text-3xl font-heading font-bold text-primary mb-6">Project Overview</h2>
-            <div className="prose prose-lg text-gray-600">
-              <p className="mb-6">
-                When {project.projectInfo.client} approached us, they were struggling with legacy infrastructure that couldn&apos;t keep up with their rapid growth. The problem was clear: their existing platform was slow, prone to downtime, and difficult to scale.
+      <section className="py-12 lg:py-16">
+        <div className="section-container flex flex-col lg:flex-row gap-16 lg:gap-24">
+          <div className="lg:w-[60%]">
+            <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-4">{"//"} Case Study</p>
+            <h2 className="text-3xl font-heading font-black text-primary mb-8">Strategic Overview.</h2>
+            <div className="prose prose-lg text-gray-500 font-body leading-relaxed max-w-none">
+              <p className="mb-8 text-xl text-primary font-medium italic">
+                Developing a solution that bridges the gap between complex engineering and seamless user experience.
               </p>
-              <p className="mb-6">
-                Our solution was to architect a modern, scalable application from the ground up. We focused on decoupling the frontend from the backend to ensure high performance and flexibility. By leveraging modern cloud services, we built a resilient system capable of handling traffic spikes effortlessly.
+              <p className="mb-8">
+                The objective for <span className="font-bold text-primary">{project.projectInfo.client}</span> was to transform their digital footprint. We identified critical bottlenecks in their existing workflow that were impeding operational efficiency.
               </p>
-              <p>
-                The biggest challenge was migrating data without any downtime. We solved this by implementing a dual-write strategy and carefully orchestrating the transition over a weekend. The result is a lightning-fast, robust platform that sets them up for future success.
+              <p className="mb-8">
+                Our approach prioritized modularity and performance. By architecting a unified system, we eliminated data silos and provided a singular, high-performance interface for both internal stakeholders and end-users.
               </p>
             </div>
           </div>
-          
-          <div className="lg:w-[35%]">
-            <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
-              <h3 className="text-lg font-heading font-bold text-primary mb-6">Project Info</h3>
-              <div className="space-y-4 mb-8">
-                <div className="flex justify-between border-b border-gray-100 pb-4">
-                  <span className="text-gray-500">Client</span>
-                  <span className="font-medium text-primary text-right">{project.projectInfo.client}</span>
-                </div>
-                <div className="flex justify-between border-b border-gray-100 pb-4">
-                  <span className="text-gray-500">Industry</span>
-                  <span className="font-medium text-primary text-right">{project.projectInfo.industry}</span>
-                </div>
-                <div className="flex justify-between border-b border-gray-100 pb-4">
-                  <span className="text-gray-500">Year</span>
-                  <span className="font-medium text-primary text-right">{project.projectInfo.year}</span>
-                </div>
-                <div className="flex justify-between pb-2">
-                  <span className="text-gray-500">Platform</span>
-                  <span className="font-medium text-primary text-right">{project.projectInfo.platform}</span>
-                </div>
+
+          <div className="lg:w-[40%]">
+            <div className="bg-white border border-gray-100 rounded-lg p-10 shadow-2xl shadow-gray-200/50 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-lg blur-3xl opacity-50 -mr-16 -mt-16" />
+
+              <h3 className="text-sm font-black uppercase tracking-widest text-primary mb-8 relative z-10">Project Intelligence</h3>
+              <div className="space-y-6 mb-10 relative z-10">
+                {[
+                  { label: "Client", value: project.projectInfo.client },
+                  { label: "Industry", value: project.projectInfo.industry },
+                  { label: "Year", value: project.projectInfo.year },
+                  { label: "Platform", value: project.projectInfo.platform }
+                ].map((item) => (
+                  <div key={item.label} className="flex justify-between items-center py-2 border-b border-gray-50">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">{item.label}</span>
+                    <span className="font-black text-primary font-heading tracking-tight">{item.value}</span>
+                  </div>
+                ))}
               </div>
-              <div className="bg-gray-50 p-6 rounded-lg text-center">
-                <p className="text-sm text-gray-600 mb-4 font-medium">Interested in a similar project?</p>
-                <Link href="/contact" className="btn-primary w-full inline-flex justify-center">
-                  Let&apos;s Talk
+              <div className="bg-gray-50 p-8 rounded-lg text-center relative z-10 border border-gray-100">
+                <p className="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">Partner with me</p>
+                <Link href="/contact" className="btn-primary w-full inline-flex justify-center uppercase tracking-widest text-xs font-black py-4">
+                  START PROJECT
                 </Link>
               </div>
             </div>
@@ -192,29 +188,29 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
       </section>
 
       {/* SECTION 4 — KEY FEATURES */}
-      <section className="bg-gray-50 py-20 lg:py-24">
+      <section className="bg-section-alt py-12 lg:py-16">
         <div className="section-container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-heading font-bold text-primary mb-4">Key Features</h2>
-            <div className="w-12 h-1 bg-accent rounded-full mx-auto" />
+          <div className="mb-20">
+            <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">{"//"} Features</p>
+            <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">Key Modules.</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {project.features.map((feature, i) => {
               const Icon = iconMap[feature.iconName] || Search;
               return (
                 <motion.div
                   key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:-translate-y-1 transition-transform duration-300"
+                  className="bg-white p-10 rounded-lg border border-gray-100 shadow-sm hover:border-accent/20 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500 group"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center mb-4 text-accent">
-                    <Icon size={20} />
+                  <div className="w-12 h-12 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                    <Icon size={24} className="text-accent group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="font-semibold text-primary mb-2">{feature.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{feature.description}</p>
+                  <h3 className="text-xl font-heading font-black text-primary mb-4 group-hover:text-accent transition-colors duration-300 uppercase tracking-tight">{feature.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed font-body">{feature.description}</p>
                 </motion.div>
               );
             })}
@@ -222,125 +218,91 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
         </div>
       </section>
 
-      {/* SECTION 5 — TECH STACK DEEP DIVE */}
-      <section className="py-20 lg:py-24">
-        <div className="section-container max-w-4xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-heading font-bold text-primary mb-4">Technologies Used</h2>
-            <div className="w-12 h-1 bg-accent rounded-full mx-auto" />
+      {/* SECTION 5 — TECH STACK */}
+      <section className="py-12 lg:py-16">
+        <div className="section-container max-w-5xl">
+          <div className="mb-20">
+            <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">{"//"} Architecture</p>
+            <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">The Tech Stack.</h2>
           </div>
-          <div className="space-y-12">
-            {project.techStack.frontend.length > 0 && (
-              <div>
-                <h3 className="text-xl font-heading font-bold text-primary mb-4 flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-blue-500" />
-                  Frontend Layer
-                </h3>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project.techStack.frontend.map(tech => (
-                    <span key={tech} className="px-3 py-1 bg-blue-50 text-blue-700 font-medium text-sm rounded-full">
-                      {tech}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+            {[
+              { title: "Frontend Layer", tech: project.techStack.frontend, color: "bg-blue-500" },
+              { title: "Backend Layer", tech: project.techStack.backend, color: "bg-green-500" },
+              { title: "Database Layer", tech: project.techStack.database, color: "bg-orange-500" },
+              { title: "DevOps & Infrastructure", tech: project.techStack.devops, color: "bg-purple-500" }
+            ].map((layer, i) => (
+              <motion.div
+                key={layer.title}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className={`w-3 h-3 rounded-full ${layer.color} shadow-[0_0_10px_rgba(0,0,0,0.1)]`} />
+                  <h3 className="text-sm font-black uppercase tracking-widest text-primary group-hover:text-accent transition-colors">{layer.title}</h3>
+                </div>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {layer.tech.map(t => (
+                    <span key={t} className="px-4 py-2 bg-gray-50 text-gray-500 font-bold text-[10px] uppercase tracking-widest rounded-lg border border-gray-100">
+                      {t}
                     </span>
                   ))}
                 </div>
-                <p className="text-gray-600 text-sm">We chose these frontend technologies to ensure a highly responsive, accessible, and fast user interface, delivering a premium user experience across all devices.</p>
-              </div>
-            )}
-
-            {project.techStack.backend.length > 0 && (
-              <div>
-                <h3 className="text-xl font-heading font-bold text-primary mb-4 flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-green-500" />
-                  Backend Layer
-                </h3>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project.techStack.backend.map(tech => (
-                    <span key={tech} className="px-3 py-1 bg-green-50 text-green-700 font-medium text-sm rounded-full">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-gray-600 text-sm">The backend architecture was designed for high throughput and scalability. These technologies allow us to handle complex business logic and secure API routing efficiently.</p>
-              </div>
-            )}
-
-            {project.techStack.database.length > 0 && (
-              <div>
-                <h3 className="text-xl font-heading font-bold text-primary mb-4 flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-orange-500" />
-                  Database Layer
-                </h3>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project.techStack.database.map(tech => (
-                    <span key={tech} className="px-3 py-1 bg-orange-50 text-orange-700 font-medium text-sm rounded-full">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-gray-600 text-sm">A robust database strategy was crucial. We utilized these systems to guarantee data integrity, fast query times, and reliable caching for frequently accessed resources.</p>
-              </div>
-            )}
-
-            {project.techStack.devops.length > 0 && (
-              <div>
-                <h3 className="text-xl font-heading font-bold text-primary mb-4 flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-purple-500" />
-                  DevOps & Infrastructure
-                </h3>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project.techStack.devops.map(tech => (
-                    <span key={tech} className="px-3 py-1 bg-purple-50 text-purple-700 font-medium text-sm rounded-full">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-gray-600 text-sm">Automated CI/CD pipelines and containerized deployments ensure that we can ship features rapidly and reliably with zero downtime.</p>
-              </div>
-            )}
+                <div className="h-px bg-gray-50 w-full" />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 6 — RESULTS / METRICS */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20 lg:py-24">
-        <div className="section-container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-heading font-bold mb-4">Project Results</h2>
-            <div className="w-12 h-1 bg-blue-400 rounded-full mx-auto" />
+      {/* SECTION 6 — RESULTS / METRICS — Redesigned for White Theme */}
+      <section className="bg-primary py-12 lg:py-16 relative overflow-hidden">
+        {/* Decorative Grid */}
+        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
+
+        <div className="section-container relative z-10">
+          <div className="text-center mb-20">
+            <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-4">{"//"} Outcomes</p>
+            <h2 className="text-4xl sm:text-5xl font-heading font-black text-white">Impact Delivered.</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {project.metrics.map((metric, i) => (
               <motion.div
                 key={metric.label}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="bg-white rounded-2xl p-6 text-center shadow-xl shadow-blue-900/30"
+                className="bg-white/5 backdrop-blur-md rounded-lg p-10 text-center border border-white/10 group hover:border-accent/50 transition-all duration-300"
               >
-                <div className="text-4xl lg:text-5xl font-heading font-bold text-accent mb-2">
+                <div className="text-4xl lg:text-5xl font-heading font-black text-white mb-4 group-hover:text-accent transition-colors">
                   <CountUp metric={metric} />
                 </div>
-                <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{metric.label}</p>
+                <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest">{metric.label}</p>
               </motion.div>
             ))}
           </div>
-          <p className="text-center text-blue-100 max-w-2xl mx-auto text-lg">
-            The launch was highly successful, exceeding all initial performance and user adoption KPIs. The scalable architecture ensures the platform is ready for the next phase of exponential growth.
-          </p>
+          <div className="text-center">
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg font-body leading-relaxed">
+              &ldquo;The architecture designed for this project provides a robust foundation for future scalability, ensuring consistent performance even under heavy loads.&rdquo;
+            </p>
+          </div>
         </div>
       </section>
 
       {/* SECTION 7 — MORE PROJECTS */}
-      <section className="py-20 lg:py-24 bg-white">
+      <section className="py-12 lg:py-16 bg-white">
         <div className="section-container">
-          <div className="flex items-end justify-between mb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
-              <h2 className="text-3xl font-heading font-bold text-primary mb-4">Other Projects You Might Like</h2>
-              <div className="w-12 h-1 bg-accent rounded-full" />
+              <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">{"//"} More Projects</p>
+              <h2 className="text-4xl font-heading font-black text-primary">Discover Further.</h2>
             </div>
-            <Link href="/works" className="hidden sm:inline-flex text-accent font-semibold hover:text-blue-700 transition-colors">
-              View All Projects →
+            <Link href="/works" className="text-sm font-black uppercase tracking-widest text-gray-400 hover:text-accent transition-colors flex items-center gap-2">
+              View All Portfolio <ArrowLeft size={16} className="rotate-180" />
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -348,14 +310,9 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
               <ProjectCard key={p.id} project={p} />
             ))}
           </div>
-          <div className="mt-10 text-center sm:hidden">
-            <Link href="/works" className="inline-flex text-accent font-semibold hover:text-blue-700 transition-colors">
-              View All Projects →
-            </Link>
-          </div>
         </div>
       </section>
-      
+
       <CTABanner />
     </div>
   );

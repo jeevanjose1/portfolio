@@ -6,12 +6,12 @@ import { testimonialsData } from "@/lib/data";
 
 export default function Testimonials() {
   return (
-    <section className="bg-white">
-      <div className="section-container">
+    <section className="py-12 lg:py-16" >
+      <div className="section-container ">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.5 }} className="text-center mb-14">
           <p className="text-accent text-sm font-medium uppercase tracking-wide mb-2">Testimonials</p>
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-primary">What Clients Say</h2>
-          <div className="w-12 h-1 bg-accent rounded-full mx-auto mt-4" />
+          <div className="w-12 h-1 bg-accent rounded-lg mx-auto mt-4" />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -22,7 +22,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: i * 0.12, duration: 0.45 }}
-              className="card p-7 border-l-4 border-l-accent"
+              className="bg-section-alt rounded-lg p-7 border border-gray-100"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-4">
