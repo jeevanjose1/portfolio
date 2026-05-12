@@ -42,7 +42,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <GradientCard className="bg-background border border-border overflow-hidden group-hover:border-accent/30 group-hover:shadow-2xl group-hover:shadow-black/5 transition-all duration-500 flex flex-col h-full p-2">
           {/* Image Container — Inspired by Figma Variation 1/2 */}
           <div className="relative aspect-[16/10] bg-section-alt rounded-lg overflow-hidden m-1">
-            <div className="absolute inset-0 bg-gradient-to-tr from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-900" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 to-accent/10" />
 
             {/* Category Badge on top of image */}
             <div className="absolute top-4 left-4 z-20">

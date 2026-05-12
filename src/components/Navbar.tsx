@@ -8,6 +8,7 @@ import Link from "next/link";
 
 import ThemeToggle from "./ThemeToggle";
 import PaletteSelector from "./PaletteSelector";
+import HangingCat from "./HangingCat";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -24,6 +25,11 @@ export default function Navbar() {
   return (
     <header className="fixed top-4 left-0 right-0 z-[999] px-4 flex justify-center pointer-events-none transition-all duration-300">
       <div className="w-full max-w-6xl bg-background/80 backdrop-blur-xl border border-border rounded-full flex items-center justify-between h-16 shadow-xl shadow-black/5 pointer-events-auto px-6 relative">
+        {/* Interactive Cat */}
+        <div className="hidden lg:block">
+          <HangingCat />
+        </div>
+
         {/* Logo */}
         <Link href="/" className="text-xl font-heading font-black text-foreground tracking-tighter">
           J<span className="opacity-70">J</span>
