@@ -7,7 +7,7 @@ import type { MainServiceItem } from "@/lib/data";
 
 export default function PricingPackages({ service }: { service: MainServiceItem }) {
   return (
-    <section className="bg-gray-50 py-24">
+    <section className="bg-section-alt py-24 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -19,7 +19,7 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
           <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
             {"//"} Investment
           </p>
-          <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">
+          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
             Pricing & Packages.
           </h2>
         </motion.div>
@@ -34,19 +34,19 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className={`relative rounded-2xl flex flex-col transition-transform duration-500 hover:-translate-y-2 ${
                 pkg.highlighted
-                  ? "bg-primary text-white shadow-2xl shadow-primary/20 scale-105 z-10 border border-gray-800"
+                  ? "bg-accent text-white shadow-2xl shadow-accent/20 scale-105 z-10 border border-white/20"
                   : pkg.name === "Enterprise"
-                  ? "bg-gray-900 text-white shadow-xl border border-gray-800"
-                  : "bg-white text-primary border border-gray-200 shadow-lg"
+                  ? "bg-slate-950 text-white shadow-xl border border-white/5"
+                  : "bg-background text-foreground border border-border shadow-lg"
               }`}
             >
               {pkg.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent dark:bg-white dark:text-accent text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
                   Most Popular
                 </div>
               )}
 
-              <div className="p-8 border-b border-gray-200/20">
+              <div className="p-8 border-b border-border/50">
                 <h3 className="text-sm font-black uppercase tracking-widest mb-2 opacity-80">
                   {pkg.name}
                 </h3>
@@ -61,9 +61,9 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
                   {pkg.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       {feature.included ? (
-                        <Check size={18} className={pkg.highlighted ? "text-accent" : "text-green-500"} />
+                        <Check size={18} className={pkg.highlighted ? "text-white/80" : "text-green-500"} />
                       ) : (
-                        <X size={18} className="text-gray-400 opacity-50" />
+                        <X size={18} className="text-muted-foreground opacity-50" />
                       )}
                       <span className={`text-sm font-body ${feature.included ? 'opacity-90' : 'opacity-50'}`}>
                         {feature.text}
@@ -76,10 +76,10 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
                   href="/contact"
                   className={`w-full py-4 rounded-lg font-black uppercase tracking-widest text-xs text-center transition-all duration-300 ${
                     pkg.highlighted
-                      ? "bg-white text-primary hover:bg-gray-100"
+                      ? "bg-white text-slate-900 hover:bg-gray-100 dark:bg-white dark:text-accent"
                       : pkg.name === "Enterprise"
                       ? "bg-accent text-white hover:bg-blue-600"
-                      : "bg-white text-primary border border-gray-200 hover:border-primary hover:bg-gray-50"
+                      : "bg-background text-foreground border border-border hover:border-accent hover:bg-accent/5"
                   }`}
                 >
                   {pkg.name === "Enterprise" ? "Let's Talk" : "Get Started"}
@@ -90,12 +90,12 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
         </div>
 
         <div className="text-center mt-16">
-          <p className="text-gray-500 font-body mb-4">
+          <p className="text-muted-foreground font-body mb-4">
             Not sure which package is right for you? Let&apos;s discuss your requirements first.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 text-accent font-black uppercase tracking-widest text-sm hover:text-primary transition-colors"
+            className="inline-flex items-center gap-2 text-accent font-black uppercase tracking-widest text-sm hover:text-foreground transition-colors"
           >
             Book a Free Call &rarr;
           </Link>

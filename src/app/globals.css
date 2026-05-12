@@ -4,21 +4,37 @@
 
 /* ─── Design System CSS Variables ─── */
 :root {
-  --color-primary: #111827;
-  --color-accent: #2563EB;
-  --color-accent-hover: #1D4ED8;
-  --color-background: #FFFFFF;
-  --color-section-alt: #F9FAFB;
-  --color-text: #111827;
-  --color-text-muted: #6B7280;
-  --color-border: #E5E7EB;
-  --color-card-border: #F3F4F6;
+  --color-primary: #0f172a;
+  --color-accent: #6366f1; /* Indigo-500 */
+  --color-accent-hover: #4f46e5;
+  --color-background: #ffffff;
+  --color-section-alt: #f8fafc;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-card-border: #f1f5f9;
+  --card-spotlight-color: rgba(37, 99, 235, 0.08);
 
   --font-heading: var(--font-sora), sans-serif;
   --font-body: var(--font-inter), sans-serif;
 
-  --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
-  --radius-card: 0.75rem;
+  --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --radius-card: 0.5rem; /* Standardized rounded-lg feel */
+}
+
+[data-theme='dark'] {
+  --color-primary: #f8fafc;
+  --color-accent: #818cf8; /* Indigo-400 */
+  --color-accent-hover: #6366f1;
+  --color-background: #020617; /* Slate-950 */
+  --color-section-alt: #0f172a; /* Slate-900 */
+  --color-text: #f8fafc;
+  --color-text-muted: #94a3b8;
+  --color-border: #1e293b;
+  --color-card-border: #0f172a;
+  --card-spotlight-color: rgba(129, 140, 248, 0.15);
+
+  --shadow-card: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
 }
 
 /* ─── Base Resets ─── */
@@ -61,15 +77,15 @@ h6 {
   }
 
   .card {
-    @apply bg-white shadow-md border border-gray-100 rounded-lg;
+    @apply bg-background shadow-card border border-border rounded-lg transition-colors duration-300;
   }
 
   .btn-primary {
-    @apply bg-blue-600 text-white rounded-lg px-7 py-3 font-medium transition-all duration-200 hover:bg-blue-700 hover:shadow-lg active:scale-[0.98];
+    @apply bg-accent text-white rounded-lg px-7 py-3 font-medium transition-all duration-200 hover:bg-accent-hover hover:shadow-lg active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply border border-gray-200 text-gray-900 rounded-lg px-7 py-3 font-medium transition-all duration-200 hover:bg-gray-50 active:scale-[0.98];
+    @apply border border-border text-foreground rounded-lg px-7 py-3 font-medium transition-all duration-200 hover:bg-section-alt active:scale-[0.98];
   }
 }
 

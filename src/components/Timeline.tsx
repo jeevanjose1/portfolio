@@ -11,7 +11,7 @@ export default function Timeline({ items }: TimelineProps) {
   return (
     <div className="relative">
       {/* Vertical line with gradient end */}
-      <div className="absolute left-[7px] top-2 bottom-2 w-[1px] bg-gray-200" />
+      <div className="absolute left-[7px] top-2 bottom-2 w-[1px] bg-border" />
 
       <div className="space-y-12">
         {items.map((item, i) => (
@@ -24,8 +24,8 @@ export default function Timeline({ items }: TimelineProps) {
             className="relative pl-10 group"
           >
             {/* Minimalist Dot from Figma */}
-            <div className="absolute left-0 top-[6px] w-[15px] h-[15px] rounded-lg bg-white border border-gray-200 flex items-center justify-center group-hover:border-accent transition-colors duration-300">
-               <div className="w-[5px] h-[5px] rounded-lg bg-gray-200 group-hover:bg-accent transition-colors duration-300" />
+            <div className="absolute left-0 top-[6px] w-[15px] h-[15px] rounded-lg bg-background border border-border flex items-center justify-center group-hover:border-accent transition-colors duration-300">
+               <div className="w-[5px] h-[5px] rounded-lg bg-border group-hover:bg-accent transition-colors duration-300" />
             </div>
 
             {/* Content Container */}
@@ -33,10 +33,10 @@ export default function Timeline({ items }: TimelineProps) {
               <span className="text-[10px] font-black uppercase tracking-widest text-accent mb-2 block">
                 {item.year}
               </span>
-              <h4 className="text-lg font-heading font-black text-primary mb-2 group-hover:text-accent transition-colors duration-300">
+              <h4 className="text-lg font-heading font-black text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
                 {item.title}
               </h4>
-              <p className="text-sm text-gray-500 leading-relaxed font-body">
+              <p className="text-sm text-muted-foreground leading-relaxed font-body">
                 {item.description}
               </p>
             </div>

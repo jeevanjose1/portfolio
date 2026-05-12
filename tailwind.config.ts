@@ -6,19 +6,23 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     extend: {
       colors: {
-        primary: "#111827",
-        accent: "#2563EB",
-        "accent-hover": "#1D4ED8",
-        background: "#FFFFFF",
-        "section-alt": "#F9FAFB",
-        foreground: "#171717",
+        primary: "var(--color-primary)",
+        accent: "var(--color-accent)",
+        "accent-hover": "var(--color-accent-hover)",
+        background: "var(--color-background)",
+        "section-alt": "var(--color-section-alt)",
+        border: "var(--color-border)",
+        "card-border": "var(--color-card-border)",
+        foreground: "var(--color-text)",
+        "muted-foreground": "var(--color-text-muted)",
       },
       fontFamily: {
-        heading: ["var(--font-sora)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-heading)", "sans-serif"],
+        body: ["var(--font-body)", "sans-serif"],
       },
       borderRadius: {
         xl: "0.75rem",

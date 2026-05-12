@@ -23,7 +23,7 @@ function SocialIcon({ link }: { link: SocialLink }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={link.label}
-      className="w-10 h-10 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-accent hover:text-white hover:border-accent transition-all duration-200"
+      className="w-10 h-10 rounded-full bg-section-alt border border-border flex items-center justify-center text-muted-foreground hover:bg-accent hover:text-white hover:border-accent transition-all duration-200"
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -47,7 +47,7 @@ function SocialIcon({ link }: { link: SocialLink }) {
 
 export default function HeroSection() {
   return (
-    <section id="home" className=" min-h-screen flex items-center  pb-10">
+    <section id="home" className="min-h-screen flex items-center pb-10 transition-colors duration-300">
       <div className="section-container w-full">
         {/* ─── Bento Grid Layout (Figma Portfolio Style) ─── */}
         <motion.div
@@ -59,11 +59,11 @@ export default function HeroSection() {
           <motion.div
             custom={0}
             variants={fadeUp}
-            className="md:col-span-7 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[450px] border border-gray-100"
+            className="md:col-span-7 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[450px] border border-border"
           >
             <div>
               {/* Badge */}
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-blue-50 text-accent text-sm font-medium mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-sm font-medium mb-6">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                   <span className="relative inline-flex rounded-lg h-2 w-2 bg-accent"></span>
@@ -71,14 +71,14 @@ export default function HeroSection() {
                 {heroData.badge}
               </span>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-primary leading-[1.1] mb-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-[1.1] mb-4">
                 Full-Stack Developer & <br />
                 <span className="text-accent italic font-serif">
                   Mobile Engineer
                 </span>
               </h1>
 
-              <div className="text-gray-500 text-lg max-w-lg leading-relaxed font-body">
+              <div className="text-muted-foreground text-lg max-w-lg leading-relaxed font-body">
                 {heroData.subheadline}
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function HeroSection() {
           <motion.div
             custom={1}
             variants={fadeUp}
-            className="md:col-span-5 bg-primary rounded-lg overflow-hidden relative group min-h-[450px] border border-gray-800"
+            className="md:col-span-5 bg-slate-900 rounded-lg overflow-hidden relative group min-h-[450px] border border-border"
           >
             <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700">
               <img 
@@ -115,11 +115,11 @@ export default function HeroSection() {
             </div>
             
             {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent opacity-60" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60" />
             
             {/* Status Badge */}
             <div className="absolute top-6 right-6">
-              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg px-4 py-2 flex items-center gap-3">
+              <div className="bg-background/10 backdrop-blur-md border border-white/20 rounded-lg px-4 py-2 flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                 <span className="text-[10px] font-black uppercase tracking-widest text-white">Available for Hire</span>
               </div>
@@ -128,7 +128,7 @@ export default function HeroSection() {
             {/* Bottom Content */}
             <div className="absolute bottom-0 left-0 right-0 p-8">
               <p className="text-white/60 text-xs font-black uppercase tracking-widest mb-2">Location</p>
-              <p className="text-white text-lg font-heading font-bold">Based in Your City</p>
+              <p className="text-white text-lg font-heading font-bold">Based in Vadodara, India</p>
             </div>
           </motion.div>
 
@@ -145,12 +145,12 @@ export default function HeroSection() {
               return (
                 <div
                   key={stat.label}
-                  className="bg-section-alt rounded-lg p-6 text-center border border-gray-100 hover:border-accent/30 transition-colors"
+                  className="bg-section-alt rounded-lg p-6 text-center border border-border hover:border-accent/30 transition-colors"
                 >
-                  <p className="text-3xl sm:text-4xl font-heading font-black text-primary">
+                  <p className="text-3xl sm:text-4xl font-heading font-black text-foreground">
                     <AnimatedNumber value={numericValue} suffix={suffix} />
                   </p>
-                  <p className="text-sm text-gray-400 mt-1 font-medium">{stat.label}</p>
+                  <p className="text-sm text-muted-foreground mt-1 font-medium">{stat.label}</p>
                 </div>
               );
             })}

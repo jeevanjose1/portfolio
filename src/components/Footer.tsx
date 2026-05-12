@@ -22,30 +22,30 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-slate-950 text-white transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           {/* Brand — larger column */}
           <div className="md:col-span-5 space-y-4">
-            <Link href="/" className="text-xl font-heading font-bold">
-              Your Name
+            <Link href="/" className="text-xl font-heading font-black tracking-tighter">
+              JEEVAN<span className="text-accent">JOSE</span>
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+            <p className="text-white/60 text-sm leading-relaxed max-w-xs">
               Full-stack developer crafting modern, scalable web applications
               with clean code and thoughtful design.
             </p>
             {/* Contact info — inspired by Figma tech template footer */}
-            <div className="flex items-center gap-2 text-sm text-gray-400 mt-4">
+            <div className="flex items-center gap-2 text-sm text-white/60 mt-4">
               <Mail size={14} />
-              <a href="mailto:hello@yourname.com" className="hover:text-white transition-colors">
-                hello@yourname.com
+              <a href="mailto:hello@jeevanjose.com" className="hover:text-white transition-colors">
+                hello@jeevanjose.com
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="md:col-span-3">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
+            <h4 className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-6">
               Navigation
             </h4>
             <ul className="space-y-3">
@@ -53,7 +53,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-300 hover:text-white transition-colors duration-200"
+                    className="text-sm text-white/80 hover:text-accent transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -64,7 +64,7 @@ export default function Footer() {
 
           {/* Social — Pill-shaped buttons (Figma portfolio style) */}
           <div className="md:col-span-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
+            <h4 className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-6">
               Connect
             </h4>
             <div className="flex flex-wrap gap-3">
@@ -75,7 +75,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors duration-200"
+                  className="px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white/80 hover:bg-white/10 hover:text-white transition-colors duration-200"
                 >
                   {s.label}
                 </a>
@@ -86,12 +86,12 @@ export default function Footer() {
 
         {/* Divider + Copyright */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-500">
-            © {currentYear} Your Name. All rights reserved.
+          <p className="text-sm text-white/40 font-medium">
+            © {currentYear} Jeevan Jose. All rights reserved.
           </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-xs text-gray-500 hover:text-white transition-colors flex items-center gap-1"
+            className="text-xs text-white/40 hover:text-white transition-colors flex items-center gap-1 font-black uppercase tracking-widest"
           >
             Back to Top ↑
           </button>

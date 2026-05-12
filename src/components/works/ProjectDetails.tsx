@@ -46,11 +46,11 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
   const otherProjects = projectsData.filter((p) => p.id !== project.id).slice(0, 3);
 
   return (
-    <div className="bg-white">
+    <div className="bg-background transition-colors duration-300">
       {/* SECTION 1 — BACK NAVIGATION */}
-      <div className="  bg-white/80 backdrop-blur-md pt-6 border-b border-gray-100">
+      <div className="bg-background/80 backdrop-blur-md pt-6 border-b border-border">
         <div className="section-container flex items-center justify-between">
-          <Link href="/works" className="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-accent flex items-center gap-2 transition-colors">
+          <Link href="/works" className="text-xs font-black uppercase tracking-widest text-muted-foreground hover:text-accent flex items-center gap-2 transition-colors">
             <ArrowLeft size={14} />
             Back to Works
           </Link>
@@ -61,7 +61,7 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
       </div>
 
       {/* SECTION 2 — PROJECT HERO */}
-      <section className="bg-white pt-10 pb-6">
+      <section className="bg-background pt-10 pb-6">
         <div className="section-container">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
             {/* Left Column — Info Card Style */}
@@ -69,23 +69,23 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="lg:w-[55%] bg-section-alt rounded-lg p-10 sm:p-14 border border-gray-100"
+              className="lg:w-[55%] bg-section-alt rounded-lg p-10 sm:p-14 border border-border"
             >
               <div className="mb-8">
-                <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-blue-50 text-accent text-[10px] font-black uppercase tracking-widest">
+                <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-[10px] font-black uppercase tracking-widest">
                   {project.categories.filter(c => c !== "All")[0]}
                 </span>
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-primary leading-tight mb-8">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-tight mb-8">
                 {project.title.split(' ').map((word, i) => i === 1 ? <span key={i} className="text-accent">{word} </span> : word + ' ')}
               </h1>
-              <p className="text-lg text-gray-500 leading-relaxed mb-10 font-body italic">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-10 font-body italic">
                 &ldquo;{project.longDescription}&rdquo;
               </p>
 
               <div className="flex flex-wrap gap-2 mb-16">
                 {project.tags.map(tag => (
-                  <span key={tag} className="text-[10px] font-black uppercase tracking-widest bg-white border border-gray-100 text-gray-400 px-4 py-2 rounded-lg shadow-sm">
+                  <span key={tag} className="text-[10px] font-black uppercase tracking-widest bg-background border border-border text-muted-foreground px-4 py-2 rounded-lg shadow-sm">
                     {tag}
                   </span>
                 ))}
@@ -99,7 +99,7 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
                   </a>
                 )}
                 {project.githubUrl && (
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-3 bg-white">
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-3 bg-background">
                     Explore Source
                     <GithubIcon size={18} />
                   </a>
@@ -115,9 +115,9 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
               className="lg:w-[45%] w-full flex flex-col gap-6"
             >
               {/* Main Visual */}
-              <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl shadow-gray-200 border border-gray-100 bg-gray-50 group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-gray-200 to-gray-50 group-hover:scale-105 transition-transform duration-1000" />
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#111827_1px,transparent_1px)] [background-size:20px_20px]" />
+              <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl shadow-black/5 border border-border bg-section-alt group">
+                <div className="absolute inset-0 bg-gradient-to-tr from-slate-200 to-slate-50 dark:from-slate-800 dark:to-slate-900 group-hover:scale-105 transition-transform duration-1000" />
+                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
               </div>
 
               {/* Quick Info Grid */}
@@ -128,9 +128,9 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
                   { label: "Team Size", value: project.projectInfo.teamSize },
                   { label: "Status", value: project.projectInfo.status }
                 ].map((info) => (
-                  <div key={info.label} className="bg-section-alt p-6 rounded-lg border border-gray-100">
-                    <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-2">{info.label}</p>
-                    <p className="text-primary font-black font-heading tracking-tight">{info.value}</p>
+                  <div key={info.label} className="bg-section-alt p-6 rounded-lg border border-border">
+                    <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest mb-2">{info.label}</p>
+                    <p className="text-foreground font-black font-heading tracking-tight">{info.value}</p>
                   </div>
                 ))}
               </div>
@@ -144,13 +144,13 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
         <div className="section-container flex flex-col lg:flex-row gap-16 lg:gap-24">
           <div className="lg:w-[60%]">
             <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-4">{"//"} Case Study</p>
-            <h2 className="text-3xl font-heading font-black text-primary mb-8">Strategic Overview.</h2>
-            <div className="prose prose-lg text-gray-500 font-body leading-relaxed max-w-none">
-              <p className="mb-8 text-xl text-primary font-medium italic">
+            <h2 className="text-3xl font-heading font-black text-foreground mb-8">Strategic Overview.</h2>
+            <div className="prose prose-lg text-muted-foreground font-body leading-relaxed max-w-none">
+              <p className="mb-8 text-xl text-foreground font-medium italic">
                 Developing a solution that bridges the gap between complex engineering and seamless user experience.
               </p>
               <p className="mb-8">
-                The objective for <span className="font-bold text-primary">{project.projectInfo.client}</span> was to transform their digital footprint. We identified critical bottlenecks in their existing workflow that were impeding operational efficiency.
+                The objective for <span className="font-bold text-foreground">{project.projectInfo.client}</span> was to transform their digital footprint. We identified critical bottlenecks in their existing workflow that were impeding operational efficiency.
               </p>
               <p className="mb-8">
                 Our approach prioritized modularity and performance. By architecting a unified system, we eliminated data silos and provided a singular, high-performance interface for both internal stakeholders and end-users.
@@ -159,10 +159,10 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
           </div>
 
           <div className="lg:w-[40%]">
-            <div className="bg-white border border-gray-100 rounded-lg p-10 shadow-2xl shadow-gray-200/50 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-lg blur-3xl opacity-50 -mr-16 -mt-16" />
+            <div className="bg-background border border-border rounded-lg p-10 shadow-2xl shadow-black/5 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-lg blur-3xl opacity-50 -mr-16 -mt-16" />
 
-              <h3 className="text-sm font-black uppercase tracking-widest text-primary mb-8 relative z-10">Project Intelligence</h3>
+              <h3 className="text-sm font-black uppercase tracking-widest text-foreground mb-8 relative z-10">Project Intelligence</h3>
               <div className="space-y-6 mb-10 relative z-10">
                 {[
                   { label: "Client", value: project.projectInfo.client },
@@ -170,14 +170,14 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
                   { label: "Year", value: project.projectInfo.year },
                   { label: "Platform", value: project.projectInfo.platform }
                 ].map((item) => (
-                  <div key={item.label} className="flex justify-between items-center py-2 border-b border-gray-50">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">{item.label}</span>
-                    <span className="font-black text-primary font-heading tracking-tight">{item.value}</span>
+                  <div key={item.label} className="flex justify-between items-center py-2 border-b border-border">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{item.label}</span>
+                    <span className="font-black text-foreground font-heading tracking-tight">{item.value}</span>
                   </div>
                 ))}
               </div>
-              <div className="bg-gray-50 p-8 rounded-lg text-center relative z-10 border border-gray-100">
-                <p className="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">Partner with me</p>
+              <div className="bg-section-alt p-8 rounded-lg text-center relative z-10 border border-border">
+                <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-6">Partner with me</p>
                 <Link href="/contact" className="btn-primary w-full inline-flex justify-center uppercase tracking-widest text-xs font-black py-4">
                   START PROJECT
                 </Link>
@@ -192,7 +192,7 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
         <div className="section-container">
           <div className="mb-20">
             <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">{"//"} Features</p>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">Key Modules.</h2>
+            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">Key Modules.</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {project.features.map((feature, i) => {
@@ -204,13 +204,13 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="bg-white p-10 rounded-lg border border-gray-100 shadow-sm hover:border-accent/20 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500 group"
+                  className="bg-background p-10 rounded-lg border border-border shadow-sm hover:border-accent/20 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500 group"
                 >
-                  <div className="w-12 h-12 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                  <div className="w-12 h-12 rounded-full bg-section-alt border border-border flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-300">
                     <Icon size={24} className="text-accent group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-xl font-heading font-black text-primary mb-4 group-hover:text-accent transition-colors duration-300 uppercase tracking-tight">{feature.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed font-body">{feature.description}</p>
+                  <h3 className="text-xl font-heading font-black text-foreground mb-4 group-hover:text-accent transition-colors duration-300 uppercase tracking-tight">{feature.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed font-body">{feature.description}</p>
                 </motion.div>
               );
             })}
@@ -223,7 +223,7 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
         <div className="section-container max-w-5xl">
           <div className="mb-20">
             <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">{"//"} Architecture</p>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">The Tech Stack.</h2>
+            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">The Tech Stack.</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
             {[
@@ -242,24 +242,24 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className={`w-3 h-3 rounded-full ${layer.color} shadow-[0_0_10px_rgba(0,0,0,0.1)]`} />
-                  <h3 className="text-sm font-black uppercase tracking-widest text-primary group-hover:text-accent transition-colors">{layer.title}</h3>
+                  <h3 className="text-sm font-black uppercase tracking-widest text-foreground group-hover:text-accent transition-colors">{layer.title}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {layer.tech.map(t => (
-                    <span key={t} className="px-4 py-2 bg-gray-50 text-gray-500 font-bold text-[10px] uppercase tracking-widest rounded-lg border border-gray-100">
+                    <span key={t} className="px-4 py-2 bg-section-alt text-muted-foreground font-bold text-[10px] uppercase tracking-widest rounded-lg border border-border">
                       {t}
                     </span>
                   ))}
                 </div>
-                <div className="h-px bg-gray-50 w-full" />
+                <div className="h-px bg-border w-full" />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 6 — RESULTS / METRICS — Redesigned for White Theme */}
-      <section className="bg-primary py-12 lg:py-16 relative overflow-hidden">
+      {/* SECTION 6 — RESULTS / METRICS — Redesigned for impact */}
+      <section className="bg-slate-950 py-12 lg:py-16 relative overflow-hidden transition-colors duration-300">
         {/* Decorative Grid */}
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
 
@@ -281,12 +281,12 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
                 <div className="text-4xl lg:text-5xl font-heading font-black text-white mb-4 group-hover:text-accent transition-colors">
                   <CountUp metric={metric} />
                 </div>
-                <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest">{metric.label}</p>
+                <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">{metric.label}</p>
               </motion.div>
             ))}
           </div>
           <div className="text-center">
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg font-body leading-relaxed">
+            <p className="text-white/60 max-w-2xl mx-auto text-lg font-body leading-relaxed">
               &ldquo;The architecture designed for this project provides a robust foundation for future scalability, ensuring consistent performance even under heavy loads.&rdquo;
             </p>
           </div>
@@ -294,14 +294,14 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
       </section>
 
       {/* SECTION 7 — MORE PROJECTS */}
-      <section className="py-12 lg:py-16 bg-white">
+      <section className="py-12 lg:py-16 bg-background">
         <div className="section-container">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
               <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">{"//"} More Projects</p>
-              <h2 className="text-4xl font-heading font-black text-primary">Discover Further.</h2>
+              <h2 className="text-4xl font-heading font-black text-foreground">Discover Further.</h2>
             </div>
-            <Link href="/works" className="text-sm font-black uppercase tracking-widest text-gray-400 hover:text-accent transition-colors flex items-center gap-2">
+            <Link href="/works" className="text-sm font-black uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors flex items-center gap-2">
               View All Portfolio <ArrowLeft size={16} className="rotate-180" />
             </Link>
           </div>

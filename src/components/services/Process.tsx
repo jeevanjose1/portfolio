@@ -6,7 +6,7 @@ import { processData } from "@/lib/data";
 
 export default function Process() {
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section className="bg-background py-16 lg:py-24 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,7 +18,7 @@ export default function Process() {
           <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
             {"//"} Strategy
           </p>
-          <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">
+          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
             Execution Flow.
           </h2>
         </motion.div>

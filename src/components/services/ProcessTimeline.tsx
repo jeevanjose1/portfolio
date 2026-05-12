@@ -19,7 +19,7 @@ export default function ProcessTimeline({ service }: { service: MainServiceItem 
   });
 
   return (
-    <section className="bg-white py-16" ref={containerRef}>
+    <section className="bg-background py-16 transition-colors duration-300" ref={containerRef}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -31,14 +31,14 @@ export default function ProcessTimeline({ service }: { service: MainServiceItem 
           <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
             {"//"} Step by Step
           </p>
-          <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">
+          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
             My Working Process.
           </h2>
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline Vertical Line (Background) */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-gray-100 -translate-x-1/2 rounded-full" />
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-border -translate-x-1/2 rounded-full" />
           
           {/* Timeline Vertical Line (Animated Progress) */}
           <motion.div 
@@ -53,7 +53,7 @@ export default function ProcessTimeline({ service }: { service: MainServiceItem 
                 <div key={i} className={`relative flex flex-col md:flex-row items-center gap-8 ${isEven ? 'md:flex-row-reverse' : ''}`}>
                   
                   {/* Timeline Dot */}
-                  <div className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-white border-4 border-gray-100 flex items-center justify-center -translate-x-1/2 z-10 font-black text-primary shadow-sm">
+                  <div className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-background border-4 border-border flex items-center justify-center -translate-x-1/2 z-10 font-black text-foreground shadow-sm">
                     {step.step}
                   </div>
 
@@ -68,14 +68,14 @@ export default function ProcessTimeline({ service }: { service: MainServiceItem 
                     transition={{ duration: 0.5, delay: 0.1 }}
                     className="w-full md:w-1/2 pl-20 md:pl-0"
                   >
-                    <div className={`bg-white rounded-lg p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow duration-300 ${isEven ? 'md:mr-12' : 'md:ml-12'}`}>
-                      <div className="inline-block px-3 py-1 bg-blue-50 text-accent text-xs font-black uppercase tracking-widest rounded-lg mb-4">
+                    <div className={`bg-background rounded-lg p-8 border border-border shadow-sm hover:shadow-lg transition-shadow duration-300 ${isEven ? 'md:mr-12' : 'md:ml-12'}`}>
+                      <div className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-black uppercase tracking-widest rounded-lg mb-4">
                         {step.duration}
                       </div>
-                      <h3 className="text-2xl font-heading font-black text-primary mb-3">
+                      <h3 className="text-2xl font-heading font-black text-foreground mb-3">
                         {step.title}
                       </h3>
-                      <p className="text-gray-500 font-body leading-relaxed text-sm">
+                      <p className="text-muted-foreground font-body leading-relaxed text-sm">
                         {step.description}
                       </p>
                     </div>

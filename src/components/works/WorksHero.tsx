@@ -14,7 +14,7 @@ const fadeUp = {
 
 export default function WorksHero() {
   return (
-    <section className="min-h-[80vh] flex items-center pt-24 pb-10">
+    <section className="min-h-[80vh] flex items-center pt-24 pb-10 transition-colors duration-300">
       <div className="section-container w-full">
         <motion.div
           initial="hidden"
@@ -25,18 +25,18 @@ export default function WorksHero() {
           <motion.div
             custom={0}
             variants={fadeUp}
-            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-gray-100"
+            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-border"
           >
             <div>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-blue-50 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-accent/20 shadow-sm">
                 <FolderGit2 size={14} />
                 Selected Works
               </span>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-primary leading-[1.1] mb-6">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-foreground leading-[1.1] mb-6">
                 Digital <br />
                 <span className="text-accent italic font-serif">Artifacts.</span>
               </h1>
-              <p className="text-gray-500 text-lg max-w-lg leading-relaxed font-body">
+              <p className="text-muted-foreground text-lg max-w-lg leading-relaxed font-body">
                 A curated collection of full-stack applications, mobile experiences, and technical experiments built with precision and purpose.
               </p>
             </div>
@@ -48,11 +48,13 @@ export default function WorksHero() {
             <motion.div
               custom={1}
               variants={fadeUp}
-              className="bg-primary rounded-lg p-8 sm:p-10 border border-gray-800 flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group"
+              className="bg-slate-900 dark:bg-slate-900 rounded-lg p-8 sm:p-10 border border-white/5 flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group"
             >
               <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
               <div className="w-16 h-16 rounded-lg bg-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 border border-white/20 backdrop-blur-md">
-                <Sparkles size={28} className="text-accent" />
+                <span className="text-accent">
+                   <Sparkles size={28} />
+                </span>
               </div>
               <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-snug relative z-10">
                 Tech meets <br /> Creativity

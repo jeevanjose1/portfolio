@@ -87,8 +87,8 @@ function TechIcon({ icon, className }: { icon: string; className?: string }) {
     case "nextjs":
       return (
         <svg className={cls} viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="14" fill="#111827" />
-          <text x="20" y="25" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold" fontFamily="sans-serif">N</text>
+          <circle cx="20" cy="20" r="14" className="fill-foreground" />
+          <text x="20" y="25" textAnchor="middle" className="fill-background" fontSize="10" fontWeight="bold" fontFamily="sans-serif">N</text>
         </svg>
       );
     default:
@@ -105,9 +105,9 @@ export default function TechStack() {
   const items = [...techStackData, ...techStackData];
 
   return (
-    <section className="bg-section-alt py-16 overflow-hidden">
+    <section className="bg-section-alt py-16 overflow-hidden transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 mb-10">
-        <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400">
+        <p className="text-center text-[10px] font-black uppercase tracking-widest text-muted-foreground">
           Technologies I Work With
         </p>
       </div>
@@ -124,10 +124,10 @@ export default function TechStack() {
               key={`${tech.name}-${i}`}
               className="flex-shrink-0 flex flex-col items-center gap-2.5 mx-8"
             >
-              <div className="w-16 h-16 rounded-lg bg-white shadow-sm border border-gray-100 flex items-center justify-center hover:shadow-md transition-shadow duration-200">
+              <div className="w-16 h-16 rounded-lg bg-background shadow-sm border border-border flex items-center justify-center hover:shadow-md transition-shadow duration-200">
                 <TechIcon icon={tech.icon} className="w-9 h-9" />
               </div>
-              <span className="text-xs font-medium text-gray-500">
+              <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
                 {tech.name}
               </span>
             </div>

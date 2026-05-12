@@ -25,18 +25,18 @@ export default function ContactHero() {
           <motion.div
             custom={0}
             variants={fadeUp}
-            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-gray-100"
+            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-border"
           >
             <div>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-blue-50 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-accent/20 shadow-sm">
                 <MessageSquare size={14} />
                 Get In Touch
               </span>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-primary leading-[1.1] mb-6">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-foreground leading-[1.1] mb-6">
                 Let&apos;s Build <br />
                 <span className="text-accent italic font-serif">Something</span> Great.
               </h1>
-              <p className="text-gray-500 text-lg max-w-lg leading-relaxed font-body">
+              <p className="text-muted-foreground text-lg max-w-lg leading-relaxed font-body">
                 Have a project in mind? I&apos;d love to hear about it. I typically respond to all inquiries within 24 hours.
               </p>
             </div>
@@ -63,11 +63,11 @@ export default function ContactHero() {
             <motion.div
               custom={2}
               variants={fadeUp}
-              className="bg-primary rounded-lg p-6 flex items-center justify-between border border-gray-800 text-white"
+              className="bg-slate-900 rounded-lg p-6 flex items-center justify-between border border-white/10 text-white"
             >
               <div>
                 <p className="font-black uppercase tracking-widest text-xs">Book a Call</p>
-                <p className="text-gray-400 text-sm mt-1">Schedule directly</p>
+                <p className="text-white/60 text-sm mt-1">Schedule directly</p>
               </div>
               <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                 <Calendar size={18} className="text-accent" />

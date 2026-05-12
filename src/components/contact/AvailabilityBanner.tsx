@@ -5,7 +5,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 
 export default function AvailabilityBanner() {
   return (
-    <section className="bg-primary relative overflow-hidden">
+    <section className="bg-slate-950 relative overflow-hidden transition-colors duration-300">
       {/* Decorative background grid */}
       <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
       
@@ -35,7 +35,7 @@ export default function AvailabilityBanner() {
               href="#"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-primary hover:bg-accent hover:text-white px-10 py-5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group shadow-2xl shadow-primary/20"
+              className="bg-white text-slate-950 hover:bg-accent hover:text-white px-10 py-5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group shadow-2xl shadow-black/20"
             >
               <Calendar size={18} />
               Book a Strategy Call

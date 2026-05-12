@@ -14,7 +14,7 @@ export default function CTABanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="bg-primary  p-12 lg:p-20 text-center relative overflow-hidden shadow-2xl shadow-primary/20"
+          className="bg-slate-950 rounded-lg p-12 lg:p-20 text-center relative overflow-hidden shadow-2xl shadow-black/20 border border-white/5"
         >
           {/* Decorative background grid */}
           <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
@@ -37,7 +37,7 @@ export default function CTABanner() {
 
             <Link
               href={ctaBannerData.buttonHref}
-              className="bg-accent text-white hover:bg-white hover:text-primary px-10 py-5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group shadow-xl shadow-accent/20"
+              className="bg-accent text-white hover:bg-white hover:text-slate-900 px-10 py-5 rounded-full font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group shadow-xl shadow-accent/20"
             >
               {ctaBannerData.buttonLabel}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -18,12 +20,12 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name — Full-Stack Developer Portfolio",
+  title: "Jeevan Jose — Full-Stack Developer Portfolio",
   description:
     "Portfolio of a full-stack developer specializing in modern web applications, clean architecture, and exceptional user experiences.",
   keywords: ["full-stack developer", "web developer", "portfolio", "React", "Next.js"],
   openGraph: {
-    title: "Your Name — Full-Stack Developer Portfolio",
+    title: "Jeevan Jose — Full-Stack Developer Portfolio",
     description:
       "Portfolio of a full-stack developer specializing in modern web applications.",
     type: "website",
@@ -36,13 +38,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
-      <body className="font-body antialiased">
-        <Navbar />
-        <main className="pt-16">
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
+    <html lang="en" className={`${inter.variable} ${sora.variable}`} suppressHydrationWarning>
+      <body className="font-body antialiased bg-background text-foreground transition-colors duration-300">
+        <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem={false}>
+          <Navbar />
+          <main className="pt-16">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

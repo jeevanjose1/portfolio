@@ -26,20 +26,20 @@ export default function AboutHero() {
           <motion.div
             custom={0}
             variants={fadeUp}
-            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-gray-100"
+            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-border"
           >
             <div>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-blue-50 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-accent/20 shadow-sm">
                 <Info size={14} />
                 {aboutHeroData.badge}
               </span>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-primary leading-[1.1] mb-6">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-foreground leading-[1.1] mb-6">
                 Turning Ideas into <br />
                 <span className="text-accent italic font-serif">Scalable Reality.</span>
               </h1>
               <div className="space-y-4 max-w-lg">
                 {aboutHeroData.paragraphs.slice(0, 1).map((para, i) => (
-                  <p key={i} className="text-gray-500 text-lg leading-relaxed font-body">
+                  <p key={i} className="text-muted-foreground text-lg leading-relaxed font-body">
                     {para}
                   </p>
                 ))}
@@ -63,14 +63,14 @@ export default function AboutHero() {
             <motion.div
               custom={0}
               variants={fadeUp}
-              className="bg-primary rounded-lg overflow-hidden relative group min-h-[300px] border border-gray-800"
+              className="bg-slate-900 rounded-lg overflow-hidden relative group min-h-[300px] border border-border"
             >
               <img 
                 src="/images/headshot.png" 
                 alt="Portrait" 
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
               <div className="absolute bottom-6 left-6">
                  <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-tight">
                     Focusing on <br /> Result.

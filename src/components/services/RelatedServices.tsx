@@ -13,7 +13,7 @@ export default function RelatedServices({ currentService }: { currentService: Ma
   const otherServices = mainServicesData.filter(s => s.slug !== currentService.slug);
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-background py-16 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,7 +25,7 @@ export default function RelatedServices({ currentService }: { currentService: Ma
           <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
             {"//"} Keep Exploring
           </p>
-          <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">
+          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
             You Might Also Need.
           </h2>
         </motion.div>
@@ -42,25 +42,25 @@ export default function RelatedServices({ currentService }: { currentService: Ma
                 transition={{ delay: i * 0.15, duration: 0.5 }}
                 className="h-full"
               >
-                <GradientCard className="h-full border border-gray-100 p-8 flex flex-col bg-white transition-all duration-500 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 group">
-                  <div className="w-12 h-12 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                <GradientCard className="h-full border border-border p-8 flex flex-col bg-background transition-all duration-500 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 group">
+                  <div className="w-12 h-12 rounded-lg bg-section-alt border border-border flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300">
                     <Icon size={24} className="text-accent group-hover:text-white transition-colors" />
                   </div>
                   
-                  <h3 className="text-xl font-heading font-black text-primary mb-3 group-hover:text-accent transition-colors duration-300">
+                  <h3 className="text-xl font-heading font-black text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-8 flex-grow font-body">
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-grow font-body">
                     {service.description}
                   </p>
 
-                  <div className="pt-6 border-t border-gray-50 mt-auto flex items-center justify-between relative z-10">
-                    <span className="text-xs font-black uppercase tracking-widest text-gray-400 group-hover:text-primary transition-colors">
+                  <div className="pt-6 border-t border-border mt-auto flex items-center justify-between relative z-10">
+                    <span className="text-xs font-black uppercase tracking-widest text-muted-foreground group-hover:text-foreground transition-colors">
                       {service.startingPrice}
                     </span>
                     <Link
                       href={`/services/${service.slug}`}
-                      className="group/btn flex items-center gap-2 text-xs font-black uppercase tracking-widest text-accent hover:text-primary transition-colors duration-300"
+                      className="group/btn flex items-center gap-2 text-xs font-black uppercase tracking-widest text-accent hover:text-foreground transition-colors duration-300"
                     >
                       Learn More
                       <ArrowUpRight size={16} className="group-hover/btn:rotate-45 transition-transform duration-300" />

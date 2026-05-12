@@ -6,7 +6,7 @@ import type { MainServiceItem } from "@/lib/data";
 
 export default function ServiceFAQ({ service }: { service: MainServiceItem }) {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-background py-16 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,7 +18,7 @@ export default function ServiceFAQ({ service }: { service: MainServiceItem }) {
           <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
             {"//"} Queries
           </p>
-          <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">
+          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
             Frequently Asked Questions.
           </h2>
         </motion.div>

@@ -15,7 +15,7 @@ export default function ContactPage() {
   return (
     <>
       <ContactHero />
-      <section className="bg-gray-50 pb-20 lg:pb-24 -mt-10 relative z-10">
+      <section className="bg-section-alt pb-20 lg:pb-24 -mt-10 relative z-10 transition-colors duration-300">
         <div className="section-container">
           <div className="flex flex-col lg:flex-row gap-8 items-stretch">
             <div className="lg:w-[40%]">

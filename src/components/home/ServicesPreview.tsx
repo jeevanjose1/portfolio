@@ -18,29 +18,29 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ delay: index * 0.12, duration: 0.45 }}
-      className="bg-white rounded-lg  border border-gray-200 p-8 group hover:border-accent/50 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+      className="bg-background rounded-lg border border-border p-8 group hover:border-accent/50 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
     >
       <div>
         {/* Top row: icon + arrow */}
         <div className="flex items-start justify-between mb-6">
-          <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
-            <Icon size={26} className="text-accent" />
+          <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+            <Icon size={26} className="text-accent group-hover:text-white transition-colors" />
           </div>
           <Link
             href={service.linkHref}
-            className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-200"
+            className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-200"
           >
             <ArrowUpRight size={18} />
           </Link>
         </div>
 
-        <h3 className="text-xl font-heading font-bold text-primary mb-3">{service.title}</h3>
-        <p className="text-gray-500 text-sm leading-relaxed mb-6">{service.description}</p>
+        <h3 className="text-xl font-heading font-bold text-foreground mb-3">{service.title}</h3>
+        <p className="text-muted-foreground text-sm leading-relaxed mb-6">{service.description}</p>
       </div>
 
       {/* Bottom: project count pill */}
-      <div className="flex items-center justify-between pt-5 border-t border-gray-100">
-        <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+      <div className="flex items-center justify-between pt-5 border-t border-border">
+        <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
           {projectCounts[index]}
         </span>
         <Link href={service.linkHref} className="text-sm font-medium text-accent hover:underline">
@@ -53,7 +53,7 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
 
 export default function ServicesPreview() {
   return (
-    <section id="services" className="py-12 lg:py-16">
+    <section id="services" className="py-12 lg:py-16 transition-colors duration-300">
       <div className="section-container">
         {/* Header — left-aligned like Figma Variation 2 */}
         <motion.div
@@ -64,7 +64,7 @@ export default function ServicesPreview() {
           className="mb-14"
         >
           <p className="text-accent text-sm font-medium uppercase tracking-wide mb-2">Services</p>
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-primary">
+          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-foreground">
             I am Specialized In...
           </h2>
         </motion.div>

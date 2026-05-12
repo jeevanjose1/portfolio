@@ -23,7 +23,7 @@ const GithubIcon = ({ size, className }: { size: number; className?: string }) =
 
 export default function GitHubStrip() {
   return (
-    <section className="bg-gray-50 border-y border-gray-100">
+    <section className="bg-section-alt border-y border-border transition-colors duration-300">
       <div className="section-container py-12 lg:py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,23 +33,23 @@ export default function GitHubStrip() {
           className="flex flex-col md:flex-row items-center justify-between gap-8"
         >
           <div className="text-center md:text-left flex-1">
-            <h2 className="text-2xl font-heading font-bold text-primary mb-2 flex items-center justify-center md:justify-start gap-3">
-              <GithubIcon size={28} className="text-gray-900" />
+            <h2 className="text-2xl font-heading font-black text-foreground mb-2 flex items-center justify-center md:justify-start gap-3">
+              <GithubIcon size={28} className="text-foreground" />
               Want to see more of my work?
             </h2>
-            <p className="text-gray-500">
+            <p className="text-muted-foreground">
               Check out my GitHub for open-source contributions, experiments, and code samples.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 flex-1">
-            <span className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-semibold text-gray-700 shadow-sm">
+            <span className="px-4 py-2 bg-background border border-border rounded-lg text-[10px] font-black uppercase tracking-widest text-muted-foreground shadow-sm">
               30+ Repositories
             </span>
-            <span className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-semibold text-gray-700 shadow-sm">
+            <span className="px-4 py-2 bg-background border border-border rounded-lg text-[10px] font-black uppercase tracking-widest text-muted-foreground shadow-sm">
               500+ Contributions
             </span>
-            <span className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-semibold text-gray-700 shadow-sm">
+            <span className="px-4 py-2 bg-background border border-border rounded-lg text-[10px] font-black uppercase tracking-widest text-muted-foreground shadow-sm">
               Open Source Contributor
             </span>
           </div>

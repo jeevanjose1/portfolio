@@ -6,7 +6,7 @@ import { timelineData, myStoryText } from "@/lib/data";
 
 export default function MyStory() {
   return (
-    <section className="bg-white relative py-16">
+    <section className="bg-background relative py-16 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,15 +18,15 @@ export default function MyStory() {
           <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
             {"//"} Origins
           </p>
-          <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">
+          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
             My Journey.
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
           {/* Timeline Column */}
-          <div className="lg:col-span-5 bg-gray-50 rounded-lg p-10 border border-gray-100">
-            <h3 className="text-sm font-black uppercase tracking-widest text-gray-400 mb-10">Milestones</h3>
+          <div className="lg:col-span-5 bg-section-alt rounded-lg p-10 border border-border">
+            <h3 className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-10">Milestones</h3>
             <Timeline items={timelineData} />
           </div>
 
@@ -36,7 +36,7 @@ export default function MyStory() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="lg:col-span-7 bg-white rounded-lg border border-gray-100 shadow-sm shadow-gray-200/50 h-full relative"
+            className="lg:col-span-7 bg-background rounded-lg border border-border shadow-sm shadow-black/5 h-full relative"
           >
             {/* Background wrapper to clip the image */}
             <div className="absolute inset-0 rounded-lg overflow-hidden pointer-events-none opacity-20">
@@ -45,31 +45,31 @@ export default function MyStory() {
                 alt="Workspace" 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-white/60" />
+              <div className="absolute inset-0 bg-background/60" />
             </div>
 
             {/* Sticky Content Wrapper */}
             <div className="sticky top-32 p-10 sm:p-14">
-              <h3 className="text-2xl font-heading font-black text-primary mb-8 relative z-10">
+              <h3 className="text-2xl font-heading font-black text-foreground mb-8 relative z-10">
                 Engineering with <br />
                 <span className="text-accent italic font-serif">Intent.</span>
               </h3>
               <div className="space-y-6 relative z-10">
-                <p className="text-gray-500 leading-relaxed text-lg font-body italic">
+                <p className="text-muted-foreground leading-relaxed text-lg font-body italic">
                   &ldquo;{myStoryText.split('.')[0]}.&rdquo;
                 </p>
-                <p className="text-gray-500 leading-relaxed font-body">
+                <p className="text-muted-foreground leading-relaxed font-body">
                   {myStoryText.substring(myStoryText.indexOf('.') + 1)}
                 </p>
               </div>
 
               <div className="mt-12 flex items-center gap-4 relative z-10">
-                <div className="w-12 h-12 rounded-full overflow-hidden border border-blue-100 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-border flex items-center justify-center">
                    <img src="/images/headshot.png" alt="Avatar" className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <p className="text-sm font-black uppercase tracking-widest text-primary">Jeevan Jose</p>
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Full-Stack Engineer</p>
+                  <p className="text-sm font-black uppercase tracking-widest text-foreground">Jeevan Jose</p>
+                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Full-Stack Engineer</p>
                 </div>
               </div>
             </div>

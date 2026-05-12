@@ -15,7 +15,7 @@ export default function RelatedWorks({ service }: { service: MainServiceItem }) 
   if (relatedProjects.length === 0) return null;
 
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-section-alt py-16 transition-colors duration-300">
       <div className="section-container">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <motion.div
@@ -27,7 +27,7 @@ export default function RelatedWorks({ service }: { service: MainServiceItem }) 
             <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
               {"//"} Portfolio
             </p>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">
+            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
               Relevant Projects.
             </h2>
           </motion.div>
@@ -40,7 +40,7 @@ export default function RelatedWorks({ service }: { service: MainServiceItem }) 
           >
             <Link
               href="/works"
-              className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest text-sm hover:text-accent transition-colors"
+              className="inline-flex items-center gap-2 text-foreground font-black uppercase tracking-widest text-sm hover:text-accent transition-colors"
             >
               View All Projects &rarr;
             </Link>

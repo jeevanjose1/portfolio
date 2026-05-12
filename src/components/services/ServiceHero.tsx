@@ -23,10 +23,10 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-gray-100"
+            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-border"
           >
             <div>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-blue-50 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-accent/20 shadow-sm">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
@@ -34,16 +34,16 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
                 {service.relatedCategory}
               </span>
               
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-primary leading-[1.1] mb-6">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-foreground leading-[1.1] mb-6">
                 {service.title}
               </h1>
               
-              <p className="text-xl text-primary font-serif italic mb-4 max-w-lg">
+              <p className="text-xl text-foreground font-serif italic mb-4 max-w-lg">
                 {service.tagline}
               </p>
               
               <div className="space-y-4 max-w-lg">
-                <p className="text-gray-500 text-lg leading-relaxed font-body">
+                <p className="text-muted-foreground text-lg leading-relaxed font-body">
                   {service.description}
                 </p>
               </div>
@@ -59,7 +59,7 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
               </Link>
               <Link
                 href="/works"
-                className="inline-flex items-center gap-2 px-6 py-4 rounded-lg font-black uppercase tracking-widest text-sm text-primary bg-white border border-gray-200 hover:border-primary hover:bg-gray-50 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-6 py-4 rounded-lg font-black uppercase tracking-widest text-sm text-foreground bg-background border border-border hover:border-accent hover:bg-accent/5 transition-all duration-300"
               >
                 View {service.relatedCategory}
               </Link>
@@ -73,9 +73,9 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-primary rounded-lg p-8 sm:p-10 border border-gray-800 flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[220px]"
+              className="bg-slate-900 rounded-lg p-8 sm:p-10 border border-white/5 flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[220px]"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-accent/10 opacity-50" />
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-accent/10 opacity-50" />
               <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
               
               <div className="w-16 h-16 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20 group-hover:scale-110 transition-transform duration-500 relative z-10">

@@ -28,55 +28,55 @@ export default function ContactInfo() {
       initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-white rounded-lg p-10 border border-gray-100 shadow-2xl shadow-gray-200/50"
+      className="bg-background rounded-lg p-10 border border-border shadow-2xl shadow-black/5"
     >
       <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Information</h2>
       
       <div className="space-y-8 mb-16">
         {[
-          { icon: Mail, label: "Email", value: "hello@yourname.com", href: "mailto:hello@yourname.com" },
+          { icon: Mail, label: "Email", value: "hello@jeevanjose.com", href: "mailto:hello@jeevanjose.com" },
           { icon: MapPin, label: "Location", value: "Vadodara, Gujarat, India" },
           { icon: Clock, label: "Response", value: "Within 24 hours" },
           { icon: Briefcase, label: "Availability", value: "Open for projects" }
         ].map((item) => (
           <div key={item.label} className="flex items-start gap-5">
-            <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-accent shrink-0 border border-blue-100">
+            <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent shrink-0 border border-accent/20">
               <item.icon size={22} />
             </div>
             <div>
-              <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">{item.label}</p>
+              <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-1">{item.label}</p>
               {item.href ? (
-                <a href={item.href} className="text-lg font-heading font-black text-primary hover:text-accent transition-colors">
+                <a href={item.href} className="text-lg font-heading font-black text-foreground hover:text-accent transition-colors">
                   {item.value}
                 </a>
               ) : (
-                <p className="text-lg font-heading font-black text-primary">{item.value}</p>
+                <p className="text-lg font-heading font-black text-foreground">{item.value}</p>
               )}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="h-px bg-gray-50 mb-10" />
+      <div className="h-px bg-border mb-10" />
 
       <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Social Directories</h2>
       <div className="grid grid-cols-1 gap-3 mb-10">
         {[
-          { icon: UpworkIcon, name: "Upwork", color: "text-green-600" },
-          { icon: LinkedinIcon, name: "LinkedIn", color: "text-blue-700" },
-          { icon: GithubIcon, name: "GitHub", color: "text-gray-900" }
+          { icon: UpworkIcon, name: "Upwork", color: "text-green-500" },
+          { icon: LinkedinIcon, name: "LinkedIn", color: "text-blue-500" },
+          { icon: GithubIcon, name: "GitHub", color: "text-foreground" }
         ].map((social) => (
-          <a key={social.name} href="#" className="flex items-center justify-between p-5 bg-gray-50 border border-gray-100 rounded-lg hover:border-accent hover:bg-white transition-all duration-300 group">
-            <span className="flex items-center gap-4 text-sm font-black uppercase tracking-widest text-primary">
+          <a key={social.name} href="#" className="flex items-center justify-between p-5 bg-section-alt border border-border rounded-lg hover:border-accent hover:bg-background transition-all duration-300 group">
+            <span className="flex items-center gap-4 text-sm font-black uppercase tracking-widest text-foreground">
               <social.icon size={20} className={`${social.color} group-hover:scale-110 transition-transform`} />
               {social.name}
             </span>
-            <ArrowUpRight size={18} className="text-gray-300 group-hover:text-accent transition-colors" />
+            <ArrowUpRight size={18} className="text-muted-foreground group-hover:text-accent transition-colors" />
           </a>
         ))}
       </div>
 
-      <div className="bg-primary rounded-lg p-8 text-white relative overflow-hidden">
+      <div className="bg-slate-950 rounded-lg p-8 text-white relative overflow-hidden">
          {/* Decorative background circle */}
          <div className="absolute top-0 right-0 w-24 h-24 bg-accent/20 rounded-lg blur-2xl -mr-8 -mt-8" />
          

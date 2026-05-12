@@ -39,21 +39,21 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         transition={{ duration: 0.4 }}
         className="h-full"
       >
-        <GradientCard className="bg-white border border-gray-100 overflow-hidden group-hover:border-accent/30 group-hover:shadow-2xl group-hover:shadow-accent/5 transition-all duration-500 flex flex-col h-full p-2">
+        <GradientCard className="bg-background border border-border overflow-hidden group-hover:border-accent/30 group-hover:shadow-2xl group-hover:shadow-accent/5 transition-all duration-500 flex flex-col h-full p-2">
         {/* Image Container — Inspired by Figma Variation 1/2 */}
-        <div className="relative aspect-[16/10] bg-gray-50 rounded-lg overflow-hidden m-1">
-          <div className="absolute inset-0 bg-gradient-to-tr from-gray-200 to-gray-100" />
+        <div className="relative aspect-[16/10] bg-section-alt rounded-lg overflow-hidden m-1">
+          <div className="absolute inset-0 bg-gradient-to-tr from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-900" />
           
           {/* Category Badge on top of image */}
           <div className="absolute top-4 left-4 z-20">
-             <span className="px-4 py-1.5 rounded-lg bg-white/90 backdrop-blur-sm text-accent text-[10px] font-black uppercase tracking-widest shadow-sm">
+             <span className="px-4 py-1.5 rounded-lg bg-background/90 backdrop-blur-sm text-accent text-[10px] font-black uppercase tracking-widest shadow-sm">
                 {project.categories[0]}
              </span>
           </div>
 
           {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px] z-10">
-            <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-primary transform scale-75 group-hover:scale-100 transition-transform duration-500 shadow-xl">
+          <div className="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px] z-10">
+            <div className="w-14 h-14 rounded-full bg-white dark:bg-accent flex items-center justify-center text-slate-900 dark:text-white transform scale-75 group-hover:scale-100 transition-transform duration-500 shadow-xl">
               <ArrowUpRight size={24} />
             </div>
           </div>
@@ -66,31 +66,31 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             {project.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] font-bold uppercase tracking-wider bg-gray-50 text-gray-400 px-3 py-1 rounded-lg border border-gray-100"
+                className="text-[10px] font-bold uppercase tracking-wider bg-section-alt text-muted-foreground px-3 py-1 rounded-lg border border-border"
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          <h3 className="text-2xl font-heading font-black text-primary mb-3 group-hover:text-accent transition-colors duration-300">
+          <h3 className="text-2xl font-heading font-black text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
             {project.title}
           </h3>
           
-          <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-8 flex-grow font-body">
+          <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 mb-8 flex-grow font-body">
             {project.description}
           </p>
 
           {/* Links Row */}
-          <div className="flex items-center justify-between pt-6 border-t border-gray-50 mt-auto">
+          <div className="flex items-center justify-between pt-6 border-t border-border mt-auto">
             <div className="flex items-center gap-4">
                {project.liveUrl && (
-                 <div className="text-gray-400 hover:text-accent transition-colors">
+                 <div className="text-muted-foreground hover:text-accent transition-colors">
                     <ExternalLink size={18} />
                  </div>
                )}
                {project.githubUrl && (
-                 <div className="text-gray-400 hover:text-accent transition-colors">
+                 <div className="text-muted-foreground hover:text-accent transition-colors">
                     <GithubIcon size={18} />
                  </div>
                )}

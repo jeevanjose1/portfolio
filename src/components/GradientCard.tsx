@@ -24,7 +24,7 @@ export default function GradientCard({ children, className = "" }: { children: R
           background: useMotionTemplate`
             radial-gradient(
               400px circle at ${mouseX}px ${mouseY}px,
-              rgba(37, 99, 235, 0.08),
+              var(--card-spotlight-color),
               transparent 80%
             )
           `,

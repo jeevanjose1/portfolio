@@ -6,11 +6,11 @@ import { testimonialsData } from "@/lib/data";
 
 export default function Testimonials() {
   return (
-    <section className="py-12 lg:py-16" >
+    <section className="py-12 lg:py-16 transition-colors duration-300" >
       <div className="section-container ">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.5 }} className="text-center mb-14">
           <p className="text-accent text-sm font-medium uppercase tracking-wide mb-2">Testimonials</p>
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-primary">What Clients Say</h2>
+          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-foreground">What Clients Say</h2>
           <div className="w-12 h-1 bg-accent rounded-lg mx-auto mt-4" />
         </motion.div>
 
@@ -22,7 +22,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: i * 0.12, duration: 0.45 }}
-              className="bg-section-alt rounded-lg p-7 border border-gray-100"
+              className="bg-section-alt rounded-lg p-7 border border-border"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-4">
@@ -32,20 +32,20 @@ export default function Testimonials() {
               </div>
 
               {/* Quote */}
-              <p className="text-gray-600 text-sm leading-relaxed mb-6 italic">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6 italic">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
               {/* Avatar + Info */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
                   <span className="text-sm font-bold text-accent">
                     {t.name.charAt(0)}
                   </span>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-primary">{t.name}</p>
-                  <p className="text-xs text-gray-400">{t.company}</p>
+                  <p className="text-sm font-semibold text-foreground">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">{t.company}</p>
                 </div>
               </div>
             </motion.div>

@@ -6,7 +6,7 @@ import { faqData } from "@/lib/data";
 
 export default function FAQ() {
   return (
-    <section className="bg-section-alt py-16 lg:py-24">
+    <section className="bg-section-alt py-16 lg:py-24 transition-colors duration-300">
       <div className="section-container max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,7 +18,7 @@ export default function FAQ() {
           <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
             {"//"} What I Do
           </p>
-          <h2 className="text-4xl sm:text-5xl font-heading font-black text-primary">
+          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
             Curated FAQ.
           </h2>
         </motion.div>

@@ -15,7 +15,7 @@ const fadeUp = {
 
 export default function ServicesHero() {
   return (
-    <section className="min-h-[80vh] flex items-center ">
+    <section className="min-h-[80vh] flex items-center transition-colors duration-300">
       <div className="section-container w-full">
         <motion.div
           initial="hidden"
@@ -26,18 +26,18 @@ export default function ServicesHero() {
           <motion.div
             custom={0}
             variants={fadeUp}
-            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-gray-100"
+            className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-border"
           >
             <div>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-blue-50 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-accent/20 shadow-sm">
                 <Cpu size={14} />
                 Expert Capabilities
               </span>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-primary leading-[1.1] mb-6">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-foreground leading-[1.1] mb-6">
                 Core <br />
                 <span className="text-accent italic font-serif">Engines.</span>
               </h1>
-              <p className="text-gray-500 text-lg max-w-lg leading-relaxed font-body">
+              <p className="text-muted-foreground text-lg max-w-lg leading-relaxed font-body">
                 {servicesHeroData.subtitle}
               </p>
             </div>
@@ -64,7 +64,7 @@ export default function ServicesHero() {
             <motion.div
               custom={2}
               variants={fadeUp}
-              className="bg-primary rounded-lg p-6 flex flex-col justify-center border border-gray-800 text-white"
+              className="bg-slate-900 rounded-lg p-6 flex flex-col justify-center border border-white/5 text-white"
             >
               <div className="flex items-center justify-between mb-2">
                 <Activity size={20} className="text-accent" />
@@ -73,7 +73,7 @@ export default function ServicesHero() {
                 </div>
               </div>
               <p className="font-black uppercase tracking-widest text-xs mt-2">End-to-End Solutions</p>
-              <p className="text-gray-400 text-sm mt-1">From architecture to deployment</p>
+              <p className="text-white/60 text-sm mt-1">From architecture to deployment</p>
             </motion.div>
           </div>
         </motion.div>
