@@ -48,13 +48,13 @@ export default function ContactHero() {
             <motion.div
               custom={1}
               variants={fadeUp}
-              className="bg-accent rounded-lg p-8 sm:p-10 flex-1 flex flex-col items-center justify-center text-center shadow-lg border border-accent/20 relative overflow-hidden group"
+              className="bg-accent rounded-lg p-8 sm:p-10 flex-1 flex flex-col items-center justify-center text-center shadow-lg border border-border relative overflow-hidden group"
             >
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
-              <div className="w-16 h-16 rounded-lg bg-white/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 backdrop-blur-md">
-                <Mail size={28} className="text-white" />
+              <div className="w-16 h-16 rounded-lg bg-background/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 backdrop-blur-md">
+                <Mail size={28} className="text-background" />
               </div>
-              <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-snug relative z-10">
+              <p className="text-background font-heading font-bold text-lg uppercase tracking-widest leading-snug relative z-10">
                 Always <br /> Online
               </p>
             </motion.div>
@@ -63,13 +63,13 @@ export default function ContactHero() {
             <motion.div
               custom={2}
               variants={fadeUp}
-              className="bg-slate-900 rounded-lg p-6 flex items-center justify-between border border-white/10 text-white"
+              className="bg-primary rounded-lg p-6 flex items-center justify-between border border-border text-background"
             >
               <div>
                 <p className="font-black uppercase tracking-widest text-xs">Book a Call</p>
-                <p className="text-white/60 text-sm mt-1">Schedule directly</p>
+                <p className="text-background/60 text-sm mt-1">Schedule directly</p>
               </div>
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center">
                 <Calendar size={18} className="text-accent" />
               </div>
             </motion.div>

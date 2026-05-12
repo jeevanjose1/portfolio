@@ -19,7 +19,7 @@ function BeyondCard({ item, index }: { item: BeyondCodeItem; index: number }) {
     >
       {/* Decorative sparkle from Figma style */}
       <Sparkles size={48} className="absolute -top-4 -right-4 text-accent opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-      
+
       <div className="w-14 h-14 rounded-full bg-section-alt flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-border">
         <Icon size={26} className="text-accent group-hover:text-white transition-colors" />
       </div>

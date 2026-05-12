@@ -38,17 +38,17 @@ export default function ExperienceCards() {
 
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div className="flex-1">
-                   <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-2xl font-heading font-black text-foreground group-hover:text-accent transition-colors duration-300">
-                        {exp.company}
-                      </h3>
-                      <span className="px-3 py-1 rounded-lg bg-section-alt border border-border text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                         {exp.dateRange}
-                      </span>
-                   </div>
-                   <p className="text-lg font-bold text-foreground/80 mb-6 font-heading tracking-tight">{exp.role}</p>
-                   
-                   <ul className="space-y-4 max-w-2xl">
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="text-2xl font-heading font-black text-foreground group-hover:text-accent transition-colors duration-300">
+                      {exp.company}
+                    </h3>
+                    <span className="px-3 py-1 rounded-lg bg-section-alt border border-border text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+                      {exp.dateRange}
+                    </span>
+                  </div>
+                  <p className="text-lg font-bold text-foreground/80 mb-6 font-heading tracking-tight">{exp.role}</p>
+
+                  <ul className="space-y-4 max-w-2xl">
                     {exp.achievements.map((achievement, ai) => (
                       <li key={ai} className="flex gap-4 text-muted-foreground leading-relaxed font-body">
                         <span className="text-accent mt-2 flex-shrink-0 w-1.5 h-1.5 rounded-lg bg-accent/40" />

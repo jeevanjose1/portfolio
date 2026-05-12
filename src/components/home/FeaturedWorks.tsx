@@ -65,7 +65,7 @@ export default function FeaturedWorks() {
                       </span>
                     ))}
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-200 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-background group-hover:border-accent transition-all duration-200 flex-shrink-0">
                     <ArrowUpRight size={18} />
                   </div>
                 </div>

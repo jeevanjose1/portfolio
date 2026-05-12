@@ -37,8 +37,8 @@ export default function AdditionalServices() {
                 transition={{ delay: i * 0.1, duration: 0.45 }}
                 className="bg-background rounded-lg p-10 flex flex-col items-start border border-border hover:border-accent/20 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500 group"
               >
-                <div className="w-12 h-12 rounded-full bg-section-alt border border-border flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-300">
-                  <Icon size={24} className="text-accent group-hover:text-white transition-colors" />
+                <div className="w-12 h-12 rounded-full bg-section-alt border border-border flex items-center justify-center mb-8 group-hover:bg-accent transition-all duration-300">
+                  <Icon size={24} className="text-accent group-hover:text-background transition-colors" />
                 </div>
                 <h3 className="text-xl font-heading font-black text-foreground mb-3 uppercase tracking-tight group-hover:text-accent transition-colors">
                   {service.title}

@@ -48,15 +48,15 @@ export default function WorksHero() {
             <motion.div
               custom={1}
               variants={fadeUp}
-              className="bg-slate-900 dark:bg-slate-900 rounded-lg p-8 sm:p-10 border border-white/5 flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group"
+              className="bg-primary rounded-lg p-8 sm:p-10 border border-border flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group"
             >
               <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
-              <div className="w-16 h-16 rounded-lg bg-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 border border-white/20 backdrop-blur-md">
+              <div className="w-16 h-16 rounded-lg bg-background/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 border border-border backdrop-blur-md">
                 <span className="text-accent">
-                   <Sparkles size={28} />
+                  <Sparkles size={28} />
                 </span>
               </div>
-              <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-snug relative z-10">
+              <p className="text-background font-heading font-bold text-lg uppercase tracking-widest leading-snug relative z-10">
                 Tech meets <br /> Creativity
               </p>
             </motion.div>
@@ -65,13 +65,13 @@ export default function WorksHero() {
             <motion.div
               custom={2}
               variants={fadeUp}
-              className="bg-accent rounded-lg p-6 flex items-center justify-between border border-accent/20 shadow-lg text-white"
+              className="bg-accent rounded-lg p-6 flex items-center justify-between border border-border shadow-lg text-background"
             >
               <div>
                 <p className="font-black uppercase tracking-widest text-xs">Explore Below</p>
-                <p className="text-white/70 text-sm mt-1">Scroll to view projects</p>
+                <p className="text-background/70 text-sm mt-1">Scroll to view projects</p>
               </div>
-              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md">
+              <div className="w-10 h-10 rounded-full bg-background/20 flex items-center justify-center backdrop-blur-md">
                 <ArrowRight size={18} className="rotate-90" />
               </div>
             </motion.div>

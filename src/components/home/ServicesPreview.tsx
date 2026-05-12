@@ -23,12 +23,12 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
       <div>
         {/* Top row: icon + arrow */}
         <div className="flex items-start justify-between mb-6">
-          <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-colors duration-300">
-            <Icon size={26} className="text-accent group-hover:text-white transition-colors" />
+          <div className="w-14 h-14 rounded-full bg-accent text-background flex items-center justify-center transition-colors duration-300">
+            <Icon size={26} className="text-background transition-colors" />
           </div>
           <Link
             href={service.linkHref}
-            className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-200"
+            className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-background group-hover:border-accent transition-all duration-200"
           >
             <ArrowUpRight size={18} />
           </Link>

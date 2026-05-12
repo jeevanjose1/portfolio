@@ -87,7 +87,7 @@ export default function ContactForm() {
                 setFormData({ ...formData, message: "" });
                 setIsSuccess(false);
               }}
-              className="px-8 py-4 rounded-lg bg-accent text-white font-black uppercase tracking-widest text-xs hover:bg-accent/80 transition-colors"
+              className="px-8 py-4 rounded-lg bg-accent text-background font-black uppercase tracking-widest text-xs hover:bg-accent/80 transition-colors"
             >
               Send Another Message
             </button>
@@ -202,10 +202,10 @@ export default function ContactForm() {
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="w-full sm:w-auto px-10 py-5 rounded-lg bg-accent text-white font-black uppercase tracking-widest text-xs flex justify-center items-center gap-3 hover:bg-accent/90 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-accent/10"
+                className="w-full sm:w-auto px-10 py-5 rounded-lg bg-accent text-background font-black uppercase tracking-widest text-xs flex justify-center items-center gap-3 hover:bg-accent/90 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-accent/10"
               >
                 {isSubmitting ? (
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-lg animate-spin" />
+                  <div className="w-5 h-5 border-2 border-background border-t-transparent rounded-lg animate-spin" />
                 ) : (
                   <>
                     Deploy Message

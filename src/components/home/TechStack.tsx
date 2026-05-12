@@ -124,8 +124,10 @@ export default function TechStack() {
               key={`${tech.name}-${i}`}
               className="flex-shrink-0 flex flex-col items-center gap-2.5 mx-8"
             >
-              <div className="w-16 h-16 rounded-lg bg-background shadow-sm border border-border flex items-center justify-center hover:shadow-md transition-shadow duration-200">
-                <TechIcon icon={tech.icon} className="w-9 h-9" />
+              <div className="w-16 h-16 rounded-lg bg-background shadow-sm border border-border flex items-center justify-center hover:shadow-md transition-all duration-300 group">
+                <div className="filter grayscale group-hover:grayscale-0 transition-all duration-300">
+                  <TechIcon icon={tech.icon} className="w-9 h-9" />
+                </div>
               </div>
               <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
                 {tech.name}

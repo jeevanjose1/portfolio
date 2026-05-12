@@ -39,14 +39,14 @@ export default function EducationCerts() {
             className="lg:col-span-5 bg-background rounded-lg p-10 border border-border shadow-xl shadow-black/5"
           >
             <div className="flex items-center gap-3 mb-10">
-               <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center border border-accent/20">
-                  <GraduationCap size={20} className="text-accent" />
-               </div>
-               <h3 className="text-sm font-black uppercase tracking-widest text-foreground">
-                  Academic Journey
-               </h3>
+              <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center border border-accent/20">
+                <GraduationCap size={20} className="text-accent" />
+              </div>
+              <h3 className="text-sm font-black uppercase tracking-widest text-foreground">
+                Academic Journey
+              </h3>
             </div>
-            
+
             <div className="space-y-6">
               {educationData.map((edu) => (
                 <div key={edu.degree} className="group">
@@ -69,13 +69,13 @@ export default function EducationCerts() {
             transition={{ delay: 0.1, duration: 0.5 }}
             className="lg:col-span-7 flex flex-col"
           >
-             <div className="flex items-center gap-3 mb-8">
-               <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center border border-accent/20">
-                  <Award size={20} className="text-accent" />
-               </div>
-               <h3 className="text-sm font-black uppercase tracking-widest text-foreground">
-                  Professional Certs
-               </h3>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center border border-accent/20">
+                <Award size={20} className="text-accent" />
+              </div>
+              <h3 className="text-sm font-black uppercase tracking-widest text-foreground">
+                Professional Certs
+              </h3>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

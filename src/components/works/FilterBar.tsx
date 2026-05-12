@@ -24,7 +24,7 @@ export default function FilterBar({
                 key={category}
                 onClick={() => onFilterChange(category)}
                 className={`whitespace-nowrap px-6 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${isActive
-                  ? "bg-accent text-white border border-accent shadow-lg shadow-accent/20"
+                  ? "bg-accent text-background border border-accent shadow-lg shadow-black/10"
                   : "bg-background border border-border text-muted-foreground hover:border-accent hover:text-accent"
                   }`}
               >

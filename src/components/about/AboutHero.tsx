@@ -29,7 +29,7 @@ export default function AboutHero() {
             className="md:col-span-8 bg-section-alt rounded-lg p-8 sm:p-10 flex flex-col justify-between min-h-[320px] border border-border"
           >
             <div>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-accent/20 shadow-sm">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent text-background text-[10px] font-black uppercase tracking-widest mb-6 border border-border shadow-sm">
                 <Info size={14} />
                 {aboutHeroData.badge}
               </span>
@@ -63,18 +63,18 @@ export default function AboutHero() {
             <motion.div
               custom={0}
               variants={fadeUp}
-              className="bg-slate-900 rounded-lg overflow-hidden relative group min-h-[300px] border border-border"
+              className="bg-section-alt rounded-lg overflow-hidden relative group min-h-[300px] border border-border"
             >
-              <img 
-                src="/images/headshot.png" 
-                alt="Portrait" 
+              <img
+                src="/images/headshot.png"
+                alt="Portrait"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
               <div className="absolute bottom-6 left-6">
-                 <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-tight">
-                    Focusing on <br /> Result.
-                 </p>
+                <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-tight">
+                  Focusing on <br /> Result.
+                </p>
               </div>
             </motion.div>
 
@@ -82,19 +82,19 @@ export default function AboutHero() {
             <motion.div
               custom={0}
               variants={fadeUp}
-              className="bg-accent rounded-lg p-6 text-white flex flex-col justify-center border border-accent/20 shadow-lg"
+              className="bg-section-alt rounded-lg p-6 text-foreground flex flex-col justify-center border border-border shadow-lg"
             >
               <div className="flex justify-between items-center mb-4">
-                <Award size={24} className="text-white/80" />
-                <span className="text-[10px] font-black uppercase tracking-widest bg-white/20 px-3 py-1 rounded-lg backdrop-blur-md">
+                <Award size={24} className="text-accent" />
+                <span className="text-[10px] font-black uppercase tracking-widest bg-background/50 px-3 py-1 rounded-lg backdrop-blur-md border border-border">
                   Milestones
                 </span>
               </div>
               <div className="grid grid-cols-3 gap-2 text-center">
                 {aboutHeroData.stats.slice(0, 3).map((stat) => (
                   <div key={stat.label}>
-                    <p className="text-2xl font-heading font-black">{stat.value}</p>
-                    <p className="text-[8px] font-black uppercase tracking-widest text-white/70 mt-1">
+                    <p className="text-2xl font-heading font-black text-foreground">{stat.value}</p>
+                    <p className="text-[8px] font-black uppercase tracking-widest text-muted-foreground mt-1">
                       {stat.label}
                     </p>
                   </div>

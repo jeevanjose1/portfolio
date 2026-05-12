@@ -43,8 +43,8 @@ export default function RelatedServices({ currentService }: { currentService: Ma
                 className="h-full"
               >
                 <GradientCard className="h-full border border-border p-8 flex flex-col bg-background transition-all duration-500 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 group">
-                  <div className="w-12 h-12 rounded-lg bg-section-alt border border-border flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300">
-                    <Icon size={24} className="text-accent group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 rounded-lg bg-section-alt border border-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300">
+                    <Icon size={24} className="text-accent group-hover:text-background transition-colors" />
                   </div>
                   
                   <h3 className="text-xl font-heading font-black text-foreground mb-3 group-hover:text-accent transition-colors duration-300">

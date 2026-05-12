@@ -33,15 +33,15 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
                 </span>
                 {service.relatedCategory}
               </span>
-              
+
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-foreground leading-[1.1] mb-6">
                 {service.title}
               </h1>
-              
+
               <p className="text-xl text-foreground font-serif italic mb-4 max-w-lg">
                 {service.tagline}
               </p>
-              
+
               <div className="space-y-4 max-w-lg">
                 <p className="text-muted-foreground text-lg leading-relaxed font-body">
                   {service.description}
@@ -73,21 +73,19 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-slate-900 rounded-lg p-8 sm:p-10 border border-white/5 flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[220px]"
+              className="bg-section-alt rounded-lg p-8 sm:p-10 border border-border flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[220px]"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-accent/10 opacity-50" />
-              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
-              
-              <div className="w-16 h-16 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20 group-hover:scale-110 transition-transform duration-500 relative z-10">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-50" />
+              <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07] bg-[radial-gradient(var(--color-primary)_1px,transparent_1px)] [background-size:20px_20px]" />
+
+              <div className="w-16 h-16 rounded-lg bg-background flex items-center justify-center mb-4 border border-border group-hover:scale-110 transition-transform duration-500 relative z-10 shadow-sm">
                 <Icon size={28} className="text-accent" />
               </div>
-              <p className="text-white font-heading font-bold text-lg uppercase tracking-widest leading-snug relative z-10 mb-4">
+              <p className="text-foreground font-heading font-bold text-lg uppercase tracking-widest leading-snug relative z-10 mb-4">
                 {service.title.split(' ')[0]} <br /> Excellence
               </p>
-              
-              <div className="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-lg font-black uppercase tracking-widest text-xs relative z-10 border border-white/10">
-                {service.startingPrice}
-              </div>
+
+
             </motion.div>
 
             {/* Highlights Card */}
@@ -95,18 +93,18 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-accent rounded-lg p-6 text-white flex flex-col justify-center border border-accent/20 shadow-lg"
+              className="bg-accent rounded-lg p-6 text-background flex flex-col justify-center border border-accent/20 shadow-lg"
             >
               <div className="flex justify-between items-center mb-4">
-                <span className="text-[10px] font-black uppercase tracking-widest bg-white/20 px-3 py-1 rounded-lg backdrop-blur-md">
+                <span className="text-[10px] font-black uppercase tracking-widest bg-background/20 px-3 py-1 rounded-lg backdrop-blur-sm">
                   Highlights
                 </span>
               </div>
               <ul className="space-y-3">
                 {service.heroFeatures.slice(0, 3).map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 size={16} className="text-white/80 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm font-body text-white/90 leading-tight">
+                    <CheckCircle2 size={16} className="text-background/80 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm font-body text-background/90 leading-tight">
                       {feature}
                     </span>
                   </li>

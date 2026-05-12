@@ -38,7 +38,7 @@ export default function ProcessTimeline({ service }: { service: MainServiceItem 
 
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline Vertical Line (Background) */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-border -translate-x-1/2 rounded-full" />
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-border dark:bg-border/30 -translate-x-1/2 rounded-full" />
           
           {/* Timeline Vertical Line (Animated Progress) */}
           <motion.div 
@@ -53,7 +53,7 @@ export default function ProcessTimeline({ service }: { service: MainServiceItem 
                 <div key={i} className={`relative flex flex-col md:flex-row items-center gap-8 ${isEven ? 'md:flex-row-reverse' : ''}`}>
                   
                   {/* Timeline Dot */}
-                  <div className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-background border-4 border-border flex items-center justify-center -translate-x-1/2 z-10 font-black text-foreground shadow-sm">
+                  <div className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-background border-4 border-border dark:border-accent/20 flex items-center justify-center -translate-x-1/2 z-10 font-black text-foreground shadow-sm">
                     {step.step}
                   </div>
 

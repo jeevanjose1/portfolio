@@ -206,8 +206,8 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
                   transition={{ delay: i * 0.1, duration: 0.5 }}
                   className="bg-background p-10 rounded-lg border border-border shadow-sm hover:border-accent/20 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500 group"
                 >
-                  <div className="w-12 h-12 rounded-full bg-section-alt border border-border flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-300">
-                    <Icon size={24} className="text-accent group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 rounded-full bg-section-alt border border-border flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-background transition-all duration-300">
+                    <Icon size={24} className="text-accent group-hover:text-background transition-colors" />
                   </div>
                   <h3 className="text-xl font-heading font-black text-foreground mb-4 group-hover:text-accent transition-colors duration-300 uppercase tracking-tight">{feature.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed font-body">{feature.description}</p>
@@ -259,14 +259,14 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
       </section>
 
       {/* SECTION 6 — RESULTS / METRICS — Redesigned for impact */}
-      <section className="bg-slate-950 py-12 lg:py-16 relative overflow-hidden transition-colors duration-300">
+      <section className="bg-primary py-12 lg:py-16 relative overflow-hidden transition-colors duration-300">
         {/* Decorative Grid */}
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
 
         <div className="section-container relative z-10">
           <div className="text-center mb-20">
             <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-4">{"//"} Outcomes</p>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-white">Impact Delivered.</h2>
+            <h2 className="text-4xl sm:text-5xl font-heading font-black text-background">Impact Delivered.</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {project.metrics.map((metric, i) => (
@@ -276,17 +276,17 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="bg-white/5 backdrop-blur-md rounded-lg p-10 text-center border border-white/10 group hover:border-accent/50 transition-all duration-300"
+                className="bg-background/5 backdrop-blur-md rounded-lg p-10 text-center border border-background/10 group hover:border-accent/50 transition-all duration-300"
               >
-                <div className="text-4xl lg:text-5xl font-heading font-black text-white mb-4 group-hover:text-accent transition-colors">
+                <div className="text-4xl lg:text-5xl font-heading font-black text-background mb-4 group-hover:text-accent transition-colors">
                   <CountUp metric={metric} />
                 </div>
-                <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">{metric.label}</p>
+                <p className="text-[10px] font-black text-background/40 uppercase tracking-widest">{metric.label}</p>
               </motion.div>
             ))}
           </div>
           <div className="text-center">
-            <p className="text-white/60 max-w-2xl mx-auto text-lg font-body leading-relaxed">
+            <p className="text-background/60 max-w-2xl mx-auto text-lg font-body leading-relaxed">
               &ldquo;The architecture designed for this project provides a robust foundation for future scalability, ensuring consistent performance even under heavy loads.&rdquo;
             </p>
           </div>

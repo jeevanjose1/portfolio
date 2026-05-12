@@ -40,9 +40,9 @@ export default function MyStory() {
           >
             {/* Background wrapper to clip the image */}
             <div className="absolute inset-0 rounded-lg overflow-hidden pointer-events-none opacity-20">
-               <img 
-                src="/images/workspace.png" 
-                alt="Workspace" 
+              <img
+                src="/images/workspace.png"
+                alt="Workspace"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-background/60" />
@@ -65,7 +65,7 @@ export default function MyStory() {
 
               <div className="mt-12 flex items-center gap-4 relative z-10">
                 <div className="w-12 h-12 rounded-full overflow-hidden border border-border flex items-center justify-center">
-                   <img src="/images/headshot.png" alt="Avatar" className="w-full h-full object-cover" />
+                  <img src="/images/headshot.png" alt="Avatar" className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <p className="text-sm font-black uppercase tracking-widest text-foreground">Jeevan Jose</p>

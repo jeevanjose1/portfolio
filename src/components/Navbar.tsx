@@ -25,7 +25,7 @@ export default function Navbar() {
       <div className="w-full max-w-6xl bg-background/80 backdrop-blur-xl border border-border rounded-full flex items-center justify-between h-16 shadow-xl shadow-black/5 pointer-events-auto px-6 relative">
         {/* Logo */}
         <Link href="/" className="text-xl font-heading font-black text-foreground tracking-tighter">
-          J<span className="text-accent">J</span>
+          J<span className="opacity-70">J</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -37,8 +37,8 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 className={`relative text-[11px] font-black uppercase tracking-widest px-4 py-2 rounded-full transition-all duration-300 ${isActive
-                    ? "text-accent bg-accent/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-section-alt"
+                  ? "text-background bg-accent"
+                  : "text-muted-foreground hover:text-foreground hover:bg-section-alt"
                   }`}
               >
                 {link.label}
@@ -50,16 +50,16 @@ export default function Navbar() {
         {/* CTA + Toggle + Mobile Toggle */}
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          
+
           <Link href="/contact" className="hidden md:inline-flex btn-primary text-[10px] font-black uppercase tracking-widest py-2.5 px-6 shadow-md rounded-full">
             Let's Talk
           </Link>
 
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-full bg-gray-50 dark:bg-white/5 text-primary transition-colors"
-            aria-label="Toggle menu"
-          >
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden p-2 rounded-full bg-section-alt text-primary transition-colors"
+              aria-label="Toggle menu"
+            >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -72,7 +72,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-[76px] left-0 right-0 bg-background dark:bg-slate-900 border border-border rounded-3xl shadow-2xl overflow-hidden pointer-events-auto md:hidden p-2"
+              className="absolute top-[76px] left-0 right-0 bg-background border border-border rounded-3xl shadow-2xl overflow-hidden pointer-events-auto md:hidden p-2"
             >
               <ul className="flex flex-col gap-1">
                 {navLinks.map((link) => {
@@ -83,8 +83,8 @@ export default function Navbar() {
                         href={link.href}
                         onClick={() => setMobileOpen(false)}
                         className={`block py-3 px-4 text-[11px] font-black uppercase tracking-widest rounded-2xl transition-all duration-300 ${isActive
-                            ? "bg-accent/10 text-accent"
-                            : "text-muted-foreground hover:text-foreground hover:bg-section-alt"
+                          ? "bg-accent text-background"
+                          : "text-muted-foreground hover:text-foreground hover:bg-section-alt"
                           }`}
                       >
                         {link.label}
@@ -96,7 +96,7 @@ export default function Navbar() {
                   <Link
                     href="/contact"
                     onClick={() => setMobileOpen(false)}
-                    className="block text-center bg-accent text-white text-[11px] font-black uppercase tracking-widest py-4 rounded-2xl shadow-md"
+                    className="block text-center bg-accent text-background text-[11px] font-black uppercase tracking-widest py-4 rounded-2xl shadow-md"
                   >
                     Contact Me
                   </Link>

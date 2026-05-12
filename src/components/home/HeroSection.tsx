@@ -23,7 +23,7 @@ function SocialIcon({ link }: { link: SocialLink }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={link.label}
-      className="w-10 h-10 rounded-full bg-section-alt border border-border flex items-center justify-center text-muted-foreground hover:bg-accent hover:text-white hover:border-accent transition-all duration-200"
+      className="w-10 h-10 rounded-full bg-section-alt border border-border flex items-center justify-center text-muted-foreground hover:bg-accent hover:text-background hover:border-accent transition-all duration-200"
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -63,10 +63,10 @@ export default function HeroSection() {
           >
             <div>
               {/* Badge */}
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-sm font-medium mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent text-background text-[10px] font-black uppercase tracking-widest mb-6">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                  <span className="relative inline-flex rounded-lg h-2 w-2 bg-accent"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-background opacity-75"></span>
+                  <span className="relative inline-flex rounded-lg h-2 w-2 bg-background"></span>
                 </span>
                 {heroData.badge}
               </span>
@@ -84,7 +84,7 @@ export default function HeroSection() {
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
-               <Link
+              <Link
                 href={heroData.ctaPrimary.href}
                 className="btn-primary flex items-center justify-center gap-2"
               >
@@ -104,23 +104,23 @@ export default function HeroSection() {
           <motion.div
             custom={1}
             variants={fadeUp}
-            className="md:col-span-5 bg-slate-900 rounded-lg overflow-hidden relative group min-h-[450px] border border-border"
+            className="md:col-span-5 bg-section-alt rounded-lg overflow-hidden relative group min-h-[450px] border border-border"
           >
             <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700">
-              <img 
-                src="/images/headshot.png" 
-                alt="Portrait" 
+              <img
+                src="/images/headshot.png"
+                alt="Portrait"
                 className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
               />
             </div>
-            
+
             {/* Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60" />
-            
+
             {/* Status Badge */}
             <div className="absolute top-6 right-6">
-              <div className="bg-background/10 backdrop-blur-md border border-white/20 rounded-lg px-4 py-2 flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <div className="bg-black/20 backdrop-blur-md border border-white/20 rounded-lg px-4 py-2 flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 <span className="text-[10px] font-black uppercase tracking-widest text-white">Available for Hire</span>
               </div>
             </div>

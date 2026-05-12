@@ -5,27 +5,24 @@ import { ArrowRight, Calendar } from "lucide-react";
 
 export default function AvailabilityBanner() {
   return (
-    <section className="bg-slate-950 relative overflow-hidden transition-colors duration-300">
-      {/* Decorative background grid */}
-      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
-      
-      <div className="section-container py-16 lg:py-16 relative z-10">
+    <section className="bg-background relative overflow-hidden transition-colors duration-300">
+      <div className="section-container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col lg:flex-row items-center justify-between gap-12"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="bg-section-alt rounded-lg py-16 lg:py-16 px-12 relative overflow-hidden transition-colors duration-300 border border-border flex flex-col lg:flex-row items-center justify-between gap-12"
         >
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent/10 rounded-lg border border-accent/20 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-background/10 rounded-lg border border-border mb-6">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                 <span className="relative inline-flex rounded-lg h-2.5 w-2.5 bg-accent"></span>
               </span>
-              <span className="text-[10px] font-black text-accent uppercase tracking-widest">Active Availability</span>
+              <span className="text-[10px] font-black text-foreground uppercase tracking-widest">Active Availability</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-foreground leading-tight">
               Booking for <span className="text-accent italic font-serif">June 2025</span> onwards.
             </h2>
           </div>
@@ -35,7 +32,7 @@ export default function AvailabilityBanner() {
               href="#"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-slate-950 hover:bg-accent hover:text-white px-10 py-5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group shadow-2xl shadow-black/20"
+              className="bg-accent text-background hover:opacity-90 px-10 py-5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group shadow-2xl shadow-accent/10"
             >
               <Calendar size={18} />
               Book a Strategy Call

@@ -32,13 +32,12 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className={`relative rounded-2xl flex flex-col transition-transform duration-500 hover:-translate-y-2 ${
-                pkg.highlighted
-                  ? "bg-accent text-white shadow-2xl shadow-accent/20 scale-105 z-10 border border-white/20"
-                  : pkg.name === "Enterprise"
+              className={`relative rounded-2xl flex flex-col transition-transform duration-500 hover:-translate-y-2 ${pkg.highlighted
+                ? "bg-accent text-white shadow-2xl shadow-accent/20 scale-105 z-10 border border-white/20"
+                : pkg.name === "Enterprise"
                   ? "bg-slate-950 text-white shadow-xl border border-white/5"
                   : "bg-background text-foreground border border-border shadow-lg"
-              }`}
+                }`}
             >
               {pkg.highlighted && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent dark:bg-white dark:text-accent text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
@@ -74,13 +73,12 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
 
                 <Link
                   href="/contact"
-                  className={`w-full py-4 rounded-lg font-black uppercase tracking-widest text-xs text-center transition-all duration-300 ${
-                    pkg.highlighted
-                      ? "bg-white text-slate-900 hover:bg-gray-100 dark:bg-white dark:text-accent"
-                      : pkg.name === "Enterprise"
+                  className={`w-full py-4 rounded-lg font-black uppercase tracking-widest text-xs text-center transition-all duration-300 ${pkg.highlighted
+                    ? "bg-white text-slate-900 hover:bg-gray-100 dark:bg-white dark:text-accent"
+                    : pkg.name === "Enterprise"
                       ? "bg-accent text-white hover:bg-blue-600"
                       : "bg-background text-foreground border border-border hover:border-accent hover:bg-accent/5"
-                  }`}
+                    }`}
                 >
                   {pkg.name === "Enterprise" ? "Let's Talk" : "Get Started"}
                 </Link>
