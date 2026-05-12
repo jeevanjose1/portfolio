@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 import ThemeToggle from "./ThemeToggle";
+import PaletteSelector from "./PaletteSelector";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -48,10 +49,13 @@ export default function Navbar() {
         </nav>
 
         {/* CTA + Toggle + Mobile Toggle */}
-        <div className="flex items-center gap-3">
-          <ThemeToggle />
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
+            <PaletteSelector />
+            <ThemeToggle />
+          </div>
 
-          <Link href="/contact" className="hidden md:inline-flex btn-primary text-[10px] font-black uppercase tracking-widest py-2.5 px-6 shadow-md rounded-full">
+          <Link href="/contact" className="hidden md:inline-flex btn-primary text-[10px] font-black uppercase tracking-widest py-2.5 px-6 shadow-md rounded-full ml-1">
             Let's Talk
           </Link>
 

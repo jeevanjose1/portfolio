@@ -4,6 +4,7 @@
 
 /* ─── Design System CSS Variables ─── */
 :root {
+  /* Default Palette: Neutral */
   --color-primary: #222222;
   --color-accent: #222222;
   --color-accent-hover: #000000;
@@ -22,6 +23,49 @@
   --radius-card: 0.5rem;
 }
 
+/* ─── Midnight Palette ─── */
+[data-palette='midnight'] {
+  --color-primary: #1E293B;
+  --color-accent: #334155;
+  --color-accent-hover: #0F172A;
+  --color-background: #F1F5F9;
+  --color-section-alt: #F8FAFC;
+  --color-text: #0F172A;
+  --color-text-muted: #64748B;
+  --color-border: #E2E8F0;
+  --color-card-border: #CBD5E1;
+  --card-spotlight-color: rgba(30, 41, 59, 0.05);
+}
+
+/* ─── Forest Palette ─── */
+[data-palette='forest'] {
+  --color-primary: #064E3B;
+  --color-accent: #065F46;
+  --color-accent-hover: #064E3B;
+  --color-background: #F0FDF4;
+  --color-section-alt: #F7FEE7;
+  --color-text: #064E3B;
+  --color-text-muted: #34495E;
+  --color-border: #D1FAE5;
+  --color-card-border: #A7F3D0;
+  --card-spotlight-color: rgba(6, 78, 59, 0.05);
+}
+
+/* ─── Rose Palette ─── */
+[data-palette='rose'] {
+  --color-primary: #881337;
+  --color-accent: #9F1239;
+  --color-accent-hover: #881337;
+  --color-background: #FFF1F2;
+  --color-section-alt: #FFF5F5;
+  --color-text: #881337;
+  --color-text-muted: #9F1239;
+  --color-border: #FFE4E6;
+  --color-card-border: #FECDD3;
+  --card-spotlight-color: rgba(136, 19, 55, 0.05);
+}
+
+/* ─── Dark Mode Overrides ─── */
 [data-theme='dark'] {
   --color-primary: #EDEDED;
   --color-accent: #EDEDED;
@@ -33,8 +77,46 @@
   --color-border: #333333;
   --color-card-border: #2a2a2a;
   --card-spotlight-color: rgba(237, 237, 237, 0.1);
-
   --shadow-card: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+}
+
+[data-theme='dark'][data-palette='midnight'] {
+  --color-primary: #F1F5F9;
+  --color-accent: #94A3B8;
+  --color-accent-hover: #CBD5E1;
+  --color-background: #0F172A;
+  --color-section-alt: #1E293B;
+  --color-text: #F1F5F9;
+  --color-text-muted: #94A3B8;
+  --color-border: #1E293B;
+  --color-card-border: #334155;
+  --card-spotlight-color: rgba(241, 245, 249, 0.1);
+}
+
+[data-theme='dark'][data-palette='forest'] {
+  --color-primary: #F0FDF4;
+  --color-accent: #10B981;
+  --color-accent-hover: #34D399;
+  --color-background: #064E3B;
+  --color-section-alt: #065F46;
+  --color-text: #F0FDF4;
+  --color-text-muted: #A7F3D0;
+  --color-border: #065F46;
+  --color-card-border: #059669;
+  --card-spotlight-color: rgba(240, 253, 244, 0.1);
+}
+
+[data-theme='dark'][data-palette='rose'] {
+  --color-primary: #FFF1F2;
+  --color-accent: #E11D48;
+  --color-accent-hover: #F43F5E;
+  --color-background: #4C0519;
+  --color-section-alt: #881337;
+  --color-text: #FFF1F2;
+  --color-text-muted: #FDA4AF;
+  --color-border: #881337;
+  --color-card-border: #9F1239;
+  --card-spotlight-color: rgba(255, 241, 242, 0.1);
 }
 
 /* ─── Base Resets ─── */

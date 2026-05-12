@@ -39,6 +39,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const palette = localStorage.getItem('portfolio-palette') || 'neutral';
+                  document.documentElement.setAttribute('data-palette', palette);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="font-body antialiased bg-background text-foreground transition-colors duration-300">
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem={false}>
           <Navbar />
