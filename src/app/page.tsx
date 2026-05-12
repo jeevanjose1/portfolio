@@ -3,6 +3,7 @@ import ServicesPreview from "@/components/home/ServicesPreview";
 import FeaturedWorks from "@/components/home/FeaturedWorks";
 import Testimonials from "@/components/home/Testimonials";
 import CTABanner from "@/components/home/CTABanner";
+import SkillOrbit from "@/components/home/SkillOrbit";
 
 import ScrollPath from "@/components/home/ScrollPath";
 
