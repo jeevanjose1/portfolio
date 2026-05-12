@@ -24,52 +24,55 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-4 left-0 right-0 z-[999] px-4 flex justify-center pointer-events-none transition-all duration-300">
-      <div className="w-full max-w-6xl bg-background/80 backdrop-blur-xl border border-border rounded-full flex items-center justify-between h-16 shadow-xl shadow-black/5 pointer-events-auto px-6 relative">
+      <div className="w-full  max-w-6xl bg-background/80 backdrop-blur-xl border border-border rounded-full flex items-center justify-between h-16 shadow-xl shadow-black/5 pointer-events-auto px-6 relative">
         {/* Interactive Cat */}
-        <div className="hidden lg:block">
+        <div className="hidden absolute right-0 bottom-0  lg:block">
           <HangingCat />
         </div>
-
         {/* Logo */}
-        <Link href="/" className="text-xl font-heading font-black text-foreground tracking-tighter">
+        <Link href="/" className="text-2xl font-heading font-black text-foreground tracking-tighter">
           J<span className="opacity-70">J</span>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
-            return (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={`relative text-[11px] font-black uppercase tracking-widest px-4 py-2 rounded-full transition-all duration-300 ${isActive
-                  ? "text-background bg-accent"
-                  : "text-muted-foreground hover:text-foreground hover:bg-section-alt"
-                  }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
+        {/* Left Side: Logo + Nav */}
+        <div className="flex items-center gap-10">
 
-        {/* CTA + Toggle + Mobile Toggle */}
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={`relative text-[11px] font-black uppercase tracking-widest px-4 py-2 rounded-full transition-all duration-300 ${isActive
+                    ? "text-background bg-accent"
+                    : "text-muted-foreground hover:text-foreground hover:bg-section-alt"
+                    }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+
+        {/* Right Side: CTA + Toggle + Mobile Toggle */}
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">
             <PaletteSelector />
             <ThemeToggle />
           </div>
 
-          <Link href="/contact" className="hidden md:inline-flex btn-primary text-[10px] font-black uppercase tracking-widest py-2.5 px-6 shadow-md rounded-full ml-1">
+          <Link href="/contact" className="hidden md:inline-flex btn-primary py-2.5 px-6 rounded-full ml-1">
             Let's Talk
           </Link>
 
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 rounded-full bg-section-alt text-primary transition-colors"
-              aria-label="Toggle menu"
-            >
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 rounded-full bg-section-alt text-primary transition-colors"
+            aria-label="Toggle menu"
+          >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -102,15 +105,6 @@ export default function Navbar() {
                     </li>
                   );
                 })}
-                <li className="pt-2 mt-2 border-t border-border">
-                  <Link
-                    href="/contact"
-                    onClick={() => setMobileOpen(false)}
-                    className="block text-center bg-accent text-background text-[11px] font-black uppercase tracking-widest py-4 rounded-2xl shadow-md"
-                  >
-                    Contact Me
-                  </Link>
-                </li>
               </ul>
             </motion.div>
           )}

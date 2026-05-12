@@ -17,7 +17,7 @@ export default function CTABanner() {
           className="bg-section-alt rounded-lg py-16 lg:py-16 px-12 relative overflow-hidden transition-colors duration-300 border border-border flex flex-col lg:flex-row items-center justify-between gap-12"
         >
           {/* Decorative background grid */}
-          <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
+          <div className="absolute inset-0 opacity-5 bg-[radial-gradient(var(--color-primary)_1px,transparent_1px)] [background-size:20px_20px]" />
           <div className="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-[100px] -mr-32 -mt-32" />
 
           <div className="relative z-10 text-center lg:text-left">

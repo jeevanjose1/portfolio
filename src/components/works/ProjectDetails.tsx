@@ -116,8 +116,8 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
             >
               {/* Main Visual */}
               <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl shadow-black/5 border border-border bg-section-alt group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-slate-200 to-slate-50 dark:from-slate-800 dark:to-slate-900 group-hover:scale-105 transition-transform duration-1000" />
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 to-accent/5 group-hover:scale-105 transition-transform duration-1000" />
+                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(var(--color-primary)_1px,transparent_1px)] [background-size:20px_20px]" />
               </div>
 
               {/* Quick Info Grid */}
@@ -227,10 +227,10 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
             {[
-              { title: "Frontend Layer", tech: project.techStack.frontend, color: "bg-blue-500" },
-              { title: "Backend Layer", tech: project.techStack.backend, color: "bg-green-500" },
-              { title: "Database Layer", tech: project.techStack.database, color: "bg-orange-500" },
-              { title: "DevOps & Infrastructure", tech: project.techStack.devops, color: "bg-purple-500" }
+              { title: "Frontend Layer", tech: project.techStack.frontend },
+              { title: "Backend Layer", tech: project.techStack.backend },
+              { title: "Database Layer", tech: project.techStack.database },
+              { title: "DevOps & Infrastructure", tech: project.techStack.devops }
             ].map((layer, i) => (
               <motion.div
                 key={layer.title}
@@ -241,7 +241,7 @@ export default function ProjectDetails({ project }: { project: ProjectItem }) {
                 className="group"
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-3 h-3 rounded-full ${layer.color} shadow-[0_0_10px_rgba(0,0,0,0.1)]`} />
+                  <div className="w-3 h-3 rounded-full bg-accent shadow-[0_0_10px_rgba(0,0,0,0.1)]" />
                   <h3 className="text-sm font-black uppercase tracking-widest text-foreground group-hover:text-accent transition-colors">{layer.title}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-6">

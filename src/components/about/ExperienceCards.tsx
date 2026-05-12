@@ -33,7 +33,7 @@ export default function ExperienceCards() {
               className="relative pl-12 sm:pl-16 group"
             >
               {/* Vertical Line with Bullet — Inspired by Figma Variation 1/2 */}
-              <div className="absolute left-0 top-0 bottom-0 w-px bg-border group-hover:bg-accent/30 transition-colors" />
+              <div className="absolute left-0 top-0 bottom-0 w-px bg-border group-hover:bg-accent group-hover:bg-opacity-30 transition-colors" />
               <div className="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-accent ring-4 ring-background transition-transform group-hover:scale-125" />
 
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">

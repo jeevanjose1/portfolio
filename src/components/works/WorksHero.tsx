@@ -50,7 +50,7 @@ export default function WorksHero() {
               variants={fadeUp}
               className="bg-primary rounded-lg p-8 sm:p-10 border border-border flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group"
             >
-              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
+              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(var(--color-primary)_1px,transparent_1px)] [background-size:16px_16px]" />
               <div className="w-16 h-16 rounded-lg bg-background/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 border border-border backdrop-blur-md">
                 <span className="text-accent">
                   <Sparkles size={28} />

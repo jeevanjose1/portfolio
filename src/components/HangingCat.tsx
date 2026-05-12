@@ -47,7 +47,7 @@ export default function HangingCat() {
     stripes: "var(--color-accent)",
     snout: "var(--color-background)",
     eye: "var(--color-accent)",
-    pupil: "var(--color-primary)",
+    pupil: "var(--color-background)", // Darkest color for pupil
     nose: "var(--color-accent)",
     ledge: "transparent"
   };
@@ -142,13 +142,13 @@ export default function HangingCat() {
 
             {/* Pupils & Glint (Animate on meow) */}
             <motion.g animate={isMeowing ? { scaleY: 0.1, y: 3 } : { scaleY: 1, y: 0 }}>
-              <ellipse cx="34" cy="50" rx="3" ry="6" fill={colors.pupil} />
-              <ellipse cx="66" cy="50" rx="3" ry="6" fill={colors.pupil} />
+              <circle cx="34" cy="50" r="4" fill={colors.pupil} />
+              <circle cx="66" cy="50" r="4" fill={colors.pupil} />
             </motion.g>
 
-            {/* White Glints */}
-            <circle cx="36" cy="46" r="2.5" fill="white" />
-            <circle cx="68" cy="46" r="2.5" fill="white" />
+            {/* White Glints (Reflections) */}
+            <circle cx="36" cy="46" r="1.5" fill="white" />
+            <circle cx="68" cy="46" r="1.5" fill="white" />
           </motion.g>
 
           {/* Stable Face Elements (Nose, Mouth, Whiskers) */}
@@ -166,7 +166,7 @@ export default function HangingCat() {
             />
 
             {/* Whiskers */}
-            <path d="M 32 64 L 15 62 M 32 68 L 15 70 M 68 64 L 85 62 M 68 68 L 85 70" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
+            <path d="M 32 64 L 15 62 M 32 68 L 15 70 M 68 64 L 85 62 M 68 68 L 85 70" stroke={colors.pupil} strokeWidth="1.5" strokeLinecap="round" opacity="0.4" />
           </g>
         </svg>
 

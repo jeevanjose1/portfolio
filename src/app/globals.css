@@ -74,57 +74,57 @@
   --color-primary: #EDEDED;
   --color-accent: #FFFFFF;
   --color-accent-hover: #FFFFFF;
-  --color-background: #111111;
-  --color-section-alt: #1A1A1A;
+  --color-background: #0A0A0A;
+  --color-section-alt: #121212;
   --color-text: #EDEDED;
   --color-text-muted: #888888;
-  --color-border: #222222;
-  --color-card-border: #1A1A1A;
-  --card-spotlight-color: rgba(255, 255, 255, 0.03);
+  --color-border: #1A1A1A;
+  --color-card-border: #121212;
+  --card-spotlight-color: rgba(255, 255, 255, 0.02);
   --shadow-card: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
-  --color-contrast-bg: #111111;
+  --color-contrast-bg: #050505;
 }
 
 [data-theme='dark'][data-palette='midnight'] {
   --color-primary: #F1F5F9;
   --color-accent: #38BDF8;
   --color-accent-hover: #7DD3FC;
-  --color-background: #0F172A;
-  --color-section-alt: #1E293B;
+  --color-background: #020617;
+  --color-section-alt: #0F172A;
   --color-text: #F1F5F9;
   --color-text-muted: #94A3B8;
-  --color-border: #1E293B;
-  --color-card-border: #334155;
-  --card-spotlight-color: rgba(241, 245, 249, 0.05);
-  --color-contrast-bg: #0F172A;
+  --color-border: #0F172A;
+  --color-card-border: #1E293B;
+  --card-spotlight-color: rgba(56, 189, 248, 0.05);
+  --color-contrast-bg: #000000;
 }
 
 [data-theme='dark'][data-palette='forest'] {
   --color-primary: #F0FDF4;
   --color-accent: #10B981;
   --color-accent-hover: #34D399;
-  --color-background: #064E3B;
-  --color-section-alt: #065F46;
+  --color-background: #022C22;
+  --color-section-alt: #064E3B;
   --color-text: #F0FDF4;
   --color-text-muted: #A7F3D0;
-  --color-border: #065F46;
-  --color-card-border: #059669;
-  --card-spotlight-color: rgba(240, 253, 244, 0.05);
-  --color-contrast-bg: #064E3B;
+  --color-border: #064E3B;
+  --color-card-border: #065F46;
+  --card-spotlight-color: rgba(16, 185, 129, 0.05);
+  --color-contrast-bg: #011C16;
 }
 
 [data-theme='dark'][data-palette='rose'] {
   --color-primary: #FFF1F2;
   --color-accent: #F43F5E;
   --color-accent-hover: #FB7185;
-  --color-background: #4C0519;
+  --color-background: #450A0A;
   --color-section-alt: #881337;
   --color-text: #FFF1F2;
   --color-text-muted: #FDA4AF;
   --color-border: #881337;
   --color-card-border: #9F1239;
-  --card-spotlight-color: rgba(255, 241, 242, 0.05);
-  --color-contrast-bg: #4C0519;
+  --card-spotlight-color: rgba(244, 63, 94, 0.05);
+  --color-contrast-bg: #2D0505;
 }
 
 /* ─── Base Resets ─── */
@@ -171,11 +171,28 @@ h6 {
   }
 
   .btn-primary {
-    @apply bg-accent text-background rounded-lg px-7 py-3 font-medium transition-all duration-200 hover:bg-accent-hover hover:shadow-lg active:scale-[0.98];
+    @apply bg-accent text-background rounded-lg px-8 py-4 font-heading font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:bg-accent-hover hover:shadow-xl active:scale-[0.98] inline-flex items-center justify-center;
   }
 
   .btn-secondary {
-    @apply border border-border text-foreground rounded-lg px-7 py-3 font-medium transition-all duration-200 hover:bg-section-alt active:scale-[0.98];
+    @apply bg-background border border-border text-foreground rounded-lg px-8 py-4 font-heading font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:bg-section-alt active:scale-[0.98] inline-flex items-center justify-center;
+  }
+}
+
+@layer base {
+  ::selection {
+    @apply bg-accent text-background;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  html {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 }
 

@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function CaseStudyCallout() {
   return (
-    <section className="bg-accent text-white mb-10 transition-colors duration-300">
+    <section className="bg-accent text-background mb-10 transition-colors duration-300">
       <div className="section-container py-16 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -15,18 +15,18 @@ export default function CaseStudyCallout() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-white/60 text-sm font-black tracking-widest uppercase mb-3 block">
+            <span className="opacity-60 text-sm font-black tracking-widest uppercase mb-3 block">
               Featured Case Study
             </span>
             <h2 className="text-3xl sm:text-4xl font-heading font-black mb-6">
               Scaling an E-commerce Platform to 2,000+ Daily Users
             </h2>
-            <p className="text-white/80 text-lg leading-relaxed mb-8 font-body">
+            <p className="opacity-80 text-lg leading-relaxed mb-8 font-body">
               Discover how I completely re-architected a legacy monolith into a modern,
               scalable microservices architecture, improving performance by 40% and
               significantly reducing infrastructure costs.
             </p>
-            <button className="bg-white text-slate-900 hover:bg-white/90 px-8 py-3.5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-2 transition-colors">
+            <button className="bg-background text-foreground hover:bg-background/90 px-8 py-3.5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-2 transition-colors">
               Read Full Case Study
               <ArrowRight size={18} />
             </button>
