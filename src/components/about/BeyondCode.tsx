@@ -5,8 +5,8 @@ import { beyondCodeData as fallbackBeyondCodeData } from "@/lib/data";
 import type { BeyondCodeItem } from "@/lib/data";
 import * as LucideIcons from "lucide-react";
 
-function BeyondCard({ item, index }: { item: any; index: number }) {
-  // @ts-ignore
+function BeyondCard({ item, index }: { item: BeyondCodeItem; index: number }) {
+  // @ts-expect-error
   const Icon = LucideIcons[item.iconName] || LucideIcons.Sparkles;
   return (
     <motion.div
@@ -31,7 +31,7 @@ function BeyondCard({ item, index }: { item: any; index: number }) {
   );
 }
 
-export default function BeyondCode({ items }: { items?: any[] }) {
+export default function BeyondCode({ items }: { items?: BeyondCodeItem[] }) {
   const displayItems = items || fallbackBeyondCodeData;
   return (
     <section className="bg-background transition-colors duration-300">

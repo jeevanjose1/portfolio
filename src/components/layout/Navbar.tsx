@@ -9,16 +9,16 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 import PaletteSelector from "@/components/ui/PaletteSelector";
 
 const navLinks = [
-  { label: "Home",     href: "/" },
-  { label: "About",    href: "/about" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Works",    href: "/works" },
-  { label: "Contact",  href: "/contact" },
+  { label: "Works", href: "/works" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen]   = useState(false);
-  const [scrolled,   setScrolled]     = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isStudio = pathname.startsWith("/studio");
 
@@ -37,8 +37,8 @@ export default function Navbar() {
     <header className="fixed top-4 left-0 right-0 z-[999] px-4 flex justify-center pointer-events-none">
       <div
         className={`
-          w-full max-w-7xl flex items-center justify-between h-[60px] pointer-events-auto px-5 relative
-          rounded-2xl border transition-all duration-500
+          w-full max-w-[74rem] flex items-center justify-between h-[60px] pointer-events-auto px-5 relative
+          rounded-full border transition-all duration-500
           ${scrolled
             ? "bg-[color-mix(in_srgb,var(--color-background)_85%,transparent)] backdrop-blur-2xl border-[var(--color-card-border)] shadow-lg shadow-black/[0.06]"
             : "bg-[color-mix(in_srgb,var(--color-background)_70%,transparent)] backdrop-blur-xl border-[var(--color-border)] shadow-sm"
@@ -84,7 +84,7 @@ export default function Navbar() {
 
           <Link
             href="/contact"
-            className="hidden md:inline-flex btn-primary py-2 px-5 text-[10px] rounded-xl ml-1"
+            className="hidden md:inline-flex btn-primary py-3 px-5 text-[10px] rounded-xl ml-1"
           >
             Let&apos;s Talk
           </Link>
@@ -103,8 +103,8 @@ export default function Navbar() {
           {mobileOpen && (
             <motion.div
               initial={{ opacity: 0, y: -8, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0,  scale: 1 }}
-              exit={{    opacity: 0, y: -8, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.97 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
               className="absolute top-[68px] left-0 right-0 bg-background border border-[var(--color-card-border)] rounded-2xl shadow-xl overflow-hidden pointer-events-auto p-2"
             >

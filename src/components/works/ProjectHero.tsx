@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Globe, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import type { NormalizedProject } from "./types";
 
 const GithubIcon = ({ size, className }: { size: number; className?: string }) => (
@@ -109,10 +110,12 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
             className="lg:w-[45%] w-full flex flex-col gap-6"
           >
             <div className="relative aspect-video rounded-lg overflow-hidden shadow-card border border-border bg-section-alt group">
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                fill
+                priority
+                className="object-cover group-hover:scale-105 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 to-accent/5" />
               <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />

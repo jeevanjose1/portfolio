@@ -11,6 +11,12 @@ export const pageHome = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'heroWelcome',
+      title: 'Hero Welcome',
+      type: 'text',
+      rows: 2,
+    }),
+    defineField({
       name: 'heroHeading',
       title: 'Hero Heading',
       type: 'text',

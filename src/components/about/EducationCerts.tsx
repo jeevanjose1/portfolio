@@ -1,15 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Award, BookOpen, Code2, Users, Target } from "lucide-react";
-import { educationData as fallbackEducationData, certificationsData as fallbackCertificationsData, beyondCodeData as fallbackBeyondCodeData } from "@/lib/data";
-
-const iconMap: Record<string, React.ElementType> = {
-  BookOpen,
-  Code2,
-  Users,
-  Target,
-};
+import { GraduationCap, Award } from "lucide-react";
+import { educationData as fallbackEducationData, certificationsData as fallbackCertificationsData } from "@/lib/data";
+import type { EducationItem, CertificationItem } from "@/lib/data";
 
 const certIconColors: Record<string, string> = {
   AWS: "bg-orange-500/10 text-orange-500 border-orange-500/20",
@@ -17,7 +11,7 @@ const certIconColors: Record<string, string> = {
   React: "bg-cyan-500/10 text-cyan-500 border-cyan-500/20",
 };
 
-export default function EducationCerts({ education, certifications }: { education?: any[], certifications?: any[] }) {
+export default function EducationCerts({ education, certifications }: { education?: EducationItem[], certifications?: CertificationItem[] }) {
   const displayEdu = education || fallbackEducationData;
   const displayCerts = certifications || fallbackCertificationsData;
   return (
@@ -56,7 +50,7 @@ export default function EducationCerts({ education, certifications }: { educatio
             </div>
 
             <div className="space-y-6">
-              {displayEdu.map((edu: any) => (
+              {displayEdu.map((edu: EducationItem) => (
                 <div key={edu.degree} className="group">
                   <h4 className="text-xl font-heading font-black text-foreground mb-2 group-hover:text-accent transition-colors duration-300">{edu.degree}</h4>
                   <p className="text-sm text-muted-foreground font-body mb-3">{edu.university}</p>
@@ -87,7 +81,7 @@ export default function EducationCerts({ education, certifications }: { educatio
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
-              {displayCerts.map((cert: any) => {
+              {displayCerts.map((cert: CertificationItem) => {
                 const colorClass = certIconColors[cert.iconLabel] ?? "bg-section-alt text-muted-foreground border-border";
                 return (
                   <div key={cert.name} className="bg-background rounded-2xl p-6 flex items-start gap-5 border border-[var(--color-card-border)] hover:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] hover:-translate-y-0.5 transition-all duration-300 group" style={{ boxShadow: "var(--shadow-card)" }}>

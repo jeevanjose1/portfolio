@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Award, Download, MapPin, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { aboutHeroData } from "@/lib/data";
+
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 30 },
@@ -96,7 +96,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
 
           {/* Stats row */}
           <motion.div custom={2} variants={fadeUp} className="md:col-span-12 grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {stats.slice(0, 3).map((stat: any) => (
+            {stats.slice(0, 3).map((stat: { label: string; value: string }) => (
               <div
                 key={stat.label}
                 className="bg-section-alt rounded-2xl p-6 sm:p-8 border border-[var(--color-card-border)] flex items-center justify-between gap-4"

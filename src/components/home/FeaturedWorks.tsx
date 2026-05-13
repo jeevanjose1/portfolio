@@ -9,6 +9,7 @@ import { featuredWorksData } from "@/lib/data";
 import { SanityProject } from "@/sanity/types";
 import { urlForImage } from "@/sanity/lib/image";
 
+
 export default function FeaturedWorks({ projects }: { projects: SanityProject[] }) {
   const [activeProject, setActiveProject] = useState<number | null>(null);
 
@@ -59,10 +60,10 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
             const title = project.title;
             const slug = isSanity
               ? project.slug
-              : (project as any).linkHref?.split("/").pop();
+              : (project as { linkHref: string }).linkHref.split("/").pop();
             const tags = isSanity
               ? (project as SanityProject).categories
-              : (project as any).tags;
+              : (project as { tags: string[] }).tags;
             const description = project.description;
 
             return (
@@ -148,9 +149,9 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
                 src={
                   "_id" in displayData[activeProject]
                     ? (displayData[activeProject] as SanityProject).mainImage
-                      ? urlForImage((displayData[activeProject] as SanityProject).mainImage).url()
+                      ? urlForImage((displayData[activeProject] as SanityProject).mainImage!).url()
                       : "/images/project-1.svg"
-                    : (displayData[activeProject] as any).image || "/images/project-1.svg"
+                    : (displayData[activeProject] as { image: string }).image || "/images/project-1.svg"
                 }
                 alt={displayData[activeProject].title}
                 fill

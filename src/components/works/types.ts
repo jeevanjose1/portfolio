@@ -10,7 +10,7 @@ export interface NormalizedProject {
   liveUrl?: string;
   githubUrl?: string;
   publishedDate: string;
-  body?: any;
+  body?: unknown;
   info?: {
     client: string;
     industry: string;

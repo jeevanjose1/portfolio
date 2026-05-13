@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import * as LucideIcons from "lucide-react";
+import { SanityService } from "@/sanity/types";
+import type { MainServiceItem } from "@/lib/data";
 
-export default function WhatYouGet({ service }: { service: any }) {
+export default function WhatYouGet({ service }: { service: SanityService | MainServiceItem }) {
   const items = service.whatYouGet || [];
   return (
     <section className="bg-background py-16 transition-colors duration-300">
@@ -24,8 +25,9 @@ export default function WhatYouGet({ service }: { service: any }) {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.map((item: any, i: number) => {
-            const Icon = (LucideIcons as any)[item.icon] || LucideIcons.Server;
+          {items.map((item: { icon: string; title: string; description: string }, i: number) => {
+            // @ts-expect-error - indexing LucideIcons with a string
+            const Icon = LucideIcons[item.icon] || LucideIcons.Server;
             return (
               <motion.div
                 key={i}

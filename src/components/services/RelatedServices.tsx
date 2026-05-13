@@ -5,10 +5,11 @@ import Link from "next/link";
 import * as LucideIcons from "lucide-react";
 import { ArrowUpRight } from "lucide-react";
 import { mainServicesData } from "@/lib/data";
+import { SanityService } from "@/sanity/types";
 import type { MainServiceItem } from "@/lib/data";
 import GradientCard from "@/components/GradientCard";
 
-export default function RelatedServices({ currentService }: { currentService: any }) {
+export default function RelatedServices({ currentService }: { currentService: SanityService | MainServiceItem }) {
   const otherServices = mainServicesData.filter(s => s.slug !== currentService.slug);
 
   return (
@@ -31,7 +32,7 @@ export default function RelatedServices({ currentService }: { currentService: an
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
           {otherServices.map((service, i) => {
-            const Icon = (LucideIcons as any)[service.iconName] || LucideIcons.Server;
+            const Icon = LucideIcons[service.iconName] || LucideIcons.Server;
             return (
               <motion.div
                 key={service.slug}
@@ -45,7 +46,7 @@ export default function RelatedServices({ currentService }: { currentService: an
                   <div className="w-12 h-12 rounded-lg bg-section-alt border border-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300">
                     <Icon size={24} className="text-accent group-hover:text-background transition-colors" />
                   </div>
-                  
+
                   <h3 className="text-xl font-heading font-black text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
                     {service.title}
                   </h3>

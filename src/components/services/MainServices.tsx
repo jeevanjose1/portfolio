@@ -20,7 +20,7 @@ function MainServiceCard({ service, index }: { service: SanityService | MainServ
   
   // Use "features" from static data or "tagline" as a single feature for now if sanity features aren't ready
   const features = isSanity 
-    ? (service as any).features || (service.tagline ? [service.tagline] : [])
+    ? (service as SanityService).features || (service.tagline ? [service.tagline] : [])
     : (service as MainServiceItem).features;
 
   return (
@@ -45,7 +45,7 @@ function MainServiceCard({ service, index }: { service: SanityService | MainServ
 
         {features.length > 0 && (
           <ul className="space-y-3 mb-8">
-            {features.map((feature: any, i: number) => {
+            {features.map((feature: string | { title: string }, i: number) => {
               const text = typeof feature === 'string' ? feature : feature.title;
               return (
                 <li key={i} className="flex items-start gap-3">

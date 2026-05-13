@@ -5,7 +5,7 @@ import { ArrowRight, MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { ctaBannerData } from "@/lib/data";
 
-export default function CTABanner({ data }: { data?: any }) {
+export default function CTABanner({ data }: { data?: { heading?: string; subtext?: string; buttonLabel?: string; buttonHref?: string } }) {
   const heading = data?.heading || ctaBannerData.heading;
   const subtext = data?.subtext || ctaBannerData.subtext;
   const buttonLabel = data?.buttonLabel || ctaBannerData.buttonLabel;

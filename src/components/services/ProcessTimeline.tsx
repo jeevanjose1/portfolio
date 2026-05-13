@@ -2,9 +2,10 @@
 
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useRef } from "react";
+import { SanityService } from "@/sanity/types";
 import type { MainServiceItem } from "@/lib/data";
 
-export default function ProcessTimeline({ service }: { service: any }) {
+export default function ProcessTimeline({ service }: { service: SanityService | MainServiceItem }) {
   const steps = service.process || [];
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -48,7 +49,7 @@ export default function ProcessTimeline({ service }: { service: any }) {
           />
 
           <div className="space-y-12">
-            {steps.map((step: any, i: number) => {
+            {steps.map((step: { step: string; duration: string; title: string; description: string }, i: number) => {
               const isEven = i % 2 === 0;
               return (
                 <div key={i} className={`relative flex flex-col md:flex-row items-center gap-8 ${isEven ? 'md:flex-row-reverse' : ''}`}>

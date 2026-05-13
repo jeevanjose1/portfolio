@@ -1,7 +1,7 @@
 "use client";
 
 import type { ProjectItem } from "@/lib/data";
-import { SanityProject } from "@/sanity/types";
+import { SanityProject, SanitySiteSettings } from "@/sanity/types";
 import { urlForImage } from "@/sanity/lib/image";
 import CTABanner from "@/components/home/CTABanner";
 
@@ -12,7 +12,7 @@ import ProjectFeatures from "./ProjectFeatures";
 import ProjectMetrics from "./ProjectMetrics";
 import ProjectRelated from "./ProjectRelated";
 
-export default function ProjectDetails({ project, siteSettings }: { project: ProjectItem | SanityProject, siteSettings?: any }) {
+export default function ProjectDetails({ project, siteSettings }: { project: ProjectItem | SanityProject, siteSettings?: SanitySiteSettings }) {
   const isSanity = '_id' in project;
 
   const p: NormalizedProject = isSanity ? {

@@ -17,6 +17,7 @@ export default function ProjectContent({ project }: { project: NormalizedProject
           </h2>
           <div className="prose prose-invert prose-lg text-muted-foreground font-body leading-relaxed max-w-none">
             {project.body ? (
+              // @ts-expect-error - body type is unknown but expected by PortableText
               <PortableText value={project.body} />
             ) : (
               <p>Detailed case study content is being finalized for this project.</p>

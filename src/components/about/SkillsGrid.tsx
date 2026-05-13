@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import { skillGroups as fallbackSkillGroups } from "@/lib/data";
-import type { SkillGroup } from "@/lib/data";
+import type { SkillGroup, SkillItem } from "@/lib/data";
 import * as LucideIcons from "lucide-react";
 
-function SkillGroupCard({ group, index }: { group: any; index: number }) {
-  // @ts-ignore
+function SkillGroupCard({ group, index }: { group: SkillGroup; index: number }) {
+  // @ts-expect-error - indexing LucideIcons with a string
   const Icon = LucideIcons[group.iconName] || LucideIcons.Layout;
 
   return (
@@ -27,7 +27,7 @@ function SkillGroupCard({ group, index }: { group: any; index: number }) {
         </h3>
       </div>
       <div className="flex flex-wrap gap-2.5">
-        {group.skills.map((skill: any) => (
+        {group.skills.map((skill: SkillItem) => (
           <div
             key={skill.name}
             className="px-4 py-2 bg-surface-2 border border-[var(--color-border)] rounded-full group/skill hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] transition-all duration-200 cursor-default"
@@ -42,7 +42,7 @@ function SkillGroupCard({ group, index }: { group: any; index: number }) {
   );
 }
 
-export default function SkillsGrid({ skillGroups }: { skillGroups?: any[] }) {
+export default function SkillsGrid({ skillGroups }: { skillGroups?: SkillGroup[] }) {
   const displayGroups = skillGroups || fallbackSkillGroups;
   return (
     <section className="bg-section-alt transition-colors duration-300">

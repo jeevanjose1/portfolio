@@ -4,14 +4,15 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import ProjectCard from "@/components/works/ProjectCard";
 import { projectsData } from "@/lib/data";
-import type { MainServiceItem, FilterCategory } from "@/lib/data";
+import { SanityService } from "@/sanity/types";
+import type { MainServiceItem } from "@/lib/data";
 
-export default function RelatedWorks({ service }: { service: any }) {
+export default function RelatedWorks({ service }: { service: SanityService | MainServiceItem }) {
   const relatedCategory = service.relatedCategory || (service.isMain ? "Web Apps" : "Mobile Apps");
-  
+
   // Filter projects based on the related category
   const relatedProjects = projectsData
-    .filter((project) => project.categories.includes(relatedCategory as any))
+    .filter((project) => (project.categories as string[]).includes(relatedCategory as string))
     .slice(0, 3); // Take up to 3 projects
 
   if (relatedProjects.length === 0) return null;

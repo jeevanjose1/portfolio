@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import Accordion from "@/components/Accordion";
+import { SanityService } from "@/sanity/types";
 import type { MainServiceItem } from "@/lib/data";
 
-export default function ServiceFAQ({ service }: { service: any }) {
+export default function ServiceFAQ({ service }: { service: SanityService | MainServiceItem }) {
   const faqs = service.faqs || [];
   return (
     <section className="bg-background py-16 transition-colors duration-300">
@@ -25,7 +26,7 @@ export default function ServiceFAQ({ service }: { service: any }) {
         </motion.div>
 
         <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq: any, i: number) => (
+          {faqs.map((faq: { question: string; answer: string }, i: number) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}

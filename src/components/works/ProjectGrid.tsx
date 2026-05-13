@@ -4,8 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FilterBar from "@/components/works/FilterBar";
 import ProjectCard from "@/components/works/ProjectCard";
-import { filterCategoriesData } from "@/lib/data";
-import type { FilterCategory, ProjectItem } from "@/lib/data";
+import type { ProjectItem } from "@/lib/data";
 import { SanityProject } from "@/sanity/types";
 
 interface ProjectGridProps {
@@ -15,17 +14,17 @@ interface ProjectGridProps {
 export default function ProjectGrid({ projects }: ProjectGridProps) {
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
-  const categories = ["All", ...Array.from(new Set(projects.flatMap((p: any) => p.categories || [])))];
+  const categories = ["All", ...Array.from(new Set(projects.flatMap((p) => p.categories || [])))];
 
   const filteredProjects = projects.filter((project) => {
     if (activeFilter === "All") return true;
-    return project.categories?.includes(activeFilter as any);
+    return (project.categories as string[])?.includes(activeFilter);
   });
 
   return (
     <section id="projects" className="bg-section-alt pb-10 relative z-10 transition-colors duration-300">
       <FilterBar
-        categories={categories as any}
+        categories={categories}
         activeFilter={activeFilter}
         onFilterChange={setActiveFilter}
       />

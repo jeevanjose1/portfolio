@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowDown, ArrowRight, BarChart3, FolderGit2, Gauge, Sparkles } from "lucide-react";
 
+import { SanityProject } from "@/sanity/types";
+import type { ProjectItem } from "@/lib/data";
+
 const fadeUp = {
   hidden:  { opacity: 0, y: 30 },
   visible: (i: number) => ({
@@ -12,7 +15,7 @@ const fadeUp = {
   }),
 };
 
-export default function WorksHero({ projects }: { projects: any[] }) {
+export default function WorksHero({ projects }: { projects: (SanityProject | ProjectItem)[] }) {
   const featuredProjects = projects.slice(0, 3);
 
   return (
@@ -68,7 +71,7 @@ export default function WorksHero({ projects }: { projects: any[] }) {
             <motion.div custom={2} variants={fadeUp} className="grid grid-cols-1 gap-3">
               {featuredProjects.map((project) => (
                 <Link
-                  key={project._id}
+                  key={('_id' in project ? project._id : project.title) as string}
                   href={`/works/${project.slug}`}
                   className="bg-section-alt rounded-xl p-4 border border-[var(--color-card-border)] flex items-center justify-between gap-4 group hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] transition-all duration-300"
                   style={{ boxShadow: "var(--shadow-sm)" }}

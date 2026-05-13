@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 import ProcessStep from "@/components/ProcessStep";
 import { processData as fallbackProcessData } from "@/lib/data";
+import type { ProcessStepItem } from "@/lib/data";
 
-export default function Process({ steps }: { steps?: any[] }) {
+export default function Process({ steps }: { steps?: ProcessStepItem[] }) {
   const displaySteps = steps || fallbackProcessData;
   return (
     <section className="bg-section-alt transition-colors duration-300">

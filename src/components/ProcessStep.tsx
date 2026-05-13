@@ -1,16 +1,14 @@
 "use client";
 
-import { Search, FileText, Code, Rocket } from "lucide-react";
+import * as LucideIcons from "lucide-react";
 
 interface ProcessStepProps {
   number: string;
-  iconName: "Search" | "FileText" | "Code" | "Rocket";
+  iconName: string;
   title: string;
   description: string;
   isLast?: boolean;
 }
-
-const iconMap = { Search, FileText, Code, Rocket } as const;
 
 export default function ProcessStep({
   number,
@@ -19,7 +17,8 @@ export default function ProcessStep({
   description,
   isLast = false,
 }: ProcessStepProps) {
-  const Icon = iconMap[iconName];
+  // @ts-expect-error - dynamic indexing LucideIcons
+  const Icon = LucideIcons[iconName] || LucideIcons.Search;
 
   return (
     <div className="relative flex-1 flex flex-col items-center text-center px-4 transition-colors duration-300">

@@ -41,12 +41,12 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
             >
               <div>
                 <div className="flex gap-1.5 mb-8">
-                  {Array.from({ length: (t as any).rating || 5 }).map((_, si) => (
+                  {Array.from({ length: (t as SanityTestimonial).rating || 5 }).map((_, si) => (
                     <Star key={si} size={13} className="fill-accent text-accent" />
                   ))}
                 </div>
                 <p className="text-[color-mix(in_srgb,var(--color-text)_75%,transparent)] text-lg leading-relaxed mb-10 italic font-body">
-                  &ldquo;{(t as any).content || (t as any).quote}&rdquo;
+                  &ldquo;{t.content}&rdquo;
                 </p>
               </div>
               <div className="flex items-center gap-4 pt-8 border-t border-[var(--color-border)]/60">
@@ -58,7 +58,7 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
                 <div>
                   <p className="text-sm font-black text-foreground uppercase tracking-tight">{t.name}</p>
                   <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mt-0.5">
-                    {(t as any).role || (t as any).company}
+                    {t.role}
                   </p>
                 </div>
               </div>

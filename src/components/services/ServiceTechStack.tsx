@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SanityService } from "@/sanity/types";
 import type { MainServiceItem } from "@/lib/data";
 
-export default function ServiceTechStack({ service }: { service: any }) {
+export default function ServiceTechStack({ service }: { service: SanityService | MainServiceItem }) {
   const stack = service.techStack || [];
   return (
     <section className="bg-section-alt py-16 transition-colors duration-300">
@@ -27,7 +28,7 @@ export default function ServiceTechStack({ service }: { service: any }) {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {stack.map((category: any, i: number) => (
+          {stack.map((category: { category: string; techs: string[] }, i: number) => (
             <motion.div
               key={category.category}
               initial={{ opacity: 0, y: 20 }}

@@ -1,15 +1,17 @@
+import type { Image } from 'sanity';
+
 export interface SanityProject {
   _id: string;
   title: string;
   slug: string;
   description: string;
-  mainImage?: any;
+  mainImage?: Image;
   categories: string[];
   publishedAt: string;
   link?: string;
   githubUrl?: string;
   isFeatured: boolean;
-  body?: any[];
+  body?: unknown[];
   projectInfo?: {
     client: string;
     industry: string;
@@ -78,6 +80,7 @@ export interface SanityService {
     question: string;
     answer: string;
   }[];
+  relatedCategory?: string;
 }
 
 export interface SanityTestimonial {
@@ -86,7 +89,7 @@ export interface SanityTestimonial {
   role: string;
   content: string;
   rating: number;
-  image?: any;
+  image?: Image;
 }
 
 export interface SanityExperience {
@@ -132,6 +135,7 @@ export interface SanityPageHome {
   heroSubheadline: string;
   ctaPrimary?: { label: string; href: string };
   ctaSecondary?: { label: string; href: string };
+  welcome: string
 }
 
 export interface SanityPageAbout {

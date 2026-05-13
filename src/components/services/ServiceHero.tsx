@@ -4,12 +4,14 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import * as LucideIcons from "lucide-react";
 import { ArrowRight, ArrowLeft } from "lucide-react";
+import { SanityService } from "@/sanity/types";
 import type { MainServiceItem } from "@/lib/data";
 
-export default function ServiceHero({ service }: { service: any }) {
-  const Icon = (LucideIcons as any)[service.iconName] || LucideIcons.HelpCircle;
-  const relatedCategory = service.relatedCategory || (service.isMain ? "Core Service" : "Specialized Service");
-  const heroFeatures = service.heroFeatures || service.features || [];
+export default function ServiceHero({ service }: { service: SanityService | MainServiceItem }) {
+  // @ts-expect-error - iconName exists on both types but LucideIcons indexing is dynamic
+  const Icon = LucideIcons[service.iconName] || LucideIcons.HelpCircle;
+  const relatedCategory = (service as MainServiceItem).relatedCategory || (service.isMain ? "Core Service" : "Specialized Service");
+  const heroFeatures = (service as MainServiceItem).heroFeatures || (service as SanityService).features || [];
 
   return (
     <section className="min-h-[72vh] flex items-center bg-background pt-32 pb-6">

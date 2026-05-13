@@ -9,7 +9,7 @@ const iconMap: Record<string, React.ElementType> = {
   ShoppingCart, Network, BarChart3, Code2, Shield, Zap, Search, Globe, Smartphone, Monitor
 };
 
-function AdditionalServiceCard({ service, index }: { service: any; index: number }) {
+function AdditionalServiceCard({ service, index }: { service: SanityService | { title: string; iconName: string; description: string }; index: number }) {
   const Icon = iconMap[service.iconName] || Search;
 
   return (
@@ -32,7 +32,7 @@ function AdditionalServiceCard({ service, index }: { service: any; index: number
   );
 }
 
-export default function AdditionalServices({ services, additionalItems }: { services: SanityService[], additionalItems?: any[] }) {
+export default function AdditionalServices({ services, additionalItems }: { services: SanityService[], additionalItems?: { title: string; iconName: string; description: string }[] }) {
   const displayData = additionalItems && additionalItems.length > 0 ? additionalItems : (services.length > 0 ? services : additionalServicesData);
 
   return (

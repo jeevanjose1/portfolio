@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { socialLinks } from "@/lib/data";
 import type { SocialLink } from "@/lib/data";
 import AnimatedNumber from "@/components/ui/AnimatedNumber";
 import { SanityPageHome } from "@/sanity/types";
@@ -14,6 +13,7 @@ const fallbackHeroData = {
   heading: "Full-Stack Developer &\nMobile Engineer",
   subheadline: "I build scalable web apps, mobile apps, and cloud solutions that help startups and businesses grow.",
   ctaPrimary: { label: "View My Work", href: "/works" },
+  welcome: 'Hey, I am'
 };
 
 const fallbackStatsData = [
@@ -23,7 +23,7 @@ const fallbackStatsData = [
 ];
 
 const fadeUp = {
-  hidden:  { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 32 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
@@ -60,9 +60,11 @@ function SocialIcon({ link }: { link: SocialLink }) {
   );
 }
 
-export default function HeroSection({ data, stats, socialLinks }: { data?: SanityPageHome, stats?: any[], socialLinks?: any[] }) {
+export default function HeroSection({ data, stats, socialLinks }: { data?: SanityPageHome, stats?: { value: string; label: string }[], socialLinks?: SocialLink[] }) {
   const badge = data?.heroBadge || fallbackHeroData.badge;
   const heading = data?.heroHeading || fallbackHeroData.heading;
+  const welcome = data?.welcome || fallbackHeroData.welcome;
+
   const subheadline = data?.heroSubheadline || fallbackHeroData.subheadline;
   const ctaPrimary = data?.ctaPrimary || fallbackHeroData.ctaPrimary;
   const displayStats = stats || fallbackStatsData;
@@ -90,6 +92,11 @@ export default function HeroSection({ data, stats, socialLinks }: { data?: Sanit
                 {badge}
               </span>
 
+
+              <h1 className="text-2xl sm:text-3xl lg:text-[2.5rem] xl:text-3xl font-heading font-semibold text-foreground leading-[1.08] mb-5 whitespace-pre-line">
+                {welcome}
+              </h1>
+
               <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-heading font-black text-foreground leading-[1.08] mb-5 whitespace-pre-line">
                 {heading}
               </h1>
@@ -108,7 +115,7 @@ export default function HeroSection({ data, stats, socialLinks }: { data?: Sanit
                 <ArrowRight size={15} />
               </Link>
               <div className="flex items-center gap-2.5">
-                {displaySocials.map((link: any) => (
+                {displaySocials.map((link: SocialLink) => (
                   <SocialIcon key={link.label} link={link} />
                 ))}
               </div>
@@ -134,24 +141,7 @@ export default function HeroSection({ data, stats, socialLinks }: { data?: Sanit
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent opacity-55" />
 
-            {/* Available badge */}
-            <div className="absolute top-6 right-6">
-              <div className="bg-black/25 backdrop-blur-md border border-white/15 rounded-full px-4 py-2 flex items-center gap-2.5">
-                <span className="pulse-dot text-green-400" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-white">
-                  Available for Hire
-                </span>
-              </div>
-            </div>
 
-            <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
-              <p className="text-white/50 text-[10px] font-black uppercase tracking-widest mb-2">
-                Location
-              </p>
-              <p className="text-white text-xl font-heading font-bold">
-                Based in Vadodara, India
-              </p>
-            </div>
           </motion.div>
 
           {/* Stats row */}

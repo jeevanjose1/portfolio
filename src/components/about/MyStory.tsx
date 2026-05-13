@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Timeline from "@/components/Timeline";
 import { timelineData as fallbackTimelineData, myStoryText as fallbackMyStoryText } from "@/lib/data";
+import type { TimelineItem } from "@/lib/data";
 
-export default function MyStory({ storyText, timeline }: { storyText?: string, timeline?: any[] }) {
+export default function MyStory({ storyText, timeline }: { storyText?: string, timeline?: TimelineItem[] }) {
   const text = storyText || fallbackMyStoryText;
   const items = timeline || fallbackTimelineData;
   return (

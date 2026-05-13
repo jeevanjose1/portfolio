@@ -21,6 +21,7 @@
     "react-dom": "18.2.0",
     "react-is": "^19.2.6",
     "sanity": "^3.38.0",
+    "sharp": "^0.34.5",
     "styled-components": "^6.4.1"
   },
   "devDependencies": {

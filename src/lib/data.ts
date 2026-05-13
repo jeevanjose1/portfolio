@@ -60,22 +60,9 @@ export interface CTABannerData {
   buttonHref: string;
 }
 
-// ─── Hero Data ───
 
-export const heroData: HeroData = {
-  badge: "✦ Available for freelance work",
-  heading: "Full-Stack Developer &\nMobile Engineer",
-  subheadline:
-    "I build scalable web apps, mobile apps, and cloud solutions that help startups and businesses grow.",
-  ctaPrimary: { label: "View My Work", href: "/works" },
-  ctaSecondary: { label: "Download CV", href: "/resume.pdf" },
-};
 
-export const statsData: StatCard[] = [
-  { value: "4+", label: "Years Experience" },
-  { value: "20+", label: "Projects Delivered" },
-  { value: "10+", label: "Happy Clients" },
-];
+
 
 export const socialLinks: SocialLink[] = [
   {
@@ -106,22 +93,6 @@ export const socialLinks: SocialLink[] = [
   },
 ];
 
-// ─── Tech Stack Data ───
-
-export const techStackData: TechItem[] = [
-  { name: "React", icon: "react" },
-  { name: "Node.js", icon: "nodejs" },
-  { name: "Flutter", icon: "flutter" },
-  { name: "TypeScript", icon: "typescript" },
-  { name: "MongoDB", icon: "mongodb" },
-  { name: "PostgreSQL", icon: "postgresql" },
-  { name: "AWS", icon: "aws" },
-  { name: "Docker", icon: "docker" },
-  { name: "Firebase", icon: "firebase" },
-  { name: "Next.js", icon: "nextjs" },
-];
-
-// ─── Services Data ───
 
 export const servicesData: ServiceItem[] = [
   {
@@ -228,7 +199,7 @@ export interface SkillItem {
 
 export interface SkillGroup {
   title: string;
-  iconName: "Layout" | "Server" | "Smartphone" | "Cloud";
+  iconName: string;
   skills: SkillItem[];
 }
 
@@ -252,26 +223,11 @@ export interface CertificationItem {
 }
 
 export interface BeyondCodeItem {
-  iconName: "GitBranch" | "Users" | "BookOpen";
+  iconName: string;
   title: string;
   description: string;
 }
 
-// ─── About Hero ───
-
-export const aboutHeroData: AboutHeroData = {
-  badge: "About Me",
-  heading: "Passionate Developer.\nProblem Solver. Builder.",
-  paragraphs: [
-    "With over 4 years of hands-on experience in software development, I specialize in building full-stack web applications, cross-platform mobile apps, and scalable cloud solutions. Based in Vadodara, India, I work with startups and businesses worldwide to turn their ideas into production-ready products.",
-    "I'm driven by a love for clean, maintainable code and a deep curiosity for emerging technologies. Every project I take on is an opportunity to solve real problems and create lasting impact through thoughtful engineering.",
-  ],
-  stats: [
-    { value: "4+", label: "Years" },
-    { value: "20+", label: "Projects" },
-    { value: "5+", label: "Industries" },
-  ],
-};
 
 // ─── Timeline ───
 
@@ -465,6 +421,7 @@ export interface MainServiceItem {
   }>;
   faqs: Array<{ question: string; answer: string }>;
   relatedCategory: string;
+  isMain?: boolean;
 }
 
 export interface AdditionalServiceItem {
@@ -475,7 +432,7 @@ export interface AdditionalServiceItem {
 
 export interface ProcessStepItem {
   number: string;
-  iconName: "Search" | "FileText" | "Code" | "Rocket";
+  iconName: string;
   title: string;
   description: string;
 }
@@ -856,14 +813,7 @@ export const faqData: FAQItem[] = [
 
 export type FilterCategory = "All" | "Web Apps" | "Mobile Apps" | "E-commerce" | "Dashboards" | "APIs";
 
-export const filterCategoriesData: FilterCategory[] = [
-  "All",
-  "Web Apps",
-  "Mobile Apps",
-  "E-commerce",
-  "Dashboards",
-  "APIs",
-];
+
 
 export interface ProjectFeature {
   iconName: string;
