@@ -38,7 +38,7 @@ export default function ServiceCTA({ title }: ServiceCTAProps) {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary"
+                className="btn-secondary text-foreground"
               >
                 Download Service Brief
               </a>

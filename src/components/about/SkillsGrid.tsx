@@ -1,14 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Layout, Server, Smartphone, Cloud } from "lucide-react";
-import { skillGroups } from "@/lib/data";
+import { skillGroups as fallbackSkillGroups } from "@/lib/data";
 import type { SkillGroup } from "@/lib/data";
+import * as LucideIcons from "lucide-react";
 
-const iconMap = { Layout, Server, Smartphone, Cloud } as const;
-
-function SkillGroupCard({ group, index }: { group: SkillGroup; index: number }) {
-  const Icon = iconMap[group.iconName];
+function SkillGroupCard({ group, index }: { group: any; index: number }) {
+  // @ts-ignore
+  const Icon = LucideIcons[group.iconName] || LucideIcons.Layout;
 
   return (
     <motion.div
@@ -28,7 +27,7 @@ function SkillGroupCard({ group, index }: { group: SkillGroup; index: number }) 
         </h3>
       </div>
       <div className="flex flex-wrap gap-2.5">
-        {group.skills.map((skill) => (
+        {group.skills.map((skill: any) => (
           <div
             key={skill.name}
             className="px-4 py-2 bg-surface-2 border border-[var(--color-border)] rounded-full group/skill hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] transition-all duration-200 cursor-default"
@@ -43,7 +42,8 @@ function SkillGroupCard({ group, index }: { group: SkillGroup; index: number }) 
   );
 }
 
-export default function SkillsGrid() {
+export default function SkillsGrid({ skillGroups }: { skillGroups?: any[] }) {
+  const displayGroups = skillGroups || fallbackSkillGroups;
   return (
     <section className="bg-section-alt transition-colors duration-300">
       <div className="section-container">
@@ -59,7 +59,7 @@ export default function SkillsGrid() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
-          {skillGroups.map((group, i) => (
+          {displayGroups.map((group, i) => (
             <SkillGroupCard key={group.title} group={group} index={i} />
           ))}
         </div>

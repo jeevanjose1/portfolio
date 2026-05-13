@@ -14,7 +14,27 @@ const fadeUp = {
   }),
 };
 
-export default function AboutHero() {
+import { SanityPageAbout } from "@/sanity/types";
+
+const fallbackAboutHeroData = {
+  badge: "About Me",
+  heading: "Passionate Developer. Problem Solver. Builder.",
+  paragraphs: [
+    "With over 4 years of hands-on experience in software development, I specialize in building full-stack web applications, cross-platform mobile apps, and scalable cloud solutions.",
+  ],
+  stats: [
+    { value: "4+", label: "Years" },
+    { value: "20+", label: "Projects" },
+    { value: "5+", label: "Industries" },
+  ],
+};
+
+export default function AboutHero({ data }: { data?: SanityPageAbout }) {
+  const badge = data?.heroBadge || fallbackAboutHeroData.badge;
+  const heading = data?.heroHeading || fallbackAboutHeroData.heading;
+  const paragraphs = data?.heroParagraphs || fallbackAboutHeroData.paragraphs;
+  const stats = data?.heroStats || fallbackAboutHeroData.stats;
+
   return (
     <section className="min-h-[100svh] flex items-center pb-12 transition-colors duration-300">
       <div className="section-container w-full">
@@ -29,13 +49,13 @@ export default function AboutHero() {
             <div>
               <span className="hero-badge">
                 <Sparkles size={13} />
-                {aboutHeroData.badge}
+                {badge}
               </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-black text-foreground leading-[1.08] mb-5">
-                Engineer with a product eye and a builder&apos;s pace.
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-black text-foreground leading-[1.08] mb-5 whitespace-pre-line">
+                {heading}
               </h1>
               <p className="text-muted-foreground text-base sm:text-lg max-w-xl leading-relaxed">
-                {aboutHeroData.paragraphs[0]}
+                {paragraphs[0]}
               </p>
             </div>
             <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -76,7 +96,7 @@ export default function AboutHero() {
 
           {/* Stats row */}
           <motion.div custom={2} variants={fadeUp} className="md:col-span-12 grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {aboutHeroData.stats.slice(0, 3).map((stat) => (
+            {stats.slice(0, 3).map((stat: any) => (
               <div
                 key={stat.label}
                 className="bg-section-alt rounded-2xl p-6 sm:p-8 border border-[var(--color-card-border)] flex items-center justify-between gap-4"

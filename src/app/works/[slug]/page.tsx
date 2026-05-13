@@ -3,7 +3,8 @@ import { projectsData } from "@/lib/data";
 import ProjectDetails from "@/components/works/ProjectDetails";
 import type { Metadata } from "next";
 import { client } from "@/sanity/lib/client";
-import { projectBySlugQuery, projectsQuery } from "@/sanity/lib/queries";
+import { projectBySlugQuery, projectsQuery, siteSettingsQuery } from "@/sanity/lib/queries";
+import { SanityProject, SanitySiteSettings } from "@/sanity/types";
 
 interface PageProps {
   params: {
@@ -46,12 +47,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProjectPage({ params }: PageProps) {
-  const project = await client.fetch(projectBySlugQuery, { slug: params.slug })
-    || projectsData.find((p) => p.slug === params.slug);
+  const [project, siteSettings] = await Promise.all([
+    client.fetch(projectBySlugQuery, { slug: params.slug })
+      || projectsData.find((p) => p.slug === params.slug),
+    client.fetch(siteSettingsQuery),
+  ]);
 
   if (!project) {
     notFound();
   }
 
-  return <ProjectDetails project={project} />;
+  return <ProjectDetails project={project} siteSettings={siteSettings} />;
 }

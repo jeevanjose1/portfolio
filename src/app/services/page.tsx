@@ -6,8 +6,8 @@ import FAQ from "@/components/services/FAQ";
 import CTABanner from "@/components/home/CTABanner";
 import type { Metadata } from "next";
 import { client } from "@/sanity/lib/client";
-import { servicesQuery, faqQuery } from "@/sanity/lib/queries";
-import { SanityService, SanityFAQ } from "@/sanity/types";
+import { servicesQuery, faqQuery, pageServicesQuery, siteSettingsQuery } from "@/sanity/lib/queries";
+import { SanityService, SanityFAQ, SanityPageServices, SanitySiteSettings } from "@/sanity/types";
 
 export const revalidate = 0; // Disable caching for real-time updates
 
@@ -18,9 +18,11 @@ export const metadata: Metadata = {
 };
 
 export default async function ServicesPage() {
-  const [services, faqs] = await Promise.all([
+  const [services, faqs, pageServices, siteSettings] = await Promise.all([
     client.fetch<SanityService[]>(servicesQuery),
     client.fetch<SanityFAQ[]>(faqQuery),
+    client.fetch<SanityPageServices>(pageServicesQuery),
+    client.fetch<SanitySiteSettings>(siteSettingsQuery),
   ]);
 
   const mainServices = services.filter(s => s.isMain);
@@ -28,12 +30,12 @@ export default async function ServicesPage() {
 
   return (
     <>
-      <ServicesHero />
+      <ServicesHero data={pageServices} mainServices={mainServices} />
       <MainServices services={mainServices} />
-      <AdditionalServices services={additionalServices} />
-      <Process />
+      <AdditionalServices services={additionalServices} additionalItems={pageServices?.additionalServices} />
+      <Process steps={pageServices?.process} />
       <FAQ faqs={faqs} />
-      <CTABanner />
+      <CTABanner data={siteSettings?.ctaBanner} />
     </>
   );
 }

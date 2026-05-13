@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowDown, ArrowRight, BarChart3, FolderGit2, Gauge, Sparkles } from "lucide-react";
-import { projectsData } from "@/lib/data";
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 30 },
@@ -13,8 +12,8 @@ const fadeUp = {
   }),
 };
 
-export default function WorksHero() {
-  const featuredProjects = projectsData.slice(0, 3);
+export default function WorksHero({ projects }: { projects: any[] }) {
+  const featuredProjects = projects.slice(0, 3);
 
   return (
     <section className="min-h-[100svh] flex items-center pb-12 transition-colors duration-300">
@@ -69,7 +68,7 @@ export default function WorksHero() {
             <motion.div custom={2} variants={fadeUp} className="grid grid-cols-1 gap-3">
               {featuredProjects.map((project) => (
                 <Link
-                  key={project.id}
+                  key={project._id}
                   href={`/works/${project.slug}`}
                   className="bg-section-alt rounded-xl p-4 border border-[var(--color-card-border)] flex items-center justify-between gap-4 group hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] transition-all duration-300"
                   style={{ boxShadow: "var(--shadow-sm)" }}
@@ -77,7 +76,7 @@ export default function WorksHero() {
                   <div>
                     <p className="text-sm font-heading font-black text-foreground leading-snug">{project.title}</p>
                     <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mt-1">
-                      {project.categories.filter((c) => c !== "All")[0]}
+                      {project.categories?.[0] || "Project"}
                     </p>
                   </div>
                   <ArrowRight size={15} className="text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
@@ -89,7 +88,7 @@ export default function WorksHero() {
           {/* Stats row */}
           <motion.div custom={3} variants={fadeUp} className="md:col-span-12 grid grid-cols-1 sm:grid-cols-3 gap-5">
             {[
-              { label: "Projects",   value: `${projectsData.length}+`, icon: FolderGit2 },
+              { label: "Projects",   value: `${projects.length}+`, icon: FolderGit2 },
               { label: "Core Focus", value: "SaaS / Apps",             icon: Gauge },
               { label: "Outcome",    value: "Launch Ready",            icon: BarChart3 },
             ].map((item) => {

@@ -106,7 +106,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0,  scale: 1 }}
               exit={{    opacity: 0, y: -8, scale: 0.97 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="absolute top-[68px] left-0 right-0 bg-[color-mix(in_srgb,var(--color-background)_95%,transparent)] backdrop-blur-2xl border border-[var(--color-card-border)] rounded-2xl shadow-xl overflow-hidden pointer-events-auto p-2"
+              className="absolute top-[68px] left-0 right-0 bg-background border border-[var(--color-card-border)] rounded-2xl shadow-xl overflow-hidden pointer-events-auto p-2"
             >
               <ul className="flex flex-col gap-1">
                 {navLinks.map((link) => {

@@ -25,8 +25,8 @@ const GithubIcon = ({ size, className }: { size: number; className?: string }) =
 
 export default function ProjectHero({ project }: { project: NormalizedProject }) {
   return (
-    <section className="bg-background pt-32 pb-6">
-      <div className="section-container pt-0">
+    <section className="bg-background">
+      <div className="section-container">
         <div className="mb-8">
           <Link
             href="/works"

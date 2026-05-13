@@ -5,7 +5,12 @@ import { ArrowRight, MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { ctaBannerData } from "@/lib/data";
 
-export default function CTABanner() {
+export default function CTABanner({ data }: { data?: any }) {
+  const heading = data?.heading || ctaBannerData.heading;
+  const subtext = data?.subtext || ctaBannerData.subtext;
+  const buttonLabel = data?.buttonLabel || ctaBannerData.buttonLabel;
+  const buttonHref = data?.buttonHref || ctaBannerData.buttonHref;
+
   return (
     <section id="contact-cta" className="transition-colors duration-300">
       <div className="section-container">
@@ -31,20 +36,19 @@ export default function CTABanner() {
               Direct Engagement
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-tight mb-6">
-              Let&apos;s Work<br />
-              <span className="text-accent italic font-serif">Together.</span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-tight mb-6 whitespace-pre-line">
+              {heading}
             </h2>
 
             <p className="text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-10 text-base sm:text-lg font-body leading-relaxed">
-              {ctaBannerData.subtext}
+              {subtext}
             </p>
 
             <Link
-              href={ctaBannerData.buttonHref}
+              href={buttonHref}
               className="btn-primary gap-3 px-10 py-5 text-xs group"
             >
-              {ctaBannerData.buttonLabel}
+              {buttonLabel}
               <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

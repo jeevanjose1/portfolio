@@ -9,15 +9,35 @@ import RelatedWorks from "@/components/services/RelatedWorks";
 import RelatedServices from "@/components/services/RelatedServices";
 import ServiceCTA from "@/components/services/ServiceCTA";
 import type { Metadata } from "next";
+import { client } from "@/sanity/lib/client";
+import { serviceBySlugQuery, servicesQuery } from "@/sanity/lib/queries";
+import { SanityService } from "@/sanity/types";
 
-export function generateStaticParams() {
+export const revalidate = 0;
+
+interface ServicePageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export async function generateStaticParams() {
+  const services = await client.fetch<SanityService[]>(servicesQuery);
+  
+  if (services && services.length > 0) {
+    return services.map((service) => ({
+      slug: service.slug,
+    }));
+  }
+
   return mainServicesData.map((service) => ({
     slug: service.slug,
   }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const service = mainServicesData.find((s) => s.slug === params.slug);
+export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+  const service = await client.fetch<SanityService>(serviceBySlugQuery, { slug: params.slug })
+    || mainServicesData.find((s) => s.slug === params.slug);
 
   if (!service) {
     return {
@@ -31,8 +51,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
-  const service = mainServicesData.find((s) => s.slug === params.slug);
+export default async function ServiceDetailPage({ params }: ServicePageProps) {
+  const service = await client.fetch<SanityService>(serviceBySlugQuery, { slug: params.slug })
+    || (mainServicesData.find((s) => s.slug === params.slug) as unknown as SanityService);
 
   if (!service) {
     notFound();
@@ -40,8 +61,6 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
   return (
     <>
-
-
       <ServiceHero service={service} />
       <WhatYouGet service={service} />
       <ServiceTechStack service={service} />
@@ -49,7 +68,6 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
       <ServiceFAQ service={service} />
       <RelatedWorks service={service} />
       <RelatedServices currentService={service} />
-
       <ServiceCTA title={service.title} />
     </>
   );

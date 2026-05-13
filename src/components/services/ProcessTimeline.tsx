@@ -4,7 +4,8 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { useRef } from "react";
 import type { MainServiceItem } from "@/lib/data";
 
-export default function ProcessTimeline({ service }: { service: MainServiceItem }) {
+export default function ProcessTimeline({ service }: { service: any }) {
+  const steps = service.process || [];
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
@@ -47,7 +48,7 @@ export default function ProcessTimeline({ service }: { service: MainServiceItem 
           />
 
           <div className="space-y-12">
-            {service.process.map((step, i) => {
+            {steps.map((step: any, i: number) => {
               const isEven = i % 2 === 0;
               return (
                 <div key={i} className={`relative flex flex-col md:flex-row items-center gap-8 ${isEven ? 'md:flex-row-reverse' : ''}`}>

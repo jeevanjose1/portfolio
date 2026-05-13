@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { Mail, ArrowUpRight } from "lucide-react";
-import { siteConfig } from "@/lib/constants";
 import { usePathname } from "next/navigation";
+import { siteConfig } from "@/lib/constants";
+import { SanitySiteSettings } from "@/sanity/types";
 
 const quickLinks = [
   { label: "Home",     href: "/" },
@@ -13,16 +14,21 @@ const quickLinks = [
   { label: "Contact",  href: "/contact" },
 ];
 
-const socialPills = [
-  { label: "GitHub",   href: siteConfig.socials.github },
-  { label: "LinkedIn", href: siteConfig.socials.linkedin },
-  { label: "Upwork",   href: siteConfig.socials.upwork },
-];
-
-export default function Footer() {
+export default function Footer({ siteSettings }: { siteSettings?: SanitySiteSettings }) {
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
   const isStudio = pathname.startsWith("/studio");
+
+  const email = siteSettings?.email || siteConfig.email;
+  const description = siteSettings?.description || siteConfig.description;
+  const socialPills = siteSettings?.socialLinks?.map((link) => ({
+    label: link.label,
+    href: link.href,
+  })) || [
+    { label: "GitHub",   href: siteConfig.socials.github },
+    { label: "LinkedIn", href: siteConfig.socials.linkedin },
+    { label: "Upwork",   href: siteConfig.socials.upwork },
+  ];
 
   if (isStudio) return null;
 
@@ -43,15 +49,14 @@ export default function Footer() {
               JEEVAN<span className="opacity-40">JOSE</span>
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              Full-stack developer crafting modern, scalable web applications
-              with clean code and thoughtful design.
+              {description}
             </p>
             <a
-              href={`mailto:${siteConfig.email}`}
+              href={`mailto:${email}`}
               className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors group"
             >
               <Mail size={14} className="group-hover:text-accent transition-colors" />
-              {siteConfig.email}
+              {email}
             </a>
           </div>
 

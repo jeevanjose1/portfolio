@@ -12,7 +12,7 @@ import ProjectFeatures from "./ProjectFeatures";
 import ProjectMetrics from "./ProjectMetrics";
 import ProjectRelated from "./ProjectRelated";
 
-export default function ProjectDetails({ project }: { project: ProjectItem | SanityProject }) {
+export default function ProjectDetails({ project, siteSettings }: { project: ProjectItem | SanityProject, siteSettings?: any }) {
   const isSanity = '_id' in project;
 
   const p: NormalizedProject = isSanity ? {
@@ -65,7 +65,7 @@ export default function ProjectDetails({ project }: { project: ProjectItem | San
       <ProjectFeatures project={p} />
       <ProjectMetrics project={p} />
       <ProjectRelated project={p} />
-      <CTABanner />
+      <CTABanner data={siteSettings?.ctaBanner} />
     </div>
   );
 }

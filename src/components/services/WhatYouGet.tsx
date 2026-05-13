@@ -1,14 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Palette, Smartphone, Server, Shield, Bell, Upload, Box, Workflow, Activity, Database, Gauge, Zap } from "lucide-react";
-import type { MainServiceItem } from "@/lib/data";
+import * as LucideIcons from "lucide-react";
 
-const iconMap: Record<string, React.ElementType> = {
-  Palette, Smartphone, Server, Shield, Bell, Upload, Box, Workflow, Activity, Database, Gauge, Zap
-};
-
-export default function WhatYouGet({ service }: { service: MainServiceItem }) {
+export default function WhatYouGet({ service }: { service: any }) {
+  const items = service.whatYouGet || [];
   return (
     <section className="bg-background py-16 transition-colors duration-300">
       <div className="section-container">
@@ -28,8 +24,8 @@ export default function WhatYouGet({ service }: { service: MainServiceItem }) {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {service.whatYouGet.map((item, i) => {
-            const Icon = iconMap[item.icon] || Server;
+          {items.map((item: any, i: number) => {
+            const Icon = (LucideIcons as any)[item.icon] || LucideIcons.Server;
             return (
               <motion.div
                 key={i}

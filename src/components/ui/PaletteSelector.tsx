@@ -51,7 +51,7 @@ export default function PaletteSelector() {
               animate={{ opacity: 1, scale: 1,    y: 0 }}
               exit={{   opacity: 0, scale: 0.92, y: 8 }}
               transition={{ duration: 0.15, ease: "easeOut" }}
-              className="absolute top-[50px] right-0 bg-[color-mix(in_srgb,var(--color-background)_95%,transparent)] backdrop-blur-xl border border-[var(--color-card-border)] rounded-2xl shadow-xl p-2.5 z-50 min-w-[160px]"
+              className="absolute top-[50px] right-0 bg-surface-1 border border-[var(--color-card-border)] rounded-2xl shadow-xl p-2.5 z-50 min-w-[160px]"
             >
               <p className="text-[9px] font-black uppercase tracking-widest text-muted-foreground px-2 pb-2 pt-0.5">
                 Color Theme

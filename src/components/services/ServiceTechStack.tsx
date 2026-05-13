@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import type { MainServiceItem } from "@/lib/data";
 
-export default function ServiceTechStack({ service }: { service: MainServiceItem }) {
+export default function ServiceTechStack({ service }: { service: any }) {
+  const stack = service.techStack || [];
   return (
     <section className="bg-section-alt py-16 transition-colors duration-300">
       <div className="section-container">
@@ -26,7 +27,7 @@ export default function ServiceTechStack({ service }: { service: MainServiceItem
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {service.techStack.map((category, i) => (
+          {stack.map((category: any, i: number) => (
             <motion.div
               key={category.category}
               initial={{ opacity: 0, y: 20 }}
@@ -39,7 +40,7 @@ export default function ServiceTechStack({ service }: { service: MainServiceItem
                 {category.category}
               </h3>
               <div className="flex flex-wrap gap-3">
-                {category.techs.map((tech) => (
+                {category.techs.map((tech: string) => (
                   <div
                     key={tech}
                     className="px-4 py-2 rounded-lg bg-section-alt border border-border text-sm font-black text-foreground shadow-sm hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:text-accent transition-colors duration-300"

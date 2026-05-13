@@ -32,8 +32,8 @@ function AdditionalServiceCard({ service, index }: { service: any; index: number
   );
 }
 
-export default function AdditionalServices({ services }: { services: SanityService[] }) {
-  const displayData = services.length > 0 ? services : additionalServicesData;
+export default function AdditionalServices({ services, additionalItems }: { services: SanityService[], additionalItems?: any[] }) {
+  const displayData = additionalItems && additionalItems.length > 0 ? additionalItems : (services.length > 0 ? services : additionalServicesData);
 
   return (
     <section className="bg-background relative z-20 transition-colors duration-300">

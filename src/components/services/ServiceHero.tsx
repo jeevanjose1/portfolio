@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Monitor, Smartphone, Cloud, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
+import * as LucideIcons from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import type { MainServiceItem } from "@/lib/data";
 
-const iconMap = { Monitor, Smartphone, Cloud } as const;
-
-export default function ServiceHero({ service }: { service: MainServiceItem }) {
-  const Icon = iconMap[service.iconName];
+export default function ServiceHero({ service }: { service: any }) {
+  const Icon = (LucideIcons as any)[service.iconName] || LucideIcons.HelpCircle;
+  const relatedCategory = service.relatedCategory || (service.isMain ? "Core Service" : "Specialized Service");
+  const heroFeatures = service.heroFeatures || service.features || [];
 
   return (
     <section className="min-h-[72vh] flex items-center bg-background pt-32 pb-6">
@@ -39,7 +40,7 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                 </span>
-                {service.relatedCategory}
+                {relatedCategory}
               </span>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-foreground leading-[1.1] mb-6">
@@ -69,7 +70,7 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
                 href="/works"
                 className="inline-flex items-center gap-2 px-6 py-4 rounded-lg font-black uppercase tracking-widest text-sm text-foreground bg-background border border-border hover:border-accent hover:bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] transition-all duration-300"
               >
-                View {service.relatedCategory}
+                View {relatedCategory}
               </Link>
             </div>
           </motion.div>
@@ -109,9 +110,9 @@ export default function ServiceHero({ service }: { service: MainServiceItem }) {
                 </span>
               </div>
               <ul className="space-y-3">
-                {service.heroFeatures.slice(0, 3).map((feature, idx) => (
+                {heroFeatures.slice(0, 3).map((feature: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 size={16} className="text-[color-mix(in_srgb,var(--color-background)_80%,transparent)] mt-0.5 flex-shrink-0" />
+                    <LucideIcons.CheckCircle2 size={16} className="text-[color-mix(in_srgb,var(--color-background)_80%,transparent)] mt-0.5 flex-shrink-0" />
                     <span className="text-sm font-body text-[color-mix(in_srgb,var(--color-background)_90%,transparent)] leading-tight">
                       {feature}
                     </span>

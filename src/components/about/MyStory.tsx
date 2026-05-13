@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Timeline from "@/components/Timeline";
-import { timelineData, myStoryText } from "@/lib/data";
+import { timelineData as fallbackTimelineData, myStoryText as fallbackMyStoryText } from "@/lib/data";
 
-export default function MyStory() {
+export default function MyStory({ storyText, timeline }: { storyText?: string, timeline?: any[] }) {
+  const text = storyText || fallbackMyStoryText;
+  const items = timeline || fallbackTimelineData;
   return (
     <section className="bg-background relative transition-colors duration-300">
       <div className="section-container">
@@ -26,7 +28,7 @@ export default function MyStory() {
           {/* Timeline Column */}
           <div className="lg:col-span-5 bg-section-alt rounded-2xl p-10 border border-[var(--color-card-border)]" style={{ boxShadow: "var(--shadow-card)" }}>
             <h3 className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-10">Milestones</h3>
-            <Timeline items={timelineData} />
+            <Timeline items={items} />
           </div>
 
           {/* Story Text Column — Bento Style Card */}
@@ -48,10 +50,10 @@ export default function MyStory() {
               </h3>
               <div className="space-y-6 relative z-10">
                 <p className="text-muted-foreground leading-relaxed text-lg font-body italic">
-                  &ldquo;{myStoryText.split('.')[0]}.&rdquo;
+                  &ldquo;{text.split('.')[0]}.&rdquo;
                 </p>
                 <p className="text-muted-foreground leading-relaxed font-body">
-                  {myStoryText.substring(myStoryText.indexOf('.') + 1)}
+                  {text.substring(text.indexOf('.') + 1)}
                 </p>
               </div>
 

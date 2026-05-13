@@ -5,6 +5,9 @@ import Navbar       from "@/components/layout/Navbar";
 import Footer       from "@/components/layout/Footer";
 import MainContent  from "@/components/layout/MainContent";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { client } from "@/sanity/lib/client";
+import { siteSettingsQuery } from "@/sanity/lib/queries";
+import { SanitySiteSettings } from "@/sanity/types";
 
 const inter = Inter({
   subsets:  ["latin"],
@@ -29,9 +32,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const siteSettings = await client.fetch<SanitySiteSettings>(siteSettingsQuery);
+
   return (
     <html
       lang="en"
@@ -50,7 +55,7 @@ export default function RootLayout({
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem={false}>
           <Navbar />
           <MainContent>{children}</MainContent>
-          <Footer />
+          <Footer siteSettings={siteSettings} />
         </ThemeProvider>
       </body>
     </html>

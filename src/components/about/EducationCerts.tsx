@@ -1,8 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Award } from "lucide-react";
-import { educationData, certificationsData } from "@/lib/data";
+import { GraduationCap, Award, BookOpen, Code2, Users, Target } from "lucide-react";
+import { educationData as fallbackEducationData, certificationsData as fallbackCertificationsData, beyondCodeData as fallbackBeyondCodeData } from "@/lib/data";
+
+const iconMap: Record<string, React.ElementType> = {
+  BookOpen,
+  Code2,
+  Users,
+  Target,
+};
 
 const certIconColors: Record<string, string> = {
   AWS: "bg-orange-500/10 text-orange-500 border-orange-500/20",
@@ -10,7 +17,9 @@ const certIconColors: Record<string, string> = {
   React: "bg-cyan-500/10 text-cyan-500 border-cyan-500/20",
 };
 
-export default function EducationCerts() {
+export default function EducationCerts({ education, certifications }: { education?: any[], certifications?: any[] }) {
+  const displayEdu = education || fallbackEducationData;
+  const displayCerts = certifications || fallbackCertificationsData;
   return (
     <section className="bg-section-alt transition-colors duration-300">
       <div className="section-container">
@@ -30,7 +39,6 @@ export default function EducationCerts() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
-          {/* Education — Bento Style Card (spans 5 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -48,7 +56,7 @@ export default function EducationCerts() {
             </div>
 
             <div className="space-y-6">
-              {educationData.map((edu) => (
+              {displayEdu.map((edu: any) => (
                 <div key={edu.degree} className="group">
                   <h4 className="text-xl font-heading font-black text-foreground mb-2 group-hover:text-accent transition-colors duration-300">{edu.degree}</h4>
                   <p className="text-sm text-muted-foreground font-body mb-3">{edu.university}</p>
@@ -79,7 +87,7 @@ export default function EducationCerts() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
-              {certificationsData.map((cert) => {
+              {displayCerts.map((cert: any) => {
                 const colorClass = certIconColors[cert.iconLabel] ?? "bg-section-alt text-muted-foreground border-border";
                 return (
                   <div key={cert.name} className="bg-background rounded-2xl p-6 flex items-start gap-5 border border-[var(--color-card-border)] hover:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] hover:-translate-y-0.5 transition-all duration-300 group" style={{ boxShadow: "var(--shadow-card)" }}>

@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import Accordion from "@/components/Accordion";
 import type { MainServiceItem } from "@/lib/data";
 
-export default function ServiceFAQ({ service }: { service: MainServiceItem }) {
+export default function ServiceFAQ({ service }: { service: any }) {
+  const faqs = service.faqs || [];
   return (
     <section className="bg-background py-16 transition-colors duration-300">
       <div className="section-container">
@@ -24,7 +25,7 @@ export default function ServiceFAQ({ service }: { service: MainServiceItem }) {
         </motion.div>
 
         <div className="max-w-3xl mx-auto space-y-4">
-          {service.faqs.map((faq, i) => (
+          {faqs.map((faq: any, i: number) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}

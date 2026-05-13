@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import ProcessStep from "@/components/ProcessStep";
-import { processData } from "@/lib/data";
+import { processData as fallbackProcessData } from "@/lib/data";
 
-export default function Process() {
+export default function Process({ steps }: { steps?: any[] }) {
+  const displaySteps = steps || fallbackProcessData;
   return (
-    <section className="bg-background py-12 transition-colors duration-300">
+    <section className="bg-section-alt transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -24,7 +25,7 @@ export default function Process() {
         </motion.div>
 
         <div className="flex flex-col md:flex-row relative max-w-6xl mx-auto items-start">
-          {processData.map((step, i) => (
+          {displaySteps.map((step, i) => (
             <motion.div
               key={step.title}
               initial={{ opacity: 0, y: 30 }}
@@ -38,7 +39,7 @@ export default function Process() {
                 iconName={step.iconName}
                 title={step.title}
                 description={step.description}
-                isLast={i === processData.length - 1}
+                isLast={i === displaySteps.length - 1}
               />
             </motion.div>
           ))}

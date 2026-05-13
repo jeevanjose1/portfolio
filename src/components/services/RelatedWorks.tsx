@@ -6,10 +6,12 @@ import ProjectCard from "@/components/works/ProjectCard";
 import { projectsData } from "@/lib/data";
 import type { MainServiceItem, FilterCategory } from "@/lib/data";
 
-export default function RelatedWorks({ service }: { service: MainServiceItem }) {
+export default function RelatedWorks({ service }: { service: any }) {
+  const relatedCategory = service.relatedCategory || (service.isMain ? "Web Apps" : "Mobile Apps");
+  
   // Filter projects based on the related category
   const relatedProjects = projectsData
-    .filter((project) => project.categories.includes(service.relatedCategory as FilterCategory))
+    .filter((project) => project.categories.includes(relatedCategory as any))
     .slice(0, 3); // Take up to 3 projects
 
   if (relatedProjects.length === 0) return null;

@@ -2,14 +2,13 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Monitor, Smartphone, Cloud, ArrowUpRight } from "lucide-react";
+import * as LucideIcons from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { mainServicesData } from "@/lib/data";
 import type { MainServiceItem } from "@/lib/data";
 import GradientCard from "@/components/GradientCard";
 
-const iconMap = { Monitor, Smartphone, Cloud } as const;
-
-export default function RelatedServices({ currentService }: { currentService: MainServiceItem }) {
+export default function RelatedServices({ currentService }: { currentService: any }) {
   const otherServices = mainServicesData.filter(s => s.slug !== currentService.slug);
 
   return (
@@ -32,7 +31,7 @@ export default function RelatedServices({ currentService }: { currentService: Ma
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
           {otherServices.map((service, i) => {
-            const Icon = iconMap[service.iconName];
+            const Icon = (LucideIcons as any)[service.iconName] || LucideIcons.Server;
             return (
               <motion.div
                 key={service.slug}

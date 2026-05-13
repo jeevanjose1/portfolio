@@ -74,6 +74,10 @@ export interface SanityService {
       included: boolean;
     }[];
   }[];
+  faqs?: {
+    question: string;
+    answer: string;
+  }[];
 }
 
 export interface SanityTestimonial {
@@ -97,4 +101,62 @@ export interface SanityFAQ {
   _id: string;
   question: string;
   answer: string;
+}
+
+export interface SanitySiteSettings {
+  _id: string;
+  title: string;
+  description?: string;
+  email?: string;
+  socialLinks?: {
+    label: string;
+    href: string;
+    svgPaths: string[];
+  }[];
+  globalStats?: {
+    value: string;
+    label: string;
+  }[];
+  ctaBanner?: {
+    heading: string;
+    subtext: string;
+    buttonLabel: string;
+    buttonHref: string;
+  };
+}
+
+export interface SanityPageHome {
+  _id: string;
+  heroBadge: string;
+  heroHeading: string;
+  heroSubheadline: string;
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+}
+
+export interface SanityPageAbout {
+  _id: string;
+  heroBadge: string;
+  heroHeading: string;
+  heroParagraphs: string[];
+  heroStats?: { value: string; label: string }[];
+  myStoryText: string;
+  timeline?: { year: string; title: string; description: string }[];
+  education?: { degree: string; university: string; year: string }[];
+  certifications?: { name: string; issuer: string; iconLabel: string }[];
+  beyondCode?: { title: string; description: string; iconName: string }[];
+  skillGroups?: {
+    title: string;
+    iconName: string;
+    skills: { name: string; proficiency: number }[];
+  }[];
+}
+
+export interface SanityPageServices {
+  _id: string;
+  heroBadge: string;
+  heroHeading: string;
+  heroSubtitle: string;
+  process?: { number: string; title: string; description: string; iconName: string }[];
+  additionalServices?: { title: string; description: string; iconName: string }[];
 }

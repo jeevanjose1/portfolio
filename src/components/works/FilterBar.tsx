@@ -1,18 +1,16 @@
 "use client";
 
-import type { FilterCategory } from "@/lib/data";
 
-interface FilterBarProps {
-  categories: FilterCategory[];
-  activeFilter: FilterCategory;
-  onFilterChange: (category: FilterCategory) => void;
-}
 
 export default function FilterBar({
   categories,
   activeFilter,
   onFilterChange,
-}: FilterBarProps) {
+}: {
+  categories: string[];
+  activeFilter: string;
+  onFilterChange: (category: string) => void;
+}) {
   return (
     <div className="z-40 bg-[color-mix(in_srgb,var(--color-background)_80%,transparent)] backdrop-blur-md border-b border-border mb-5 transition-colors duration-300">
       <div className="section-container py-4">

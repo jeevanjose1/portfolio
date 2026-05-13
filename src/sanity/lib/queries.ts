@@ -60,7 +60,8 @@ export const servicesQuery = groq`*[_type == "service"] | order(order asc) {
   whatYouGet,
   techStack,
   process,
-  packages
+  packages,
+  faqs
 }`
 
 export const serviceBySlugQuery = groq`*[_type == "service" && slug.current == $slug][0] {
@@ -76,7 +77,8 @@ export const serviceBySlugQuery = groq`*[_type == "service" && slug.current == $
   whatYouGet,
   techStack,
   process,
-  packages
+  packages,
+  faqs
 }`
 
 // Testimonials
@@ -103,4 +105,48 @@ export const faqQuery = groq`*[_type == "faq"] | order(order asc) {
   _id,
   question,
   answer
+}`
+
+// Site Settings
+export const siteSettingsQuery = groq`*[_type == "siteSettings"][0] {
+  _id,
+  title,
+  description,
+  email,
+  socialLinks,
+  globalStats,
+  ctaBanner
+}`
+
+// Pages
+export const pageHomeQuery = groq`*[_type == "pageHome"][0] {
+  _id,
+  heroBadge,
+  heroHeading,
+  heroSubheadline,
+  ctaPrimary,
+  ctaSecondary
+}`
+
+export const pageAboutQuery = groq`*[_type == "pageAbout"][0] {
+  _id,
+  heroBadge,
+  heroHeading,
+  heroParagraphs,
+  heroStats,
+  myStoryText,
+  timeline,
+  education,
+  certifications,
+  beyondCode,
+  skillGroups
+}`
+
+export const pageServicesQuery = groq`*[_type == "pageServices"][0] {
+  _id,
+  heroBadge,
+  heroHeading,
+  heroSubtitle,
+  process,
+  additionalServices
 }`

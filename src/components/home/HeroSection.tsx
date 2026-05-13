@@ -4,9 +4,23 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { heroData, statsData, socialLinks } from "@/lib/data";
+import { socialLinks } from "@/lib/data";
 import type { SocialLink } from "@/lib/data";
 import AnimatedNumber from "@/components/ui/AnimatedNumber";
+import { SanityPageHome } from "@/sanity/types";
+
+const fallbackHeroData = {
+  badge: "✦ Available for freelance work",
+  heading: "Full-Stack Developer &\nMobile Engineer",
+  subheadline: "I build scalable web apps, mobile apps, and cloud solutions that help startups and businesses grow.",
+  ctaPrimary: { label: "View My Work", href: "/works" },
+};
+
+const fallbackStatsData = [
+  { value: "4+", label: "Years Experience" },
+  { value: "20+", label: "Projects Delivered" },
+  { value: "10+", label: "Happy Clients" },
+];
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 32 },
@@ -46,7 +60,14 @@ function SocialIcon({ link }: { link: SocialLink }) {
   );
 }
 
-export default function HeroSection() {
+export default function HeroSection({ data, stats, socialLinks }: { data?: SanityPageHome, stats?: any[], socialLinks?: any[] }) {
+  const badge = data?.heroBadge || fallbackHeroData.badge;
+  const heading = data?.heroHeading || fallbackHeroData.heading;
+  const subheadline = data?.heroSubheadline || fallbackHeroData.subheadline;
+  const ctaPrimary = data?.ctaPrimary || fallbackHeroData.ctaPrimary;
+  const displayStats = stats || fallbackStatsData;
+  const displaySocials = socialLinks || [];
+
   return (
     <section id="home" className="min-h-[100svh] flex items-center pb-12 transition-colors duration-300">
       <div className="section-container w-full">
@@ -66,32 +87,28 @@ export default function HeroSection() {
               {/* Badge */}
               <span className="hero-badge">
                 <span className="pulse-dot text-background" />
-                {heroData.badge}
+                {badge}
               </span>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-heading font-black text-foreground leading-[1.08] mb-5">
-                Full-Stack Developer &{" "}
-                <br />
-                <span className="text-accent italic font-serif">
-                  Mobile Engineer
-                </span>
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-heading font-black text-foreground leading-[1.08] mb-5 whitespace-pre-line">
+                {heading}
               </h1>
 
               <p className="text-muted-foreground text-lg max-w-lg leading-relaxed font-body">
-                {heroData.subheadline}
+                {subheadline}
               </p>
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
-                href={heroData.ctaPrimary.href}
+                href={ctaPrimary.href}
                 className="btn-primary gap-2.5"
               >
-                {heroData.ctaPrimary.label}
+                {ctaPrimary.label}
                 <ArrowRight size={15} />
               </Link>
               <div className="flex items-center gap-2.5">
-                {socialLinks.map((link) => (
+                {displaySocials.map((link: any) => (
                   <SocialIcon key={link.label} link={link} />
                 ))}
               </div>
@@ -143,7 +160,7 @@ export default function HeroSection() {
             variants={fadeUp}
             className="md:col-span-12 grid grid-cols-3 gap-5"
           >
-            {statsData.map((stat) => {
+            {displayStats.map((stat) => {
               const numericValue = parseInt(stat.value.replace(/\D/g, ""));
               const suffix = stat.value.replace(/[0-9]/g, "");
               return (

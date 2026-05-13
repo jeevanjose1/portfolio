@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, CloudCog, Cpu, Layers3, MonitorSmartphone } from "lucide-react";
-import { mainServicesData, servicesHeroData } from "@/lib/data";
+import { mainServicesData as fallbackMainServicesData, servicesHeroData as fallbackServicesHeroData } from "@/lib/data";
+import { SanityPageServices, SanityService } from "@/sanity/types";
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 30 },
@@ -15,7 +16,12 @@ const fadeUp = {
 
 const serviceIcons = [MonitorSmartphone, Layers3, CloudCog];
 
-export default function ServicesHero() {
+export default function ServicesHero({ data, mainServices }: { data?: SanityPageServices, mainServices: SanityService[] }) {
+  const badge = data?.heroBadge || "Product Engineering Services";
+  const heading = data?.heroHeading || "From first scope to shipped, stable product.";
+  const subtitle = data?.heroSubtitle || fallbackServicesHeroData.subtitle;
+  const displayMainServices = mainServices || fallbackMainServicesData;
+
   return (
     <section className="min-h-[100svh] flex items-center pb-12 transition-colors duration-300">
       <div className="section-container w-full">
@@ -30,13 +36,13 @@ export default function ServicesHero() {
             <div>
               <span className="hero-badge">
                 <Cpu size={13} />
-                Product Engineering Services
+                {badge}
               </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-black text-foreground leading-[1.08] mb-5">
-                From first scope to shipped, stable product.
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-black text-foreground leading-[1.08] mb-5 whitespace-pre-line">
+                {heading}
               </h1>
               <p className="text-muted-foreground text-base sm:text-lg max-w-xl leading-relaxed">
-                {servicesHeroData.subtitle}
+                {subtitle}
               </p>
             </div>
             <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -70,12 +76,12 @@ export default function ServicesHero() {
               custom={2} variants={fadeUp}
               className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-4"
             >
-              {mainServicesData.map((service, index) => {
+              {displayMainServices.slice(0, 3).map((service, index) => {
                 const Icon = serviceIcons[index] ?? Layers3;
                 return (
                   <Link
                     key={service.slug}
-                    href={service.linkHref}
+                    href={`/services/${service.slug}`}
                     className="bg-section-alt rounded-xl p-5 border border-[var(--color-card-border)] group hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] transition-all duration-300"
                     style={{ boxShadow: "var(--shadow-sm)" }}
                   >

@@ -4,7 +4,8 @@ import CaseStudyCallout from "@/components/works/CaseStudyCallout";
 import CTABanner from "@/components/home/CTABanner";
 import type { Metadata } from "next";
 import { client } from "@/sanity/lib/client";
-import { projectsQuery } from "@/sanity/lib/queries";
+import { projectsQuery, siteSettingsQuery } from "@/sanity/lib/queries";
+import { SanityProject, SanitySiteSettings } from "@/sanity/types";
 import { projectsData } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -16,28 +17,32 @@ export const metadata: Metadata = {
 export const revalidate = 0; // Disable cache to see Sanity changes immediately
 
 export default async function WorksPage() {
-  let projects = [];
+  let projects: SanityProject[] = [];
+  let siteSettings: SanitySiteSettings | null = null;
   let fetchError = false;
   
   try {
-    projects = await client.fetch(projectsQuery);
+    const [fetchedProjects, fetchedSettings] = await Promise.all([
+      client.fetch<SanityProject[]>(projectsQuery),
+      client.fetch<SanitySiteSettings>(siteSettingsQuery),
+    ]);
+    projects = fetchedProjects;
+    siteSettings = fetchedSettings;
   } catch (error) {
     console.error("Sanity fetch failed:", error);
     fetchError = true;
   }
 
-  // If there's an error and NO projects, we can fallback to static data
-  // But if there's NO error and NO projects, it means Sanity is just empty
   const displayProjects = projects && projects.length > 0 
     ? projects 
-    : (fetchError ? projectsData : []); 
+    : (fetchError ? (projectsData as unknown as SanityProject[]) : []); 
 
   return (
     <>
-      <WorksHero />
+      <WorksHero projects={displayProjects} />
       <ProjectGrid projects={displayProjects} />
       <CaseStudyCallout />
-      <CTABanner />
+      <CTABanner data={siteSettings?.ctaBanner} />
     </>
   );
 }
