@@ -3,7 +3,7 @@ import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import PageTransition from "@/components/PageTransition";
+import MainContent from "@/components/MainContent";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -56,9 +56,7 @@ export default function RootLayout({
       <body className="font-body antialiased bg-background text-foreground transition-colors duration-300">
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem={false}>
           <Navbar />
-          <main className="pt-16">
-            <PageTransition>{children}</PageTransition>
-          </main>
+          <MainContent>{children}</MainContent>
           <Footer />
         </ThemeProvider>
       </body>

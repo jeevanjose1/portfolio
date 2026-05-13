@@ -1,12 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Monitor, Smartphone, Cloud, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { Monitor, Smartphone, Cloud, ArrowUpRight, CheckCircle2, Globe, Zap, Shield, Search } from "lucide-react";
 import Link from "next/link";
 import { servicesData } from "@/lib/data";
 import type { ServiceItem } from "@/lib/data";
+import { SanityService } from "@/sanity/types";
 
-const iconMap = { Monitor, Smartphone, Cloud } as const;
+const iconMap: Record<string, React.ElementType> = { 
+  Monitor, Smartphone, Cloud, Globe, Zap, Shield, Search 
+};
 
 const serviceNotes = [
   "Product interfaces, dashboards, portals, and SaaS workflows.",
@@ -14,8 +17,10 @@ const serviceNotes = [
   "Deployment, infrastructure setup, automation, and production support.",
 ];
 
-function ServiceCard({ service, index }: { service: ServiceItem; index: number }) {
-  const Icon = iconMap[service.iconName];
+function ServiceCard({ service, index }: { service: SanityService | ServiceItem; index: number }) {
+  const Icon = iconMap[service.iconName] || Monitor;
+  const isSanity = '_id' in service;
+  const href = isSanity ? `/services/${service.slug}` : (service as ServiceItem).linkHref;
 
   return (
     <motion.article
@@ -30,7 +35,7 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
           <Icon size={22} />
         </div>
         <Link
-          href={service.linkHref}
+          href={href}
           aria-label={`Open ${service.title}`}
           className="h-10 w-10 rounded-lg border border-border bg-background flex items-center justify-center text-muted-foreground transition-colors duration-300 group-hover:border-accent group-hover:text-accent"
         >
@@ -53,7 +58,9 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
   );
 }
 
-export default function ServicesPreview() {
+export default function ServicesPreview({ services }: { services: SanityService[] }) {
+  const displayData = services.length > 0 ? services : servicesData;
+
   return (
     <section id="services" className="pb-12 lg:pb-16 transition-colors duration-300">
       <div className="section-container">
@@ -84,7 +91,7 @@ export default function ServicesPreview() {
           </motion.div>
 
           <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-            {servicesData.map((service, i) => (
+            {displayData.slice(0, 3).map((service, i) => (
               <ServiceCard key={service.title} service={service} index={i} />
             ))}
           </div>

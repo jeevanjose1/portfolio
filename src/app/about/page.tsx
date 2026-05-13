@@ -6,6 +6,11 @@ import EducationCerts from "@/components/about/EducationCerts";
 import BeyondCode from "@/components/about/BeyondCode";
 import CTABanner from "@/components/home/CTABanner";
 import type { Metadata } from "next";
+import { client } from "@/sanity/lib/client";
+import { experienceQuery } from "@/sanity/lib/queries";
+import { SanityExperience } from "@/sanity/types";
+
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "About — Jeevan Jose | Full-Stack Developer Portfolio",
@@ -13,13 +18,15 @@ export const metadata: Metadata = {
     "Learn about my journey, technical skills, work experience, and what drives me as a full-stack developer and mobile engineer based in Vadodara, India.",
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const experiences = await client.fetch<SanityExperience[]>(experienceQuery);
+
   return (
     <>
       <AboutHero />
       <MyStory />
       <SkillsGrid />
-      <ExperienceCards />
+      <ExperienceCards experiences={experiences} />
       <EducationCerts />
       <BeyondCode />
       <CTABanner />

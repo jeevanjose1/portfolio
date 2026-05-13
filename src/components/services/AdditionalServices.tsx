@@ -1,54 +1,61 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShoppingCart, Network, BarChart3, Code2 } from "lucide-react";
+import { ShoppingCart, Network, BarChart3, Code2, Shield, Zap, Search, Globe, Smartphone, Monitor } from "lucide-react";
 import { additionalServicesData } from "@/lib/data";
+import { SanityService } from "@/sanity/types";
 
-const iconMap = { ShoppingCart, Network, BarChart3, Code2 } as const;
+const iconMap: Record<string, React.ElementType> = {
+  ShoppingCart, Network, BarChart3, Code2, Shield, Zap, Search, Globe, Smartphone, Monitor
+};
 
-export default function AdditionalServices() {
+function AdditionalServiceCard({ service, index }: { service: any; index: number }) {
+  const Icon = iconMap[service.iconName] || Search;
+
   return (
-    <section className="bg-section-alt py-12 transition-colors duration-300">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      className="bg-section-alt p-8 rounded-lg border border-border group hover:border-accent/30 transition-all duration-300"
+    >
+      <div className="w-12 h-12 rounded-lg bg-background border border-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300">
+        <Icon size={24} className="text-accent group-hover:text-background transition-colors" />
+      </div>
+      <h3 className="text-lg font-heading font-black text-foreground mb-3 uppercase tracking-tight">{service.title}</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed font-body italic">
+        &ldquo;{service.description}&rdquo;
+      </p>
+    </motion.div>
+  );
+}
+
+export default function AdditionalServices({ services }: { services: SanityService[] }) {
+  const displayData = services.length > 0 ? services : additionalServicesData;
+
+  return (
+    <section className="py-16 bg-background relative z-20 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-12"
         >
           <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
-            {"//"} Extensions
+            {"//"} More Capabilities
           </p>
-          <h2 className="text-4xl font-heading font-black text-foreground">
-            Niche Expertise.
+          <h2 className="text-3xl font-heading font-black text-foreground">
+            Specialized Services.
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {additionalServicesData.map((service, i) => {
-            const Icon = iconMap[service.iconName];
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ delay: i * 0.1, duration: 0.45 }}
-                className="bg-background rounded-lg p-10 flex flex-col items-start border border-border hover:border-accent/20  transition-all duration-500 group"
-              >
-                <div className="w-12 h-12 rounded-full bg-section-alt border border-border flex items-center justify-center mb-8 group-hover:bg-accent transition-all duration-300">
-                  <Icon size={24} className="text-accent group-hover:text-background transition-colors" />
-                </div>
-                <h3 className="text-xl font-heading font-black text-foreground mb-3 uppercase tracking-tight group-hover:text-accent transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed font-body">
-                  {service.description}
-                </p>
-              </motion.div>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {displayData.map((service, i) => (
+            <AdditionalServiceCard key={service.title} service={service} index={i} />
+          ))}
         </div>
       </div>
     </section>

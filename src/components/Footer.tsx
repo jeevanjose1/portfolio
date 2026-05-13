@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { siteConfig } from "@/lib/constants";
+import { usePathname } from "next/navigation";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -20,6 +21,10 @@ const socialPills = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+  const isStudio = pathname.startsWith("/studio");
+
+  if (isStudio) return null;
 
   return (
     <footer 

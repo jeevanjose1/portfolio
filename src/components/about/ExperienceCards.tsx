@@ -2,8 +2,16 @@
 
 import { motion } from "framer-motion";
 import { experienceData } from "@/lib/data";
+import { SanityExperience } from "@/sanity/types";
 
-export default function ExperienceCards() {
+export default function ExperienceCards({ experiences }: { experiences: SanityExperience[] }) {
+  const displayData = experiences.length > 0 ? experiences.map(exp => ({
+    company: exp.title,
+    role: exp.subtitle,
+    dateRange: exp.year,
+    achievements: exp.description.split('\n').filter(line => line.trim() !== '')
+  })) : experienceData;
+
   return (
     <section className="bg-background py-16 transition-colors duration-300">
       <div className="section-container">
@@ -23,9 +31,9 @@ export default function ExperienceCards() {
         </motion.div>
 
         <div className="max-w-4xl space-y-12">
-          {experienceData.map((exp, i) => (
+          {displayData.map((exp, i) => (
             <motion.div
-              key={exp.company}
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}

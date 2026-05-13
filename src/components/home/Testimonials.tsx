@@ -3,8 +3,17 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { testimonialsData } from "@/lib/data";
+import { SanityTestimonial } from "@/sanity/types";
 
-export default function Testimonials() {
+export default function Testimonials({ testimonials }: { testimonials: SanityTestimonial[] }) {
+  const displayData = testimonials.length > 0 ? testimonials : testimonialsData.map(t => ({
+    _id: t.name,
+    name: t.name,
+    role: t.company,
+    content: t.quote,
+    rating: t.rating
+  }));
+
   return (
     <section id="testimonials" className="py-10 transition-colors duration-300">
       <div className="section-container">
@@ -21,9 +30,9 @@ export default function Testimonials() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonialsData.map((t, i) => (
+          {displayData.map((t, i) => (
             <motion.div
-              key={t.name}
+              key={t._id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -33,14 +42,14 @@ export default function Testimonials() {
               <div>
                 {/* Stars — Now using accent color for theme consistency */}
                 <div className="flex gap-1.5 mb-8">
-                  {Array.from({ length: t.rating }).map((_, si) => (
+                  {Array.from({ length: (t as any).rating || 5 }).map((_, si) => (
                     <Star key={si} size={14} className="fill-accent text-accent" />
                   ))}
                 </div>
 
                 {/* Quote — Editorial typography */}
                 <p className="text-foreground/80 text-lg leading-relaxed mb-10 italic font-body">
-                  &ldquo;{t.quote}&rdquo;
+                  &ldquo;{(t as any).content || (t as any).quote}&rdquo;
                 </p>
               </div>
 
@@ -53,7 +62,7 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <p className="text-sm font-black text-foreground uppercase tracking-tight">{t.name}</p>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{t.company}</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{(t as any).role || (t as any).company}</p>
                 </div>
               </div>
             </motion.div>

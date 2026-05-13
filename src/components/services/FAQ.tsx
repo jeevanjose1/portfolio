@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import Accordion from "@/components/Accordion";
 import { faqData } from "@/lib/data";
+import { SanityFAQ } from "@/sanity/types";
 
-export default function FAQ() {
+export default function FAQ({ faqs }: { faqs: SanityFAQ[] }) {
+  const displayData = faqs.length > 0 ? faqs : faqData;
+
   return (
     <section className="bg-section-alt py-12 transition-colors duration-300">
       <div className="section-container max-w-5xl">
@@ -16,7 +19,7 @@ export default function FAQ() {
           className="mb-20"
         >
           <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
-            {"//"} What I Do
+            {"//"} Questions
           </p>
           <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
             Curated FAQ.
@@ -30,9 +33,9 @@ export default function FAQ() {
           transition={{ duration: 0.6 }}
           className="w-full space-y-4"
         >
-          {faqData.map((faq) => (
+          {displayData.map((faq, i) => (
             <Accordion
-              key={faq.question}
+              key={i}
               question={faq.question}
               answer={faq.answer}
             />

@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { projectsData } from "@/lib/data";
 import ProjectDetails from "@/components/works/ProjectDetails";
 import type { Metadata } from "next";
+import { client } from "@/sanity/lib/client";
+import { projectBySlugQuery, projectsQuery } from "@/sanity/lib/queries";
 
 interface PageProps {
   params: {
@@ -9,16 +11,27 @@ interface PageProps {
   };
 }
 
+export const revalidate = 0; // Disable cache for development
+
 // Generate static routes at build time for all projects
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await client.fetch(projectsQuery);
+  
+  if (projects && projects.length > 0) {
+    return projects.map((project: any) => ({
+      slug: project.slug,
+    }));
+  }
+
   return projectsData.map((project) => ({
     slug: project.slug,
   }));
 }
 
 // Generate dynamic metadata based on the project
-export function generateMetadata({ params }: PageProps): Metadata {
-  const project = projectsData.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const project = await client.fetch(projectBySlugQuery, { slug: params.slug }) 
+    || projectsData.find((p) => p.slug === params.slug);
 
   if (!project) {
     return {
@@ -28,12 +41,13 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
   return {
     title: `${project.title} — Case Study | Jeevan Jose`,
-    description: project.longDescription,
+    description: project.description || project.longDescription,
   };
 }
 
-export default function ProjectPage({ params }: PageProps) {
-  const project = projectsData.find((p) => p.slug === params.slug);
+export default async function ProjectPage({ params }: PageProps) {
+  const project = await client.fetch(projectBySlugQuery, { slug: params.slug })
+    || projectsData.find((p) => p.slug === params.slug);
 
   if (!project) {
     notFound();

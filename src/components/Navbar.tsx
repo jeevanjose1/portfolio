@@ -21,6 +21,9 @@ const navLinks = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const isStudio = pathname.startsWith("/studio");
+
+  if (isStudio) return null;
 
   return (
     <header className="fixed top-4 left-0 right-0 z-[999] px-4 flex justify-center pointer-events-none transition-all duration-300">

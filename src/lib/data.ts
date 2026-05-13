@@ -902,6 +902,7 @@ export interface ProjectItem {
   title: string;
   description: string;
   longDescription: string;
+  image: string;
   categories: FilterCategory[];
   tags: string[];
   liveUrl?: string;
@@ -919,6 +920,7 @@ export const projectsData: ProjectItem[] = [
     title: "E-commerce Platform",
     description: "Full-featured online store with real-time inventory management and payment processing",
     longDescription: "A comprehensive e-commerce solution built to handle high-volume traffic and complex inventory needs. The platform integrates seamlessly with multiple payment gateways and provides a robust admin dashboard for order management and analytics.",
+    image: "/images/project-1.svg",
     categories: ["All", "Web Apps", "E-commerce"],
     tags: ["React", "Node.js", "MongoDB", "Stripe"],
     features: [
@@ -958,6 +960,7 @@ export const projectsData: ProjectItem[] = [
     title: "SaaS Analytics Dashboard",
     description: "Multi-tenant analytics platform with real-time data visualization and custom reports",
     longDescription: "A scalable B2B SaaS platform that aggregates data from multiple sources to provide actionable insights. Designed with a multi-tenant architecture to ensure data isolation and security for enterprise clients.",
+    image: "/images/project-2.svg",
     categories: ["All", "Web Apps", "Dashboards"],
     tags: ["React", "Chart.js", "PostgreSQL", "AWS"],
     features: [
@@ -997,6 +1000,7 @@ export const projectsData: ProjectItem[] = [
     title: "Flutter Shopping App",
     description: "Cross-platform iOS & Android e-commerce app with seamless checkout",
     longDescription: "A high-performance mobile shopping application built with Flutter. Delivers a native-like experience on both iOS and Android from a single codebase, featuring complex animations and real-time backend synchronization.",
+    image: "/images/project-3.svg",
     categories: ["All", "Mobile Apps", "E-commerce"],
     tags: ["Flutter", "Firebase", "Razorpay"],
     features: [
@@ -1036,6 +1040,7 @@ export const projectsData: ProjectItem[] = [
     title: "REST API Platform",
     description: "Scalable REST API with JWT auth, rate limiting, and auto-generated Swagger docs",
     longDescription: "A robust, enterprise-grade RESTful API designed to power multiple frontend applications. Built with security and scalability in mind, featuring comprehensive rate limiting, caching, and automated documentation.",
+    image: "/images/project-1.svg",
     categories: ["All", "APIs"],
     tags: ["Node.js", "Express", "PostgreSQL", "Docker"],
     features: [
@@ -1075,6 +1080,7 @@ export const projectsData: ProjectItem[] = [
     title: "Real Estate Web App",
     description: "Property listing platform with map integration, search filters, and agent dashboard",
     longDescription: "A modern real estate marketplace connecting buyers, sellers, and agents. Features an interactive map-based search, virtual tours integration, and a comprehensive CRM dashboard for real estate agents to manage their listings.",
+    image: "/images/project-2.svg",
     categories: ["All", "Web Apps"],
     tags: ["React", "Node.js", "Google Maps API", "MongoDB"],
     features: [
@@ -1114,6 +1120,7 @@ export const projectsData: ProjectItem[] = [
     title: "HR Management SaaS",
     description: "Complete HR platform with attendance tracking, payroll, and employee self-service",
     longDescription: "An all-in-one Human Resources platform designed to streamline operations for mid-sized companies. Automates payroll processing, simplifies leave management, and provides a self-service portal for employees.",
+    image: "/images/project-3.svg",
     categories: ["All", "Web Apps", "Dashboards"],
     tags: ["React", "Node.js", "MongoDB", "AWS S3"],
     features: [

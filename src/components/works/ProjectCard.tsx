@@ -5,6 +5,8 @@ import { ExternalLink, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ProjectItem } from "@/lib/data";
+import { SanityProject } from "@/sanity/types";
+import { urlForImage } from "@/sanity/lib/image";
 import GradientCard from "@/components/GradientCard";
 
 const GithubIcon = ({ size, className }: { size: number; className?: string }) => (
@@ -26,7 +28,7 @@ const GithubIcon = ({ size, className }: { size: number; className?: string }) =
 );
 
 interface ProjectCardProps {
-  project: ProjectItem;
+  project: ProjectItem | SanityProject;
 }
 
 const projectVisuals: Record<string, string> = {
@@ -36,7 +38,11 @@ const projectVisuals: Record<string, string> = {
 };
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const visualSrc = projectVisuals[project.slug] ?? "/images/project-1.svg";
+  // Use Sanity image if available, fallback to static mapping or placeholder
+  const isSanityProject = '_id' in project;
+  const visualSrc = isSanityProject && project.mainImage 
+    ? urlForImage(project.mainImage).url() 
+    : (projectVisuals[project.slug] ?? "/images/project-1.svg");
 
   return (
     <Link href={`/works/${project.slug}`} className="block h-full outline-none focus:ring-2 focus:ring-accent rounded-lg group">
@@ -74,7 +80,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
           <div className="p-8 flex flex-col flex-grow">
             <div className="flex flex-wrap gap-2 mb-5">
-              {project.tags.slice(0, 3).map((tag) => (
+              {project.categories.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
                   className="text-[10px] font-bold uppercase tracking-wider bg-section-alt text-muted-foreground px-3 py-1 rounded-lg border border-border"
@@ -94,12 +100,20 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
             <div className="flex items-center justify-between pt-6 border-t border-border mt-auto">
               <div className="flex items-center gap-4">
-                {project.liveUrl && (
-                  <div className="text-muted-foreground hover:text-accent transition-colors">
-                    <ExternalLink size={18} />
-                  </div>
+                {isSanityProject ? (
+                  project.link && (
+                    <div className="text-muted-foreground hover:text-accent transition-colors">
+                      <ExternalLink size={18} />
+                    </div>
+                  )
+                ) : (
+                  (project as ProjectItem).liveUrl && (
+                    <div className="text-muted-foreground hover:text-accent transition-colors">
+                      <ExternalLink size={18} />
+                    </div>
+                  )
                 )}
-                {project.githubUrl && (
+                {'githubUrl' in project && project.githubUrl && (
                   <div className="text-muted-foreground hover:text-accent transition-colors">
                     <GithubIcon size={18} />
                   </div>

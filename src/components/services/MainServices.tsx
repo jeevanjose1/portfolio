@@ -1,17 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Monitor, Smartphone, Cloud, CheckCircle2, CheckCircle, ArrowUpRight } from "lucide-react";
+import { Monitor, Smartphone, Cloud, CheckCircle2, CheckCircle, ArrowUpRight, Globe, Zap, Shield, Search } from "lucide-react";
 import Link from "next/link";
 import { mainServicesData } from "@/lib/data";
 import type { MainServiceItem } from "@/lib/data";
+import { SanityService } from "@/sanity/types";
 import GradientCard from "@/components/GradientCard";
 
 const CheckIcon = CheckCircle2 || CheckCircle;
-const iconMap = { Monitor, Smartphone, Cloud } as const;
 
-function MainServiceCard({ service, index }: { service: MainServiceItem; index: number }) {
-  const Icon = iconMap[service.iconName];
+const iconMap: Record<string, React.ElementType> = { 
+  Monitor, Smartphone, Cloud, Globe, Zap, Shield, Search 
+};
+
+function MainServiceCard({ service, index }: { service: SanityService | MainServiceItem; index: number }) {
+  const Icon = iconMap[service.iconName] || Monitor;
+  const isSanity = '_id' in service;
+  
+  // Use "features" from static data or "tagline" as a single feature for now if sanity features aren't ready
+  const features = isSanity 
+    ? (service as any).features || (service.tagline ? [service.tagline] : [])
+    : (service as MainServiceItem).features;
 
   return (
     <motion.div
@@ -21,7 +31,7 @@ function MainServiceCard({ service, index }: { service: MainServiceItem; index: 
       transition={{ delay: index * 0.15, duration: 0.5 }}
       className="h-full"
     >
-      <GradientCard className="h-full border border-border p-8 flex hover:border-3! flex-col bg-background transition-all duration-500 hover:border-accent/30 ">
+      <GradientCard className="h-full border border-border p-8 flex flex-col bg-background transition-all duration-500 hover:border-accent/30 group">
         <div className="w-14 h-14 rounded-lg bg-section-alt border border-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300">
           <Icon size={28} className="text-accent group-hover:text-background transition-colors" />
         </div>
@@ -33,19 +43,24 @@ function MainServiceCard({ service, index }: { service: MainServiceItem; index: 
           &ldquo;{service.description}&rdquo;
         </p>
 
-        <ul className="space-y-3 mb-8">
-          {service.features.map((feature, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <CheckIcon size={16} className="text-accent mt-0.5 flex-shrink-0" />
-              <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{feature}</span>
-            </li>
-          ))}
-        </ul>
+        {features.length > 0 && (
+          <ul className="space-y-3 mb-8">
+            {features.map((feature: any, i: number) => {
+              const text = typeof feature === 'string' ? feature : feature.title;
+              return (
+                <li key={i} className="flex items-start gap-3">
+                  <CheckIcon size={16} className="text-accent mt-0.5 flex-shrink-0" />
+                  <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{text}</span>
+                </li>
+              );
+            })}
+          </ul>
+        )}
 
         <div className="pt-6 border-t border-border mt-auto flex items-center justify-between relative z-10">
           <Link
             href={`/services/${service.slug}`}
-            className="group/btn flex items-center hover:underline  gap-2 text-sm font-black uppercase tracking-widest text-accent hover:text-foreground transition-colors duration-300"
+            className="group/btn flex items-center hover:underline gap-2 text-sm font-black uppercase tracking-widest text-accent hover:text-foreground transition-colors duration-300"
           >
             Learn More
             <ArrowUpRight size={18} className="group-hover/btn:rotate-45 transition-transform duration-300" />
@@ -56,7 +71,10 @@ function MainServiceCard({ service, index }: { service: MainServiceItem; index: 
   );
 }
 
-export default function MainServices() {
+export default function MainServices({ services }: { services: SanityService[] }) {
+  // If no services from Sanity, fallback to static data
+  const displayData = services.length > 0 ? services : mainServicesData;
+
   return (
     <section className="bg-background pb-16 relative z-20 transition-colors duration-300">
       <div className="section-container">
@@ -76,7 +94,7 @@ export default function MainServices() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mainServicesData.map((service, i) => (
+          {displayData.map((service, i) => (
             <MainServiceCard key={service.title} service={service} index={i} />
           ))}
         </div>
