@@ -10,31 +10,77 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "var(--color-primary)",
-        accent: "var(--color-accent)",
-        "accent-hover": "var(--color-accent-hover)",
-        background: "var(--color-background)",
-        "section-alt": "var(--color-section-alt)",
-        border: "var(--color-border)",
-        "card-border": "var(--color-card-border)",
-        foreground: "var(--color-text)",
-        "muted-foreground": "var(--color-text-muted)",
+        // Core semantic tokens
+        primary:              "var(--color-primary)",
+        accent:               "var(--color-accent)",
+        "accent-hover":       "var(--color-accent-hover)",
+        background:           "var(--color-background)",
+        "section-alt":        "var(--color-section-alt)",
+        border:               "var(--color-border)",
+        "card-border":        "var(--color-card-border)",
+        foreground:           "var(--color-text)",
+        "muted-foreground":   "var(--color-text-muted)",
+        "contrast-bg":        "var(--color-contrast-bg)",
+        // Surface hierarchy tokens
+        "surface-1":          "var(--color-surface-1)",
+        "surface-2":          "var(--color-surface-2)",
+        "surface-3":          "var(--color-surface-3)",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "sans-serif"],
-        body: ["var(--font-body)", "sans-serif"],
+        body:    ["var(--font-body)",    "sans-serif"],
       },
       borderRadius: {
-        xl: "0.75rem",
-        "2xl": "1rem",
-        "3xl": "1.5rem",
-        "4xl": "2.5rem",
+        xs:    "var(--radius-xs)",
+        sm:    "var(--radius-sm)",
+        md:    "var(--radius-md)",
+        lg:    "var(--radius-lg)",
+        xl:    "var(--radius-xl)",
+        "2xl": "var(--radius-2xl)",
+        pill:  "var(--radius-pill)",
       },
       boxShadow: {
-        card: "0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07)",
+        xs:      "var(--shadow-xs)",
+        sm:      "var(--shadow-sm)",
+        card:    "var(--shadow-card)",
+        lg:      "var(--shadow-lg)",
+        xl:      "var(--shadow-xl)",
+        glow:    "var(--shadow-glow)",
+        accent:  "var(--shadow-accent)",
+      },
+      spacing: {
+        "section-x":  "clamp(1.5rem, 4vw, 3rem)",
+        "section-y":  "clamp(4rem, 8vw, 7rem)",
+      },
+      maxWidth: {
+        "8xl": "88rem",
+      },
+      animation: {
+        "spin-slow":         "spin-slow 12s linear infinite",
+        "spin-reverse-slow": "spin-reverse-slow 18s linear infinite",
+        shimmer:             "shimmer 2.5s linear infinite",
+      },
+      keyframes: {
+        "spin-slow": {
+          from: { transform: "rotate(0deg)" },
+          to:   { transform: "rotate(360deg)" },
+        },
+        "spin-reverse-slow": {
+          from: { transform: "rotate(360deg)" },
+          to:   { transform: "rotate(0deg)" },
+        },
+        shimmer: {
+          "0%":   { backgroundPosition: "-200% center" },
+          "100%": { backgroundPosition:  "200% center" },
+        },
+      },
+      transitionTimingFunction: {
+        "spring": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "smooth": "cubic-bezier(0.4, 0, 0.2, 1)",
       },
     },
   },
   plugins: [],
 };
+
 export default config;

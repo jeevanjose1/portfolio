@@ -14,7 +14,7 @@ export default function FilterBar({
   onFilterChange,
 }: FilterBarProps) {
   return (
-    <div className="z-40 bg-background/80 backdrop-blur-md border-b border-border mb-5 transition-colors duration-300">
+    <div className="z-40 bg-[color-mix(in_srgb,var(--color-background)_80%,transparent)] backdrop-blur-md border-b border-border mb-5 transition-colors duration-300">
       <div className="section-container py-4">
         <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide no-scrollbar">
           {categories.map((category) => {

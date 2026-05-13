@@ -31,9 +31,9 @@ function MainServiceCard({ service, index }: { service: SanityService | MainServ
       transition={{ delay: index * 0.15, duration: 0.5 }}
       className="h-full"
     >
-      <GradientCard className="h-full border border-border p-8 flex flex-col bg-background transition-all duration-500 hover:border-accent/30 group">
-        <div className="w-14 h-14 rounded-lg bg-section-alt border border-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300">
-          <Icon size={28} className="text-accent group-hover:text-background transition-colors" />
+      <GradientCard className="h-full border border-[var(--color-card-border)] p-8 sm:p-10 flex flex-col bg-background transition-all duration-500 hover:border-[color-mix(in_srgb,var(--color-accent)_25%,transparent)] hover:-translate-y-0.5 group" style={{ boxShadow: 'var(--shadow-card)' } as React.CSSProperties}>
+        <div className="w-14 h-14 rounded-xl bg-surface-2 border border-[var(--color-border)] flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300">
+          <Icon size={26} className="text-accent group-hover:text-background transition-colors" />
         </div>
 
         <h3 className="text-2xl font-heading font-black text-foreground mb-3 group-hover:text-accent transition-colors duration-300 uppercase tracking-tight">
@@ -76,24 +76,22 @@ export default function MainServices({ services }: { services: SanityService[] }
   const displayData = services.length > 0 ? services : mainServicesData;
 
   return (
-    <section className="bg-background pb-16 relative z-20 transition-colors duration-300">
+    <section className="bg-background relative z-20 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-14"
         >
-          <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
-            {"//"} Expertise
-          </p>
+          <p className="section-label mb-4">{"// "} Expertise</p>
           <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
             Core Solutions.
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {displayData.map((service, i) => (
             <MainServiceCard key={service.title} service={service} index={i} />
           ))}

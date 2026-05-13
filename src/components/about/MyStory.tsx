@@ -7,26 +7,24 @@ import { timelineData, myStoryText } from "@/lib/data";
 
 export default function MyStory() {
   return (
-    <section className="bg-background relative pb-16 transition-colors duration-300">
+    <section className="bg-background relative transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-14"
         >
-          <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
-            {"//"} Origins
-          </p>
+          <p className="section-label mb-4">{"// "} Origins</p>
           <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
             My Journey.
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Timeline Column */}
-          <div className="lg:col-span-5 bg-section-alt rounded-lg p-10 border border-border">
+          <div className="lg:col-span-5 bg-section-alt rounded-2xl p-10 border border-[var(--color-card-border)]" style={{ boxShadow: "var(--shadow-card)" }}>
             <h3 className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-10">Milestones</h3>
             <Timeline items={timelineData} />
           </div>
@@ -37,7 +35,7 @@ export default function MyStory() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="lg:col-span-7 bg-background rounded-lg border border-border shadow-sm shadow-black/5 h-full relative"
+            className="lg:col-span-7 bg-section-alt rounded-2xl border border-[var(--color-card-border)] h-full relative" style={{ boxShadow: "var(--shadow-card)" }}
           >
             {/* Background wrapper to clip the image */}
 

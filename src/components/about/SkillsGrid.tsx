@@ -12,25 +12,26 @@ function SkillGroupCard({ group, index }: { group: SkillGroup; index: number }) 
 
   return (
     <motion.div
-      initial={{ opacity: 0, }}
-      whileInView={{ opacity: 1, }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="bg-background rounded-lg p-8 border border-border hover:border-accent/20 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500"
+      className="bg-background rounded-2xl p-10 border border-[var(--color-card-border)] hover:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] hover:-translate-y-0.5 transition-all duration-500"
+      style={{ boxShadow: "var(--shadow-card)" }}
     >
       <div className="flex items-center gap-4 mb-8">
-        <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center border border-accent/20">
+        <div className="w-12 h-12 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] flex items-center justify-center border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)]">
           <Icon size={22} className="text-accent" />
         </div>
         <h3 className="text-xl font-heading font-black text-foreground uppercase tracking-tight">
           {group.title}
         </h3>
       </div>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2.5">
         {group.skills.map((skill) => (
           <div
             key={skill.name}
-            className="px-4 py-2 bg-section-alt border border-border rounded-lg group/skill hover:border-accent/30 transition-colors"
+            className="px-4 py-2 bg-surface-2 border border-[var(--color-border)] rounded-full group/skill hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] transition-all duration-200 cursor-default"
           >
             <span className="text-xs font-black uppercase tracking-widest text-muted-foreground group-hover/skill:text-accent transition-colors">
               {skill.name}
@@ -44,24 +45,20 @@ function SkillGroupCard({ group, index }: { group: SkillGroup; index: number }) 
 
 export default function SkillsGrid() {
   return (
-    <section className="bg-section-alt py-16 transition-colors duration-300">
+    <section className="bg-section-alt transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-14"
         >
-          <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
-            {"//"} Expertise
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
-            Technical Arsenal.
-          </h2>
+          <p className="section-label mb-4">{"// "} Expertise</p>
+          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">Technical Arsenal.</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
           {skillGroups.map((group, i) => (
             <SkillGroupCard key={group.title} group={group} index={i} />
           ))}

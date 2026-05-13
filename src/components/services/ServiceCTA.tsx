@@ -15,22 +15,22 @@ export default function ServiceCTA({ title }: ServiceCTAProps) {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-primary rounded-lg p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden shadow-card border border-border"
+          className="bg-section-alt rounded-lg p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden shadow-card border border-[var(--color-card-border)]"
         >
-          <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,rgba(255,255,255,.28)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.28)_1px,transparent_1px)] [background-size:28px_28px]" />
+          <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />
 
           <div className="relative z-10 text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-black mb-6 text-background leading-tight">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-black mb-6 text-foreground leading-tight">
               Ready to Build Your <br />
               <span className="text-accent italic font-serif">{title}?</span>
             </h2>
-            <p className="text-base sm:text-lg text-background/70 mb-10 font-body max-w-lg mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground mb-10 font-body max-w-lg mx-auto leading-relaxed">
               Let&apos;s turn your idea into a real product. Free consultation, no commitment.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="bg-accent text-background px-8 py-4 rounded-lg font-black uppercase tracking-widest text-xs hover:bg-accent-hover transition-all duration-300 shadow-xl shadow-accent/20"
+                className="btn-primary"
               >
                 Start a Project &rarr;
               </Link>
@@ -38,7 +38,7 @@ export default function ServiceCTA({ title }: ServiceCTAProps) {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-background/10 border border-background/20 text-background px-8 py-4 rounded-lg font-black uppercase tracking-widest text-xs hover:bg-background/15 transition-all duration-300"
+                className="btn-secondary"
               >
                 Download Service Brief
               </a>

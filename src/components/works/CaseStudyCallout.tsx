@@ -26,7 +26,7 @@ export default function CaseStudyCallout() {
               scalable microservices architecture, improving performance by 40% and
               significantly reducing infrastructure costs.
             </p>
-            <button className="bg-background text-foreground hover:bg-background/90 px-8 py-3.5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-2 transition-colors">
+            <button className="bg-background text-foreground hover:bg-[color-mix(in_srgb,var(--color-background)_90%,transparent)] px-8 py-3.5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-2 transition-colors">
               Read Full Case Study
               <ArrowRight size={18} />
             </button>

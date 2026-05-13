@@ -63,7 +63,7 @@ export default function ContactForm() {
       initial={{ opacity: 0, x: 30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="bg-background rounded-lg p-7 sm:p-10 lg:p-12 border border-border shadow-card relative overflow-hidden"
+      className="bg-background rounded-2xl p-10 sm:p-12 border border-[var(--color-card-border)] relative overflow-hidden"
     >
       <AnimatePresence mode="wait">
         {isSuccess ? (
@@ -73,7 +73,7 @@ export default function ContactForm() {
             animate={{ opacity: 1, scale: 1 }}
             className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center bg-background z-10"
           >
-            <div className="w-20 h-20 rounded-lg bg-accent/10 flex items-center justify-center mb-8 border border-accent/20">
+            <div className="w-20 h-20 rounded-lg bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] flex items-center justify-center mb-8 border border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]">
               <CheckCircle2 size={42} className="text-accent" />
             </div>
             <h3 className="text-3xl font-heading font-black text-foreground mb-4">Message Sent</h3>
@@ -85,7 +85,7 @@ export default function ContactForm() {
                 setFormData({ ...formData, message: "" });
                 setIsSuccess(false);
               }}
-              className="px-8 py-4 rounded-lg bg-accent text-background font-black uppercase tracking-widest text-xs hover:bg-accent/80 transition-colors"
+              className="px-8 py-4 rounded-lg bg-accent text-background font-black uppercase tracking-widest text-xs hover:bg-[color-mix(in_srgb,var(--color-accent)_80%,transparent)] transition-colors"
             >
               Send Another Message
             </button>
@@ -113,7 +113,7 @@ export default function ContactForm() {
                     placeholder="Your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className={`w-full px-6 py-4 rounded-lg border ${errors.name ? 'border-red-500 focus:ring-red-500' : 'border-border focus:border-accent focus:ring-accent'} outline-none focus:ring-4 focus:ring-accent/5 transition-all bg-section-alt font-medium text-foreground placeholder:text-muted-foreground/50`}
+                    className={`w-full px-5 py-4 rounded-xl border ${errors.name ? 'border-red-400 focus:ring-red-400/20' : 'border-[var(--color-border)] focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground placeholder:text-[color-mix(in_srgb,var(--color-text-muted)_40%,transparent)] text-sm`}
                     aria-label="Full Name"
                     aria-invalid={!!errors.name}
                   />
@@ -127,7 +127,7 @@ export default function ContactForm() {
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className={`w-full px-6 py-4 rounded-lg border ${errors.email ? 'border-red-500 focus:ring-red-500' : 'border-border focus:border-accent focus:ring-accent'} outline-none focus:ring-4 focus:ring-accent/5 transition-all bg-section-alt font-medium text-foreground placeholder:text-muted-foreground/50`}
+                    className={`w-full px-5 py-4 rounded-xl border ${errors.email ? 'border-red-400 focus:ring-red-400/20' : 'border-[var(--color-border)] focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground placeholder:text-[color-mix(in_srgb,var(--color-text-muted)_40%,transparent)] text-sm`}
                     aria-label="Email Address"
                     aria-invalid={!!errors.email}
                   />
@@ -143,7 +143,7 @@ export default function ContactForm() {
                       id="projectType"
                       value={formData.projectType}
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                      className="w-full px-6 py-4 rounded-lg border border-border focus:border-accent focus:ring-4 focus:ring-accent/5 outline-none transition-all bg-section-alt font-medium text-foreground appearance-none cursor-pointer"
+                      className="w-full px-5 py-4 rounded-xl border border-[var(--color-border)] focus:border-accent focus:ring-4 focus:ring-accent/10 outline-none transition-all bg-surface-2 font-medium text-foreground appearance-none cursor-pointer text-sm"
                       aria-label="Project Type"
                     >
                       <option className="bg-background">Web App</option>
@@ -165,7 +165,7 @@ export default function ContactForm() {
                       id="timeline"
                       value={formData.timeline}
                       onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                      className="w-full px-6 py-4 rounded-lg border border-border focus:border-accent focus:ring-4 focus:ring-accent/5 outline-none transition-all bg-section-alt font-medium text-foreground appearance-none cursor-pointer"
+                      className="w-full px-5 py-4 rounded-xl border border-[var(--color-border)] focus:border-accent focus:ring-4 focus:ring-accent/10 outline-none transition-all bg-surface-2 font-medium text-foreground appearance-none cursor-pointer text-sm"
                       aria-label="Project Timeline"
                     >
                       <option className="bg-background">ASAP</option>
@@ -188,7 +188,7 @@ export default function ContactForm() {
                   placeholder="Tell me about your project, goals, and any specific requirements..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className={`w-full px-6 py-4 rounded-lg border ${errors.message ? 'border-red-500 focus:ring-red-500' : 'border-border focus:border-accent focus:ring-accent'} outline-none focus:ring-4 focus:ring-accent/5 transition-all bg-section-alt font-medium text-foreground resize-none placeholder:text-muted-foreground/50`}
+                  className={`w-full px-5 py-4 rounded-xl border ${errors.message ? 'border-red-400 focus:ring-red-400/20' : 'border-[var(--color-border)] focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground resize-none placeholder:text-[color-mix(in_srgb,var(--color-text-muted)_40%,transparent)] text-sm`}
                   aria-label="Message"
                   aria-invalid={!!errors.message}
                 />
@@ -200,7 +200,7 @@ export default function ContactForm() {
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="w-full sm:w-auto px-10 py-5 rounded-lg bg-accent text-background font-black uppercase tracking-widest text-xs flex justify-center items-center gap-3 hover:bg-accent/90 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-accent/10"
+                className="w-full sm:w-auto px-10 py-5 rounded-lg bg-accent text-background font-black uppercase tracking-widest text-xs flex justify-center items-center gap-3 hover:bg-[color-mix(in_srgb,var(--color-accent)_90%,transparent)] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-[color-mix(in_srgb,var(--color-accent)_10%,transparent)]"
               >
                 {isSubmitting ? (
                   <div className="w-5 h-5 border-2 border-background border-t-transparent rounded-lg animate-spin" />

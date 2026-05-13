@@ -7,24 +7,31 @@ import { ctaBannerData } from "@/lib/data";
 
 export default function CTABanner() {
   return (
-    <section id="contact-cta" className="pb-8">
+    <section id="contact-cta" className="transition-colors duration-300">
       <div className="section-container">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="bg-section-alt rounded-lg py-12 lg:py-14 px-6 sm:px-10 lg:px-12 relative overflow-hidden transition-colors duration-300 border border-border flex flex-col lg:flex-row items-center justify-between gap-10 shadow-card"
+          className="relative rounded-2xl py-20 lg:py-24 px-10 sm:px-16 overflow-hidden border border-[var(--color-card-border)] bg-section-alt flex flex-col lg:flex-row items-center justify-between gap-10"
+          style={{ boxShadow: "var(--shadow-lg)" }}
         >
-          <div className="absolute inset-0 opacity-[0.045] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />
+          {/* Grid texture */}
+          <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:32px_32px] rounded-2xl" />
+
+          {/* Ambient glow */}
+          <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full opacity-[0.08] blur-3xl"
+            style={{ backgroundColor: "var(--color-accent)" }}
+          />
 
           <div className="relative z-10 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-background/10 text-foreground font-black text-[10px] uppercase tracking-widest mb-8 border border-border backdrop-blur-sm">
-              <MessageSquare size={12} className="text-accent" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] text-accent font-black text-[10px] uppercase tracking-widest mb-8 border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)]">
+              <MessageSquare size={11} />
               Direct Engagement
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-tight mb-8">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-tight mb-6">
               Let&apos;s Work<br />
               <span className="text-accent italic font-serif">Together.</span>
             </h2>
@@ -35,10 +42,10 @@ export default function CTABanner() {
 
             <Link
               href={ctaBannerData.buttonHref}
-              className="bg-accent text-background hover:opacity-90 px-10 py-5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group shadow-xl shadow-accent/10"
+              className="btn-primary gap-3 px-10 py-5 text-xs group"
             >
               {ctaBannerData.buttonLabel}
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </motion.div>

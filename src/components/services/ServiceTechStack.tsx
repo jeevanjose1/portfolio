@@ -42,7 +42,7 @@ export default function ServiceTechStack({ service }: { service: MainServiceItem
                 {category.techs.map((tech) => (
                   <div
                     key={tech}
-                    className="px-4 py-2 rounded-lg bg-section-alt border border-border text-sm font-black text-foreground shadow-sm hover:border-accent/30 hover:text-accent transition-colors duration-300"
+                    className="px-4 py-2 rounded-lg bg-section-alt border border-border text-sm font-black text-foreground shadow-sm hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:text-accent transition-colors duration-300"
                   >
                     {tech}
                   </div>

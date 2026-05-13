@@ -12,34 +12,34 @@ const certIconColors: Record<string, string> = {
 
 export default function EducationCerts() {
   return (
-    <section className="bg-section-alt py-16 transition-colors duration-300">
+    <section className="bg-section-alt transition-colors duration-300">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-14"
         >
-          <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
-            {"//"} Academic & Professional
+          <p className="section-label mb-4">
+            
           </p>
           <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
             Credentials.
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
           {/* Education — Bento Style Card (spans 5 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-5 bg-background rounded-lg p-10 border border-border shadow-xl shadow-black/5"
+            className="lg:col-span-5 bg-background rounded-2xl p-10 border border-[var(--color-card-border)]" style={{ boxShadow: "var(--shadow-card)" }}
           >
             <div className="flex items-center gap-3 mb-10">
-              <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center border border-accent/20">
+              <div className="w-10 h-10 rounded-full bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] flex items-center justify-center border border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]">
                 <GraduationCap size={20} className="text-accent" />
               </div>
               <h3 className="text-sm font-black uppercase tracking-widest text-foreground">
@@ -70,7 +70,7 @@ export default function EducationCerts() {
             className="lg:col-span-7 flex flex-col"
           >
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center border border-accent/20">
+              <div className="w-10 h-10 rounded-full bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] flex items-center justify-center border border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]">
                 <Award size={20} className="text-accent" />
               </div>
               <h3 className="text-sm font-black uppercase tracking-widest text-foreground">
@@ -78,11 +78,11 @@ export default function EducationCerts() {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
               {certificationsData.map((cert) => {
                 const colorClass = certIconColors[cert.iconLabel] ?? "bg-section-alt text-muted-foreground border-border";
                 return (
-                  <div key={cert.name} className="bg-background rounded-lg p-6 flex items-start gap-5 border border-border hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300 group">
+                  <div key={cert.name} className="bg-background rounded-2xl p-6 flex items-start gap-5 border border-[var(--color-card-border)] hover:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] hover:-translate-y-0.5 transition-all duration-300 group" style={{ boxShadow: "var(--shadow-card)" }}>
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 border ${colorClass} group-hover:scale-110 transition-transform`}>
                       <span className="text-[10px] font-black">{cert.iconLabel}</span>
                     </div>

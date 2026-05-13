@@ -17,7 +17,7 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
 
   const filteredProjects = projects.filter((project) => {
     if (activeFilter === "All") return true;
-    return project.categories.includes(activeFilter as string);
+    return project.categories.includes(activeFilter as FilterCategory);
   });
 
   return (
@@ -31,9 +31,10 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
       <div className="section-container">
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+            {filteredProjects.map((project) => {
+              const projectId = "_id" in project ? project._id : project.id;
+              return <ProjectCard key={projectId} project={project} />;
+            })}
           </AnimatePresence>
         </motion.div>
 

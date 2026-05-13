@@ -33,7 +33,7 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className={`relative rounded-2xl flex flex-col transition-transform duration-500 hover:-translate-y-2 ${pkg.highlighted
-                ? "bg-accent text-white shadow-2xl shadow-accent/20 scale-105 z-10 border border-white/20"
+                ? "bg-accent text-white shadow-2xl shadow-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] scale-105 z-10 border border-white/20"
                 : pkg.name === "Enterprise"
                   ? "bg-primary text-background shadow-card border border-border"
                   : "bg-background text-foreground border border-border shadow-lg"
@@ -77,7 +77,7 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
                     ? "bg-white text-slate-900 hover:bg-gray-100 dark:bg-white dark:text-accent"
                     : pkg.name === "Enterprise"
                       ? "bg-accent text-white hover:bg-blue-600"
-                      : "bg-background text-foreground border border-border hover:border-accent hover:bg-accent/5"
+                      : "bg-background text-foreground border border-border hover:border-accent hover:bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)]"
                     }`}
                 >
                   {pkg.name === "Enterprise" ? "Let's Talk" : "Get Started"}

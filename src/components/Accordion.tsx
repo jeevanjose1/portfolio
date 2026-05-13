@@ -13,7 +13,7 @@ export default function Accordion({ question, answer }: AccordionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`rounded-lg bg-background border mb-4 last:mb-0 transition-all duration-500 overflow-hidden ${isOpen ? 'border-accent shadow-2xl shadow-black/5' : 'border-border hover:border-accent/20'}`}>
+    <div className={`rounded-lg bg-background border mb-4 last:mb-0 transition-all duration-500 overflow-hidden ${isOpen ? 'border-accent shadow-2xl shadow-black/5' : 'border-border hover:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]'}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-8 text-left focus:outline-none group"
@@ -22,7 +22,7 @@ export default function Accordion({ question, answer }: AccordionProps) {
           {question}
         </h3>
         <div
-          className={`flex-shrink-0 ml-6 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-accent text-background rotate-180' : 'bg-section-alt text-muted-foreground group-hover:bg-accent/10 group-hover:text-accent'}`}
+          className={`flex-shrink-0 ml-6 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-accent text-background rotate-180' : 'bg-section-alt text-muted-foreground group-hover:bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] group-hover:text-accent'}`}
         >
           {isOpen ? <Minus size={20} /> : <Plus size={20} />}
         </div>

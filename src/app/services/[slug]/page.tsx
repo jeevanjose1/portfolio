@@ -1,6 +1,4 @@
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
 import { mainServicesData } from "@/lib/data";
 import ServiceHero from "@/components/services/ServiceHero";
 import WhatYouGet from "@/components/services/WhatYouGet";
@@ -42,21 +40,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
   return (
     <>
-      {/* SECTION 1 - BACK NAVIGATION */}
-      <div className="bg-background/80 backdrop-blur-md border-b border-border mt-12 transition-colors duration-300">
-        <div className="section-container py-3 flex items-center justify-between">
-          <Link
-            href="/services"
-            className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors"
-          >
-            <ArrowLeft size={16} />
-            Back to Services
-          </Link>
-          <span className="text-xs font-black uppercase tracking-widest text-foreground hidden sm:block">
-            {service.title}
-          </span>
-        </div>
-      </div>
+
 
       <ServiceHero service={service} />
       <WhatYouGet service={service} />

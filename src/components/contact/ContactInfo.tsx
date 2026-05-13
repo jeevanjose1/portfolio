@@ -29,7 +29,8 @@ export default function ContactInfo() {
       initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-background rounded-lg p-7 sm:p-10 border border-border shadow-card"
+      className="bg-background rounded-2xl p-8 sm:p-10 lg:p-12 border border-[var(--color-card-border)]"
+      style={{ boxShadow: "var(--shadow-card)" }}
     >
       <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Information</h2>
 
@@ -41,7 +42,7 @@ export default function ContactInfo() {
           { icon: Briefcase, label: "Availability", value: "Open for projects" }
         ].map((item) => (
           <div key={item.label} className="flex items-start gap-5">
-            <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent shrink-0 border border-accent/20">
+            <div className="w-12 h-12 rounded-full bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] flex items-center justify-center text-accent shrink-0 border border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]">
               <item.icon size={22} />
             </div>
             <div>
@@ -72,7 +73,7 @@ export default function ContactInfo() {
             href={social.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between p-5 bg-section-alt border border-border rounded-lg hover:border-accent hover:bg-background transition-all duration-300 group"
+            className="flex items-center justify-between p-5 bg-section-alt border border-[var(--color-card-border)] rounded-xl hover:border-accent hover:bg-background transition-all duration-300 group"
           >
             <span className="flex items-center gap-4 text-sm font-black uppercase tracking-widest text-foreground">
               <social.icon size={20} className={`${social.color} group-hover:scale-110 transition-transform`} />
@@ -83,7 +84,7 @@ export default function ContactInfo() {
         ))}
       </div>
 
-      <div className="bg-primary rounded-lg p-8 text-background relative overflow-hidden">
+      <div className="bg-primary rounded-2xl p-8 text-background relative overflow-hidden" style={{ boxShadow: "var(--shadow-card)" }}>
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-6">
             <span className="relative flex h-3 w-3">
@@ -93,7 +94,7 @@ export default function ContactInfo() {
             <span className="text-[10px] font-black uppercase tracking-widest text-background">Live Availability</span>
           </div>
           <p className="text-2xl font-heading font-black mb-2">I&apos;m Online.</p>
-          <p className="text-xs text-background/60 font-medium tracking-wide">
+          <p className="text-xs text-[color-mix(in_srgb,var(--color-background)_60%,transparent)] font-medium tracking-wide">
             Mon–Fri 6PM–10PM IST<br />
             Weekends Available
           </p>

@@ -14,7 +14,7 @@ export default function RelatedServices({ currentService }: { currentService: Ma
 
   return (
     <section className="bg-background py-16 transition-colors duration-300">
-      <div className="section-container">
+      <div className="section-container !py-0">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export default function RelatedServices({ currentService }: { currentService: Ma
                 transition={{ delay: i * 0.15, duration: 0.5 }}
                 className="h-full"
               >
-                <GradientCard className="h-full border border-border p-8 flex flex-col bg-background transition-all duration-500 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 group">
+                <GradientCard className="h-full border border-border p-8 flex flex-col bg-background transition-all duration-500 hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:shadow-xl hover:shadow-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] group">
                   <div className="w-12 h-12 rounded-lg bg-section-alt border border-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300">
                     <Icon size={24} className="text-accent group-hover:text-background transition-colors" />
                   </div>
