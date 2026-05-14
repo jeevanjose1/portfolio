@@ -30,7 +30,7 @@ export default async function AboutPage() {
       <AboutHero data={pageAbout} />
       <MyStory storyText={pageAbout?.myStoryText} timeline={pageAbout?.timeline} />
       <SkillsGrid skillGroups={pageAbout?.skillGroups} />
-      <ExperienceCards experiences={experiences} />
+      <ExperienceCards experiences={experiences} workHistory={(pageAbout as any)?.workHistory} />
       <EducationCerts education={pageAbout?.education} certifications={pageAbout?.certifications} />
       <BeyondCode items={pageAbout?.beyondCode} />
       <CTABanner data={siteSettings?.ctaBanner} />

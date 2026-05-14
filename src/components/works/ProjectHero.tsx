@@ -1,10 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Globe, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import type { NormalizedProject } from "./types";
+import { Reveal } from "@/components/animations/Reveal";
+import ImageLightbox from "@/components/ui/ImageLightbox";
 
 const GithubIcon = ({ size, className }: { size: number; className?: string }) => (
   <svg
@@ -29,97 +30,119 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
     <section className="bg-background">
       <div className="section-container">
         <div className="mb-8">
-          <Link
-            href="/works"
-            className="text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-accent flex items-center gap-2 transition-colors w-fit"
-          >
-            <ArrowLeft size={14} /> Back to Works
-          </Link>
+          <Reveal delay={0.1}>
+            <Link
+              href="/works"
+              className="text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-accent flex items-center gap-2 transition-colors w-fit"
+            >
+              <ArrowLeft size={14} /> Back to Works
+            </Link>
+          </Reveal>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           {/* Info Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="lg:w-[55%] bg-section-alt rounded-lg p-8 sm:p-12 border border-border shadow-card"
+          <Reveal
+            width="100%"
+            className="lg:w-[55%]"
+            y={60}
+            duration={1}
           >
-            <div className="mb-8">
-              <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] text-accent text-[10px] font-black uppercase tracking-widest">
-                {project.categories.find((c) => c !== "All") || "Project"}
-              </span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-tight mb-8">
-              {project.title.split(" ").map((word, i) =>
-                i === 1 ? (
-                  <span key={i} className="text-accent">
-                    {word}{" "}
+            <div
+              className="bg-section-alt rounded-lg p-8 sm:p-12 border border-border shadow-card h-full flex flex-col"
+            >
+              <div className="mb-8">
+                <Reveal delay={0.2} y={10}>
+                  <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] text-accent text-[10px] font-black uppercase tracking-widest">
+                    {project.categories.find((c) => c !== "All") || "Project"}
                   </span>
-                ) : (
-                  word + " "
-                )
-              )}
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-10 font-body italic">
-              &ldquo;{project.description}&rdquo;
-            </p>
+                </Reveal>
+              </div>
+              <Reveal delay={0.3} blur>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-tight mb-8">
+                  {project.title.split(" ").map((word, i) =>
+                    i === 1 ? (
+                      <span key={i} className="text-accent">
+                        {word}{" "}
+                      </span>
+                    ) : (
+                      word + " "
+                    )
+                  )}
+                </h1>
+              </Reveal>
+              <Reveal delay={0.4} y={20}>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-10 font-body italic">
+                  &ldquo;{project.description}&rdquo;
+                </p>
+              </Reveal>
 
-            <div className="flex flex-wrap gap-2 mb-16">
-              {project.tags.map((tag, i) => (
-                <motion.span
-                  key={tag}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3 + i * 0.1 }}
-                  className="text-[10px] font-black uppercase tracking-widest bg-background border border-border text-muted-foreground px-4 py-2 rounded-lg shadow-sm"
-                >
-                  {tag}
-                </motion.span>
-              ))}
-            </div>
+              <div className="flex flex-wrap gap-2 mb-16">
+                {project.tags.map((tag, i) => (
+                  <Reveal
+                    key={tag}
+                    delay={0.5 + i * 0.1}
+                    y={10}
+                    scale={0.9}
+                  >
+                    <span
+                      className="text-[10px] font-black uppercase tracking-widest bg-background border border-border text-muted-foreground px-4 py-2 rounded-lg shadow-sm block"
+                    >
+                      {tag}
+                    </span>
+                  </Reveal>
+                ))}
+              </div>
 
-            <div className="flex flex-wrap items-center gap-4">
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary inline-flex items-center gap-3"
-                >
-                  Visit Live Site <Globe size={18} />
-                </a>
-              )}
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary inline-flex items-center gap-3 bg-background"
-                >
-                  Explore Source <GithubIcon size={18} />
-                </a>
-              )}
+              <Reveal delay={0.6} y={20}>
+                <div className="flex flex-wrap items-center gap-4 mt-auto">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary inline-flex items-center gap-3"
+                    >
+                      Visit Live Site <Globe size={18} />
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-secondary inline-flex items-center gap-3 bg-background"
+                    >
+                      Explore Source <GithubIcon size={18} />
+                    </a>
+                  )}
+                </div>
+              </Reveal>
             </div>
-          </motion.div>
+          </Reveal>
 
           {/* Visuals & Quick Info */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:w-[45%] w-full flex flex-col gap-6"
-          >
-            <div className="relative aspect-video rounded-lg overflow-hidden shadow-card border border-border bg-section-alt group">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                priority
-                className="object-cover group-hover:scale-105 transition-transform duration-1000"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 to-accent/5" />
-              <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />
-            </div>
+          <div className="lg:w-[45%] w-full flex flex-col gap-6">
+            <Reveal
+              width="100%"
+              delay={0.3}
+              scale={1.05}
+              duration={1.2}
+            >
+              <ImageLightbox src={project.image} alt={project.title}>
+                <div className="relative aspect-video rounded-lg overflow-hidden shadow-card border border-border bg-section-alt group">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    priority
+                    className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 to-accent/5" />
+                  <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />
+                </div>
+              </ImageLightbox>
+            </Reveal>
 
             <div className="grid grid-cols-2 gap-4">
               {project.info &&
@@ -129,23 +152,27 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
                   { label: "Team", value: project.info.teamSize },
                   { label: "Status", value: project.info.status },
                 ].map((info, i) => (
-                  <motion.div
+                  <Reveal
                     key={info.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 + i * 0.1 }}
-                    className="bg-section-alt p-6 rounded-lg border border-border"
+                    width="100%"
+                    delay={0.5 + i * 0.1}
+                    y={20}
+                    blur
                   >
-                    <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest mb-2">
-                      {info.label}
-                    </p>
-                    <p className="text-foreground font-black font-heading tracking-tight">
-                      {info.value}
-                    </p>
-                  </motion.div>
+                    <div
+                      className="bg-section-alt p-6 rounded-lg border border-border h-full"
+                    >
+                      <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest mb-2">
+                        {info.label}
+                      </p>
+                      <p className="text-foreground font-black font-heading tracking-tight">
+                        {info.value}
+                      </p>
+                    </div>
+                  </Reveal>
                 ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

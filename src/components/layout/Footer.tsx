@@ -6,12 +6,14 @@ import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/constants";
 import { SanitySiteSettings } from "@/sanity/types";
 
+import { Reveal } from "@/components/animations/Reveal";
+
 const quickLinks = [
-  { label: "Home",     href: "/" },
-  { label: "About",    href: "/about" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Works",    href: "/works" },
-  { label: "Contact",  href: "/contact" },
+  { label: "Works", href: "/works" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer({ siteSettings }: { siteSettings?: SanitySiteSettings }) {
@@ -21,57 +23,44 @@ export default function Footer({ siteSettings }: { siteSettings?: SanitySiteSett
 
   const email = siteSettings?.email || siteConfig.email;
   const description = siteSettings?.description || siteConfig.description;
-  const socialPills = siteSettings?.socialLinks?.map((link) => ({
+  const socialLinks = siteSettings?.socialLinks?.map((link) => ({
     label: link.label,
     href: link.href,
   })) || [
-    { label: "GitHub",   href: siteConfig.socials.github },
-    { label: "LinkedIn", href: siteConfig.socials.linkedin },
-    { label: "Upwork",   href: siteConfig.socials.upwork },
-  ];
+      { label: "GitHub", href: siteConfig.socials.github },
+      { label: "LinkedIn", href: siteConfig.socials.linkedin },
+    ];
 
   if (isStudio) return null;
 
   return (
-    <footer
-      className="text-white transition-colors duration-300"
-      style={{ backgroundColor: "var(--color-contrast-bg)" }}
-    >
-      {/* Top accent line */}
-      <div className="h-px w-full opacity-10 bg-gradient-to-r from-transparent via-white to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 lg:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-14 md:gap-10">
-
-          {/* Brand */}
-          <div className="md:col-span-5 space-y-5">
-            <Link href="/" className="text-2xl font-heading font-black tracking-tighter hover:opacity-80 transition-opacity inline-block">
+    <footer className="bg-section-alt py-20 border-t border-border transition-colors duration-300">
+      <div className="section-container !py-0">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
+          
+          {/* Column 1: Brand & Bio */}
+          <div className="md:col-span-5">
+            <Link href="/" className="text-2xl font-heading font-black tracking-tighter hover:opacity-80 transition-opacity inline-block mb-6">
               JEEVAN<span className="opacity-40">JOSE</span>
             </Link>
-            <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              {description}
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-8 font-body">
+              {description || "Full-stack developer and mobile engineer specializing in building exceptional digital experiences."}
             </p>
-            <a
-              href={`mailto:${email}`}
-              className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors group"
-            >
-              <Mail size={14} className="group-hover:text-accent transition-colors" />
-              {email}
+            <a href={`mailto:${email}`} className="group flex items-center gap-2 text-sm font-black uppercase tracking-widest text-accent hover:text-foreground transition-colors">
+              Get in touch
+              <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 2: Navigation */}
           <div className="md:col-span-3">
-            <h4 className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-7">
+            <h4 className="text-[10px] font-black uppercase tracking-widest text-foreground/40 mb-8">
               Navigation
             </h4>
-            <ul className="space-y-3.5">
+            <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/60 hover:text-white transition-colors duration-200 group inline-flex items-center gap-1"
-                  >
+                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-accent transition-colors font-body">
                     {link.label}
                   </Link>
                 </li>
@@ -79,39 +68,41 @@ export default function Footer({ siteSettings }: { siteSettings?: SanitySiteSett
             </ul>
           </div>
 
-          {/* Social */}
+          {/* Column 3: Socials */}
           <div className="md:col-span-4">
-            <h4 className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-7">
-              Connect
+            <h4 className="text-[10px] font-black uppercase tracking-widest text-foreground/40 mb-8">
+              Socials
             </h4>
-            <div className="flex flex-wrap gap-2.5">
-              {socialPills.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
+            <div className="flex flex-col gap-4">
+              {socialLinks.map((link) => (
+                <a 
+                  key={link.label} 
+                  href={link.href} 
+                  target="_blank" 
                   rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-white/5 border border-white/8 text-sm text-white/60 hover:bg-white/10 hover:text-white transition-all duration-200 group"
+                  className="flex items-center justify-between p-4 rounded-xl border border-border hover:border-accent hover:bg-surface-2 transition-all group"
                 >
-                  {s.label}
-                  <ArrowUpRight size={13} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="text-xs font-black uppercase tracking-widest text-muted-foreground group-hover:text-foreground">
+                    {link.label}
+                  </span>
+                  <ArrowUpRight size={14} className="text-muted-foreground group-hover:text-accent group-hover:rotate-45 transition-all" />
                 </a>
               ))}
             </div>
           </div>
+
         </div>
 
-        {/* Divider + Copyright */}
-        <div className="mt-16 pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/30 font-medium">
-            © {currentYear} Jeevan Jose. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="mt-20 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-6">
+          <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+            © {currentYear} — Vadodara, India
           </p>
-          <button
+          <button 
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-[10px] text-white/30 hover:text-white/70 transition-colors flex items-center gap-1.5 font-black uppercase tracking-widest"
+            className="text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors flex items-center gap-2"
           >
-            Back to Top ↑
+            Back to top <ArrowUpRight size={14} className="-rotate-45" />
           </button>
         </div>
       </div>

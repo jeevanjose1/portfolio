@@ -5,7 +5,8 @@ export interface SanityProject {
   title: string;
   slug: string;
   description: string;
-  mainImage?: Image;
+  thumbnail?: Image;
+  heroImage?: Image;
   categories: string[];
   publishedAt: string;
   link?: string;

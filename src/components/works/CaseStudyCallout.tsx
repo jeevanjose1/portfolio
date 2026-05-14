@@ -1,57 +1,90 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { Reveal } from "@/components/animations/Reveal";
+import { CheckCircle2, Zap, Layout, Terminal } from "lucide-react";
 
-export default function CaseStudyCallout() {
+const principles = [
+  {
+    icon: Zap,
+    title: "Performance First",
+    desc: "Optimizing every byte for sub-second load times and smooth 60fps interactions."
+  },
+  {
+    icon: Layout,
+    title: "Editorial Design",
+    desc: "Merging high-end aesthetics with functional UX to create memorable digital experiences."
+  },
+  {
+    icon: Terminal,
+    title: "Scalable Logic",
+    desc: "Architecting clean, type-safe codebases that grow seamlessly with your business needs."
+  },
+  {
+    icon: CheckCircle2,
+    title: "Quality Assured",
+    desc: "Rigorous testing and peer-reviewed standards to ensure production-grade reliability."
+  }
+];
+
+export default function WorksPhilosophy() {
   return (
-    <section className="bg-accent text-background mb-10 transition-colors duration-300">
-      <div className="section-container py-16 lg:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="opacity-60 text-sm font-black tracking-widest uppercase mb-3 block">
-              Featured Case Study
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-heading font-black mb-6">
-              Scaling an E-commerce Platform to 2,000+ Daily Users
-            </h2>
-            <p className="opacity-80 text-lg leading-relaxed mb-8 font-body">
-              Discover how I completely re-architected a legacy monolith into a modern,
-              scalable microservices architecture, improving performance by 40% and
-              significantly reducing infrastructure costs.
-            </p>
-            <button className="bg-background text-foreground hover:bg-[color-mix(in_srgb,var(--color-background)_90%,transparent)] px-8 py-3.5 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-2 transition-colors">
-              Read Full Case Study
-              <ArrowRight size={18} />
-            </button>
-          </motion.div>
+    <section className="bg-section-alt py-16 border-y border-[var(--color-border)] transition-colors duration-300">
+      <div className="section-container">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
 
-          {/* Right Metrics Grid */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-2 gap-4 sm:gap-6"
-          >
-            {[
-              { label: "Daily Users", value: "2,000+" },
-              { label: "Lighthouse", value: "98/100" },
-              { label: "Uptime", value: "99.9%" },
-              { label: "Load Time", value: "1.2s" }
-            ].map((metric) => (
-              <div key={metric.label} className="bg-background rounded-lg p-6 shadow-xl shadow-black/20 text-center border border-white/5">
-                <p className="text-4xl font-black font-heading text-accent mb-1">{metric.value}</p>
-                <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{metric.label}</p>
+          {/* Sticky Left Sidebar */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32 h-fit">
+            <Reveal delay={0.1}>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">
+                  // The Methodology
+                </span>
               </div>
-            ))}
-          </motion.div>
+            </Reveal>
+
+            <Reveal delay={0.2} blur>
+              <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground tracking-tight leading-[1.1] mb-8">
+                Building with <br /> precision & purpose.
+              </h2>
+            </Reveal>
+
+            <Reveal delay={0.3} y={20}>
+              <p className="text-muted-foreground text-lg leading-relaxed font-body max-w-md">
+                My work is driven by a simple philosophy: software should be as beautiful as it is functional. I combine deep technical expertise with a sharp eye for design.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* Principles Grid */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
+            {principles.map((p, i) => {
+              const Icon = p.icon;
+              return (
+                <Reveal
+                  key={p.title}
+                  delay={0.4 + (i * 0.1)}
+                  y={30}
+                  blur
+                  className="group"
+                >
+                  <div className="space-y-6 p-8 rounded-xl bg-surface-2 border border-[var(--color-card-border)] hover:border-accent/30 transition-all duration-500  hover:shadow-accent/5">
+                    <div className="w-12 h-12 rounded-xl bg-background border border-[var(--color-border)] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-background transition-colors duration-500">
+                      <Icon size={20} />
+                    </div>
+                    <div className="space-y-3">
+                      <h3 className="text-xl font-heading font-black text-foreground">
+                        {p.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed font-body">
+                        {p.desc}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+
         </div>
       </div>
     </section>

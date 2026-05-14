@@ -1,6 +1,6 @@
 import WorksHero from "@/components/works/WorksHero";
 import ProjectGrid from "@/components/works/ProjectGrid";
-import CaseStudyCallout from "@/components/works/CaseStudyCallout";
+import WorksPhilosophy from "@/components/works/CaseStudyCallout";
 import CTABanner from "@/components/home/CTABanner";
 import type { Metadata } from "next";
 import { client } from "@/sanity/lib/client";
@@ -23,11 +23,12 @@ export default async function WorksPage() {
   
   try {
     const [fetchedProjects, fetchedSettings] = await Promise.all([
-      client.fetch<SanityProject[]>(projectsQuery),
+      client.fetch<SanityProject[]>(projectsQuery, {}, { useCdn: false }),
       client.fetch<SanitySiteSettings>(siteSettingsQuery),
     ]);
     projects = fetchedProjects;
     siteSettings = fetchedSettings;
+    console.log("SANITY DATA DEBUG - First Project Data:", JSON.stringify(projects[0], null, 2));
   } catch (error) {
     console.error("Sanity fetch failed:", error);
     fetchError = true;
@@ -41,7 +42,7 @@ export default async function WorksPage() {
     <>
       <WorksHero projects={displayProjects} />
       <ProjectGrid projects={displayProjects} />
-      <CaseStudyCallout />
+      <WorksPhilosophy />
       <CTABanner data={siteSettings?.ctaBanner} />
     </>
   );

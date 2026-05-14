@@ -103,6 +103,27 @@ export const pageAbout = defineType({
       ],
     }),
     defineField({
+      name: 'workHistory',
+      title: 'Work History',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'company', type: 'string', title: 'Company Name' },
+            { name: 'role', type: 'string', title: 'Role' },
+            { name: 'duration', type: 'string', title: 'Duration (e.g. 2021 - Present)' },
+            { 
+              name: 'points', 
+              type: 'array', 
+              title: 'Key Responsibilities / Achievements',
+              of: [{ type: 'string' }]
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: 'skillGroups',
       title: 'Skill Groups',
       type: 'array',

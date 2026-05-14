@@ -10,7 +10,7 @@ import RelatedServices from "@/components/services/RelatedServices";
 import ServiceCTA from "@/components/services/ServiceCTA";
 import type { Metadata } from "next";
 import { client } from "@/sanity/lib/client";
-import { serviceBySlugQuery, servicesQuery } from "@/sanity/lib/queries";
+import { serviceBySlugQuery, servicesQuery, projectsQuery } from "@/sanity/lib/queries";
 import { SanityService } from "@/sanity/types";
 
 export const revalidate = 0;
@@ -55,6 +55,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const service = await client.fetch<SanityService>(serviceBySlugQuery, { slug: params.slug })
     || (mainServicesData.find((s) => s.slug === params.slug) as unknown as SanityService);
 
+  const allServices = await client.fetch<SanityService[]>(servicesQuery);
+  const allProjects = await client.fetch<any[]>(projectsQuery);
+
   if (!service) {
     notFound();
   }
@@ -66,8 +69,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       <ServiceTechStack service={service} />
       <ProcessTimeline service={service} />
       <ServiceFAQ service={service} />
-      <RelatedWorks service={service} />
-      <RelatedServices currentService={service} />
+      <RelatedWorks service={service} allProjects={allProjects} />
+      <RelatedServices currentService={service} allServices={allServices} />
       <ServiceCTA title={service.title} />
     </>
   );

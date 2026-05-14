@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ProjectItem } from "@/lib/data";
@@ -25,14 +24,14 @@ const projectVisuals: Record<string, string> = {
 
 export default function ProjectCard({ project }: { project: ProjectItem | SanityProject }) {
   const isSanityProject = "_id" in project;
-  const visualSrc = isSanityProject && project.mainImage
-    ? urlForImage(project.mainImage).url()
+  const projectThumbnail = isSanityProject ? (project as SanityProject).thumbnail : null;
+  const visualSrc = isSanityProject && projectThumbnail?.asset
+    ? urlForImage(projectThumbnail).url()
     : (projectVisuals[project.slug] ?? "/images/project-1.svg");
 
   return (
     <Link href={`/works/${project.slug}`} className="block h-full outline-none focus:ring-2 focus:ring-accent rounded-2xl group">
-      <motion.div layout initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.96 }} transition={{ duration: 0.4 }} className="h-full">
+      <div className="h-full">
         <GradientCard className="bg-background border border-[var(--color-card-border)] overflow-hidden group-hover:border-[color-mix(in_srgb,var(--color-accent)_25%,transparent)] transition-all duration-500 flex flex-col h-full p-2" style={{ boxShadow: "var(--shadow-card)" } as React.CSSProperties}>
 
           {/* Image */}
@@ -46,7 +45,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
             {/* Category badge */}
             <div className="absolute top-4 left-4 z-20">
               <span className="px-3.5 py-1.5 rounded-full bg-accent text-background text-[10px] font-black uppercase tracking-widest">
-                {project.categories[0]}
+                {project.categories?.[0] || "Project"}
               </span>
             </div>
 
@@ -61,7 +60,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
           {/* Content */}
           <div className="p-8 sm:p-10 flex flex-col flex-grow">
             <div className="flex flex-wrap gap-2 mb-5">
-              {project.categories.slice(0, 3).map((tag) => (
+              {project.categories?.slice(0, 3).map((tag) => (
                 <span key={tag} className="text-[10px] font-bold uppercase tracking-wider bg-surface-2 text-muted-foreground px-3 py-1 rounded-full border border-[var(--color-border)]">
                   {tag}
                 </span>
@@ -93,7 +92,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
             </div>
           </div>
         </GradientCard>
-      </motion.div>
+      </div>
     </Link>
   );
 }

@@ -5,6 +5,7 @@ import Navbar       from "@/components/layout/Navbar";
 import Footer       from "@/components/layout/Footer";
 import MainContent  from "@/components/layout/MainContent";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import SmoothScroll from "@/components/providers/SmoothScroll";
 import { client } from "@/sanity/lib/client";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 import { SanitySiteSettings } from "@/sanity/types";
@@ -53,9 +54,11 @@ export default async function RootLayout({
       </head>
       <body className="font-body antialiased bg-background text-foreground transition-colors duration-300">
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem={false}>
-          <Navbar />
-          <MainContent>{children}</MainContent>
-          <Footer siteSettings={siteSettings} />
+          <SmoothScroll>
+            <Navbar />
+            <MainContent>{children}</MainContent>
+            <Footer siteSettings={siteSettings} />
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>

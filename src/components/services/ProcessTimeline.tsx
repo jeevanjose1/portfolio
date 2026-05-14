@@ -4,6 +4,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { useRef } from "react";
 import { SanityService } from "@/sanity/types";
 import type { MainServiceItem } from "@/lib/data";
+import { Reveal } from "@/components/animations/Reveal";
 
 export default function ProcessTimeline({ service }: { service: SanityService | MainServiceItem }) {
   const steps = service.process || [];
@@ -23,20 +24,18 @@ export default function ProcessTimeline({ service }: { service: SanityService | 
   return (
     <section className="bg-background py-16 transition-colors duration-300" ref={containerRef}>
       <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="mb-16 text-center"
-        >
-          <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
-            {"//"} Step by Step
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
-            My Working Process.
-          </h2>
-        </motion.div>
+        <div className="mb-16 text-center">
+          <Reveal delay={0.1} className="mx-auto">
+            <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
+              {"//"} Step by Step
+            </p>
+          </Reveal>
+          <Reveal delay={0.2} blur className="mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
+              My Working Process.
+            </h2>
+          </Reveal>
+        </div>
 
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline Vertical Line (Background) */}
@@ -48,30 +47,26 @@ export default function ProcessTimeline({ service }: { service: SanityService | 
             style={{ scaleY }}
           />
 
-          <div className="space-y-12">
+          <div className="space-y-16">
             {steps.map((step: { step: string; duration: string; title: string; description: string }, i: number) => {
               const isEven = i % 2 === 0;
               return (
-                <div key={i} className={`relative flex flex-col md:flex-row items-center gap-8 ${isEven ? 'md:flex-row-reverse' : ''}`}>
+                <div key={i} className="relative grid grid-cols-1 md:grid-cols-2 items-center min-h-[180px]">
                   
                   {/* Timeline Dot */}
-                  <div className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-background border-4 border-border dark:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] flex items-center justify-center -translate-x-1/2 z-10 font-black text-foreground shadow-sm">
+                  <div className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-background border-4 border-border dark:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] flex items-center justify-center -translate-x-1/2 z-50 font-black text-foreground shadow-xl">
                     {step.step}
                   </div>
 
-                  {/* Empty space for the other side on desktop */}
-                  <div className="hidden md:block md:w-1/2" />
-
                   {/* Content Card */}
-                  <motion.div
-                    initial={{ opacity: 0, x: isEven ? 50 : -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="w-full md:w-1/2 pl-20 md:pl-0"
+                  <Reveal
+                    width="100%"
+                    delay={0.1}
+                    x={isEven ? -40 : 40}
+                    className={`w-full pl-24 md:pl-0 ${isEven ? 'md:col-start-1 md:pr-16' : 'md:col-start-2 md:pl-16'}`}
                   >
-                    <div className={`bg-background rounded-lg p-8 border border-border shadow-sm hover:shadow-lg transition-shadow duration-300 ${isEven ? 'md:mr-12' : 'md:ml-12'}`}>
-                      <div className="inline-block px-3 py-1 bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] text-accent text-xs font-black uppercase tracking-widest rounded-lg mb-4">
+                    <div className="bg-background rounded-2xl p-8 border border-border shadow-sm hover:shadow-lg transition-all duration-300">
+                      <div className="inline-block px-3 py-1 bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] text-accent text-[10px] font-black uppercase tracking-widest rounded-lg mb-4">
                         {step.duration}
                       </div>
                       <h3 className="text-2xl font-heading font-black text-foreground mb-3">
@@ -81,7 +76,7 @@ export default function ProcessTimeline({ service }: { service: SanityService | 
                         {step.description}
                       </p>
                     </div>
-                  </motion.div>
+                  </Reveal>
                 </div>
               );
             })}

@@ -7,8 +7,10 @@ export default function MainContent({ children }: { children: React.ReactNode })
   const pathname = usePathname();
   const isStudio = pathname.startsWith("/studio");
 
+  if (isStudio) return <main>{children}</main>;
+  
   return (
-    <main className={isStudio ? "" : "pt-[60px]"}>
+    <main className="pt-8">
       <PageTransition>{children}</PageTransition>
     </main>
   );

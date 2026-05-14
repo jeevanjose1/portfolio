@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import type { ProjectMetric } from "@/lib/data";
 import type { NormalizedProject } from "./types";
+import { Reveal } from "@/components/animations/Reveal";
 
 function CountUp({ metric }: { metric: ProjectMetric }) {
   const ref = useRef(null);
@@ -35,18 +36,26 @@ export default function ProjectMetrics({ project }: { project: NormalizedProject
       <div className="absolute inset-0 opacity-[0.035] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] [background-size:28px_28px]" />
       <div className="section-container relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {project.metrics.map((metric) => (
-            <div
+          {project.metrics.map((metric, i) => (
+            <Reveal
               key={metric.label}
-              className="bg-white/5 backdrop-blur-md rounded-lg p-10 text-center border border-white/10"
+              width="100%"
+              delay={i * 0.1}
+              y={20}
+              blur
+              className="h-full"
             >
-              <div className="text-4xl lg:text-5xl font-heading font-black text-white mb-4">
-                <CountUp metric={metric} />
+              <div
+                className="bg-white/5 backdrop-blur-md rounded-lg p-10 text-center border border-white/10 h-full"
+              >
+                <div className="text-4xl lg:text-5xl font-heading font-black text-white mb-4">
+                  <CountUp metric={metric} />
+                </div>
+                <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">
+                  {metric.label}
+                </p>
               </div>
-              <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">
-                {metric.label}
-              </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

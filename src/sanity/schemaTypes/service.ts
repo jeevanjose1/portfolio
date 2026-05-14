@@ -146,5 +146,28 @@ export const service = defineType({
         },
       ],
     }),
+    // --- Highlight ---
+    defineField({
+      name: 'highlight',
+      title: 'Service Highlight',
+      type: 'string',
+      description: 'A key highlight or feature of this service',
+    }),
+
+    // --- FAQs ---
+    defineField({
+      name: 'faqs',
+      title: 'Service Specific FAQs',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'question', type: 'string', title: 'Question' },
+            { name: 'answer', type: 'text', title: 'Answer', rows: 3 },
+          ],
+        },
+      ],
+    }),
   ],
 })

@@ -2,31 +2,39 @@
 
 import Link from "next/link";
 import ProjectCard from "@/components/works/ProjectCard";
-import { projectsData } from "@/lib/data";
-import type { NormalizedProject } from "./types";
+import { SanityProject } from "@/sanity/types";
 
-export default function ProjectRelated({ project }: { project: NormalizedProject }) {
-  const otherProjects = projectsData.filter((item) => item.id !== project.id).slice(0, 3);
-
-  if (otherProjects.length === 0) return null;
+export default function ProjectRelated({ projects }: { projects: SanityProject[] }) {
+  if (!projects || projects.length === 0) return null;
 
   return (
-    <section className="py-12 lg:py-16 bg-background">
+    <section className="py-24 lg:py-32 bg-background border-t border-border/50">
       <div className="section-container !py-0">
-        <div className="flex items-end justify-between mb-16">
-          <h2 className="text-4xl font-heading font-black text-foreground">
-            Explore More.
-          </h2>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-[1px] bg-accent" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">
+                Discovery
+              </span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground tracking-tight">
+              Explore More.
+            </h2>
+          </div>
+          
           <Link
             href="/works"
-            className="text-xs font-black uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors"
+            className="group flex items-center gap-3 text-xs font-black uppercase tracking-widest text-muted-foreground hover:text-accent transition-all"
           >
-            View All Works →
+            View All Works 
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {otherProjects.map((p) => (
-            <ProjectCard key={p.id} project={p} />
+          {projects.map((p) => (
+            <ProjectCard key={p._id} project={p} />
           ))}
         </div>
       </div>

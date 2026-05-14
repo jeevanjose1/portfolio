@@ -12,14 +12,22 @@ import ProjectFeatures from "./ProjectFeatures";
 import ProjectMetrics from "./ProjectMetrics";
 import ProjectRelated from "./ProjectRelated";
 
-export default function ProjectDetails({ project, siteSettings }: { project: ProjectItem | SanityProject, siteSettings?: SanitySiteSettings }) {
+export default function ProjectDetails({ 
+  project, 
+  siteSettings,
+  relatedProjects = []
+}: { 
+  project: ProjectItem | SanityProject, 
+  siteSettings?: SanitySiteSettings,
+  relatedProjects?: SanityProject[]
+}) {
   const isSanity = '_id' in project;
 
   const p: NormalizedProject = isSanity ? {
     id: project._id,
     title: project.title,
     description: project.description,
-    image: project.mainImage ? urlForImage(project.mainImage).url() : "/images/project-1.svg",
+    image: (project as SanityProject).heroImage?.asset ? urlForImage((project as SanityProject).heroImage!).url() : "/images/project-1.svg",
     categories: project.categories || [],
     tags: project.categories || [],
     liveUrl: project.link,
@@ -64,7 +72,7 @@ export default function ProjectDetails({ project, siteSettings }: { project: Pro
       <ProjectContent project={p} />
       <ProjectFeatures project={p} />
       <ProjectMetrics project={p} />
-      <ProjectRelated project={p} />
+      <ProjectRelated projects={relatedProjects} />
       <CTABanner data={siteSettings?.ctaBanner} />
     </div>
   );

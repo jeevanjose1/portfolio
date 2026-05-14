@@ -47,15 +47,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProjectPage({ params }: PageProps) {
-  const [project, siteSettings] = await Promise.all([
+  const [project, siteSettings, allProjects] = await Promise.all([
     client.fetch(projectBySlugQuery, { slug: params.slug })
     || projectsData.find((p) => p.slug === params.slug),
     client.fetch(siteSettingsQuery),
+    client.fetch(projectsQuery),
   ]);
 
   if (!project) {
     notFound();
   }
 
-  return <ProjectDetails project={project} siteSettings={siteSettings} />;
+  const relatedProjects = allProjects
+    ?.filter((p: any) => p.slug !== params.slug)
+    ?.slice(0, 3) || [];
+
+  return <ProjectDetails project={project} siteSettings={siteSettings} relatedProjects={relatedProjects} />;
 }

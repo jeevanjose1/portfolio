@@ -29,8 +29,17 @@ export const projectType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Main Image',
+      name: 'thumbnail',
+      title: 'Project Thumbnail (Card)',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'heroImage',
+      title: 'Project Hero (Details Page)',
       type: 'image',
       options: {
         hotspot: true,
@@ -68,7 +77,7 @@ export const projectType = defineType({
       description: 'Show this project in the featured section',
       initialValue: false,
     }),
-    
+
     // --- Project Intelligence ---
     defineField({
       name: 'projectInfo',
@@ -150,7 +159,7 @@ export const projectType = defineType({
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage',
+      media: 'thumbnail',
     },
   },
 })
