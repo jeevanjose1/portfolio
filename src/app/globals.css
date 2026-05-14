@@ -219,28 +219,26 @@ h6 {
 
   /* ── Layout ── */
   .section-container {
-    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-16 sm:py-20 lg:py-24;
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-14 sm:py-16 lg:py-20;
   }
 
   /* ── Cards ── */
   .card {
-    @apply bg-section-alt border border-[var(--color-card-border)] rounded-2xl transition-colors duration-300;
-    box-shadow: var(--shadow-card);
+    @apply bg-section-alt border border-[var(--color-card-border)] rounded-xl transition-colors duration-300;
+    
   }
 
   .card-hover {
     @apply transition-all duration-500 hover:border-[color-mix(in_srgb, var(--color-accent)_35%, transparent)] hover:-translate-y-0.5;
-    box-shadow: var(--shadow-card);
+    
   }
 
-  .card-hover:hover {
-    box-shadow: var(--shadow-lg);
-  }
+  
 
   /* ── Buttons ── */
   .btn-primary {
     @apply bg-accent text-background rounded-xl px-7 py-3.5 font-heading font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:bg-accent-hover active:scale-[0.97] inline-flex items-center justify-center;
-    box-shadow: var(--shadow-accent);
+    
   }
 
   .btn-primary:hover {

@@ -23,8 +23,8 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-2xl p-10 sm:p-12 min-h-[500px] border border-[var(--color-card-border)] flex flex-col justify-between h-full"
-              style={{ boxShadow: "var(--shadow-card)" }}
+              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-[var(--color-card-border)] flex flex-col justify-between h-full"
+               
             >
               <div>
                 <Reveal delay={0.2}>
@@ -67,10 +67,10 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-2xl p-8 sm:p-10 min-h-[220px] border border-[var(--color-card-border)] text-foreground relative overflow-hidden h-full"
-                style={{ boxShadow: "var(--shadow-card)" }}
+                className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-[var(--color-card-border)] text-foreground relative overflow-hidden h-full"
+                 
               >
-                <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px] rounded-2xl" />
+                <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px] rounded-xl" />
                 <div className="relative z-10">
                   <div className="h-12 w-12 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] flex items-center justify-center mb-8">
                     <Sparkles size={22} className="text-accent" />
@@ -126,8 +126,8 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
                   blur
                 >
                   <div
-                    className="bg-section-alt rounded-2xl p-6 sm:p-8 border border-[var(--color-card-border)] flex items-center justify-between gap-4 h-full"
-                    style={{ boxShadow: "var(--shadow-card)" }}
+                    className="bg-section-alt rounded-xl p-6 sm:p-8 border border-[var(--color-card-border)] flex items-center justify-between gap-4 h-full"
+                     
                   >
                     <div>
                       <p className="text-2xl sm:text-3xl font-heading font-black text-foreground">{item.value}</p>

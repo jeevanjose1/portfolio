@@ -30,7 +30,7 @@ function MainServiceCard({ service, index }: { service: SanityService | MainServ
       blur
       className="h-full"
     >
-      <GradientCard className="h-full border border-[var(--color-card-border)] p-8 sm:p-10 flex flex-col bg-background transition-all duration-500 hover:border-[color-mix(in_srgb,var(--color-accent)_25%,transparent)] hover:-translate-y-0.5 group" style={{ boxShadow: 'var(--shadow-card)' } as React.CSSProperties}>
+      <GradientCard className="h-full border border-[var(--color-card-border)] p-8 sm:p-10 flex flex-col bg-background transition-all duration-500 hover:border-[color-mix(in_srgb,var(--color-accent)_25%,transparent)] group" >
         <div className="w-14 h-14 rounded-xl bg-surface-2 border border-[var(--color-border)] flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300 shrink-0">
           <Icon size={26} className="text-accent group-hover:text-background transition-colors" />
         </div>

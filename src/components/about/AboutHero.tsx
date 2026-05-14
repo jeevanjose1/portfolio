@@ -39,8 +39,8 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-2xl p-10 sm:p-12 min-h-[500px] border border-[var(--color-card-border)] flex flex-col justify-between h-full"
-              style={{ boxShadow: "var(--shadow-card)" }}
+              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-[var(--color-card-border)] flex flex-col justify-between h-full"
+               
             >
               <div>
                 <Reveal delay={0.2}>
@@ -82,8 +82,8 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
             scale={1.05}
           >
             <div
-              className="bg-section-alt rounded-2xl overflow-hidden relative group min-h-[500px] border border-[var(--color-card-border)] h-full"
-              style={{ boxShadow: "var(--shadow-card)" }}
+              className="bg-section-alt rounded-xl overflow-hidden relative group min-h-[500px] border border-[var(--color-card-border)] h-full"
+               
             >
               <ParallaxImage offset={30} className="w-full h-full">
                 <Image
@@ -121,8 +121,8 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
                 blur
               >
                 <div
-                  className="bg-section-alt rounded-2xl p-6 sm:p-8 border border-[var(--color-card-border)] flex items-center justify-between gap-4 h-full"
-                  style={{ boxShadow: "var(--shadow-card)" }}
+                  className="bg-section-alt rounded-xl p-6 sm:p-8 border border-[var(--color-card-border)] flex items-center justify-between gap-4 h-full"
+                   
                 >
                   <div>
                     <p className="text-3xl sm:text-4xl font-heading font-black text-foreground">{stat.value}</p>

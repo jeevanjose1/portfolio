@@ -59,6 +59,7 @@ export default async function ProjectPage({ params }: PageProps) {
   }
 
   const relatedProjects = allProjects
+  
     ?.filter((p: any) => p.slug !== params.slug)
     ?.slice(0, 3) || [];
 

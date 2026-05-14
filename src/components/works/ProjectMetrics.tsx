@@ -32,7 +32,7 @@ export default function ProjectMetrics({ project }: { project: NormalizedProject
   if (!project.metrics || project.metrics.length === 0) return null;
 
   return (
-    <section className="py-12 lg:py-16 bg-contrast-bg relative border-y border-white/5 overflow-hidden">
+    <section className="py-12 lg:py-16 bg-contrast-bg relative border-y border-border overflow-hidden">
       <div className="absolute inset-0 opacity-[0.035] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] [background-size:28px_28px]" />
       <div className="section-container relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

@@ -23,11 +23,11 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title:       "Jeevan Jose — Full-Stack Developer Portfolio",
+  title:       "Jeevan Jose ",
   description: "Portfolio of a full-stack developer specializing in modern web applications, clean architecture, and exceptional user experiences.",
   keywords:    ["full-stack developer", "web developer", "portfolio", "React", "Next.js"],
   openGraph: {
-    title:       "Jeevan Jose — Full-Stack Developer Portfolio",
+    title:       "Jeevan Jose",
     description: "Portfolio of a full-stack developer specializing in modern web applications.",
     type:        "website",
   },

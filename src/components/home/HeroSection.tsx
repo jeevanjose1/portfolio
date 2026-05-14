@@ -3,7 +3,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import type { SocialLink } from "@/lib/data";
 import { SanityPageHome } from "@/sanity/types";
 import { Reveal } from "@/components/animations/Reveal";
@@ -21,16 +20,13 @@ const fallbackHeroData = {
 
 
 
-
-
-export default function HeroSection({ data, socialLinks }: { data?: SanityPageHome, stats?: { value: string; label: string }[], socialLinks?: SocialLink[] }) {
+export default function HeroSection({ data }: { data?: SanityPageHome, stats?: { value: string; label: string }[], socialLinks?: SocialLink[] }) {
   const badge = data?.heroBadge || fallbackHeroData.badge;
   const heading = data?.heroHeading || fallbackHeroData.heading;
   const welcome = data?.welcome || fallbackHeroData.welcome;
 
   const subheadline = data?.heroSubheadline || fallbackHeroData.subheadline;
   const ctaPrimary = data?.ctaPrimary || fallbackHeroData.ctaPrimary;
-  const displaySocials = socialLinks || [];
 
   return (
     <section id="home" className="min-h-[100svh] flex items-center  transition-colors duration-300">
@@ -46,7 +42,7 @@ export default function HeroSection({ data, socialLinks }: { data?: SanityPageHo
           >
             <div
               className="bg-section-alt rounded-xl p-10 sm:p-14 lg:p-20 flex flex-col justify-between h-full min-h-[560px] border border-[var(--color-card-border)] relative overflow-hidden"
-              style={{ boxShadow: "var(--shadow-card)" }}
+               
             >
               {/* Background Accent */}
               <div className="absolute top-0 right-0 w-96 h-96 bg-[color-mix(in_srgb,var(--color-accent)_3%,transparent)] rounded-full blur-[100px] -mr-32 -mt-32" />
@@ -107,7 +103,7 @@ export default function HeroSection({ data, socialLinks }: { data?: SanityPageHo
             >
               <div
                 className="bg-section-alt rounded-xl overflow-hidden relative group h-full min-h-[400px] border border-[var(--color-card-border)]"
-                style={{ boxShadow: "var(--shadow-card)" }}
+                 
               >
                 <ParallaxImage offset={20} className="w-full h-full">
                   <div className="absolute inset-0 grayscale contrast-[1.1] brightness-[0.95] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000">

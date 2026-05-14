@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, ArrowUpRight } from "lucide-react";
+import {  ArrowUpRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/constants";
 import { SanitySiteSettings } from "@/sanity/types";
 
-import { Reveal } from "@/components/animations/Reveal";
 
 const quickLinks = [
   { label: "Home", href: "/" },

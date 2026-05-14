@@ -27,7 +27,7 @@ export default function FilterBar({
             <div className="space-y-4">
               <Reveal delay={0.1}>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-accent flex items-center gap-2">
-                  // Project Archive
+                  {"//"} Project Archive
                 </p>
               </Reveal>
               <Reveal delay={0.2} blur>

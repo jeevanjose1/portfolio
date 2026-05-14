@@ -30,7 +30,7 @@ export default function AvailabilityBanner() {
           <div className="flex-shrink-0">
             <a
               href="mailto:hello@jeevanjose.com?subject=Strategy%20Call%20Request"
-              className="bg-accent text-background hover:opacity-90 px-8 py-4 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group shadow-card"
+              className="bg-accent text-background hover:opacity-90 px-8 py-4 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group "
             >
               <Calendar size={18} />
               Request a Strategy Call

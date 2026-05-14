@@ -33,10 +33,10 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
               className="h-full"
             >
               <div
-                className={`relative rounded-2xl flex flex-col transition-transform duration-500 hover:-translate-y-2 h-full ${pkg.highlighted
+                className={`relative rounded-xl flex flex-col transition-transform duration-500 hover:-translate-y-2 h-full ${pkg.highlighted
                   ? "bg-accent text-white shadow-2xl shadow-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] scale-105 z-10 border border-white/20"
                   : pkg.name === "Enterprise"
-                    ? "bg-primary text-background shadow-card border border-border"
+                    ? "bg-primary text-background  border border-border"
                     : "bg-background text-foreground border border-border shadow-lg"
                   }`}
               >

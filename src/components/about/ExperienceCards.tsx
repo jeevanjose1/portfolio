@@ -1,5 +1,4 @@
 "use client";
-
 import { experienceData } from "@/lib/data";
 import { SanityExperience } from "@/sanity/types";
 import { Reveal } from "@/components/animations/Reveal";

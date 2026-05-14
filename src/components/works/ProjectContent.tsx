@@ -6,6 +6,7 @@ import type { NormalizedProject } from "./types";
 import { Reveal } from "@/components/animations/Reveal";
 import ImageLightbox from "@/components/ui/ImageLightbox";
 import { urlForImage } from "@/sanity/lib/image";
+import Image from "next/image";
 
 export default function ProjectContent({ project }: { project: NormalizedProject }) {
   const components = {
@@ -16,7 +17,7 @@ export default function ProjectContent({ project }: { project: NormalizedProject
           <div className="my-12">
             <ImageLightbox src={imageUrl} alt="Project Detail Image">
               <div className="relative rounded-xl overflow-hidden border border-border shadow-2xl group">
-                <img
+                <Image
                   src={imageUrl}
                   alt="Project Detail Image"
                   className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]"
@@ -63,7 +64,7 @@ export default function ProjectContent({ project }: { project: NormalizedProject
             y={30}
             duration={1}
           >
-            <div className="bg-background border border-border rounded-lg p-8 sm:p-10 shadow-card relative overflow-hidden h-full">
+            <div className="bg-background border border-border rounded-lg p-8 sm:p-10  relative overflow-hidden h-full">
               <h3 className="text-sm font-black uppercase tracking-widest text-foreground mb-8 relative z-10">
                 Project Intelligence
               </h3>

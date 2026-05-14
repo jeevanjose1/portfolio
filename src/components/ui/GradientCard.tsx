@@ -32,13 +32,13 @@ export default function GradientCard({ children, className = "", glow = false, s
   return (
     <div
       onMouseMove={onMouseMove}
-      className={`group relative overflow-hidden rounded-2xl ${glow ? "hover:shadow-accent" : ""} transition-shadow duration-500 ${className}`}
+      className={`group relative overflow-hidden rounded-xl ${glow ? "hover:shadow-accent" : ""} transition-shadow duration-500 ${className}`}
       style={style}
       {...props}
     >
       {/* Radial spotlight */}
       <motion.div
-        className="pointer-events-none absolute -inset-px transition duration-300 opacity-0 group-hover:opacity-100 rounded-2xl"
+        className="pointer-events-none absolute -inset-px transition duration-300 opacity-0 group-hover:opacity-100 rounded-xl"
         style={{
           background: useMotionTemplate`
             radial-gradient(

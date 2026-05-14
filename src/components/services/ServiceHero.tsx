@@ -39,7 +39,7 @@ export default function ServiceHero({ service }: { service: SanityService | Main
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-lg p-7 sm:p-10 flex flex-col justify-between min-h-[320px] border border-border shadow-card h-full"
+              className="bg-section-alt rounded-lg p-7 sm:p-10 flex flex-col justify-between min-h-[320px] border border-border  h-full"
             >
               <div>
                 <Reveal delay={0.2}>
@@ -104,7 +104,7 @@ export default function ServiceHero({ service }: { service: SanityService | Main
               className="flex-1"
             >
               <div
-                className="bg-section-alt rounded-lg p-8 sm:p-10 border border-border flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[220px] shadow-card h-full"
+                className="bg-section-alt rounded-lg p-8 sm:p-10 border border-border flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[220px]  h-full"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-50" />
                 <div className="absolute inset-0 opacity-[0.045] dark:opacity-[0.06] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />
@@ -126,7 +126,7 @@ export default function ServiceHero({ service }: { service: SanityService | Main
               duration={1}
             >
               <div
-                className="bg-accent rounded-lg p-6 text-background flex flex-col justify-center border border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] shadow-card h-full"
+                className="bg-accent rounded-lg p-6 text-background flex flex-col justify-center border border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]  h-full"
               >
                 <div className="flex justify-between items-center mb-4">
                   <span className="text-[10px] font-black uppercase tracking-widest bg-[color-mix(in_srgb,var(--color-background)_20%,transparent)] px-3 py-1 rounded-lg backdrop-blur-sm">

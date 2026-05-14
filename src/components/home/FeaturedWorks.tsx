@@ -80,7 +80,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
                 >
                   <Link
                     href={`/works/${slug}`}
-                    className="group flex flex-col md:flex-row md:items-center justify-between py-10 gap-8 border-t border-[var(--color-border)]/50 transition-all duration-500 hover:px-5"
+                    className="group flex flex-col md:flex-row md:items-center justify-between py-10 gap-8 border-t border-border transition-all duration-500 hover:px-5"
                   >
                     <div className="flex-1">
                       <div className="flex items-center gap-5 mb-5">
@@ -98,7 +98,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
                           ))}
                         </div>
                       </div>
-                      <h3 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-foreground group-hover:text-accent group-hover:italic transition-all duration-500 tracking-tighter">
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-black text-foreground group-hover:text-accent transition-all duration-500 tracking-tighter">
                         {title}
                       </h3>
                     </div>
@@ -135,9 +135,9 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
               left: 0,
               pointerEvents: "none",
               zIndex: 1000,
-              boxShadow: "var(--shadow-xl)",
+             
             }}
-            className="hidden md:block w-[340px] h-[210px] rounded-2xl overflow-hidden border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] bg-section-alt"
+            className="hidden md:block shadow-md w-[340px] h-[210px] rounded-xl overflow-hidden border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] bg-section-alt"
           >
             <motion.div
               key={activeProject}

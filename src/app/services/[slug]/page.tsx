@@ -56,7 +56,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
     || (mainServicesData.find((s) => s.slug === params.slug) as unknown as SanityService);
 
   const allServices = await client.fetch<SanityService[]>(servicesQuery);
-  const allProjects = await client.fetch<any[]>(projectsQuery);
+  const allProjects = await client.fetch<[]>(projectsQuery);
 
   if (!service) {
     notFound();

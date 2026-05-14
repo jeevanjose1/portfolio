@@ -27,8 +27,8 @@ function ServiceCard({ service, index }: { service: SanityService | ServiceItem;
       className="h-full"
     >
       <article
-        className="group bg-section-alt rounded-2xl border border-[var(--color-card-border)] p-8 sm:p-10 transition-all duration-500 hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:-translate-y-0.5 h-full flex flex-col"
-        style={{ boxShadow: "var(--shadow-card)" }}
+        className="group bg-section-alt rounded-xl border border-[var(--color-card-border)] p-8 sm:p-10 transition-all duration-500 hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:-translate-y-0.5 h-full flex flex-col"
+         
       >
         <div className="flex items-start justify-between gap-4 mb-10">
           <div>
@@ -77,8 +77,8 @@ export default function ServicesPreview({ services }: { services: SanityService[
           duration={1}
         >
           <div
-            className="bg-section-alt rounded-2xl border border-[var(--color-card-border)] p-10 sm:p-12 flex flex-col justify-between h-full"
-            style={{ boxShadow: "var(--shadow-card)" }}
+            className="bg-section-alt rounded-xl border border-[var(--color-card-border)] p-10 sm:p-12 flex flex-col justify-between h-full"
+             
           >
             <div>
               <Reveal delay={0.2}>

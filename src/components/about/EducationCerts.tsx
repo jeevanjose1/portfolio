@@ -37,7 +37,7 @@ export default function EducationCerts({ education, certifications }: { educatio
             y={30}
             duration={1}
           >
-            <div className="bg-background rounded-2xl p-10 border border-[var(--color-card-border)] h-full" style={{ boxShadow: "var(--shadow-card)" }}>
+            <div className="bg-background rounded-xl p-10 border border-[var(--color-card-border)] h-full"  >
               <div className="flex items-center gap-3 mb-10">
                 <div className="w-10 h-10 rounded-full bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] flex items-center justify-center border border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]">
                   <GraduationCap size={20} className="text-accent" />
@@ -86,7 +86,7 @@ export default function EducationCerts({ education, certifications }: { educatio
                     y={20}
                     blur
                   >
-                    <div className="bg-background rounded-2xl p-6 flex items-start gap-5 border border-[var(--color-card-border)] hover:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] hover:-translate-y-0.5 transition-all duration-300 group h-full" style={{ boxShadow: "var(--shadow-card)" }}>
+                    <div className="bg-background rounded-xl p-6 flex items-start gap-5 border border-[var(--color-card-border)] hover:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] hover:-translate-y-0.5 transition-all duration-300 group h-full"  >
                       <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 border ${colorClass} group-hover:scale-110 transition-transform`}>
                         <span className="text-[10px] font-black">{cert.iconLabel}</span>
                       </div>

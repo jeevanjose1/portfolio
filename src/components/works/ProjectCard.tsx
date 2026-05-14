@@ -30,9 +30,9 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
     : (projectVisuals[project.slug] ?? "/images/project-1.svg");
 
   return (
-    <Link href={`/works/${project.slug}`} className="block h-full outline-none focus:ring-2 focus:ring-accent rounded-2xl group">
+    <Link href={`/works/${project.slug}`} className="block h-full outline-none focus:ring-2 focus:ring-accent rounded-xl group">
       <div className="h-full">
-        <GradientCard className="bg-background border border-[var(--color-card-border)] overflow-hidden group-hover:border-[color-mix(in_srgb,var(--color-accent)_25%,transparent)] transition-all duration-500 flex flex-col h-full p-2" style={{ boxShadow: "var(--shadow-card)" } as React.CSSProperties}>
+        <GradientCard className="bg-background border border-[var(--color-card-border)] overflow-hidden group-hover:border-[color-mix(in_srgb,var(--color-accent)_25%,transparent)] transition-all duration-500 flex flex-col h-full p-2" >
 
           {/* Image */}
           <div className="relative aspect-video bg-section-alt rounded-xl overflow-hidden">

@@ -25,7 +25,7 @@ export default function ContactInfo() {
     >
       <div
         className="bg-background rounded-xl p-8 sm:p-10 lg:p-12 border border-[var(--color-card-border)] h-full"
-        style={{ boxShadow: "var(--shadow-card)" }}
+         
       >
         <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Information</h2>
 
@@ -92,7 +92,7 @@ export default function ContactInfo() {
         </div>
 
         <Reveal delay={0.9} y={20} width="100%">
-          <div className="bg-primary w-full rounded-xl p-8 text-background relative overflow-hidden" style={{ boxShadow: "var(--shadow-card)" }}>
+          <div className="bg-primary w-full rounded-xl p-8 text-background relative overflow-hidden"  >
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
 

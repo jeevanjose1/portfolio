@@ -140,6 +140,7 @@ export interface SanityPageHome {
 }
 
 export interface SanityPageAbout {
+  workHistory: any[] | undefined;
   _id: string;
   heroBadge: string;
   heroHeading: string;

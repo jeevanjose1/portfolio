@@ -33,8 +33,8 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-2xl p-10 border border-[var(--color-card-border)] h-full"
-              style={{ boxShadow: "var(--shadow-card)" }}
+              className="bg-section-alt rounded-xl p-10 border border-[var(--color-card-border)] h-full"
+               
             >
               <h3 className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-10">
                 Milestones
@@ -47,8 +47,8 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
           <div className="lg:col-span-7 relative sticky top-32 self-start">
             <Reveal width="100%" delay={0.2} y={40} duration={1}>
               <div
-                className="bg-section-alt rounded-2xl border border-[var(--color-card-border)]"
-                style={{ boxShadow: "var(--shadow-card)" }}
+                className="bg-section-alt rounded-xl border border-[var(--color-card-border)]"
+                 
               >
                 <div className="p-10 sm:p-14">
                   <Reveal delay={0.4} y={20}>

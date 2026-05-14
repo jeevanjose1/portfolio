@@ -1,14 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, CloudCog, Cpu, Layers3, MonitorSmartphone } from "lucide-react";
+import { ArrowRight, CheckCircle2, Cpu } from "lucide-react";
 import { servicesHeroData as fallbackServicesHeroData } from "@/lib/data";
 import { SanityPageServices, SanityService } from "@/sanity/types";
 import { Reveal } from "@/components/animations/Reveal";
 
-const serviceIcons = [MonitorSmartphone, Layers3, CloudCog];
 
-export default function ServicesHero({ data, mainServices }: { data?: SanityPageServices, mainServices: SanityService[] }) {
+export default function ServicesHero({ data }: { data?: SanityPageServices, mainServices: SanityService[] }) {
   const badge = data?.heroBadge || "Product Engineering Services";
   const heading = data?.heroHeading || "From first scope to shipped, stable product.";
   const subtitle = data?.heroSubtitle || fallbackServicesHeroData.subtitle;
@@ -26,8 +25,8 @@ export default function ServicesHero({ data, mainServices }: { data?: SanityPage
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-2xl p-10 sm:p-12 min-h-[500px] border border-[var(--color-card-border)] flex flex-col justify-between h-full"
-              style={{ boxShadow: "var(--shadow-card)" }}
+              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-[var(--color-card-border)] flex flex-col justify-between h-full"
+               
             >
               <div>
                 <Reveal delay={0.2}>
@@ -70,10 +69,10 @@ export default function ServicesHero({ data, mainServices }: { data?: SanityPage
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-2xl p-8 sm:p-10 min-h-[220px] border border-[var(--color-card-border)] text-foreground relative overflow-hidden h-full"
-                style={{ boxShadow: "var(--shadow-card)" }}
+                className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-[var(--color-card-border)] text-foreground relative overflow-hidden h-full"
+                 
               >
-                <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px] rounded-2xl" />
+                <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px] rounded-xl" />
                 <div className="relative z-10">
                   <div className="h-12 w-12 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] flex items-center justify-center mb-8">
                     <CheckCircle2 size={22} className="text-accent" />
@@ -87,8 +86,8 @@ export default function ServicesHero({ data, mainServices }: { data?: SanityPage
 
             <Reveal width="100%" delay={0.5} y={20} duration={1}>
               <div
-                className="bg-section-alt h-full rounded-2xl p-8 border border-[var(--color-card-border)]"
-                style={{ boxShadow: "var(--shadow-card)" }}
+                className="bg-section-alt h-full rounded-xl p-8 border border-[var(--color-card-border)]"
+                 
               >
                 <p className="text-lg font-body italic text-muted-foreground leading-relaxed">
                   &ldquo;Good software isn&apos;t just code that works — it&apos;s a system that scales, adapts, and outlasts the sprint it was born in.&rdquo;
@@ -108,8 +107,8 @@ export default function ServicesHero({ data, mainServices }: { data?: SanityPage
                 blur
               >
                 <div
-                  className="bg-section-alt rounded-2xl p-6 border border-[var(--color-card-border)] flex items-center gap-3 h-full"
-                  style={{ boxShadow: "var(--shadow-card)" }}
+                  className="bg-section-alt rounded-xl p-6 border border-[var(--color-card-border)] flex items-center gap-3 h-full"
+                   
                 >
                   <CheckCircle2 size={17} className="text-accent shrink-0" />
                   <span className="text-sm font-black uppercase tracking-widest text-foreground">{item}</span>

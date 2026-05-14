@@ -8,7 +8,7 @@ export default function ProjectRelated({ projects }: { projects: SanityProject[]
   if (!projects || projects.length === 0) return null;
 
   return (
-    <section className="py-24 lg:py-32 bg-background border-t border-border/50">
+    <section className="py-24 lg:py-32 bg-background border-t border-border">
       <div className="section-container !py-0">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="space-y-4">

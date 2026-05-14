@@ -38,7 +38,7 @@ export default function ServiceTechStack({ service }: { service: SanityService |
               className="h-full"
             >
               <div
-                className="bg-background rounded-lg p-8 border border-border shadow-sm h-full"
+                className="bg-background rounded-lg p-8 border border-border h-full"
               >
                 <h3 className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-6">
                   {category.category}

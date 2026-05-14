@@ -37,7 +37,7 @@ export default function Navbar() {
     <header className="fixed top-4 left-0 right-0 z-[999] px-4 flex justify-center pointer-events-none">
       <div
         className={`
-          w-full max-w-[74rem] flex items-center justify-between h-[60px] pointer-events-auto px-5 relative
+          w-full max-w-[75.5rem] flex items-center justify-between h-[60px] pointer-events-auto px-5 relative
           rounded-full border transition-all duration-500
           ${scrolled
             ? "bg-[color-mix(in_srgb,var(--color-background)_85%,transparent)] backdrop-blur-2xl border-[var(--color-card-border)] shadow-lg shadow-black/[0.06]"
@@ -106,7 +106,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.97 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="absolute top-[68px] left-0 right-0 bg-background border border-[var(--color-card-border)] rounded-2xl shadow-xl overflow-hidden pointer-events-auto p-2"
+              className="absolute top-[68px] left-0 right-0 bg-background border border-[var(--color-card-border)] rounded-xl shadow-xl overflow-hidden pointer-events-auto p-2"
             >
               <ul className="flex flex-col gap-1">
                 {navLinks.map((link) => {

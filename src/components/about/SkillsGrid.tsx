@@ -18,8 +18,8 @@ function SkillGroupCard({ group, index }: { group: SkillGroup; index: number }) 
       className="h-full!"
     >
       <div
-        className="bg-background rounded-2xl p-10 border border-[var(--color-card-border)] hover:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] hover:-translate-y-0.5 transition-all duration-500 h-full flex flex-col"
-        style={{ boxShadow: "var(--shadow-card)" }}
+        className="bg-background rounded-xl p-10 border border-[var(--color-card-border)] hover:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] hover:-translate-y-0.5 transition-all duration-500 h-full flex flex-col"
+         
       >
         <div className="flex items-center gap-4 mb-8">
           <div className="w-12 h-12 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] flex items-center justify-center border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)]">

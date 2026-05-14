@@ -40,7 +40,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
           </Reveal>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+        <div className="flex flex-col lg:flex-row gap-6 items-start">
           {/* Info Card */}
           <Reveal
             width="100%"
@@ -49,7 +49,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-lg p-8 sm:p-12 border border-border shadow-card h-full flex flex-col"
+              className="bg-section-alt rounded-lg p-8 sm:p-12 border border-border h-full flex flex-col"
             >
               <div className="mb-8">
                 <Reveal delay={0.2} y={10}>
@@ -130,7 +130,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
               duration={1.2}
             >
               <ImageLightbox src={project.image} alt={project.title}>
-                <div className="relative aspect-video rounded-lg overflow-hidden shadow-card border border-border bg-section-alt group">
+                <div className="relative aspect-video rounded-lg overflow-hidden  border border-border bg-section-alt group">
                   <Image
                     src={project.image}
                     alt={project.title}

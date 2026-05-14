@@ -37,7 +37,7 @@ export default function WorksPhilosophy() {
             <Reveal delay={0.1}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">
-                  // The Methodology
+                 {'//'} The Methodology
                 </span>
               </div>
             </Reveal>

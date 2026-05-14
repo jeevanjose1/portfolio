@@ -39,8 +39,8 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-2xl p-10 sm:p-12 border border-[var(--color-card-border)] flex flex-col justify-between group hover:border-[color-mix(in_srgb,var(--color-accent)_25%,transparent)] transition-all duration-500 h-full"
-                style={{ boxShadow: "var(--shadow-card)" }}
+                className="bg-section-alt rounded-xl p-10 sm:p-12 border border-[var(--color-card-border)] flex flex-col justify-between group hover:border-[color-mix(in_srgb,var(--color-accent)_25%,transparent)] transition-all duration-500 h-full"
+                 
               >
                 <div>
                   <div className="flex gap-1.5 mb-8">
