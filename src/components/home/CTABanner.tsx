@@ -20,7 +20,7 @@ export default function CTABanner({ data }: { data?: { heading?: string; subtext
           duration={1}
         >
           <div
-            className="relative rounded-xl py-20 lg:py-24 px-10 sm:px-16 overflow-hidden border border-[var(--color-card-border)] bg-section-alt flex flex-col lg:flex-row items-center justify-between gap-10"
+            className="relative rounded-xl py-20 lg:py-24 px-10 sm:px-16 overflow-hidden border border-card-border bg-section-alt flex flex-col lg:flex-row items-center justify-between gap-10"
           >
             {/* Grid texture */}
             <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:32px_32px] rounded-xl" />
@@ -32,7 +32,7 @@ export default function CTABanner({ data }: { data?: { heading?: string; subtext
 
             <div className="relative z-10 text-center lg:text-left">
               <Reveal delay={0.2} className="mx-auto lg:mx-0">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] text-accent font-black text-[10px] uppercase tracking-widest mb-8 border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)]">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-10 text-accent font-black text-[10px] uppercase tracking-widest mb-8 border border-accent-15">
                   <MessageSquare size={11} />
                   Direct Engagement
                 </div>

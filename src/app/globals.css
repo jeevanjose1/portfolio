@@ -224,12 +224,12 @@ h6 {
 
   /* ── Cards ── */
   .card {
-    @apply bg-section-alt border border-[var(--color-card-border)] rounded-xl transition-colors duration-300;
+    @apply bg-section-alt border border-card-border rounded-xl transition-colors duration-300;
     
   }
 
   .card-hover {
-    @apply transition-all duration-500 hover:border-[color-mix(in_srgb, var(--color-accent)_35%, transparent)] hover:-translate-y-0.5;
+    @apply transition-all duration-500 hover:border-accent-35 hover:-translate-y-0.5;
     
   }
 
@@ -251,7 +251,7 @@ h6 {
   }
 
   .btn-secondary {
-    @apply bg-background border border-[var(--color-border)] text-foreground rounded-xl px-7 py-3.5 font-heading font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:bg-section-alt hover:border-[var(--color-card-border)] active:scale-[0.97] inline-flex items-center justify-center;
+    @apply bg-background border border-border text-foreground rounded-xl px-7 py-3.5 font-heading font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:bg-section-alt hover:border-card-border active:scale-[0.97] inline-flex items-center justify-center;
     box-shadow: var(--shadow-sm);
   }
 

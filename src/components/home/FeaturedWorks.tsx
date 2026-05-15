@@ -91,7 +91,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
                           {tags.slice(0, 2).map((tag: string) => (
                             <span
                               key={tag}
-                              className="text-[9px] font-black uppercase tracking-tight text-muted-foreground border border-[var(--color-border)] px-2.5 py-1 rounded-lg"
+                              className="text-[9px] font-black uppercase tracking-tight text-muted-foreground border border-border px-2.5 py-1 rounded-lg"
                             >
                               {tag}
                             </span>
@@ -107,7 +107,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
                       <p className="hidden lg:block text-sm text-muted-foreground max-w-xs text-right leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                         {description}
                       </p>
-                      <div className="w-16 h-16 rounded-full border border-[var(--color-border)] flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-background group-hover:border-accent transition-all duration-500 rotate-[-45deg] group-hover:rotate-0 shrink-0">
+                      <div className="w-16 h-16 rounded-full border border-border flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-background group-hover:border-accent transition-all duration-500 rotate-[-45deg] group-hover:rotate-0 shrink-0">
                         <ArrowUpRight size={22} />
                       </div>
                     </div>
@@ -116,7 +116,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
               </Reveal>
             );
           })}
-          <div className="h-px bg-[var(--color-border)]/50 w-full" />
+          <div className="h-px bg-border/50 w-full" />
         </div>
       </div>
 
@@ -137,7 +137,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
               zIndex: 1000,
              
             }}
-            className="hidden md:block shadow-md w-[340px] h-[210px] rounded-xl overflow-hidden border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] bg-section-alt"
+            className="hidden md:block shadow-md w-[340px] h-[210px] rounded-xl overflow-hidden border border-accent-15 bg-section-alt"
           >
             <motion.div
               key={activeProject}

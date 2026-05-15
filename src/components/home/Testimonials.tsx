@@ -24,7 +24,7 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
             <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">What Clients Say.</h2>
           </Reveal>
           <Reveal delay={0.4} className="mx-auto">
-            <div className="w-16 h-px bg-[color-mix(in_srgb,var(--color-accent)_25%,transparent)] mx-auto mt-8" />
+            <div className="w-16 h-px bg-accent-25 mx-auto mt-8" />
           </Reveal>
         </div>
 
@@ -39,7 +39,7 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-xl p-10 sm:p-12 border border-[var(--color-card-border)] flex flex-col justify-between group hover:border-[color-mix(in_srgb,var(--color-accent)_25%,transparent)] transition-all duration-500 h-full"
+                className="bg-section-alt rounded-xl p-10 sm:p-12 border border-card-border flex flex-col justify-between group hover:border-accent-25 transition-all duration-500 h-full"
                  
               >
                 <div>
@@ -48,12 +48,12 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
                       <Star key={si} size={13} className="fill-accent text-accent" />
                     ))}
                   </div>
-                  <p className="text-[color-mix(in_srgb,var(--color-text)_75%,transparent)] text-lg leading-relaxed mb-10 italic font-body">
+                  <p className="text-foreground-75 text-lg leading-relaxed mb-10 italic font-body">
                     &ldquo;{t.content}&rdquo;
                   </p>
                 </div>
-                <div className="flex items-center gap-4 pt-8 border-t border-[var(--color-border)]/60">
-                  <div className="w-11 h-11 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] flex items-center justify-center shrink-0 group-hover:bg-accent transition-all duration-300">
+                <div className="flex items-center gap-4 pt-8 border-t border-border/60">
+                  <div className="w-11 h-11 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center shrink-0 group-hover:bg-accent transition-all duration-300">
                     <span className="text-sm font-black text-accent group-hover:text-background transition-colors">
                       {t.name.charAt(0)}
                     </span>

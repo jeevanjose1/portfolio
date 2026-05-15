@@ -25,7 +25,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-[var(--color-card-border)] flex flex-col justify-between h-full"
+              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-card-border flex flex-col justify-between h-full"
                
             >
               <div>
@@ -69,12 +69,12 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-[var(--color-card-border)] text-foreground relative overflow-hidden h-full"
+                className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-card-border text-foreground relative overflow-hidden h-full"
                  
               >
                 <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px] rounded-xl" />
                 <div className="relative z-10">
-                  <div className="h-12 w-12 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] flex items-center justify-center mb-8">
+                  <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center mb-8">
                     <CheckCircle2 size={22} className="text-accent" />
                   </div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3">Delivery Model</p>
@@ -86,7 +86,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
 
             <Reveal width="100%" delay={0.5} y={20} duration={1}>
               <div
-                className="bg-section-alt h-full rounded-xl p-8 border border-[var(--color-card-border)]"
+                className="bg-section-alt h-full rounded-xl p-8 border border-card-border"
                  
               >
                 <p className="text-lg font-body italic text-muted-foreground leading-relaxed">
@@ -107,7 +107,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
                 blur
               >
                 <div
-                  className="bg-section-alt rounded-xl p-6 border border-[var(--color-card-border)] flex items-center gap-3 h-full"
+                  className="bg-section-alt rounded-xl p-6 border border-card-border flex items-center gap-3 h-full"
                    
                 >
                   <CheckCircle2 size={17} className="text-accent shrink-0" />

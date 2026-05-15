@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "A showcase of real-world applications across web, mobile, and cloud. Explore my latest projects, e-commerce platforms, SaaS dashboards, and APIs.",
 };
 
-export const revalidate = 0; // Disable cache to see Sanity changes immediately
+export const revalidate = 300;
 
 export default async function WorksPage() {
   let projects: SanityProject[] = [];
@@ -23,12 +23,11 @@ export default async function WorksPage() {
   
   try {
     const [fetchedProjects, fetchedSettings] = await Promise.all([
-      client.fetch<SanityProject[]>(projectsQuery, {}, { useCdn: false }),
+      client.fetch<SanityProject[]>(projectsQuery),
       client.fetch<SanitySiteSettings>(siteSettingsQuery),
     ]);
     projects = fetchedProjects;
     siteSettings = fetchedSettings;
-    console.log("SANITY DATA DEBUG - First Project Data:", JSON.stringify(projects[0], null, 2));
   } catch (error) {
     console.error("Sanity fetch failed:", error);
     fetchError = true;

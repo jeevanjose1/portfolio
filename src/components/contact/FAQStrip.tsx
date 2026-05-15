@@ -22,7 +22,7 @@ export default function FAQStrip() {
           { q: "Response time?", a: "Within 24 hours on weekdays, and 48 hours on weekends. Urgent matters are prioritized." },
           { q: "Sign NDAs?", a: "Absolutely — I am happy to sign an NDA before we start any discussion about your intellectual property." }
           ].map((item) => (
-            <div key={item.q} className="bg-section-alt p-10 rounded-lg border border-border hover:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] transition-colors group">
+            <div key={item.q} className="bg-section-alt p-10 rounded-lg border border-border hover:border-accent-20 transition-colors group">
               <div className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-background transition-colors">
                 <HelpCircle size={18} className="text-accent group-hover:text-background transition-colors" />
               </div>

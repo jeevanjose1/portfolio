@@ -46,7 +46,7 @@ export default function ToolsGrid() {
               placeholder="Search tools..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-surface-1 border border-[var(--color-card-border)] rounded-xl py-3 pl-12 pr-4 outline-none focus:border-accent/40 focus:ring-4 focus:ring-accent/5 transition-all text-sm font-medium"
+              className="w-full bg-surface-1 border border-card-border rounded-xl py-3 pl-12 pr-4 outline-none focus:border-accent/40 focus:ring-4 focus:ring-accent/5 transition-all text-sm font-medium"
             />
             {searchQuery && (
               <button
@@ -62,7 +62,7 @@ export default function ToolsGrid() {
           <div className="relative w-full md:w-72">
             <button
               onClick={() => setIsCategoryOpen(!isCategoryOpen)}
-              className="w-full md:min-w-[200px] flex items-center justify-between px-6 py-3 rounded-xl bg-surface-1 border border-[var(--color-card-border)] hover:border-accent/30 transition-all text-sm font-black uppercase tracking-widest"
+              className="w-full md:min-w-[200px] flex items-center justify-between px-6 py-3 rounded-xl bg-surface-1 border border-card-border hover:border-accent/30 transition-all text-sm font-black uppercase tracking-widest"
             >
               <span className="flex items-center gap-2">
                 <span className="text-muted-foreground">Category:</span>
@@ -84,7 +84,7 @@ export default function ToolsGrid() {
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute top-full mt-2 left-0 right-0 md:left-auto md:w-full bg-surface-1 border border-[var(--color-card-border)] rounded-xl shadow-md p-2 z-50 overflow-hidden"
+                    className="absolute top-full mt-2 left-0 right-0 md:left-auto md:w-full bg-surface-1 border border-card-border rounded-xl shadow-md p-2 z-50 overflow-hidden"
                   >
                     {categories.map((category) => (
                       <button
@@ -137,7 +137,7 @@ export default function ToolsGrid() {
                 <Reveal width="100%" delay={index * 0.05} y={40} className="h-full">
                   <Link
                     href={tool.href}
-                    className="group relative flex flex-col h-full p-8 md:p-10 rounded-xl bg-surface-1 border border-[var(--color-card-border)] overflow-hidden transition-all duration-700 hover:border-accent/40"
+                    className="group relative flex flex-col h-full p-8 md:p-10 rounded-xl bg-surface-1 border border-card-border overflow-hidden transition-all duration-700 hover:border-accent/40"
                   >
                     {/* Abstract Icon Backdrop */}
                     <div className="absolute -bottom-10 -right-10 opacity-[0.03] group-hover:opacity-[0.08] group-hover:scale-110 group-hover:-rotate-12 transition-all duration-1000 ease-out pointer-events-none">
@@ -146,10 +146,10 @@ export default function ToolsGrid() {
 
                     <div className="relative z-10 flex flex-col h-full">
                       <div className="flex items-start justify-between mb-12">
-                        <div className="w-16 h-16 rounded-xl bg-surface-2 border border-[var(--color-border)] flex items-center justify-center group-hover:bg-accent group-hover:text-background group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-sm">
+                        <div className="w-16 h-16 rounded-xl bg-surface-2 border border-border flex items-center justify-center group-hover:bg-accent group-hover:text-background group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-sm">
                           <Icon size={32} />
                         </div>
-                        <div className="w-12 h-12 rounded-full bg-surface-2 border border-[var(--color-border)] flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-4 transition-all duration-500">
+                        <div className="w-12 h-12 rounded-full bg-surface-2 border border-border flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-4 transition-all duration-500">
                           <ArrowUpRight size={24} className="text-accent" />
                         </div>
                       </div>

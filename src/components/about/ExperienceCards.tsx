@@ -46,7 +46,7 @@ export default function ExperienceCards({
             <div key={i} className="relative pl-12 sm:pl-16 group">
 
               {/* Continuous vertical line — spans full card height */}
-              <div className="absolute left-0 top-0 bottom-0 w-px bg-[var(--color-border)] group-hover:bg-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] transition-colors duration-500" />
+              <div className="absolute left-0 top-0 bottom-0 w-px bg-border group-hover:bg-accent-30 transition-colors duration-500" />
 
               {/* Dot — sits outside Reveal so it's never clipped */}
               <div className="absolute left-[-4px] top-3 w-2.5 h-2.5 rounded-full bg-accent ring-4 ring-background z-10 transition-transform duration-300 group-hover:scale-125" />
@@ -60,19 +60,19 @@ export default function ExperienceCards({
                         <h3 className="text-2xl font-heading font-black text-foreground group-hover:text-accent transition-colors duration-300">
                           {exp.company}
                         </h3>
-                        <span className="px-3 py-1 rounded-xl bg-surface-2 border border-[var(--color-border)] text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+                        <span className="px-3 py-1 rounded-xl bg-surface-2 border border-border text-[10px] font-black uppercase tracking-widest text-muted-foreground">
                           {exp.dateRange}
                         </span>
                       </div>
 
-                      <p className="text-lg font-bold text-[color-mix(in_srgb,var(--color-text)_70%,transparent)] mb-7 font-heading tracking-tight">
+                      <p className="text-lg font-bold text-foreground-70 mb-7 font-heading tracking-tight">
                         {exp.role}
                       </p>
 
                       <ul className="space-y-4 max-w-2xl">
                         {exp.achievements.map((achievement: string, ai: number) => (
                           <li key={ai} className="flex gap-4 text-muted-foreground leading-relaxed">
-                            <span className="mt-2.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[color-mix(in_srgb,var(--color-accent)_40%,transparent)]" />
+                            <span className="mt-2.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-accent-40" />
                             <span className="text-sm sm:text-base">{achievement}</span>
                           </li>
                         ))}
@@ -82,7 +82,7 @@ export default function ExperienceCards({
 
                   {/* Separator — inside Reveal content, above the pb-16 gap */}
                   {i < displayData.length - 1 && (
-                    <div className="mt-14 h-px bg-[var(--color-border)] w-full group-hover:bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] transition-colors" />
+                    <div className="mt-14 h-px bg-border w-full group-hover:bg-accent-10 transition-colors" />
                   )}
                 </div>
               </Reveal>

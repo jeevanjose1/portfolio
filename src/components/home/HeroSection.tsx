@@ -41,15 +41,15 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 sm:p-14 lg:p-20 flex flex-col justify-between h-full min-h-[560px] border border-[var(--color-card-border)] relative overflow-hidden"
+              className="bg-section-alt rounded-xl p-10 sm:p-14 lg:p-20 flex flex-col justify-between h-full min-h-[560px] border border-card-border relative overflow-hidden"
 
             >
               {/* Background Accent */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-[color-mix(in_srgb,var(--color-accent)_3%,transparent)] rounded-full blur-[100px] -mr-32 -mt-32" />
+              <div className="absolute top-0 right-0 w-96 h-96 bg-accent-3 rounded-full blur-[100px] -mr-32 -mt-32" />
 
               <div className="relative z-10">
                 <Reveal delay={0.2}>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-2 border border-[var(--color-border)] text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-8">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-2 border border-border text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-8">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
@@ -62,7 +62,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
                   <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-heading font-black text-foreground leading-[1.05] tracking-tight mb-8">
                     {welcome}
                     <br />
-                    <span className="italic font-serif font-light text-[color-mix(in_srgb,var(--color-text)_80%,transparent)]">
+                    <span className="italic font-serif font-light text-foreground-80">
                       {heading.split('\n')[0]}
                     </span>
                     <br />
@@ -100,7 +100,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-xl overflow-hidden relative group h-full min-h-[400px] border border-[var(--color-card-border)]"
+                className="bg-section-alt rounded-xl overflow-hidden relative group h-full min-h-[400px] border border-card-border"
 
               >
                 <ParallaxImage offset={20} className="w-full h-full">
@@ -130,7 +130,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
           y={20}
           className="lg:col-span-12  mt-6"
         >
-          <div className="bg-section-alt rounded-xl border border-[var(--color-card-border)] overflow-hidden py-4">
+          <div className="bg-section-alt rounded-xl border border-card-border overflow-hidden py-4">
             <div className="flex marquee-track gap-12 items-center whitespace-nowrap px-6">
               {[
                 "React.js", "Next.js", "TypeScript", "Node.js", "Flutter",

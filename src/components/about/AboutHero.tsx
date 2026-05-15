@@ -39,7 +39,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-[var(--color-card-border)] flex flex-col justify-between h-full"
+              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-card-border flex flex-col justify-between h-full"
                
             >
               <div>
@@ -82,7 +82,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
             scale={1.05}
           >
             <div
-              className="bg-section-alt rounded-xl overflow-hidden relative group min-h-[500px] border border-[var(--color-card-border)] h-full"
+              className="bg-section-alt rounded-xl overflow-hidden relative group min-h-[500px] border border-card-border h-full"
                
             >
               <ParallaxImage offset={30} className="w-full h-full">
@@ -121,14 +121,14 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
                 blur
               >
                 <div
-                  className="bg-section-alt rounded-xl p-6 sm:p-8 border border-[var(--color-card-border)] flex items-center justify-between gap-4 h-full"
+                  className="bg-section-alt rounded-xl p-6 sm:p-8 border border-card-border flex items-center justify-between gap-4 h-full"
                    
                 >
                   <div>
                     <p className="text-3xl sm:text-4xl font-heading font-black text-foreground">{stat.value}</p>
                     <p className="text-sm text-muted-foreground mt-1.5 font-medium">{stat.label}</p>
                   </div>
-                  <div className="h-12 w-12 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] flex items-center justify-center text-accent shrink-0">
+                  <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center text-accent shrink-0">
                     <Award size={20} />
                   </div>
                 </div>

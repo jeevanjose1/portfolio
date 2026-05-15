@@ -10,7 +10,7 @@ import { client } from "@/sanity/lib/client";
 import { experienceQuery, pageAboutQuery, siteSettingsQuery } from "@/sanity/lib/queries";
 import { SanityExperience, SanityPageAbout, SanitySiteSettings } from "@/sanity/types";
 
-export const revalidate = 0;
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "About — Jeevan Jose | Full-Stack Developer Portfolio",

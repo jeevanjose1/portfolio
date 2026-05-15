@@ -16,7 +16,7 @@ export default function ServiceCTA({ title }: ServiceCTAProps) {
           y={40}
           duration={1}
         >
-          <div className="bg-section-alt rounded-lg p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden  border border-[var(--color-card-border)]">
+          <div className="bg-section-alt rounded-lg p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden  border border-card-border">
             <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />
 
             <div className="relative z-10 text-center max-w-3xl mx-auto">

@@ -21,10 +21,10 @@ function AdditionalServiceCard({ service, index }: { service: SanityService | { 
       className="h-full"
     >
       <div
-        className="bg-section-alt p-8 sm:p-10 rounded-xl border border-[var(--color-card-border)] group hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:-translate-y-0.5 transition-all duration-500 h-full flex flex-col"
+        className="bg-section-alt p-8 sm:p-10 rounded-xl border border-card-border group hover:border-accent-30 hover:-translate-y-0.5 transition-all duration-500 h-full flex flex-col"
          
       >
-        <div className="w-12 h-12 rounded-xl bg-background border border-[var(--color-card-border)] flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300 shrink-0">
+        <div className="w-12 h-12 rounded-xl bg-background border border-card-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300 shrink-0">
           <Icon size={24} className="text-accent group-hover:text-background transition-colors" />
         </div>
         <h3 className="text-lg font-heading font-black text-foreground mb-3 uppercase tracking-tight">{service.title}</h3>

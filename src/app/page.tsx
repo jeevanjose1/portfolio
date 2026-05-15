@@ -8,7 +8,7 @@ import { client } from "@/sanity/lib/client";
 import { featuredProjectsQuery, servicesQuery, testimonialsQuery, pageHomeQuery, siteSettingsQuery } from "@/sanity/lib/queries";
 import { SanityProject, SanityService, SanityTestimonial, SanityPageHome, SanitySiteSettings } from "@/sanity/types";
 
-export const revalidate = 0;
+export const revalidate = 300;
 
 export default async function Home() {
   const [featuredProjects, services, testimonials, pageHome, siteSettings] = await Promise.all([

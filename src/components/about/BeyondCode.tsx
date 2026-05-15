@@ -17,11 +17,11 @@ function BeyondCard({ item, index }: { item: BeyondCodeItem; index: number }) {
       className="h-full"
     >
       <div
-        className="bg-background rounded-xl p-10 border border-[var(--color-card-border)] hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:-translate-y-0.5 transition-all duration-500 group relative overflow-hidden h-full flex flex-col"
+        className="bg-background rounded-xl p-10 border border-card-border hover:border-accent-30 hover:-translate-y-0.5 transition-all duration-500 group relative overflow-hidden h-full flex flex-col"
       >
         <LucideIcons.Sparkles size={48} className="absolute -top-4 -right-4 text-accent opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
 
-        <div className="w-14 h-14 rounded-xl bg-section-alt flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-[var(--color-border)] shrink-0">
+        <div className="w-14 h-14 rounded-xl bg-section-alt flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-border shrink-0">
           <Icon  size={26} className="text-accent group-hover:text-white transition-colors" />
         </div>
         <h3 className="text-xl font-heading font-black text-foreground mb-4 group-hover:text-accent transition-colors duration-300">

@@ -37,7 +37,7 @@ export default function WhatYouGet({ service }: { service: SanityService | MainS
                 className="h-full"
               >
                 <div
-                  className="bg-section-alt rounded-lg p-8 border border-border hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:shadow-xl hover:shadow-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] transition-all duration-300 group h-full flex flex-col"
+                  className="bg-section-alt rounded-lg p-8 border border-border hover:border-accent-30 hover:shadow-xl hover:shadow-accent-5 transition-all duration-300 group h-full flex flex-col"
                 >
                   <div className="w-12 h-12 rounded-lg bg-background border border-border shadow-sm flex items-center justify-center mb-6 group-hover:bg-accent group-hover:border-accent transition-colors duration-300 shrink-0">
                     <Icon size={24} className="text-accent group-hover:text-white transition-colors" />

@@ -53,7 +53,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
             >
               <div className="mb-8">
                 <Reveal delay={0.2} y={10}>
-                  <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] text-accent text-[10px] font-black uppercase tracking-widest">
+                  <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-accent-10 text-accent text-[10px] font-black uppercase tracking-widest">
                     {project.categories.find((c) => c !== "All") || "Project"}
                   </span>
                 </Reveal>

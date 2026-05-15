@@ -23,7 +23,7 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-[var(--color-card-border)] flex flex-col justify-between h-full"
+              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-card-border flex flex-col justify-between h-full"
                
             >
               <div>
@@ -67,12 +67,12 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-[var(--color-card-border)] text-foreground relative overflow-hidden h-full"
+                className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-card-border text-foreground relative overflow-hidden h-full"
                  
               >
                 <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px] rounded-xl" />
                 <div className="relative z-10">
-                  <div className="h-12 w-12 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] flex items-center justify-center mb-8">
+                  <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center mb-8">
                     <Sparkles size={22} className="text-accent" />
                   </div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3">Portfolio Signal</p>
@@ -91,7 +91,7 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
                 >
                   <Link
                     href={`/works/${project.slug}`}
-                    className="bg-section-alt rounded-xl p-4 border border-[var(--color-card-border)] flex items-center justify-between gap-4 group hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] transition-all duration-300 block"
+                    className="bg-section-alt rounded-xl p-4 border border-card-border flex items-center justify-between gap-4 group hover:border-accent-30 transition-all duration-300 block"
                     style={{ boxShadow: "var(--shadow-sm)" }}
                   >
                     <div className="flex items-center justify-between gap-4">
@@ -126,14 +126,14 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
                   blur
                 >
                   <div
-                    className="bg-section-alt rounded-xl p-6 sm:p-8 border border-[var(--color-card-border)] flex items-center justify-between gap-4 h-full"
+                    className="bg-section-alt rounded-xl p-6 sm:p-8 border border-card-border flex items-center justify-between gap-4 h-full"
                      
                   >
                     <div>
                       <p className="text-2xl sm:text-3xl font-heading font-black text-foreground">{item.value}</p>
                       <p className="text-sm text-muted-foreground mt-1.5 font-medium">{item.label}</p>
                     </div>
-                    <div className="h-12 w-12 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] flex items-center justify-center text-accent shrink-0">
+                    <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center text-accent shrink-0">
                       <Icon size={20} />
                     </div>
                   </div>

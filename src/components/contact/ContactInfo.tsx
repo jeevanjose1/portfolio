@@ -24,7 +24,7 @@ export default function ContactInfo() {
       duration={1}
     >
       <div
-        className="bg-background rounded-xl p-8 sm:p-10 lg:p-12 border border-[var(--color-card-border)] h-full"
+        className="bg-background rounded-xl p-8 sm:p-10 lg:p-12 border border-card-border h-full"
          
       >
         <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Information</h2>
@@ -43,7 +43,7 @@ export default function ContactInfo() {
               y={10}
             >
               <div className="flex items-start gap-5">
-                <div className="w-12 h-12 rounded-full bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] flex items-center justify-center text-accent shrink-0 border border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]">
+                <div className="w-12 h-12 rounded-full bg-accent-10 flex items-center justify-center text-accent shrink-0 border border-accent-20">
                   <item.icon size={22} />
                 </div>
                 <div>
@@ -79,7 +79,7 @@ export default function ContactInfo() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-5 bg-section-alt border border-[var(--color-card-border)] rounded-xl hover:border-accent hover:bg-background transition-all duration-300 group w-full"
+                className="flex items-center justify-between p-5 bg-section-alt border border-card-border rounded-xl hover:border-accent hover:bg-background transition-all duration-300 group w-full"
               >
                 <span className="flex items-center gap-4 text-sm font-black uppercase tracking-widest text-foreground">
                   <social.icon className="text-foreground group-hover:text-accent group-hover:scale-110 transition-all duration-300" />
@@ -99,7 +99,7 @@ export default function ContactInfo() {
                 <span className="text-[10px] font-black uppercase tracking-widest text-background">Live Availability</span>
               </div>
               <p className="text-2xl font-heading font-black mb-2">I&apos;m Online.</p>
-              <p className="text-xs text-[color-mix(in_srgb,var(--color-background)_60%,transparent)] font-medium tracking-wide">
+              <p className="text-xs text-background-60 font-medium tracking-wide">
                 Mon–Fri 6PM–10PM IST<br />
                 Weekends Available
               </p>

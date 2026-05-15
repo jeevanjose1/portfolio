@@ -43,8 +43,8 @@ export default function Navbar() {
           w-full max-w-[75.5rem] flex items-center justify-between h-[60px] pointer-events-auto px-5 relative
           rounded-full border transition-all duration-500
           ${scrolled
-            ? "bg-[color-mix(in_srgb,var(--color-background)_85%,transparent)] backdrop-blur-2xl border-[var(--color-card-border)] shadow-lg shadow-black/[0.06]"
-            : "bg-[color-mix(in_srgb,var(--color-background)_70%,transparent)] backdrop-blur-xl border-[var(--color-border)] shadow-sm"
+            ? "bg-background-85 backdrop-blur-2xl border-card-border shadow-lg shadow-black/[0.06]"
+            : "bg-background-70 backdrop-blur-xl border-border shadow-sm"
           }
         `}
       >
@@ -97,7 +97,7 @@ export default function Navbar() {
                   {/* Tools Toggle */}
                   <button
                     onClick={() => setToolsOpen(true)}
-                    className="w-10 h-10 rounded-xl bg-surface-2 border border-[var(--color-border)] flex items-center justify-center text-foreground transition-all duration-200 hover:bg-surface-3 active:scale-95"
+                    className="w-10 h-10 rounded-xl bg-surface-2 border border-border flex items-center justify-center text-foreground transition-all duration-200 hover:bg-surface-3 active:scale-95"
                     title="Custom Tools"
                   >
                     <Wrench size={17} className="text-accent group-hover:text-accent transition-colors" />
@@ -112,7 +112,7 @@ export default function Navbar() {
               onClick={() => setUtilitiesOpen(!utilitiesOpen)}
               className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all duration-300 ${utilitiesOpen
                 ? "bg-accent text-background border-accent"
-                : "bg-surface-2 border-[var(--color-border)] text-muted-foreground hover:text-foreground"
+                : "bg-surface-2 border-border text-muted-foreground hover:text-foreground"
                 }`}
               title={utilitiesOpen ? "Close Utilities" : "Show Utilities"}
             >
@@ -129,7 +129,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-10 h-10 rounded-xl bg-surface-2 border border-[var(--color-border)] text-foreground flex items-center justify-center transition-colors hover:bg-surface-3"
+            className="md:hidden w-10 h-10 rounded-xl bg-surface-2 border border-border text-foreground flex items-center justify-center transition-colors hover:bg-surface-3"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -144,7 +144,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.97 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="absolute top-[68px] left-0 right-0 bg-background border border-[var(--color-card-border)] rounded-xl shadow-xl overflow-hidden pointer-events-auto p-2"
+              className="absolute top-[68px] left-0 right-0 bg-background border border-card-border rounded-xl shadow-xl overflow-hidden pointer-events-auto p-2"
             >
               <ul className="flex flex-col gap-1">
                 {navLinks.map((link) => {
@@ -169,7 +169,7 @@ export default function Navbar() {
                     </li>
                   );
                 })}
-                <li className="mt-1 pt-1 border-t border-[var(--color-border)]">
+                <li className="mt-1 pt-1 border-t border-border">
                   <Link
                     href="/contact"
                     onClick={() => setMobileOpen(false)}

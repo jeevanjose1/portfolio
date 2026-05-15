@@ -15,7 +15,7 @@ export default function AvailabilityBanner() {
           className="bg-section-alt rounded-lg py-16 lg:py-16 px-12 relative overflow-hidden transition-colors duration-300 border border-border flex flex-col lg:flex-row items-center justify-between gap-12"
         >
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[color-mix(in_srgb,var(--color-background)_10%,transparent)] rounded-lg border border-border mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-background-10 rounded-lg border border-border mb-6">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                 <span className="relative inline-flex rounded-lg h-2.5 w-2.5 bg-accent"></span>

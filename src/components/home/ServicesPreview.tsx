@@ -27,22 +27,22 @@ function ServiceCard({ service, index }: { service: SanityService | ServiceItem;
       className="h-full"
     >
       <article
-        className="group bg-section-alt rounded-xl border border-[var(--color-card-border)] p-8 sm:p-10 transition-all duration-500 hover:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] hover:-translate-y-0.5 h-full flex flex-col"
+        className="group bg-section-alt rounded-xl border border-card-border p-8 sm:p-10 transition-all duration-500 hover:border-accent-30 hover:-translate-y-0.5 h-full flex flex-col"
          
       >
         <div className="flex items-start justify-between gap-4 mb-10">
           <div>
-            <span className="text-[10px] font-black text-[color-mix(in_srgb,var(--color-accent)_40%,transparent)] mb-4 block">
+            <span className="text-[10px] font-black text-accent-40 mb-4 block">
               {serviceNumbers[index]}
             </span>
-            <div className="h-12 w-12 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] text-accent flex items-center justify-center transition-all duration-300 group-hover:bg-accent group-hover:text-background group-hover:border-accent">
+            <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 text-accent flex items-center justify-center transition-all duration-300 group-hover:bg-accent group-hover:text-background group-hover:border-accent">
               <Icon size={22} />
             </div>
           </div>
           <Link
             href={href}
             aria-label={`Open ${service.title}`}
-            className="h-10 w-10 rounded-xl border border-[var(--color-border)] bg-surface-2 flex items-center justify-center text-muted-foreground transition-all duration-300 group-hover:border-accent group-hover:text-accent group-hover:bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)]"
+            className="h-10 w-10 rounded-xl border border-border bg-surface-2 flex items-center justify-center text-muted-foreground transition-all duration-300 group-hover:border-accent group-hover:text-accent group-hover:bg-accent-5"
           >
             <ArrowUpRight size={16} />
           </Link>
@@ -55,7 +55,7 @@ function ServiceCard({ service, index }: { service: SanityService | ServiceItem;
           {service.description}
         </p>
 
-        <div className="pt-5 border-t border-[var(--color-border)] flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+        <div className="pt-5 border-t border-border flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
           <CheckCircle2 size={13} className="text-accent" />
           <span>Scope, build, ship</span>
         </div>
@@ -77,7 +77,7 @@ export default function ServicesPreview({ services }: { services: SanityService[
           duration={1}
         >
           <div
-            className="bg-section-alt rounded-xl border border-[var(--color-card-border)] p-10 sm:p-12 flex flex-col justify-between h-full"
+            className="bg-section-alt rounded-xl border border-card-border p-10 sm:p-12 flex flex-col justify-between h-full"
              
           >
             <div>

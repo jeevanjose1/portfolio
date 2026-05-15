@@ -28,7 +28,7 @@ const principles = [
 
 export default function WorksPhilosophy() {
   return (
-    <section className="bg-section-alt py-16 border-y border-[var(--color-border)] transition-colors duration-300">
+    <section className="bg-section-alt py-16 border-y border-border transition-colors duration-300">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
 
@@ -67,8 +67,8 @@ export default function WorksPhilosophy() {
                   blur
                   className="group"
                 >
-                  <div className="space-y-6 p-8 rounded-xl bg-surface-2 border border-[var(--color-card-border)] hover:border-accent/30 transition-all duration-500  hover:shadow-accent/5">
-                    <div className="w-12 h-12 rounded-xl bg-background border border-[var(--color-border)] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-background transition-colors duration-500">
+                  <div className="space-y-6 p-8 rounded-xl bg-surface-2 border border-card-border hover:border-accent/30 transition-all duration-500  hover:shadow-accent/5">
+                    <div className="w-12 h-12 rounded-xl bg-background border border-border flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-background transition-colors duration-500">
                       <Icon size={20} />
                     </div>
                     <div className="space-y-3">

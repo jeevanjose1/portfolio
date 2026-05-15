@@ -39,10 +39,10 @@ export default function ToolsModal({ isOpen, onClose }: ToolsModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-              className="w-full bg-surface-1 border border-[var(--color-card-border)] rounded-3xl shadow-2xl overflow-hidden pointer-events-auto"
+              className="w-full bg-surface-1 border border-card-border rounded-3xl shadow-2xl overflow-hidden pointer-events-auto"
             >
               {/* Header */}
-              <div className="p-6 border-b border-[var(--color-border)] flex items-center justify-between bg-surface-2/50">
+              <div className="p-6 border-b border-border flex items-center justify-between bg-surface-2/50">
                 <div>
                   <h2 className="text-xl font-heading font-black tracking-tight flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
@@ -72,7 +72,7 @@ export default function ToolsModal({ isOpen, onClose }: ToolsModalProps) {
                       className="group relative p-4 rounded-xl bg-surface-2 border border-transparent hover:border-accent/20 hover:bg-surface-3 transition-all duration-300"
                     >
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-background border border-[var(--color-border)] flex items-center justify-center group-hover:scale-110 group-hover:bg-accent group-hover:text-background transition-all duration-500">
+                        <div className="w-12 h-12 rounded-xl bg-background border border-border flex items-center justify-center group-hover:scale-110 group-hover:bg-accent group-hover:text-background transition-all duration-500">
                           <Icon size={24} />
                         </div>
                         <div className="flex-1">
@@ -93,7 +93,7 @@ export default function ToolsModal({ isOpen, onClose }: ToolsModalProps) {
               </div>
 
               {/* Footer */}
-              <div className="p-6 bg-surface-2/30 border-t border-[var(--color-border)] flex justify-center">
+              <div className="p-6 bg-surface-2/30 border-t border-border flex justify-center">
                 <Link
                   href="/tools"
                   onClick={onClose}

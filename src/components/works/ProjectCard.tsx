@@ -32,7 +32,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
   return (
     <Link href={`/works/${project.slug}`} className="block h-full outline-none focus:ring-2 focus:ring-accent rounded-xl group">
       <div className="h-full">
-        <GradientCard className="bg-background border border-[var(--color-card-border)] overflow-hidden group-hover:border-[color-mix(in_srgb,var(--color-accent)_25%,transparent)] transition-all duration-500 flex flex-col h-full p-2" >
+        <GradientCard className="bg-background border border-card-border overflow-hidden group-hover:border-accent-25 transition-all duration-500 flex flex-col h-full p-2" >
 
           {/* Image */}
           <div className="relative aspect-video bg-section-alt rounded-xl overflow-hidden">
@@ -50,7 +50,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
             </div>
 
             {/* Hover overlay */}
-            <div className="absolute inset-0 bg-[color-mix(in_srgb,var(--color-accent)_55%,transparent)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px] z-10">
+            <div className="absolute inset-0 bg-accent-55 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px] z-10">
               <div className="w-14 h-14 rounded-full bg-background flex items-center justify-center text-accent transform scale-75 group-hover:scale-100 transition-transform duration-500 shadow-xl">
                 <ArrowUpRight size={22} />
               </div>
@@ -61,7 +61,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
           <div className="p-8 sm:p-10 flex flex-col flex-grow">
             <div className="flex flex-wrap gap-2 mb-5">
               {project.categories?.slice(0, 3).map((tag) => (
-                <span key={tag} className="text-[10px] font-bold uppercase tracking-wider bg-surface-2 text-muted-foreground px-3 py-1 rounded-full border border-[var(--color-border)]">
+                <span key={tag} className="text-[10px] font-bold uppercase tracking-wider bg-surface-2 text-muted-foreground px-3 py-1 rounded-full border border-border">
                   {tag}
                 </span>
               ))}
@@ -74,7 +74,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
               {project.description}
             </p>
 
-            <div className="flex items-center justify-between pt-6 border-t border-[var(--color-border)] mt-auto">
+            <div className="flex items-center justify-between pt-6 border-t border-border mt-auto">
               <div className="flex items-center gap-4">
                 {isSanityProject
                   ? project.link && <div className="text-muted-foreground hover:text-accent transition-colors"><ExternalLink size={17} /></div>

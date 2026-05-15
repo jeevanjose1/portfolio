@@ -9,7 +9,7 @@ import { client } from "@/sanity/lib/client";
 import { servicesQuery, faqQuery, pageServicesQuery, siteSettingsQuery } from "@/sanity/lib/queries";
 import { SanityService, SanityFAQ, SanityPageServices, SanitySiteSettings } from "@/sanity/types";
 
-export const revalidate = 0; // Disable caching for real-time updates
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Services — Jeevan Jose | Full-Stack Developer",

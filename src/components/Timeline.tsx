@@ -10,7 +10,7 @@ interface TimelineProps {
 export default function Timeline({ items }: TimelineProps) {
   return (
     <div className="relative">
-      <div className="absolute left-[7px] top-2 bottom-2 w-[1px] bg-border dark:bg-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]" />
+      <div className="absolute left-[7px] top-2 bottom-2 w-[1px] bg-border dark:bg-accent-20" />
 
       <div className="space-y-12">
         {items.map((item, i) => (
@@ -22,8 +22,8 @@ export default function Timeline({ items }: TimelineProps) {
             transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
             className="relative pl-10 group"
           >
-            <div className="absolute left-0 top-[6px] w-[15px] h-[15px] rounded-lg bg-background border border-border dark:border-[color-mix(in_srgb,var(--color-accent)_30%,transparent)] flex items-center justify-center group-hover:border-accent transition-colors duration-300">
-              <div className="w-[5px] h-[5px] rounded-lg bg-border dark:bg-[color-mix(in_srgb,var(--color-accent)_50%,transparent)] group-hover:bg-accent transition-colors duration-300" />
+            <div className="absolute left-0 top-[6px] w-[15px] h-[15px] rounded-lg bg-background border border-border dark:border-accent-30 flex items-center justify-center group-hover:border-accent transition-colors duration-300">
+              <div className="w-[5px] h-[5px] rounded-lg bg-border dark:bg-accent-50 group-hover:bg-accent transition-colors duration-300" />
             </div>
 
             {/* Content Container */}

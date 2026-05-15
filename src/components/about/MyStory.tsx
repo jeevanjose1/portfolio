@@ -33,7 +33,7 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 border border-[var(--color-card-border)] h-full"
+              className="bg-section-alt rounded-xl p-10 border border-card-border h-full"
                
             >
               <h3 className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-10">
@@ -47,7 +47,7 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
           <div className="lg:col-span-7 relative sticky top-32 self-start">
             <Reveal width="100%" delay={0.2} y={40} duration={1}>
               <div
-                className="bg-section-alt rounded-xl border border-[var(--color-card-border)]"
+                className="bg-section-alt rounded-xl border border-card-border"
                  
               >
                 <div className="p-10 sm:p-14">

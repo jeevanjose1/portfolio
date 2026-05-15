@@ -12,7 +12,7 @@ interface PageProps {
   };
 }
 
-export const revalidate = 0; // Disable cache for development
+export const revalidate = 300;
 
 // Generate static routes at build time for all projects
 export async function generateStaticParams() {

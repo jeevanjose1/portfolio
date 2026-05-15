@@ -13,7 +13,7 @@ import { client } from "@/sanity/lib/client";
 import { serviceBySlugQuery, servicesQuery, projectsQuery } from "@/sanity/lib/queries";
 import { SanityService } from "@/sanity/types";
 
-export const revalidate = 0;
+export const revalidate = 300;
 
 interface ServicePageProps {
   params: {

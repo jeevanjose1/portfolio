@@ -54,7 +54,7 @@ export default function ProcessTimeline({ service }: { service: SanityService | 
                 <div key={i} className="relative grid grid-cols-1 md:grid-cols-2 items-center min-h-[180px]">
                   
                   {/* Timeline Dot */}
-                  <div className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-background border-4 border-border dark:border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)] flex items-center justify-center -translate-x-1/2 z-50 font-black text-foreground ">
+                  <div className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-background border-4 border-border dark:border-accent-20 flex items-center justify-center -translate-x-1/2 z-50 font-black text-foreground ">
                     {step.step}
                   </div>
 
@@ -66,7 +66,7 @@ export default function ProcessTimeline({ service }: { service: SanityService | 
                     className={`w-full pl-24 md:pl-0 ${isEven ? 'md:col-start-1 md:pr-16' : 'md:col-start-2 md:pl-16'}`}
                   >
                     <div className="bg-background rounded-xl p-8 border border-border  hover:ring-[1px] ring-accent  transition-all duration-300">
-                      <div className="inline-block px-3 py-1 bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] text-accent text-[10px] font-black uppercase tracking-widest rounded-lg mb-4">
+                      <div className="inline-block px-3 py-1 bg-accent-10 text-accent text-[10px] font-black uppercase tracking-widest rounded-lg mb-4">
                         {step.duration}
                       </div>
                       <h3 className="text-2xl font-heading font-black text-foreground mb-3">
