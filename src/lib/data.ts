@@ -59,6 +59,54 @@ export interface CTABannerData {
   buttonLabel: string;
   buttonHref: string;
 }
+export interface CustomToolItem {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  category: string;
+  href: string;
+  featured?: boolean;
+}
+
+export const customToolsData: CustomToolItem[] = [
+  {
+    id: "scope-estimator",
+    title: "Project Scope Estimator",
+    description: "Quickly estimate project timelines and budgets based on specific features and complexity.",
+    icon: "Calculator",
+    category: "Planning",
+    href: "/tools/scope-estimator",
+    featured: true,
+  },
+  {
+    id: "seo-audit",
+    title: "SEO Health Check",
+    description: "A lightweight tool to analyze on-page SEO factors and technical performance metrics.",
+    icon: "Search",
+    category: "Marketing",
+    href: "/tools/seo-audit",
+    featured: true,
+  },
+  {
+    id: "color-palette",
+    title: "Accessibility Palette Gen",
+    description: "Generate WCAG-compliant color palettes for your digital products instantly.",
+    icon: "Palette",
+    category: "Design",
+    href: "/tools/palette-gen",
+    featured: true,
+  },
+  {
+    id: "tech-stack",
+    title: "Stack Recommender",
+    description: "Input your project requirements and get a recommended modern tech stack.",
+    icon: "Layers",
+    category: "Development",
+    href: "/tools/stack-recommender",
+    featured: true,
+  },
+];
 
 
 

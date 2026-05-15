@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Wrench, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import PaletteSelector from "@/components/ui/PaletteSelector";
+import ToolsModal from "@/components/ui/ToolsModal";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -18,6 +19,8 @@ const navLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const [utilitiesOpen, setUtilitiesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isStudio = pathname.startsWith("/studio");
@@ -46,12 +49,14 @@ export default function Navbar() {
         `}
       >
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-xl font-heading font-black text-foreground tracking-tighter select-none shrink-0 hover:opacity-80 transition-opacity"
-        >
-          J<span className="opacity-50">J</span>
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/"
+            className="text-xl font-heading font-black text-foreground tracking-tighter select-none shrink-0 hover:opacity-80 transition-opacity"
+          >
+            J<span className="opacity-50">J</span>
+          </Link>
+        </div>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-0.5 absolute left-1/2 -translate-x-1/2">
@@ -79,8 +84,41 @@ export default function Navbar() {
 
         {/* Right Side */}
         <div className="flex items-center gap-2">
-          <PaletteSelector />
-          <ThemeToggle />
+          {/* Utilities Group */}
+          <div className="flex items-center gap-2">
+            <AnimatePresence>
+              {utilitiesOpen && (
+                <motion.div
+                  initial={{ opacity: 0, x: 20, scale: 0.9 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: 20, scale: 0.9 }}
+                  className="flex items-center gap-2"
+                >
+                  {/* Tools Toggle */}
+                  <button
+                    onClick={() => setToolsOpen(true)}
+                    className="w-10 h-10 rounded-xl bg-surface-2 border border-[var(--color-border)] flex items-center justify-center text-foreground transition-all duration-200 hover:bg-surface-3 active:scale-95"
+                    title="Custom Tools"
+                  >
+                    <Wrench size={17} className="text-accent group-hover:text-accent transition-colors" />
+                  </button>
+                  <PaletteSelector />
+                  <ThemeToggle />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <button
+              onClick={() => setUtilitiesOpen(!utilitiesOpen)}
+              className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all duration-300 ${utilitiesOpen
+                ? "bg-accent text-background border-accent"
+                : "bg-surface-2 border-[var(--color-border)] text-muted-foreground hover:text-foreground"
+                }`}
+              title={utilitiesOpen ? "Close Utilities" : "Show Utilities"}
+            >
+              {utilitiesOpen ? <X size={18} /> : <ChevronLeft size={18} />}
+            </button>
+          </div>
 
           <Link
             href="/contact"
@@ -145,6 +183,8 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </div>
+      {/* Tools Modal */}
+      <ToolsModal isOpen={toolsOpen} onClose={() => setToolsOpen(false)} />
     </header>
   );
 }

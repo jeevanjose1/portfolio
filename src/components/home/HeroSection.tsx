@@ -42,7 +42,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
           >
             <div
               className="bg-section-alt rounded-xl p-10 sm:p-14 lg:p-20 flex flex-col justify-between h-full min-h-[560px] border border-[var(--color-card-border)] relative overflow-hidden"
-               
+
             >
               {/* Background Accent */}
               <div className="absolute top-0 right-0 w-96 h-96 bg-[color-mix(in_srgb,var(--color-accent)_3%,transparent)] rounded-full blur-[100px] -mr-32 -mt-32" />
@@ -60,9 +60,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
 
                 <Reveal delay={0.3} y={30} blur>
                   <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-heading font-black text-foreground leading-[1.05] tracking-tight mb-8">
-                    {welcome.split(' ').map((word, i) => (
-                      <span key={i} className={i === welcome.split(' ').length - 1 ? "text-accent" : ""}>{word} </span>
-                    ))}
+                    {welcome}
                     <br />
                     <span className="italic font-serif font-light text-[color-mix(in_srgb,var(--color-text)_80%,transparent)]">
                       {heading.split('\n')[0]}
@@ -103,7 +101,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
             >
               <div
                 className="bg-section-alt rounded-xl overflow-hidden relative group h-full min-h-[400px] border border-[var(--color-card-border)]"
-                 
+
               >
                 <ParallaxImage offset={20} className="w-full h-full">
                   <div className="absolute inset-0 grayscale contrast-[1.1] brightness-[0.95] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000">

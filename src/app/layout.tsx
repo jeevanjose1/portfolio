@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
-import Navbar       from "@/components/layout/Navbar";
-import Footer       from "@/components/layout/Footer";
-import MainContent  from "@/components/layout/MainContent";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import MainContent from "@/components/layout/MainContent";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { client } from "@/sanity/lib/client";
@@ -11,25 +11,25 @@ import { siteSettingsQuery } from "@/sanity/lib/queries";
 import { SanitySiteSettings } from "@/sanity/types";
 
 const inter = Inter({
-  subsets:  ["latin"],
+  subsets: ["latin"],
   variable: "--font-inter",
-  display:  "swap",
+  display: "swap",
 });
 
 const sora = Sora({
-  subsets:  ["latin"],
+  subsets: ["latin"],
   variable: "--font-sora",
-  display:  "swap",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title:       "Jeevan Jose ",
+  title: "Jeevan Jose ",
   description: "Portfolio of a full-stack developer specializing in modern web applications, clean architecture, and exceptional user experiences.",
-  keywords:    ["full-stack developer", "web developer", "portfolio", "React", "Next.js"],
+  keywords: ["full-stack developer", "web developer", "portfolio", "React", "Next.js"],
   openGraph: {
-    title:       "Jeevan Jose",
+    title: "Jeevan Jose",
     description: "Portfolio of a full-stack developer specializing in modern web applications.",
-    type:        "website",
+    type: "website",
   },
 };
 

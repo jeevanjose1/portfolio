@@ -15,9 +15,9 @@ export default function CatHead() {
   const smoothX = useSpring(pointerX, { stiffness: 150, damping: 20, mass: 0.5 });
   const smoothY = useSpring(pointerY, { stiffness: 150, damping: 20, mass: 0.5 });
 
-  // Map movement range
-  const eyeX = useTransform(smoothX, [-1, 1], [-3.5, 3.5]);
-  const eyeY = useTransform(smoothY, [-1, 1], [-2.5, 2.5]);
+  // Map movement range - slightly wider for cartoonish effect
+  const eyeX = useTransform(smoothX, [-1, 1], [-7, 7]);
+  const eyeY = useTransform(smoothY, [-1, 1], [-5, 5]);
 
   useEffect(() => {
     const handlePointerMove = (event: PointerEvent) => {
@@ -27,13 +27,11 @@ export default function CatHead() {
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
 
-      // Distance from center
       const deltaX = event.clientX - centerX;
       const deltaY = event.clientY - centerY;
 
-      // Calculate normalized position (-1 to 1) with more sensitivity
-      const x = Math.max(-1, Math.min(1, deltaX / 250));
-      const y = Math.max(-1, Math.min(1, deltaY / 250));
+      const x = Math.max(-1, Math.min(1, deltaX / 120));
+      const y = Math.max(-1, Math.min(1, deltaY / 100));
 
       pointerX.set(x);
       pointerY.set(y);
@@ -43,7 +41,6 @@ export default function CatHead() {
     return () => window.removeEventListener("pointermove", handlePointerMove);
   }, [pointerX, pointerY]);
 
-  // Blink logic
   useEffect(() => {
     const blinkLoop = setInterval(() => {
       setBlink(true);
@@ -64,8 +61,8 @@ export default function CatHead() {
   return (
     <motion.div 
       ref={containerRef}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      whileHover={{ scale: 1.1, rotate: [0, -3, 3, 0] }}
+      transition={{ rotate: { duration: 0.4, repeat: Infinity } }}
       className="relative flex items-center justify-center w-14 h-12 overflow-visible group transition-colors cursor-help"
     >
       <svg
@@ -74,61 +71,83 @@ export default function CatHead() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Ears - Made smaller */}
-        <path d="M30 46 L24 28 L42 40 Z" fill={colors.fur} stroke={colors.fur} strokeWidth="1" strokeLinejoin="round" />
-        <path d="M70 46 L76 28 L58 40 Z" fill={colors.fur} stroke={colors.fur} strokeWidth="1" strokeLinejoin="round" />
-        <path d="M32 44 L28 34 L40 40 Z" fill={colors.accent} opacity="0.25" />
-        <path d="M68 44 L72 34 L60 40 Z" fill={colors.accent} opacity="0.25" />
-
-        {/* Head Shape - Scaled up */}
-        <circle cx="50" cy="62" r="38" fill={colors.fur} />
+        {/* Ears - Rounded and stubby for cartoon look */}
+        <path 
+          d="M25 40 Q15 5 40 30 Z" 
+          fill={colors.fur} 
+          stroke={colors.fur} 
+          strokeWidth="3" 
+          strokeLinejoin="round" 
+        />
+        <path 
+          d="M75 40 Q85 5 60 30 Z" 
+          fill={colors.fur} 
+          stroke={colors.fur} 
+          strokeWidth="3" 
+          strokeLinejoin="round" 
+        />
         
-        {/* Whiskers */}
-        <path d="M20 66 L6 64 M20 72 L6 76 M80 66 L94 64 M80 72 L94 76" stroke={colors.accent} strokeWidth="2" strokeLinecap="round" opacity="0.3" />
+        {/* Inner Ears - Soft pink/accent tint */}
+        <path d="M28 35 Q22 15 38 28 Z" fill={colors.accent} opacity="0.25" />
+        <path d="M72 35 Q78 15 62 28 Z" fill={colors.accent} opacity="0.25" />
 
-        {/* Muzzle Area */}
+        {/* Head - Very round and puffy */}
+        <circle cx="50" cy="65" r="35" fill={colors.fur} />
+        
+        {/* Muzzle Area - Double circles for extra cuteness */}
         <motion.g animate={{ y: blink ? 0.5 : 0 }}>
-          <ellipse cx="50" cy="76" rx="16" ry="11" fill={colors.muzzle} />
-          <path d="M46 72 L54 72 L50 77 Z" fill={colors.accent} />
+          <circle cx="43" cy="82" r="9" fill={colors.muzzle} />
+          <circle cx="57" cy="82" r="9" fill={colors.muzzle} />
+          
+          {/* Nose - Rounded heart/triangle */}
+          <path d="M47 78 Q50 75 53 78 L50 82 Z" fill={colors.accent} />
+          
+          {/* Mouth */}
           <path 
-            d="M50 77 L50 80 M50 80 Q46 84 42 81 M50 80 Q54 84 58 81" 
+            d="M43 82 Q46 86 50 82 Q54 86 57 82" 
             stroke={colors.pupil} 
-            strokeWidth="1.5" 
+            strokeWidth="2" 
             strokeLinecap="round" 
             fill="none" 
             opacity="0.8"
           />
         </motion.g>
 
-        {/* Eyes - Large expressive circles */}
-        <circle cx="34" cy="58" r="10" fill={colors.white} />
-        <circle cx="66" cy="58" r="10" fill={colors.white} />
+        {/* Eyes - Extra large and round */}
+        <circle cx="34" cy="58" r="13" fill={colors.white} />
+        <circle cx="66" cy="58" r="13" fill={colors.white} />
 
         {/* Eye Contents (Tracking) */}
         <motion.g style={{ x: eyeX, y: eyeY }}>
-          <circle cx="34" cy="58" r="7.5" fill={colors.eye} />
-          <circle cx="66" cy="58" r="7.5" fill={colors.eye} />
+          <circle cx="34" cy="58" r="9" fill={colors.eye} />
+          <circle cx="66" cy="58" r="9" fill={colors.eye} />
           
+          {/* Pupils */}
           <motion.g 
-            animate={blink ? { scaleY: 0.1, y: 3 } : { scaleY: 1, y: 0 }} 
+            animate={blink ? { scaleY: 0.1, y: 4 } : { scaleY: 1, y: 0 }} 
             transition={{ duration: 0.12 }}
             style={{ transformOrigin: "34px 58px" }}
           >
-            <ellipse cx="34" cy="58" rx="3" ry="5" fill={colors.pupil} />
+            <circle cx="34" cy="58" r="4.5" fill={colors.pupil} />
           </motion.g>
           
           <motion.g 
-            animate={blink ? { scaleY: 0.1, y: 3 } : { scaleY: 1, y: 0 }} 
+            animate={blink ? { scaleY: 0.1, y: 4 } : { scaleY: 1, y: 0 }} 
             transition={{ duration: 0.12 }}
             style={{ transformOrigin: "66px 58px" }}
           >
-            <ellipse cx="66" cy="58" rx="3" ry="5" fill={colors.pupil} />
+            <circle cx="66" cy="58" r="4.5" fill={colors.pupil} />
           </motion.g>
           
-          {/* Reflections for depth */}
-          <circle cx="36" cy="55" r="1.5" fill={colors.white} opacity="0.9" />
-          <circle cx="68" cy="55" r="1.5" fill={colors.white} opacity="0.9" />
+          {/* Large cartoonish reflections */}
+          <circle cx="37" cy="54" r="2.5" fill={colors.white} opacity="0.9" />
+          <circle cx="69" cy="54" r="2.5" fill={colors.white} opacity="0.9" />
+          <circle cx="32" cy="61" r="1" fill={colors.white} opacity="0.5" />
+          <circle cx="64" cy="61" r="1" fill={colors.white} opacity="0.5" />
         </motion.g>
+
+        {/* Whiskers - Short and bouncy */}
+        <path d="M12 70 L2 68 M12 78 L4 80 M88 70 L98 68 M88 78 L96 80" stroke={colors.accent} strokeWidth="2" strokeLinecap="round" opacity="0.3" />
       </svg>
     </motion.div>
   );
