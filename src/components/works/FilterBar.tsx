@@ -26,12 +26,12 @@ export default function FilterBar({
           <div className="flex flex-col lg:flex-row justify-between gap-10">
             <div className="space-y-4">
               <Reveal delay={0.1}>
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-accent flex items-center gap-2">
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.3em] text-accent flex items-center gap-2">
                   {"//"} Project Archive
                 </p>
               </Reveal>
               <Reveal delay={0.2} blur>
-                <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground tracking-tighter leading-[0.9]">
+                <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground tracking-tighter leading-[0.9]">
                   Specialized  Expertise
                 </h2>
               </Reveal>
@@ -62,12 +62,12 @@ export default function FilterBar({
                         />
                       )}
 
-                      <span className="relative z-10 text-[11px] font-black uppercase tracking-[0.15em] leading-none">
+                      <span className="relative z-10 text-[11px] font-extrabold uppercase tracking-[0.15em] leading-none">
                         {cat.name}
                       </span>
 
                       <span className={`
-                      relative z-10 text-[9px] font-black px-2 py-0.5 rounded-md leading-none transition-colors duration-300
+                      relative z-10 text-[9px] font-extrabold px-2 py-0.5 rounded-md leading-none transition-colors duration-300
                       ${isActive ? "bg-background/20 text-background" : "bg-surface-2 text-muted-foreground group-hover:bg-accent group-hover:text-background"}
                     `}>
                         {cat.count}

@@ -34,7 +34,7 @@ export default function ExperienceCards({
             <p className="section-label mb-4">{"// "} Professional Path</p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
+            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
               Work History.
             </h2>
           </Reveal>
@@ -57,10 +57,10 @@ export default function ExperienceCards({
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-2">
-                        <h3 className="text-2xl font-heading font-black text-foreground group-hover:text-accent transition-colors duration-300">
+                        <h3 className="text-2xl font-heading font-extrabold text-foreground group-hover:text-accent transition-colors duration-300">
                           {exp.company}
                         </h3>
-                        <span className="px-3 py-1 rounded-xl bg-surface-2 border border-border text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+                        <span className="px-3 py-1 rounded-xl bg-surface-2 border border-border text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground">
                           {exp.dateRange}
                         </span>
                       </div>

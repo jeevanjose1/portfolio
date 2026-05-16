@@ -21,9 +21,9 @@ export default function ServiceCTA({ title }: ServiceCTAProps) {
 
             <div className="relative z-10 text-center max-w-3xl mx-auto">
               <Reveal delay={0.2} blur className="mx-auto">
-                <h2 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-black mb-6 text-foreground leading-tight">
+                <h2 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-extrabold mb-6 text-foreground leading-tight">
                   Ready to Build Your <br />
-                  <span className="text-accent italic font-serif">{title}?</span>
+                  <span className="text-accent font-heading font-semibold">{title}?</span>
                 </h2>
               </Reveal>
               <Reveal delay={0.3} y={20} className="mx-auto">

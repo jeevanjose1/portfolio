@@ -35,11 +35,12 @@ function MainServiceCard({ service, index }: { service: SanityService | MainServ
           <Icon size={26} className="text-accent group-hover:text-background transition-colors" />
         </div>
 
-        <h3 className="text-2xl font-heading font-black text-foreground mb-3 group-hover:text-accent transition-colors duration-300 uppercase tracking-tight">
+        <h3 className="text-2xl font-heading font-extrabold text-foreground mb-3 group-hover:text-accent transition-colors duration-300 uppercase tracking-tight">
           {service.title}
         </h3>
-        <p className="text-muted-foreground line-clamp-4 leading-relaxed mb-8 flex-grow font-body italic text-sm">
+        <p className="text-muted-foreground line-clamp-4    leading-relaxed mb-8  font-body italic text-sm">
           &ldquo;{service.description}&rdquo;
+          
         </p>
 
         {features.length > 0 && (
@@ -49,7 +50,7 @@ function MainServiceCard({ service, index }: { service: SanityService | MainServ
               return (
                 <li key={i} className="flex items-start gap-3">
                   <CheckIcon size={16} className="text-accent mt-0.5 flex-shrink-0" />
-                  <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{text}</span>
+                  <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-muted-foreground">{text}</span>
                 </li>
               );
             })}
@@ -59,7 +60,7 @@ function MainServiceCard({ service, index }: { service: SanityService | MainServ
         <div className="pt-6 border-t border-border mt-auto flex items-center justify-between relative z-10">
           <Link
             href={`/services/${service.slug}`}
-            className="group/btn flex items-center hover:underline gap-2 text-sm font-black uppercase tracking-widest text-accent hover:text-foreground transition-colors duration-300"
+            className="group/btn flex items-center hover:underline gap-2 text-sm font-extrabold uppercase tracking-[0.16em] text-accent hover:text-foreground transition-colors duration-300"
           >
             Learn More
             <ArrowUpRight size={18} className="group-hover/btn:rotate-45 transition-transform duration-300" />
@@ -81,7 +82,7 @@ export default function MainServices({ services }: { services: SanityService[] }
             <p className="section-label mb-4">{"// "} Expertise</p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
+            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
               Core Solutions.
             </h2>
           </Reveal>

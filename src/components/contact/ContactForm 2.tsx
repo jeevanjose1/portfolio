@@ -67,7 +67,7 @@ export default function ContactForm() {
       duration={1}
     >
       <div
-        className="bg-background rounded-xl p-10 sm:p-12 border border-card-border shadow-card relative overflow-hidden min-h-[600px]"
+        className="bg-background rounded-xl p-10 sm:p-12 border border-[var(--color-card-border)] relative overflow-hidden min-h-[600px]"
       >
         <AnimatePresence mode="wait">
           {isSuccess ? (
@@ -77,10 +77,10 @@ export default function ContactForm() {
               animate={{ opacity: 1, scale: 1 }}
               className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center bg-background z-10"
             >
-              <div className="w-20 h-20 rounded-lg bg-accent-10 flex items-center justify-center mb-8 border border-accent-20">
+              <div className="w-20 h-20 rounded-lg bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] flex items-center justify-center mb-8 border border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]">
                 <CheckCircle2 size={42} className="text-accent" />
               </div>
-              <h3 className="text-3xl font-heading font-extrabold text-foreground mb-4">Message Sent</h3>
+              <h3 className="text-3xl font-heading font-black text-foreground mb-4">Message Sent</h3>
               <p className="text-muted-foreground text-base sm:text-lg mb-10 max-w-sm font-body">
                 Thanks for sharing the brief. I&apos;ll review it and respond within 24 business hours.
               </p>
@@ -89,7 +89,7 @@ export default function ContactForm() {
                   setFormData({ ...formData, message: "" });
                   setIsSuccess(false);
                 }}
-                className="px-8 py-4 rounded-lg bg-accent text-background font-extrabold uppercase tracking-[0.16em] text-xs hover:bg-accent-80 transition-colors"
+                className="px-8 py-4 rounded-lg bg-accent text-background font-black uppercase tracking-widest text-xs hover:bg-[color-mix(in_srgb,var(--color-accent)_80%,transparent)] transition-colors"
               >
                 Send Another Message
               </button>
@@ -104,54 +104,54 @@ export default function ContactForm() {
             >
               <div className="mb-10 sm:mb-12">
                 <Reveal delay={0.1}>
-                  <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">{"//"} Project Brief</p>
+                  <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">{"//"} Project Brief</p>
                 </Reveal>
                 <Reveal delay={0.2} blur>
-                  <h2 className="text-3xl font-heading font-extrabold text-foreground">Tell me what you need.</h2>
+                  <h2 className="text-3xl font-heading font-black text-foreground">Tell me what you need.</h2>
                 </Reveal>
               </div>
 
               <div className="space-y-6 flex-grow">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-2 ml-1">Full Name *</label>
+                    <label htmlFor="name" className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 ml-1">Full Name *</label>
                     <input
                       id="name"
                       type="text"
                       placeholder="Your name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className={`w-full px-5 py-4 rounded-xl border ${errors.name ? 'border-red-400 focus:ring-red-400/20' : 'border-border focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground placeholder:text-muted-foreground-40 text-sm`}
+                      className={`w-full px-5 py-4 rounded-xl border ${errors.name ? 'border-red-400 focus:ring-red-400/20' : 'border-[var(--color-border)] focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground placeholder:text-[color-mix(in_srgb,var(--color-text-muted)_40%,transparent)] text-sm`}
                       aria-label="Full Name"
                       aria-invalid={!!errors.name}
                     />
-                    {errors.name && <p className="text-red-500 text-[10px] font-extrabold uppercase tracking-[0.16em] mt-2 ml-1">{errors.name}</p>}
+                    {errors.name && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2 ml-1">{errors.name}</p>}
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-2 ml-1">Email Address *</label>
+                    <label htmlFor="email" className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 ml-1">Email Address *</label>
                     <input
                       id="email"
                       type="email"
                       placeholder="you@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className={`w-full px-5 py-4 rounded-xl border ${errors.email ? 'border-red-400 focus:ring-red-400/20' : 'border-border focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground placeholder:text-muted-foreground-40 text-sm`}
+                      className={`w-full px-5 py-4 rounded-xl border ${errors.email ? 'border-red-400 focus:ring-red-400/20' : 'border-[var(--color-border)] focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground placeholder:text-[color-mix(in_srgb,var(--color-text-muted)_40%,transparent)] text-sm`}
                       aria-label="Email Address"
                       aria-invalid={!!errors.email}
                     />
-                    {errors.email && <p className="text-red-500 text-[10px] font-extrabold uppercase tracking-[0.16em] mt-2 ml-1">{errors.email}</p>}
+                    {errors.email && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2 ml-1">{errors.email}</p>}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="projectType" className="block text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-2 ml-1">Project Type</label>
+                    <label htmlFor="projectType" className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 ml-1">Project Type</label>
                     <div className="relative">
                       <select
                         id="projectType"
                         value={formData.projectType}
                         onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                        className="w-full px-5 py-4 rounded-xl border border-border focus:border-accent focus:ring-4 focus:ring-accent/10 outline-none transition-all bg-surface-2 font-medium text-foreground appearance-none cursor-pointer text-sm"
+                        className="w-full px-5 py-4 rounded-xl border border-[var(--color-border)] focus:border-accent focus:ring-4 focus:ring-accent/10 outline-none transition-all bg-surface-2 font-medium text-foreground appearance-none cursor-pointer text-sm"
                         aria-label="Project Type"
                       >
                         <option className="bg-background">Web App</option>
@@ -167,13 +167,13 @@ export default function ContactForm() {
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="timeline" className="block text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-2 ml-1">Timeline</label>
+                    <label htmlFor="timeline" className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 ml-1">Timeline</label>
                     <div className="relative">
                       <select
                         id="timeline"
                         value={formData.timeline}
                         onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                        className="w-full px-5 py-4 rounded-xl border border-border focus:border-accent focus:ring-4 focus:ring-accent/10 outline-none transition-all bg-surface-2 font-medium text-foreground appearance-none cursor-pointer text-sm"
+                        className="w-full px-5 py-4 rounded-xl border border-[var(--color-border)] focus:border-accent focus:ring-4 focus:ring-accent/10 outline-none transition-all bg-surface-2 font-medium text-foreground appearance-none cursor-pointer text-sm"
                         aria-label="Project Timeline"
                       >
                         <option className="bg-background">ASAP</option>
@@ -189,18 +189,18 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-2 ml-1">Message *</label>
+                  <label htmlFor="message" className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 ml-1">Message *</label>
                   <textarea
                     id="message"
                     rows={4}
                     placeholder="Tell me about your project, goals, and any specific requirements..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className={`w-full px-5 py-4 rounded-xl border ${errors.message ? 'border-red-400 focus:ring-red-400/20' : 'border-border focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground resize-none placeholder:text-muted-foreground-40 text-sm`}
+                    className={`w-full px-5 py-4 rounded-xl border ${errors.message ? 'border-red-400 focus:ring-red-400/20' : 'border-[var(--color-border)] focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground resize-none placeholder:text-[color-mix(in_srgb,var(--color-text-muted)_40%,transparent)] text-sm`}
                     aria-label="Message"
                     aria-invalid={!!errors.message}
                   />
-                  {errors.message && <p className="text-red-500 text-[10px] font-extrabold uppercase tracking-[0.16em] mt-2 ml-1">{errors.message}</p>}
+                  {errors.message && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2 ml-1">{errors.message}</p>}
                 </div>
               </div>
 
@@ -208,7 +208,7 @@ export default function ContactForm() {
                 <button
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto px-10 py-5 rounded-lg bg-accent text-background font-extrabold uppercase tracking-[0.16em] text-xs flex justify-center items-center gap-3 hover:bg-accent-90 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-accent-10"
+                  className="w-full sm:w-auto px-10 py-5 rounded-lg bg-accent text-background font-black uppercase tracking-widest text-xs flex justify-center items-center gap-3 hover:bg-[color-mix(in_srgb,var(--color-accent)_90%,transparent)] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-[color-mix(in_srgb,var(--color-accent)_10%,transparent)]"
                 >
                   {isSubmitting ? (
                     <div className="w-5 h-5 border-2 border-background border-t-transparent rounded-lg animate-spin" />
@@ -220,7 +220,7 @@ export default function ContactForm() {
                   )}
                 </button>
 
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground">
+                <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
                   No spam. Just a practical reply.
                 </p>
               </div>

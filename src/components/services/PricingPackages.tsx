@@ -11,12 +11,12 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
       <div className="section-container">
         <div className="mb-16 text-center">
           <Reveal delay={0.1} className="mx-auto">
-            <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
+            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
               {"//"} Investment
             </p>
           </Reveal>
           <Reveal delay={0.2} blur className="mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
+            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
               Pricing & Packages.
             </h2>
           </Reveal>
@@ -41,17 +41,17 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
                   }`}
               >
                 {pkg.highlighted && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent dark:bg-white dark:text-accent text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent dark:bg-white dark:text-accent text-white px-4 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-[0.16em]">
                     Most Popular
                   </div>
                 )}
 
                 <div className="p-8 border-b border-border/50 shrink-0">
-                  <h3 className="text-sm font-black uppercase tracking-widest mb-2 opacity-80">
+                  <h3 className="text-sm font-extrabold uppercase tracking-[0.16em] mb-2 opacity-80">
                     {pkg.name}
                   </h3>
                   <div className="flex items-baseline gap-2 mb-4">
-                    <span className="text-5xl font-heading font-black">{pkg.price}</span>
+                    <span className="text-5xl font-heading font-extrabold">{pkg.price}</span>
                   </div>
                   <p className="text-sm font-body italic opacity-80">{pkg.label}</p>
                 </div>
@@ -74,7 +74,7 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
 
                   <Link
                     href="/contact"
-                    className={`w-full py-4 rounded-lg font-black uppercase tracking-widest text-xs text-center transition-all duration-300 ${pkg.highlighted
+                    className={`w-full py-4 rounded-lg font-extrabold uppercase tracking-[0.16em] text-xs text-center transition-all duration-300 ${pkg.highlighted
                       ? "bg-white text-slate-900 hover:bg-gray-100 dark:bg-white dark:text-accent"
                       : pkg.name === "Enterprise"
                         ? "bg-accent text-white hover:bg-blue-600"
@@ -96,7 +96,7 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 text-accent font-black uppercase tracking-widest text-sm hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-2 text-accent font-extrabold uppercase tracking-[0.16em] text-sm hover:text-foreground transition-colors"
             >
               Book a Free Call &rarr;
             </Link>

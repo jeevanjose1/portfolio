@@ -12,12 +12,12 @@ export default function ServiceFAQ({ service }: { service: SanityService | MainS
       <div className="section-container">
         <div className="mb-16 text-center">
           <Reveal delay={0.1} className="mx-auto">
-            <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
+            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
               {"//"} Queries
             </p>
           </Reveal>
           <Reveal delay={0.2} blur className="mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
+            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
               Frequently Asked Questions.
             </h2>
           </Reveal>

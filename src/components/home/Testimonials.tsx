@@ -21,7 +21,7 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
             <p className="section-label mb-4">{"// "} Client Feedback</p>
           </Reveal>
           <Reveal delay={0.2} blur className="mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">What Clients Say.</h2>
+            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">What Clients Say.</h2>
           </Reveal>
           <Reveal delay={0.4} className="mx-auto">
             <div className="w-16 h-px bg-accent-25 mx-auto mt-8" />
@@ -39,7 +39,7 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-xl p-10 sm:p-12 border border-card-border flex flex-col justify-between group hover:border-accent-25 transition-all duration-500 h-full"
+                className="bg-section-alt rounded-xl p-10 sm:p-12 border border-card-border shadow-card flex flex-col justify-between group hover:border-accent-25 transition-all duration-500 h-full"
                  
               >
                 <div>
@@ -54,13 +54,13 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
                 </div>
                 <div className="flex items-center gap-4 pt-8 border-t border-border/60">
                   <div className="w-11 h-11 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center shrink-0 group-hover:bg-accent transition-all duration-300">
-                    <span className="text-sm font-black text-accent group-hover:text-background transition-colors">
+                    <span className="text-sm font-extrabold text-accent group-hover:text-background transition-colors">
                       {t.name.charAt(0)}
                     </span>
                   </div>
                   <div>
-                    <p className="text-sm font-black text-foreground uppercase tracking-tight">{t.name}</p>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mt-0.5">
+                    <p className="text-sm font-extrabold text-foreground uppercase tracking-tight">{t.name}</p>
+                    <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mt-0.5">
                       {t.role}
                     </p>
                   </div>

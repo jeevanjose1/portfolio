@@ -11,12 +11,12 @@ export default function ServiceTechStack({ service }: { service: SanityService |
       <div className="section-container">
         <div className="mb-16">
           <Reveal delay={0.1}>
-            <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
+            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
               {"//"} The Stack
             </p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground mb-6">
+            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground mb-6">
               Technologies I Use.
             </h2>
           </Reveal>
@@ -40,14 +40,14 @@ export default function ServiceTechStack({ service }: { service: SanityService |
               <div
                 className="bg-background rounded-lg p-8 border border-border h-full"
               >
-                <h3 className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-6">
+                <h3 className="text-sm font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-6">
                   {category.category}
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {category.techs.map((tech: string) => (
                     <div
                       key={tech}
-                      className="px-4 py-2 rounded-lg bg-section-alt border border-border text-sm font-black text-foreground shadow-sm hover:border-accent-30 hover:text-accent transition-colors duration-300"
+                      className="px-4 py-2 rounded-lg bg-section-alt border border-border text-sm font-extrabold text-foreground shadow-sm hover:border-accent-30 hover:text-accent transition-colors duration-300"
                     >
                       {tech}
                     </div>

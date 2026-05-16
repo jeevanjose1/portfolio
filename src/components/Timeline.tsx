@@ -28,10 +28,10 @@ export default function Timeline({ items }: TimelineProps) {
 
             {/* Content Container */}
             <div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-accent mb-2 block">
+              <span className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent mb-2 block">
                 {item.year}
               </span>
-              <h4 className="text-lg font-heading font-black text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
+              <h4 className="text-lg font-heading font-extrabold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
                 {item.title}
               </h4>
               <p className="text-sm text-muted-foreground leading-relaxed font-body">

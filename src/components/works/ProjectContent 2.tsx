@@ -36,12 +36,12 @@ export default function ProjectContent({ project }: { project: NormalizedProject
       <div className="section-container !py-0 flex flex-col lg:flex-row gap-16 lg:gap-24">
         <div className="lg:w-[62%]">
           <Reveal delay={0.1}>
-            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-4">
+            <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-4">
               {"//"} Strategy
             </p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-3xl font-heading font-extrabold text-foreground mb-8">
+            <h2 className="text-3xl font-heading font-black text-foreground mb-8">
               Case Study Overview.
             </h2>
           </Reveal>
@@ -65,7 +65,7 @@ export default function ProjectContent({ project }: { project: NormalizedProject
             duration={1}
           >
             <div className="bg-background border border-border rounded-lg p-8 sm:p-10  relative overflow-hidden h-full">
-              <h3 className="text-sm font-extrabold uppercase tracking-[0.16em] text-foreground mb-8 relative z-10">
+              <h3 className="text-sm font-black uppercase tracking-widest text-foreground mb-8 relative z-10">
                 Project Intelligence
               </h3>
               <div className="space-y-6 mb-10 relative z-10">
@@ -85,10 +85,10 @@ export default function ProjectContent({ project }: { project: NormalizedProject
                       <div
                         className="flex justify-between items-center py-2 border-b border-border w-full"
                       >
-                        <span className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
                           {item.label}
                         </span>
-                        <span className="font-extrabold text-foreground font-heading tracking-tight">
+                        <span className="font-black text-foreground font-heading tracking-tight">
                           {item.value}
                         </span>
                       </div>
@@ -97,12 +97,12 @@ export default function ProjectContent({ project }: { project: NormalizedProject
               </div>
               <Reveal width="100%" delay={0.7} y={20}>
                 <div className="bg-section-alt p-8 rounded-lg text-center relative z-10 border border-border">
-                  <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-6">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-6">
                     Partner with me
                   </p>
                   <Link
                     href="/contact"
-                    className="btn-primary w-full inline-flex justify-center uppercase tracking-[0.16em] text-xs font-extrabold py-4"
+                    className="btn-primary w-full inline-flex justify-center uppercase tracking-widest text-xs font-black py-4"
                   >
                     START PROJECT
                   </Link>

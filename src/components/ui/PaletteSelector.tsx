@@ -36,7 +36,7 @@ export default function PaletteSelector() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-10 h-10 rounded-xl bg-surface-2 border border-border flex items-center justify-center text-foreground transition-all duration-200 hover:bg-surface-3 active:scale-95"
+        className="w-10 h-10 rounded-lg bg-surface-2 border border-border flex items-center justify-center text-foreground transition-all duration-200 hover:bg-surface-3 active:scale-95"
         aria-label="Change color palette"
       >
         <Palette size={16} className="text-accent" />
@@ -51,9 +51,9 @@ export default function PaletteSelector() {
               animate={{ opacity: 1, scale: 1,    y: 0 }}
               exit={{   opacity: 0, scale: 0.92, y: 8 }}
               transition={{ duration: 0.15, ease: "easeOut" }}
-              className="absolute top-[50px] right-0 bg-surface-1 border border-card-border rounded-xl shadow-xl p-2.5 z-50 min-w-[160px]"
+              className="absolute top-[50px] right-0 bg-surface-1 border border-card-border rounded-lg shadow-xl p-2.5 z-50 min-w-[160px]"
             >
-              <p className="text-[9px] font-black uppercase tracking-widest text-muted-foreground px-2 pb-2 pt-0.5">
+              <p className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground px-2 pb-2 pt-0.5">
                 Color Theme
               </p>
               <div className="flex flex-col gap-0.5">
@@ -62,7 +62,7 @@ export default function PaletteSelector() {
                     key={palette.id}
                     onClick={() => handleChange(palette.id)}
                     className={`
-                      flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 group text-left
+                      flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-150 group text-left
                       ${currentPalette === palette.id
                         ? "bg-accent text-background"
                         : "hover:bg-surface-2 text-foreground"
@@ -73,7 +73,7 @@ export default function PaletteSelector() {
                       className="w-3.5 h-3.5 rounded-full border border-white/20 shrink-0"
                       style={{ backgroundColor: palette.color }}
                     />
-                    <span className="text-[10px] font-black uppercase tracking-widest">
+                    <span className="text-[10px] font-extrabold uppercase tracking-[0.16em]">
                       {palette.name}
                     </span>
                   </button>

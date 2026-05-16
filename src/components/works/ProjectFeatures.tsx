@@ -15,7 +15,7 @@ export default function ProjectFeatures({ project }: { project: NormalizedProjec
     <section className="bg-section-alt py-12 lg:py-16">
       <div className="section-container">
         <Reveal delay={0.1} blur>
-          <h2 className="text-4xl font-heading font-black text-foreground mb-12">
+          <h2 className="text-4xl font-heading font-extrabold text-foreground mb-12">
             Core Features.
           </h2>
         </Reveal>
@@ -37,7 +37,7 @@ export default function ProjectFeatures({ project }: { project: NormalizedProjec
                   <div className="w-12 h-12 rounded-full bg-section-alt border border-border flex items-center justify-center mb-8 group-hover:bg-accent transition-all shrink-0">
                     <Icon size={24} className="text-accent group-hover:text-background" />
                   </div>
-                  <h3 className="text-xl font-heading font-black text-foreground mb-4 uppercase tracking-tight">
+                  <h3 className="text-xl font-heading font-extrabold text-foreground mb-4 uppercase tracking-tight">
                     {feature.title}
                   </h3>
                   <p className="text-muted-foreground text-sm font-body flex-grow">

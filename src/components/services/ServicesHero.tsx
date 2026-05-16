@@ -25,7 +25,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-card-border flex flex-col justify-between h-full"
+              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
                
             >
               <div>
@@ -36,7 +36,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
                   </span>
                 </Reveal>
                 <Reveal delay={0.3} y={30} blur>
-                  <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-black text-foreground leading-[1.08] mb-5 whitespace-pre-line">
+                  <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-extrabold text-foreground leading-[1.08] mb-5 whitespace-pre-line">
                     {heading}
                   </h1>
                 </Reveal>
@@ -69,7 +69,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-card-border text-foreground relative overflow-hidden h-full"
+                className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-card-border shadow-card text-foreground relative overflow-hidden h-full"
                  
               >
                 <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px] rounded-xl" />
@@ -77,8 +77,8 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
                   <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center mb-8">
                     <CheckCircle2 size={22} className="text-accent" />
                   </div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3">Delivery Model</p>
-                  <h2 className="text-3xl font-heading font-black leading-tight">Strategy, build, deploy, iterate.</h2>
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-3">Delivery Model</p>
+                  <h2 className="text-3xl font-heading font-extrabold leading-tight">Strategy, build, deploy, iterate.</h2>
                 </div>
               </div>
             </Reveal>
@@ -107,11 +107,11 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
                 blur
               >
                 <div
-                  className="bg-section-alt rounded-xl p-6 border border-card-border flex items-center gap-3 h-full"
+                  className="bg-section-alt rounded-xl p-6 border border-card-border shadow-card flex items-center gap-3 h-full"
                    
                 >
                   <CheckCircle2 size={17} className="text-accent shrink-0" />
-                  <span className="text-sm font-black uppercase tracking-widest text-foreground">{item}</span>
+                  <span className="text-sm font-extrabold uppercase tracking-[0.16em] text-foreground">{item}</span>
                 </div>
               </Reveal>
             ))}

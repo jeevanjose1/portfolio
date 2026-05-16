@@ -14,18 +14,18 @@ export default function ProjectRelated({ projects }: { projects: SanityProject[]
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-8 h-[1px] bg-accent" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">
+              <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-accent">
                 Discovery
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground tracking-tight">
               Explore More.
             </h2>
           </div>
           
           <Link
             href="/works"
-            className="group flex items-center gap-3 text-xs font-black uppercase tracking-widest text-muted-foreground hover:text-accent transition-all"
+            className="group flex items-center gap-3 text-xs font-extrabold uppercase tracking-[0.16em] text-muted-foreground hover:text-accent transition-all"
           >
             View All Works 
             <span className="group-hover:translate-x-1 transition-transform">→</span>

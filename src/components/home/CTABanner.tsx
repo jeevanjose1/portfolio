@@ -20,32 +20,27 @@ export default function CTABanner({ data }: { data?: { heading?: string; subtext
           duration={1}
         >
           <div
-            className="relative rounded-xl py-20 lg:py-24 px-10 sm:px-16 overflow-hidden border border-card-border bg-section-alt flex flex-col lg:flex-row items-center justify-between gap-10"
+            className="relative rounded-xl py-16 lg:py-20 px-8 sm:px-12 lg:px-16 overflow-hidden border border-card-border bg-section-alt shadow-card flex flex-col lg:flex-row items-center justify-between gap-10"
           >
-            {/* Grid texture */}
-            <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:32px_32px] rounded-xl" />
-
-            {/* Ambient glow */}
-            <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full opacity-[0.08] blur-3xl"
-              style={{ backgroundColor: "var(--color-accent)" }}
-            />
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-20 to-transparent" />
+            <div className="absolute inset-0 opacity-[0.035] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:32px_32px] rounded-xl" />
 
             <div className="relative z-10 text-center lg:text-left">
               <Reveal delay={0.2} className="mx-auto lg:mx-0">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-10 text-accent font-black text-[10px] uppercase tracking-widest mb-8 border border-accent-15">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-10 text-accent font-bold text-[10px] uppercase tracking-[0.14em] mb-8 border border-accent-15">
                   <MessageSquare size={11} />
                   Direct Engagement
                 </div>
               </Reveal>
 
               <Reveal delay={0.3} blur className="mx-auto lg:mx-0">
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-tight mb-6 whitespace-pre-line">
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-foreground leading-[1.05] mb-6 whitespace-pre-line">
                   {heading}
                 </h2>
               </Reveal>
 
               <Reveal delay={0.4} y={20} className="mx-auto lg:mx-0">
-                <p className="text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-10 text-base sm:text-lg font-body leading-relaxed">
+                <p className="text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-10 text-base sm:text-lg font-body leading-8">
                   {subtext}
                 </p>
               </Reveal>
@@ -53,7 +48,7 @@ export default function CTABanner({ data }: { data?: { heading?: string; subtext
               <Reveal delay={0.5} y={20} className="mx-auto lg:mx-0">
                 <Link
                   href={buttonHref}
-                  className="btn-primary gap-3 px-10 py-5 text-xs group"
+                  className="btn-primary gap-3 px-9 py-4 text-[12px] group"
                 >
                   {buttonLabel}
                   <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />

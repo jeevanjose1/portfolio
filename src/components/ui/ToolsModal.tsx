@@ -39,12 +39,12 @@ export default function ToolsModal({ isOpen, onClose }: ToolsModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-              className="w-full bg-surface-1 border border-card-border rounded-3xl shadow-2xl overflow-hidden pointer-events-auto"
+              className="w-full bg-surface-1 border border-card-border rounded-xl shadow-xl overflow-hidden pointer-events-auto"
             >
               {/* Header */}
               <div className="p-6 border-b border-border flex items-center justify-between bg-surface-2/50">
                 <div>
-                  <h2 className="text-xl font-heading font-black tracking-tight flex items-center gap-2">
+                  <h2 className="text-xl font-heading font-extrabold tracking-tight flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
                     Custom Tools
                   </h2>
@@ -97,7 +97,7 @@ export default function ToolsModal({ isOpen, onClose }: ToolsModalProps) {
                 <Link
                   href="/tools"
                   onClick={onClose}
-                  className="group flex items-center gap-2 text-xs font-black uppercase tracking-widest text-accent hover:text-accent-hover transition-colors"
+                  className="group flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-accent hover:text-accent-hover transition-colors"
                 >
                   View all tools
                   <motion.span

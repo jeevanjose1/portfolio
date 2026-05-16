@@ -17,14 +17,14 @@ function BeyondCard({ item, index }: { item: BeyondCodeItem; index: number }) {
       className="h-full"
     >
       <div
-        className="bg-background rounded-xl p-10 border border-card-border hover:border-accent-30 hover:-translate-y-0.5 transition-all duration-500 group relative overflow-hidden h-full flex flex-col"
+        className="bg-background rounded-xl p-10 border border-card-border shadow-card hover:border-accent-30 hover:-translate-y-0.5 transition-all duration-500 group relative overflow-hidden h-full flex flex-col"
       >
         <LucideIcons.Sparkles size={48} className="absolute -top-4 -right-4 text-accent opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
 
         <div className="w-14 h-14 rounded-xl bg-section-alt flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-border shrink-0">
           <Icon  size={26} className="text-accent group-hover:text-white transition-colors" />
         </div>
-        <h3 className="text-xl font-heading font-black text-foreground mb-4 group-hover:text-accent transition-colors duration-300">
+        <h3 className="text-xl font-heading font-extrabold text-foreground mb-4 group-hover:text-accent transition-colors duration-300">
           {item.title}
         </h3>
         <p className="text-muted-foreground text-sm leading-relaxed font-body">
@@ -45,7 +45,7 @@ export default function BeyondCode({ items }: { items?: BeyondCodeItem[] }) {
             <p className="section-label mb-4">{"// "} Personal</p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
+            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
               Beyond the IDE.
             </h2>
           </Reveal>

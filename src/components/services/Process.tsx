@@ -12,12 +12,12 @@ export default function Process({ steps }: { steps?: ProcessStepItem[] }) {
       <div className="section-container">
         <div className="mb-24">
           <Reveal delay={0.1}>
-            <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
+            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
               {"//"} Strategy
             </p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
+            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
               Execution Flow.
             </h2>
           </Reveal>

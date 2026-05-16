@@ -24,7 +24,7 @@ export default function ServiceHero({ service }: { service: SanityService | Main
           <Reveal delay={0.1}>
             <Link
               href="/services"
-              className="text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-accent flex items-center gap-2 transition-colors w-fit"
+              className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground hover:text-accent flex items-center gap-2 transition-colors w-fit"
             >
               <ArrowLeft size={14} /> Back to Services
             </Link>
@@ -43,7 +43,7 @@ export default function ServiceHero({ service }: { service: SanityService | Main
             >
               <div>
                 <Reveal delay={0.2}>
-                  <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent-10 text-accent text-[10px] font-black uppercase tracking-widest mb-6 border border-accent-20 shadow-sm">
+                  <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-accent-10 text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-6 border border-accent-20 shadow-sm">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
@@ -53,7 +53,7 @@ export default function ServiceHero({ service }: { service: SanityService | Main
                 </Reveal>
 
                 <Reveal delay={0.3} blur>
-                  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-foreground leading-[1.1] mb-6">
+                  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-foreground leading-[1.1] mb-6">
                     {service.title}
                   </h1>
                 </Reveal>
@@ -84,7 +84,7 @@ export default function ServiceHero({ service }: { service: SanityService | Main
                   </Link>
                   <Link
                     href="/works"
-                    className="inline-flex items-center gap-2 px-6 py-4 rounded-lg font-black uppercase tracking-widest text-sm text-foreground bg-background border border-border hover:border-accent hover:bg-accent-5 transition-all duration-300"
+                    className="inline-flex items-center gap-2 px-6 py-4 rounded-lg font-extrabold uppercase tracking-[0.16em] text-sm text-foreground bg-background border border-border hover:border-accent hover:bg-accent-5 transition-all duration-300"
                   >
                     View {relatedCategory}
                   </Link>
@@ -112,7 +112,7 @@ export default function ServiceHero({ service }: { service: SanityService | Main
                 <div className="w-16 h-16 rounded-lg bg-background flex items-center justify-center mb-4 border border-border group-hover:scale-110 transition-transform duration-500 relative z-10 shadow-sm shrink-0">
                   <Icon size={28} className="text-accent" />
                 </div>
-                <p className="text-foreground font-heading font-bold text-lg uppercase tracking-widest leading-snug relative z-10 mb-4">
+                <p className="text-foreground font-heading font-bold text-lg uppercase tracking-[0.16em] leading-snug relative z-10 mb-4">
                   {service.title.split(' ')[0]} <br /> Excellence
                 </p>
               </div>
@@ -129,7 +129,7 @@ export default function ServiceHero({ service }: { service: SanityService | Main
                 className="bg-accent rounded-lg p-6 text-background flex flex-col justify-center border border-accent-20  h-full"
               >
                 <div className="flex justify-between items-center mb-4">
-                  <span className="text-[10px] font-black uppercase tracking-widest bg-background-20 px-3 py-1 rounded-lg backdrop-blur-sm">
+                  <span className="text-[10px] font-extrabold uppercase tracking-[0.16em] bg-background-20 px-3 py-1 rounded-lg backdrop-blur-sm">
                     Highlights
                   </span>
                 </div>

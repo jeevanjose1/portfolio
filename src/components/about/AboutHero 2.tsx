@@ -39,7 +39,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
+              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-[var(--color-card-border)] flex flex-col justify-between h-full"
                
             >
               <div>
@@ -50,7 +50,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
                   </span>
                 </Reveal>
                 <Reveal delay={0.3} y={30} blur>
-                  <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-extrabold text-foreground leading-[1.08] mb-5 whitespace-pre-line">
+                  <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-black text-foreground leading-[1.08] mb-5 whitespace-pre-line">
                     {heading}
                   </h1>
                 </Reveal>
@@ -82,7 +82,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
             scale={1.05}
           >
             <div
-              className="bg-section-alt rounded-xl overflow-hidden relative group min-h-[500px] border border-card-border shadow-card h-full"
+              className="bg-section-alt rounded-xl overflow-hidden relative group min-h-[500px] border border-[var(--color-card-border)] h-full"
                
             >
               <ParallaxImage offset={30} className="w-full h-full">
@@ -96,13 +96,13 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
               <div className="absolute top-6 left-6">
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/25 px-4 py-2 text-white backdrop-blur-md">
                   <MapPin size={13} />
-                  <span className="text-[10px] font-extrabold uppercase tracking-[0.16em]">Vadodara, India</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest">Vadodara, India</span>
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
                 <Reveal delay={0.8} y={20}>
-                  <p className="text-white/50 text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">Working Style</p>
-                  <p className="text-white text-2xl font-heading font-extrabold leading-tight max-w-xs">
+                  <p className="text-white/50 text-[10px] font-black uppercase tracking-widest mb-3">Working Style</p>
+                  <p className="text-white text-2xl font-heading font-black leading-tight max-w-xs">
                     Calm execution, clean systems, thoughtful product decisions.
                   </p>
                 </Reveal>
@@ -121,14 +121,14 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
                 blur
               >
                 <div
-                  className="bg-section-alt rounded-xl p-6 sm:p-8 border border-card-border shadow-card flex items-center justify-between gap-4 h-full"
+                  className="bg-section-alt rounded-xl p-6 sm:p-8 border border-[var(--color-card-border)] flex items-center justify-between gap-4 h-full"
                    
                 >
                   <div>
-                    <p className="text-3xl sm:text-4xl font-heading font-extrabold text-foreground">{stat.value}</p>
+                    <p className="text-3xl sm:text-4xl font-heading font-black text-foreground">{stat.value}</p>
                     <p className="text-sm text-muted-foreground mt-1.5 font-medium">{stat.label}</p>
                   </div>
-                  <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center text-accent shrink-0">
+                  <div className="h-12 w-12 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)] flex items-center justify-center text-accent shrink-0">
                     <Award size={20} />
                   </div>
                 </div>

@@ -18,7 +18,7 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
             <p className="section-label mb-4">{"// "} Origins</p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
+            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
               My Journey.
             </h2>
           </Reveal>
@@ -33,10 +33,10 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 border border-card-border h-full"
+              className="bg-section-alt rounded-xl p-10 border border-card-border shadow-card h-full"
                
             >
-              <h3 className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-10">
+              <h3 className="text-sm font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-10">
                 Milestones
               </h3>
               <Timeline items={items} />
@@ -47,14 +47,14 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
           <div className="lg:col-span-7 relative sticky top-32 self-start">
             <Reveal width="100%" delay={0.2} y={40} duration={1}>
               <div
-                className="bg-section-alt rounded-xl border border-card-border"
+                className="bg-section-alt rounded-xl border border-card-border shadow-card"
                  
               >
                 <div className="p-10 sm:p-14">
                   <Reveal delay={0.4} y={20}>
-                    <h3 className="text-2xl font-heading font-black text-foreground mb-8 relative z-10">
+                    <h3 className="text-2xl font-heading font-extrabold text-foreground mb-8 relative z-10">
                       Engineering with <br />
-                      <span className="text-accent italic font-serif">Intent.</span>
+                      <span className="text-accent font-heading font-semibold">Intent.</span>
                     </h3>
                   </Reveal>
 
@@ -83,10 +83,10 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
                         />
                       </div>
                       <div>
-                        <p className="text-sm font-black uppercase tracking-widest text-foreground">
+                        <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-foreground">
                           Jeevan Jose
                         </p>
-                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
+                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.16em]">
                           Full-Stack Engineer
                         </p>
                       </div>

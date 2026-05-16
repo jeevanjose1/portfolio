@@ -231,7 +231,7 @@ export default function HangingCat() {
               initial={{ opacity: 0, scale: 0.85, x: 10, y: 12 }}
               animate={{ opacity: 1, scale: 1, x: 18, y: 20 }}
               exit={{ opacity: 0, scale: 0.85, y: 8 }}
-              className="absolute -top-3 -right-12 rounded-full rounded-tl-none border border-border bg-accent px-3 py-1 text-[9px] font-black uppercase tracking-widest text-background shadow-2xl"
+              className="absolute -top-3 -right-12 rounded-full rounded-tl-none border border-border bg-accent px-3 py-1 text-[9px] font-extrabold uppercase tracking-[0.16em] text-background shadow-2xl"
             >
               {message}
             </motion.div>

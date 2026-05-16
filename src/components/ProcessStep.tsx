@@ -30,16 +30,16 @@ export default function ProcessStep({
       <div className="relative z-10 w-20 h-20 rounded-lg bg-background border border-border dark:border-accent-30 flex items-center justify-center   mb-8 group transition-all duration-500 hover:border-accent hover:shadow-accent-5">
         <Icon size={32} className="text-accent group-hover:scale-110 transition-transform" />
         {/* Number Badge — Bold uppercase pill */}
-        <div className="absolute -top-3 -right-3 px-3 py-1 rounded-lg bg-accent text-background text-[9px] font-black uppercase tracking-widest border-2 border-background">
+        <div className="absolute -top-3 -right-3 px-3 py-1 rounded-lg bg-accent text-background text-[9px] font-extrabold uppercase tracking-[0.16em] border-2 border-background">
           Step {number}
         </div>
       </div>
 
       {/* Content */}
-      <h3 className="text-xl font-heading font-black text-foreground mb-4 uppercase tracking-tight transition-colors">
+      <h3 className="text-xl font-heading font-extrabold text-foreground mb-4 uppercase tracking-tight transition-colors">
         {title}
       </h3>
-      <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest mb-4 opacity-70">
+      <p className="text-[10px] text-muted-foreground font-extrabold uppercase tracking-[0.16em] mb-4 opacity-70">
         Execution
       </p>
       <p className="text-sm text-muted-foreground leading-relaxed max-w-[220px] mx-auto font-body">

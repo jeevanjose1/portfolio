@@ -34,13 +34,13 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
     >
       <div className="section-container relative z-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-5">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-5">
           <div>
             <Reveal delay={0.1}>
               <p className="section-label mb-4">{"// "} Recent Artifacts</p>
             </Reveal>
             <Reveal delay={0.2} blur>
-              <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
+              <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground leading-tight">
                 Featured Projects.
               </h2>
             </Reveal>
@@ -80,25 +80,25 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
                 >
                   <Link
                     href={`/works/${slug}`}
-                    className="group flex flex-col md:flex-row md:items-center justify-between py-10 gap-8 border-t border-border transition-all duration-500 hover:px-5"
+                    className="group flex flex-col md:flex-row md:items-center justify-between py-9 gap-8 border-t border-border transition-all duration-300 hover:px-4 hover:bg-background/70"
                   >
                     <div className="flex-1">
                       <div className="flex items-center gap-5 mb-5">
-                        <span className="text-[11px] font-black text-accent opacity-40 tabular-nums">
+                        <span className="text-[11px] font-bold text-accent opacity-45 tabular-nums">
                           0{i + 1}
                         </span>
                         <div className="flex gap-2">
                           {tags.slice(0, 2).map((tag: string) => (
                             <span
                               key={tag}
-                              className="text-[9px] font-black uppercase tracking-tight text-muted-foreground border border-border px-2.5 py-1 rounded-lg"
+                              className="text-[9px] font-bold uppercase tracking-[0.12em] text-muted-foreground border border-border px-2.5 py-1 rounded-md"
                             >
                               {tag}
                             </span>
                           ))}
                         </div>
                       </div>
-                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-black text-foreground group-hover:text-accent transition-all duration-500 tracking-tighter">
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-foreground group-hover:text-accent transition-all duration-300">
                         {title}
                       </h3>
                     </div>
@@ -107,7 +107,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
                       <p className="hidden lg:block text-sm text-muted-foreground max-w-xs text-right leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                         {description}
                       </p>
-                      <div className="w-16 h-16 rounded-full border border-border flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-background group-hover:border-accent transition-all duration-500 rotate-[-45deg] group-hover:rotate-0 shrink-0">
+                      <div className="w-14 h-14 rounded-lg border border-border bg-section-alt flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-background group-hover:border-accent transition-all duration-300 rotate-[-45deg] group-hover:rotate-0 shrink-0">
                         <ArrowUpRight size={22} />
                       </div>
                     </div>
@@ -137,7 +137,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
               zIndex: 1000,
              
             }}
-            className="hidden md:block shadow-md w-[340px] h-[210px] rounded-xl overflow-hidden border border-accent-15 bg-section-alt"
+            className="hidden md:block shadow-xl w-[340px] h-[210px] rounded-xl overflow-hidden border border-accent-15 bg-section-alt"
           >
             <motion.div
               key={activeProject}

@@ -13,12 +13,12 @@ export default function Accordion({ question, answer }: AccordionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`rounded-lg bg-background border mb-4 last:mb-0 transition-all duration-500 overflow-hidden ${isOpen ? 'border-accent shadow-2xl shadow-black/5' : 'border-border hover:border-accent-20'}`}>
+    <div className={`rounded-lg bg-background border mb-4 last:mb-0 transition-all duration-500 overflow-hidden ${isOpen ? 'border-accent-30 shadow-2xl shadow-black/5' : 'border-border hover:border-accent-20'}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-8 text-left focus:outline-none group"
       >
-        <h3 className={`text-xl font-heading font-black tracking-tight transition-colors duration-300 ${isOpen ? 'text-accent' : 'text-foreground'}`}>
+        <h3 className={`text-xl font-heading font-extrabold tracking-tight transition-colors duration-300 ${isOpen ? 'text-accent' : 'text-foreground'}`}>
           {question}
         </h3>
         <div

@@ -33,7 +33,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
           <Reveal delay={0.1}>
             <Link
               href="/works"
-              className="text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-accent flex items-center gap-2 transition-colors w-fit"
+              className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground hover:text-accent flex items-center gap-2 transition-colors w-fit"
             >
               <ArrowLeft size={14} /> Back to Works
             </Link>
@@ -53,13 +53,13 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
             >
               <div className="mb-8">
                 <Reveal delay={0.2} y={10}>
-                  <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-accent-10 text-accent text-[10px] font-black uppercase tracking-widest">
+                  <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-accent-10 text-accent text-[10px] font-extrabold uppercase tracking-[0.16em]">
                     {project.categories.find((c) => c !== "All") || "Project"}
                   </span>
                 </Reveal>
               </div>
               <Reveal delay={0.3} blur>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-foreground leading-tight mb-8">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-foreground leading-tight mb-8">
                   {project.title.split(" ").map((word, i) =>
                     i === 1 ? (
                       <span key={i} className="text-accent">
@@ -86,7 +86,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
                     scale={0.9}
                   >
                     <span
-                      className="text-[10px] font-black uppercase tracking-widest bg-background border border-border text-muted-foreground px-4 py-2 rounded-lg shadow-sm block"
+                      className="text-[10px] font-extrabold uppercase tracking-[0.16em] bg-background border border-border text-muted-foreground px-4 py-2 rounded-lg shadow-sm block"
                     >
                       {tag}
                     </span>
@@ -162,10 +162,10 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
                     <div
                       className="bg-section-alt p-6 rounded-lg border border-border h-full"
                     >
-                      <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest mb-2">
+                      <p className="text-[10px] text-muted-foreground uppercase font-extrabold tracking-[0.16em] mb-2">
                         {info.label}
                       </p>
-                      <p className="text-foreground font-black font-heading tracking-tight">
+                      <p className="text-foreground font-extrabold font-heading tracking-tight">
                         {info.value}
                       </p>
                     </div>

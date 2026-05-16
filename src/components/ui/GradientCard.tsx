@@ -32,7 +32,7 @@ export default function GradientCard({ children, className = "", glow = false, s
   return (
     <div
       onMouseMove={onMouseMove}
-      className={`group relative overflow-hidden rounded-xl ${glow ? "hover:shadow-accent" : ""} transition-shadow duration-500 ${className}`}
+      className={`group relative overflow-hidden rounded-xl shadow-sm ${glow ? "hover:shadow-accent" : ""} transition-shadow duration-300 ${className}`}
       style={style}
       {...props}
     >

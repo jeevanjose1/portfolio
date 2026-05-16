@@ -35,12 +35,12 @@ export default function RelatedServices({
       <div className="section-container !py-0">
         <div className="mb-14">
           <Reveal delay={0.1}>
-            <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
+            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
               {"//"} Keep Exploring
             </p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
+            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
               You Might Also Need.
             </h2>
           </Reveal>
@@ -68,7 +68,7 @@ export default function RelatedServices({
                     <Icon size={26} className="text-accent group-hover:text-background transition-colors" />
                   </div>
 
-                  <h3 className="text-2xl font-heading font-black text-foreground mb-3 group-hover:text-accent transition-colors duration-300 uppercase tracking-tight">
+                  <h3 className="text-2xl font-heading font-extrabold text-foreground mb-3 group-hover:text-accent transition-colors duration-300 uppercase tracking-tight">
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground line-clamp-3 leading-relaxed mb-8 flex-grow font-body italic text-sm">
@@ -80,7 +80,7 @@ export default function RelatedServices({
                       {features.slice(0, 2).map((feature: any, idx: number) => (
                         <li key={idx} className="flex items-start gap-3">
                           <LucideIcons.CheckCircle2 size={16} className="text-accent mt-0.5 flex-shrink-0" />
-                          <span className="text-xs font-black uppercase tracking-widest text-muted-foreground line-clamp-1">{typeof feature === 'string' ? feature : feature.title}</span>
+                          <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-muted-foreground line-clamp-1">{typeof feature === 'string' ? feature : feature.title}</span>
                         </li>
                       ))}
                     </ul>
@@ -89,7 +89,7 @@ export default function RelatedServices({
                   <div className="pt-6 border-t border-border mt-auto flex items-center justify-between relative z-10">
                     <Link
                       href={`/services/${typeof service.slug === 'string' ? service.slug : (service as any).slug}`}
-                      className="group/btn flex items-center gap-2 text-xs font-black uppercase tracking-widest text-accent hover:text-foreground transition-colors duration-300"
+                      className="group/btn flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-accent hover:text-foreground transition-colors duration-300"
                     >
                       Learn More
                       <ArrowUpRight size={16} className="group-hover/btn:rotate-45 transition-transform duration-300" />

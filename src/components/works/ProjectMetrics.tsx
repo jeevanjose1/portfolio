@@ -48,10 +48,10 @@ export default function ProjectMetrics({ project }: { project: NormalizedProject
               <div
                 className="bg-white/5 backdrop-blur-md rounded-lg p-10 text-center border border-white/10 h-full"
               >
-                <div className="text-4xl lg:text-5xl font-heading font-black text-white mb-4">
+                <div className="text-4xl lg:text-5xl font-heading font-extrabold text-white mb-4">
                   <CountUp metric={metric} />
                 </div>
-                <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">
+                <p className="text-[10px] font-extrabold text-white/40 uppercase tracking-[0.16em]">
                   {metric.label}
                 </p>
               </div>

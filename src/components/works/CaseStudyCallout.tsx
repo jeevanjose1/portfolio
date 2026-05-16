@@ -36,14 +36,14 @@ export default function WorksPhilosophy() {
           <div className="lg:col-span-5 lg:sticky lg:top-32 h-fit">
             <Reveal delay={0.1}>
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">
+                <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-accent">
                  {'//'} The Methodology
                 </span>
               </div>
             </Reveal>
 
             <Reveal delay={0.2} blur>
-              <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground tracking-tight leading-[1.1] mb-8">
+              <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground tracking-tight leading-[1.1] mb-8">
                 Building with <br /> precision & purpose.
               </h2>
             </Reveal>
@@ -72,7 +72,7 @@ export default function WorksPhilosophy() {
                       <Icon size={20} />
                     </div>
                     <div className="space-y-3">
-                      <h3 className="text-xl font-heading font-black text-foreground">
+                      <h3 className="text-xl font-heading font-extrabold text-foreground">
                         {p.title}
                       </h3>
                       <p className="text-sm text-muted-foreground leading-relaxed font-body">

@@ -37,12 +37,12 @@ export default function RelatedWorks({
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
             <Reveal delay={0.1}>
-              <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
+              <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">
                 {"//"} Portfolio
               </p>
             </Reveal>
             <Reveal delay={0.2} blur>
-              <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
+              <h2 className="text-4xl sm:text-5xl font-heading font-black text-foreground">
                 Relevant Projects.
               </h2>
             </Reveal>
@@ -51,7 +51,7 @@ export default function RelatedWorks({
           <Reveal delay={0.3} x={20}>
             <Link
               href="/works"
-              className="inline-flex items-center gap-2 text-foreground font-extrabold uppercase tracking-[0.16em] text-sm hover:text-accent transition-colors"
+              className="inline-flex items-center gap-2 text-foreground font-black uppercase tracking-widest text-sm hover:text-accent transition-colors"
             >
               View All Projects &rarr;
             </Link>

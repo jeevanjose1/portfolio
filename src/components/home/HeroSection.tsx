@@ -29,9 +29,9 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
   const ctaPrimary = data?.ctaPrimary || fallbackHeroData.ctaPrimary;
 
   return (
-    <section id="home" className="min-h-[100svh] flex items-center  transition-colors duration-300">
+    <section id="home" className="min-h-[100svh] flex items-center transition-colors duration-300">
       <div className="section-container w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5">
 
           {/* ── Main Text & CTA Card ── */}
           <Reveal
@@ -41,15 +41,14 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 sm:p-14 lg:p-20 flex flex-col justify-between h-full min-h-[560px] border border-card-border relative overflow-hidden"
+              className="bg-section-alt rounded-xl p-8 sm:p-12 lg:p-16 xl:p-20 flex flex-col justify-between h-full min-h-[560px] border border-card-border shadow-card relative overflow-hidden"
 
             >
-              {/* Background Accent */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-accent-3 rounded-full blur-[100px] -mr-32 -mt-32" />
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-20 to-transparent" />
 
               <div className="relative z-10">
                 <Reveal delay={0.2}>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-2 border border-border text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-8">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-2 border border-border text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground mb-8">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
@@ -59,10 +58,10 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
                 </Reveal>
 
                 <Reveal delay={0.3} y={30} blur>
-                  <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-heading font-black text-foreground leading-[1.05] tracking-tight mb-8">
+                  <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-heading font-extrabold text-foreground leading-[1.02] mb-8">
                     {welcome}
                     <br />
-                    <span className="italic font-serif font-light text-foreground-80">
+                    <span className="font-heading font-medium text-foreground-80">
                       {heading.split('\n')[0]}
                     </span>
                     <br />
@@ -71,7 +70,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
                 </Reveal>
 
                 <Reveal delay={0.4} y={20}>
-                  <p className="text-muted-foreground text-lg sm:text-xl max-w-xl leading-relaxed font-body">
+                  <p className="text-muted-foreground text-base sm:text-lg max-w-2xl leading-8 font-body">
                     {subheadline}
                   </p>
                 </Reveal>
@@ -79,7 +78,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
 
               <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 relative z-10">
                 <Reveal delay={0.5} y={20}>
-                  <Link href={ctaPrimary.href} className="btn-primary gap-3 px-10 py-5 text-sm">
+                  <Link href={ctaPrimary.href} className="btn-primary gap-3 px-9 py-4 text-[12px]">
                     {ctaPrimary.label}
                     <ArrowRight size={18} />
                   </Link>
@@ -91,7 +90,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
           </Reveal>
 
           {/* ── Portrait & Highlights ── */}
-          <div className="lg:col-span-4 flex flex-col gap-5 lg:gap-6 order-1 lg:order-2">
+          <div className="lg:col-span-4 flex flex-col gap-4 lg:gap-5 order-1 lg:order-2">
             {/* Portrait Card */}
             <Reveal
               width="100%"
@@ -100,11 +99,11 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-xl overflow-hidden relative group h-full min-h-[400px] border border-card-border"
+                className="bg-section-alt rounded-xl overflow-hidden relative group h-full min-h-[400px] border border-card-border shadow-card"
 
               >
                 <ParallaxImage offset={20} className="w-full h-full">
-                  <div className="absolute inset-0 grayscale contrast-[1.1] brightness-[0.95] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000">
+                  <div className="absolute inset-0 grayscale-[0.25] contrast-[1.05] brightness-[0.98] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700">
                     <Image
                       src="/images/headshot.png"
                       alt="Portrait"
@@ -128,9 +127,9 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
           width="100%"
           delay={0.4}
           y={20}
-          className="lg:col-span-12  mt-6"
+          className="lg:col-span-12 mt-5"
         >
-          <div className="bg-section-alt rounded-xl border border-card-border overflow-hidden py-4">
+          <div className="bg-section-alt rounded-xl border border-card-border shadow-sm overflow-hidden py-4">
             <div className="flex marquee-track gap-12 items-center whitespace-nowrap px-6">
               {[
                 "React.js", "Next.js", "TypeScript", "Node.js", "Flutter",
@@ -139,7 +138,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
               ].map((tech) => (
                 <div key={tech} className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  <span className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/70">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
                     {tech}
                   </span>
                 </div>
@@ -152,7 +151,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
               ].map((tech) => (
                 <div key={tech + "-loop"} className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  <span className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/70">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
                     {tech}
                   </span>
                 </div>

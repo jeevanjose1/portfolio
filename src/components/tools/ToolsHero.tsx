@@ -6,13 +6,13 @@ export default function ToolsHero() {
   return (
     <div className="relative mb-16 md:mb-20">
       <Reveal delay={0.1} y={20}>
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-border text-accent text-[10px] font-black uppercase tracking-widest mb-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-border text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-6">
           {"//"} Utility Ecosystem
         </div>
       </Reveal>
 
       <Reveal delay={0.2} y={60} duration={1} blur>
-        <h1 className="text-5xl md:text-7xl font-heading font-black tracking-tighter leading-[0.85] mb-8">
+        <h1 className="text-5xl md:text-7xl font-heading font-extrabold tracking-tighter leading-[0.85] mb-8">
           Crafted <br />
           <span className="text-muted-foreground">Solutions.</span>
         </h1>

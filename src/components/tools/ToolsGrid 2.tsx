@@ -46,7 +46,7 @@ export default function ToolsGrid() {
               placeholder="Search tools..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-surface-1 border border-card-border rounded-xl py-3 pl-12 pr-4 outline-none focus:border-accent/40 focus:ring-4 focus:ring-accent/5 transition-all text-sm font-medium"
+              className="w-full bg-surface-1 border border-[var(--color-card-border)] rounded-xl py-3 pl-12 pr-4 outline-none focus:border-accent/40 focus:ring-4 focus:ring-accent/5 transition-all text-sm font-medium"
             />
             {searchQuery && (
               <button
@@ -62,7 +62,7 @@ export default function ToolsGrid() {
           <div className="relative w-full md:w-72">
             <button
               onClick={() => setIsCategoryOpen(!isCategoryOpen)}
-              className="w-full md:min-w-[200px] flex items-center justify-between px-6 py-3 rounded-xl bg-surface-1 border border-card-border hover:border-accent/30 transition-all text-sm font-extrabold uppercase tracking-[0.16em]"
+              className="w-full md:min-w-[200px] flex items-center justify-between px-6 py-3 rounded-xl bg-surface-1 border border-[var(--color-card-border)] hover:border-accent/30 transition-all text-sm font-black uppercase tracking-widest"
             >
               <span className="flex items-center gap-2">
                 <span className="text-muted-foreground">Category:</span>
@@ -84,7 +84,7 @@ export default function ToolsGrid() {
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute top-full mt-2 left-0 right-0 md:left-auto md:w-full bg-surface-1 border border-card-border rounded-xl shadow-md p-2 z-50 overflow-hidden"
+                    className="absolute top-full mt-2 left-0 right-0 md:left-auto md:w-full bg-surface-1 border border-[var(--color-card-border)] rounded-xl shadow-md p-2 z-50 overflow-hidden"
                   >
                     {categories.map((category) => (
                       <button
@@ -93,7 +93,7 @@ export default function ToolsGrid() {
                           setActiveCategory(category);
                           setIsCategoryOpen(false);
                         }}
-                        className={`w-full flex items-center px-4 py-3 rounded-xl text-[11px] font-extrabold uppercase tracking-[0.16em] transition-all ${activeCategory === category
+                        className={`w-full flex items-center px-4 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all ${activeCategory === category
                           ? "bg-accent text-background"
                           : "hover:bg-surface-2 text-muted-foreground hover:text-foreground"
                           }`}
@@ -137,7 +137,7 @@ export default function ToolsGrid() {
                 <Reveal width="100%" delay={index * 0.05} y={40} className="h-full">
                   <Link
                     href={tool.href}
-                    className="group relative flex flex-col h-full p-8 md:p-10 rounded-xl bg-surface-1 border border-card-border overflow-hidden transition-all duration-700 hover:border-accent/40"
+                    className="group relative flex flex-col h-full p-8 md:p-10 rounded-xl bg-surface-1 border border-[var(--color-card-border)] overflow-hidden transition-all duration-700 hover:border-accent/40"
                   >
                     {/* Abstract Icon Backdrop */}
                     <div className="absolute -bottom-10 -right-10 opacity-[0.03] group-hover:opacity-[0.08] group-hover:scale-110 group-hover:-rotate-12 transition-all duration-1000 ease-out pointer-events-none">
@@ -146,10 +146,10 @@ export default function ToolsGrid() {
 
                     <div className="relative z-10 flex flex-col h-full">
                       <div className="flex items-start justify-between mb-12">
-                        <div className="w-16 h-16 rounded-xl bg-surface-2 border border-border flex items-center justify-center group-hover:bg-accent group-hover:text-background group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-sm">
+                        <div className="w-16 h-16 rounded-xl bg-surface-2 border border-[var(--color-border)] flex items-center justify-center group-hover:bg-accent group-hover:text-background group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-sm">
                           <Icon size={32} />
                         </div>
-                        <div className="w-12 h-12 rounded-full bg-surface-2 border border-border flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-4 transition-all duration-500">
+                        <div className="w-12 h-12 rounded-full bg-surface-2 border border-[var(--color-border)] flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-4 transition-all duration-500">
                           <ArrowUpRight size={24} className="text-accent" />
                         </div>
                       </div>
@@ -157,11 +157,11 @@ export default function ToolsGrid() {
                       <div className="mt-auto">
                         <div className="flex items-center gap-2 mb-4">
                           <span className="w-8 h-[1px] bg-accent/40" />
-                          <span className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-accent">
+                          <span className="text-[11px] font-black uppercase tracking-[0.2em] text-accent">
                             {tool.category}
                           </span>
                         </div>
-                        <h3 className="text-3xl md:text-4xl font-heading font-extrabold tracking-tight mb-4 group-hover:text-accent transition-colors duration-300">
+                        <h3 className="text-3xl md:text-4xl font-heading font-black tracking-tight mb-4 group-hover:text-accent transition-colors duration-300">
                           {tool.title}
                         </h3>
                         <p className="text-muted-foreground text-sm md:text-lg max-w-md leading-relaxed font-medium">
@@ -193,14 +193,14 @@ export default function ToolsGrid() {
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-surface-2 border border-dashed border-border mb-6">
             <Search size={32} className="text-muted-foreground" />
           </div>
-          <h3 className="text-2xl font-heading font-extrabold mb-2">No tools found</h3>
+          <h3 className="text-2xl font-heading font-black mb-2">No tools found</h3>
           <p className="text-muted-foreground">Try adjusting your search or filter settings.</p>
           <button
             onClick={() => {
               setSearchQuery("");
               setActiveCategory("All");
             }}
-            className="mt-6 text-accent font-extrabold uppercase tracking-[0.16em] text-[11px] hover:underline"
+            className="mt-6 text-accent font-black uppercase tracking-widest text-[11px] hover:underline"
           >
             Clear all filters
           </button>

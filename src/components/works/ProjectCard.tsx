@@ -44,7 +44,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
 
             {/* Category badge */}
             <div className="absolute top-4 left-4 z-20">
-              <span className="px-3.5 py-1.5 rounded-full bg-accent text-background text-[10px] font-black uppercase tracking-widest">
+              <span className="px-3.5 py-1.5 rounded-full bg-accent text-background text-[10px] font-extrabold uppercase tracking-[0.16em]">
                 {project.categories?.[0] || "Project"}
               </span>
             </div>
@@ -67,7 +67,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
               ))}
             </div>
 
-            <h3 className="text-2xl font-heading font-black text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
+            <h3 className="text-2xl font-heading font-extrabold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
               {project.title}
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 mb-8 flex-grow font-body">
@@ -86,7 +86,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
                   </div>
                 )}
               </div>
-              <div className="text-[10px] font-black uppercase tracking-widest text-accent group-hover:translate-x-1 transition-transform">
+              <div className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent group-hover:translate-x-1 transition-transform">
                 View Details →
               </div>
             </div>

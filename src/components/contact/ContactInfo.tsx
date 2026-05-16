@@ -24,10 +24,10 @@ export default function ContactInfo() {
       duration={1}
     >
       <div
-        className="bg-background rounded-xl p-8 sm:p-10 lg:p-12 border border-card-border h-full"
+        className="bg-background rounded-xl p-8 sm:p-10 lg:p-12 border border-card-border shadow-card h-full"
          
       >
-        <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Information</h2>
+        <h2 className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent mb-8">{"//"} Information</h2>
 
         <div className="space-y-8 mb-16">
           {[
@@ -47,13 +47,13 @@ export default function ContactInfo() {
                   <item.icon size={22} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-1">{item.label}</p>
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-1">{item.label}</p>
                   {item.href ? (
-                    <a href={item.href} className="text-lg font-heading font-black text-foreground hover:text-accent transition-colors">
+                    <a href={item.href} className="text-lg font-heading font-extrabold text-foreground hover:text-accent transition-colors">
                       {item.value}
                     </a>
                   ) : (
-                    <p className="text-lg font-heading font-black text-foreground">{item.value}</p>
+                    <p className="text-lg font-heading font-extrabold text-foreground">{item.value}</p>
                   )}
                 </div>
               </div>
@@ -63,7 +63,7 @@ export default function ContactInfo() {
 
         <div className="h-px bg-border mb-10" />
 
-        <h2 className="text-[10px] font-black uppercase tracking-widest text-accent mb-8">{"//"} Profiles</h2>
+        <h2 className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent mb-8">{"//"} Profiles</h2>
         <div className="grid grid-cols-1 gap-3 mb-10">
           {[
             { icon: LinkedinIcon, name: "LinkedIn", href: siteConfig.socials.linkedin },
@@ -81,7 +81,7 @@ export default function ContactInfo() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-between p-5 bg-section-alt border border-card-border rounded-xl hover:border-accent hover:bg-background transition-all duration-300 group w-full"
               >
-                <span className="flex items-center gap-4 text-sm font-black uppercase tracking-widest text-foreground">
+                <span className="flex items-center gap-4 text-sm font-extrabold uppercase tracking-[0.16em] text-foreground">
                   <social.icon className="text-foreground group-hover:text-accent group-hover:scale-110 transition-all duration-300" />
                   {social.name}
                 </span>
@@ -96,9 +96,9 @@ export default function ContactInfo() {
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
 
-                <span className="text-[10px] font-black uppercase tracking-widest text-background">Live Availability</span>
+                <span className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-background">Live Availability</span>
               </div>
-              <p className="text-2xl font-heading font-black mb-2">I&apos;m Online.</p>
+              <p className="text-2xl font-heading font-extrabold mb-2">I&apos;m Online.</p>
               <p className="text-xs text-background-60 font-medium tracking-wide">
                 Mon–Fri 6PM–10PM IST<br />
                 Weekends Available

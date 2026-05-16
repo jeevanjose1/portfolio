@@ -27,7 +27,7 @@ function AdditionalServiceCard({ service, index }: { service: SanityService | { 
         <div className="w-12 h-12 rounded-xl bg-background border border-card-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300 shrink-0">
           <Icon size={24} className="text-accent group-hover:text-background transition-colors" />
         </div>
-        <h3 className="text-lg font-heading font-black text-foreground mb-3 uppercase tracking-tight">{service.title}</h3>
+        <h3 className="text-lg font-heading font-extrabold text-foreground mb-3 uppercase tracking-tight">{service.title}</h3>
         <p className="text-sm text-muted-foreground leading-relaxed font-body italic flex-grow">
           &ldquo;{service.description}&rdquo;
         </p>
@@ -47,8 +47,8 @@ export default function AdditionalServices({ services, additionalItems }: { serv
             <p className="section-label mb-4">{"// "} More Capabilities</p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-3xl font-heading font-black text-foreground">
-              Specialized Services.
+            <h2 className="text-3xl font-heading font-extrabold text-foreground">
+              Additional Services.
             </h2>
           </Reveal>
         </div>

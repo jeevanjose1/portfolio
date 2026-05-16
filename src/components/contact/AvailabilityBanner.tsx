@@ -20,17 +20,17 @@ export default function AvailabilityBanner() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                 <span className="relative inline-flex rounded-lg h-2.5 w-2.5 bg-accent"></span>
               </span>
-              <span className="text-[10px] font-black text-foreground uppercase tracking-widest">Active Availability</span>
+              <span className="text-[10px] font-extrabold text-foreground uppercase tracking-[0.16em]">Active Availability</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-foreground leading-tight">
-              Currently booking <span className="text-accent italic font-serif">select projects</span>.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-foreground leading-tight">
+              Currently booking <span className="text-accent font-heading font-semibold">select projects</span>.
             </h2>
           </div>
 
           <div className="flex-shrink-0">
             <a
               href="mailto:hello@jeevanjose.com?subject=Strategy%20Call%20Request"
-              className="bg-accent text-background hover:opacity-90 px-8 py-4 rounded-lg font-black uppercase tracking-widest text-xs inline-flex items-center gap-3 transition-all duration-300 group "
+              className="bg-accent text-background hover:opacity-90 px-8 py-4 rounded-lg font-extrabold uppercase tracking-[0.16em] text-xs inline-flex items-center gap-3 transition-all duration-300 group "
             >
               <Calendar size={18} />
               Request a Strategy Call

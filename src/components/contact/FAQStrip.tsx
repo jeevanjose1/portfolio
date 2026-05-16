@@ -8,8 +8,8 @@ export default function FAQStrip() {
     <section className="bg-background border-t border-border transition-colors duration-300">
       <div className="section-container">
         <div className="mb-16">
-          <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-3">{"//"} Quick Answers</p>
-          <h2 className="text-4xl font-heading font-black text-foreground">Common Inquiries.</h2>
+          <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">{"//"} Quick Answers</p>
+          <h2 className="text-4xl font-heading font-extrabold text-foreground">Common Inquiries.</h2>
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ export default function FAQStrip() {
               <div className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-background transition-colors">
                 <HelpCircle size={18} className="text-accent group-hover:text-background transition-colors" />
               </div>
-              <h3 className="font-heading font-black text-foreground mb-4 text-xl tracking-tight">{item.q}</h3>
+              <h3 className="font-heading font-extrabold text-foreground mb-4 text-xl tracking-tight">{item.q}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed font-body">
                 {item.a}
               </p>

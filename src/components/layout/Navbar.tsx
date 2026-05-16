@@ -40,11 +40,11 @@ export default function Navbar() {
     <header className="fixed top-4 left-0 right-0 z-[999] px-4 flex justify-center pointer-events-none">
       <div
         className={`
-          w-full max-w-[75.5rem] flex items-center justify-between h-[60px] pointer-events-auto px-5 relative
-          rounded-full border transition-all duration-500
+          w-full max-w-[75.5rem] flex items-center justify-between h-[58px] pointer-events-auto px-4 sm:px-5 relative
+          rounded-lg border transition-all duration-300
           ${scrolled
-            ? "bg-background-85 backdrop-blur-2xl border-card-border shadow-lg shadow-black/[0.06]"
-            : "bg-background-70 backdrop-blur-xl border-border shadow-sm"
+            ? "bg-background-90 backdrop-blur-2xl border-card-border shadow-lg"
+            : "bg-background-80 backdrop-blur-xl border-border shadow-sm"
           }
         `}
       >
@@ -52,7 +52,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/"
-            className="text-xl font-heading font-black text-foreground tracking-tighter select-none shrink-0 hover:opacity-80 transition-opacity"
+            className="text-lg font-heading font-extrabold text-foreground select-none shrink-0 hover:opacity-80 transition-opacity"
           >
             J<span className="opacity-50">J</span>
           </Link>
@@ -69,9 +69,9 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 className={`
-                  relative text-[11px] font-black uppercase tracking-widest px-4 py-2 rounded-xl transition-all duration-200
+                  relative text-[11px] font-bold uppercase tracking-[0.14em] px-4 py-2 rounded-lg transition-all duration-200
                   ${isActive
-                    ? "text-background bg-accent"
+                    ? "text-background bg-accent shadow-sm"
                     : "text-muted-foreground hover:text-foreground hover:bg-surface-2"
                   }
                 `}
@@ -97,7 +97,7 @@ export default function Navbar() {
                   {/* Tools Toggle */}
                   <button
                     onClick={() => setToolsOpen(true)}
-                    className="w-10 h-10 rounded-xl bg-surface-2 border border-border flex items-center justify-center text-foreground transition-all duration-200 hover:bg-surface-3 active:scale-95"
+                    className="w-10 h-10 rounded-lg bg-surface-2 border border-border flex items-center justify-center text-foreground transition-all duration-200 hover:bg-surface-3 active:scale-95"
                     title="Custom Tools"
                   >
                     <Wrench size={17} className="text-accent group-hover:text-accent transition-colors" />
@@ -110,7 +110,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setUtilitiesOpen(!utilitiesOpen)}
-              className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all duration-300 ${utilitiesOpen
+              className={`w-10 h-10 rounded-lg border flex items-center justify-center transition-all duration-300 ${utilitiesOpen
                 ? "bg-accent text-background border-accent"
                 : "bg-surface-2 border-border text-muted-foreground hover:text-foreground"
                 }`}
@@ -122,14 +122,14 @@ export default function Navbar() {
 
           <Link
             href="/contact"
-            className="hidden md:inline-flex btn-primary py-3 px-5 text-[10px] rounded-xl ml-1"
+            className="hidden md:inline-flex btn-primary py-3 px-5 text-[10px] rounded-lg ml-1"
           >
             Let&apos;s Talk
           </Link>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-10 h-10 rounded-xl bg-surface-2 border border-border text-foreground flex items-center justify-center transition-colors hover:bg-surface-3"
+            className="md:hidden w-10 h-10 rounded-lg bg-surface-2 border border-border text-foreground flex items-center justify-center transition-colors hover:bg-surface-3"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -144,7 +144,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.97 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="absolute top-[68px] left-0 right-0 bg-background border border-card-border rounded-xl shadow-xl overflow-hidden pointer-events-auto p-2"
+              className="absolute top-[66px] left-0 right-0 bg-background border border-card-border rounded-lg shadow-xl overflow-hidden pointer-events-auto p-2"
             >
               <ul className="flex flex-col gap-1">
                 {navLinks.map((link) => {
@@ -157,7 +157,7 @@ export default function Navbar() {
                         href={link.href}
                         onClick={() => setMobileOpen(false)}
                         className={`
-                          block py-3 px-4 text-[11px] font-black uppercase tracking-widest rounded-xl transition-all duration-200
+                          block py-3 px-4 text-[11px] font-bold uppercase tracking-[0.14em] rounded-lg transition-all duration-200
                           ${isActive
                             ? "bg-accent text-background"
                             : "text-muted-foreground hover:text-foreground hover:bg-surface-2"
@@ -173,7 +173,7 @@ export default function Navbar() {
                   <Link
                     href="/contact"
                     onClick={() => setMobileOpen(false)}
-                    className="block py-3 px-4 text-[11px] font-black uppercase tracking-widest rounded-xl bg-accent text-background text-center"
+                    className="block py-3 px-4 text-[11px] font-bold uppercase tracking-[0.14em] rounded-lg bg-accent text-background text-center"
                   >
                     Let&apos;s Talk
                   </Link>

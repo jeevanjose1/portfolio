@@ -13,7 +13,7 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-10 h-10 rounded-xl bg-surface-2 border border-border animate-pulse" />
+      <div className="w-10 h-10 rounded-lg bg-surface-2 border border-border animate-pulse" />
     );
   }
 
@@ -22,7 +22,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative w-10 h-10 rounded-xl bg-surface-2 border border-border flex items-center justify-center text-foreground transition-all duration-200 hover:bg-surface-3 active:scale-95 group"
+      className="relative w-10 h-10 rounded-lg bg-surface-2 border border-border flex items-center justify-center text-foreground transition-all duration-200 hover:bg-surface-3 active:scale-95 group"
       aria-label="Toggle theme"
     >
       <AnimatePresence mode="wait" initial={false}>
