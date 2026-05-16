@@ -69,7 +69,7 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
                 src={src}
                 alt={alt}
                 fill
-                className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                className="object-contain "
                 priority
               />
             </div>
@@ -81,17 +81,17 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
 
   return (
     <>
-      <div 
+      <div
         className={`relative group cursor-zoom-in ${className}`}
         onClick={() => setIsOpen(true)}
       >
         {children || (
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-border">
-            <Image 
-              src={src} 
-              alt={alt} 
-              fill 
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+          <div className="relative  h-full rounded-lg overflow-hidden border border-border">
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              className="object-cover h-full transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         )}

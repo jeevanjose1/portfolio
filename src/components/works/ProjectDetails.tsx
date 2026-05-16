@@ -10,14 +10,15 @@ import ProjectHero from "./ProjectHero";
 import ProjectContent from "./ProjectContent";
 import ProjectFeatures from "./ProjectFeatures";
 import ProjectMetrics from "./ProjectMetrics";
+import ProjectTechStack from "./ProjectTechStack";
 import ProjectRelated from "./ProjectRelated";
 
-export default function ProjectDetails({ 
-  project, 
+export default function ProjectDetails({
+  project,
   siteSettings,
   relatedProjects = []
-}: { 
-  project: ProjectItem | SanityProject, 
+}: {
+  project: ProjectItem | SanityProject,
   siteSettings?: SanitySiteSettings,
   relatedProjects?: SanityProject[]
 }) {
@@ -34,7 +35,8 @@ export default function ProjectDetails({
     githubUrl: project.githubUrl,
     publishedDate: project.publishedAt ? new Date(project.publishedAt).toLocaleDateString() : "2024",
     body: project.body,
-    info: project.projectInfo || {
+    caseStudy: project.caseStudy,
+    projectInfo: project.projectInfo || {
       client: "Private Client",
       industry: "Technology",
       year: project.publishedAt ? new Date(project.publishedAt).getFullYear().toString() : "2024",
@@ -60,7 +62,7 @@ export default function ProjectDetails({
     liveUrl: project.liveUrl,
     githubUrl: project.githubUrl,
     publishedDate: project.projectInfo.year,
-    info: project.projectInfo,
+    projectInfo: project.projectInfo,
     features: project.features,
     techStack: project.techStack,
     metrics: project.metrics
@@ -70,6 +72,7 @@ export default function ProjectDetails({
     <div className="bg-background transition-colors duration-300">
       <ProjectHero project={p} />
       <ProjectContent project={p} />
+      <ProjectTechStack project={p} />
       <ProjectFeatures project={p} />
       <ProjectMetrics project={p} />
       <ProjectRelated projects={relatedProjects} />

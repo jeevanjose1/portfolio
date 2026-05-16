@@ -13,6 +13,7 @@ export interface SanityProject {
   githubUrl?: string;
   isFeatured: boolean;
   body?: unknown[];
+  caseStudy?: any[];
   projectInfo?: {
     client: string;
     industry: string;

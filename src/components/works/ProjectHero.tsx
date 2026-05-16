@@ -40,7 +40,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
           </Reveal>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 items-start">
+        <div className="flex flex-col lg:flex-row gap-6 items-stretch">
           {/* Info Card */}
           <Reveal
             width="100%"
@@ -53,7 +53,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
             >
               <div className="mb-8">
                 <Reveal delay={0.2} y={10}>
-                  <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-accent-10 text-accent text-[10px] font-extrabold uppercase tracking-[0.16em]">
+                  <span className="inline-flex items-center px-4 py-1.5 rounded-lg bg-accent/10 text-accent text-[10px] font-extrabold uppercase tracking-[0.16em]">
                     {project.categories.find((c) => c !== "All") || "Project"}
                   </span>
                 </Reveal>
@@ -72,7 +72,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
               </Reveal>
 
               <div className="flex flex-wrap gap-2 mb-16">
-                {project.tags.map((tag, i) => (
+                {/* {project.tags.map((tag, i) => (
                   <Reveal
                     key={tag}
                     delay={0.5 + i * 0.1}
@@ -85,7 +85,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
                       {tag}
                     </span>
                   </Reveal>
-                ))}
+                ))} */}
               </div>
 
               <Reveal delay={0.6} y={20}>
@@ -122,9 +122,10 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
               delay={0.3}
               scale={1.05}
               duration={1.2}
+              className=" h-56 lg:flex-1"
             >
-              <ImageLightbox src={project.image} alt={project.title}>
-                <div className="relative aspect-video rounded-lg overflow-hidden  border border-border bg-section-alt group">
+              <ImageLightbox className="h-full" src={project.image} alt={project.title}>
+                <div className="relative h-full  rounded-lg overflow-hidden  border border-border bg-section-alt group">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -138,13 +139,13 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
               </ImageLightbox>
             </Reveal>
 
-            <div className="grid grid-cols-2 gap-4">
-              {project.info &&
+            <div className="grid grid-cols-2 gap-4 flex-1">
+              {project.projectInfo &&
                 [
-                  { label: "Timeline", value: project.info.duration },
-                  { label: "Role", value: project.info.role },
-                  { label: "Team", value: project.info.teamSize },
-                  { label: "Status", value: project.info.status },
+                  { label: "Timeline", value: project.projectInfo.duration },
+                  { label: "Role", value: project.projectInfo.role },
+                  { label: "Team", value: project.projectInfo.teamSize },
+                  { label: "Status", value: project.projectInfo.status },
                 ].map((info, i) => (
                   <Reveal
                     key={info.label}
@@ -152,6 +153,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
                     delay={0.5 + i * 0.1}
                     y={20}
                     blur
+                    className="h-full"
                   >
                     <div
                       className="bg-section-alt p-6 rounded-lg border border-border h-full"

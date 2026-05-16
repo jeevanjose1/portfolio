@@ -18,8 +18,8 @@ const GithubIcon = ({ size, className }: { size: number; className?: string }) =
 
 const projectVisuals: Record<string, string> = {
   "ecommerce-platform": "/images/project-1.svg",
-  "saas-analytics":     "/images/project-2.svg",
-  "flutter-shopping":   "/images/project-3.svg",
+  "saas-analytics": "/images/project-2.svg",
+  "flutter-shopping": "/images/project-3.svg",
 };
 
 export default function ProjectCard({ project }: { project: ProjectItem | SanityProject }) {
@@ -58,7 +58,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
           </div>
 
           {/* Content */}
-          <div className="p-8 sm:p-10 flex flex-col flex-grow">
+          <div className="p-8 sm:p-10 flex flex-col ">
             <div className="flex flex-wrap gap-2 mb-5">
               {project.categories?.slice(0, 3).map((tag) => (
                 <span key={tag} className="text-[10px] font-bold uppercase tracking-wider bg-surface-2 text-muted-foreground px-3 py-1 rounded-full border border-border">
@@ -70,7 +70,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
             <h3 className="text-2xl font-heading font-extrabold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
               {project.title}
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 mb-8 flex-grow font-body">
+            <p className="text-muted-foreground  text-sm leading-relaxed line-clamp-3 mb-8 flex-grow font-body">
               {project.description}
             </p>
 

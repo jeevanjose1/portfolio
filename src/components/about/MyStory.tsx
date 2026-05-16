@@ -34,7 +34,7 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
           >
             <div
               className="bg-section-alt rounded-xl p-10 border border-card-border shadow-card h-full"
-               
+
             >
               <h3 className="text-sm font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-10">
                 Milestones
@@ -48,7 +48,7 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
             <Reveal width="100%" delay={0.2} y={40} duration={1}>
               <div
                 className="bg-section-alt rounded-xl border border-card-border shadow-card"
-                 
+
               >
                 <div className="p-10 sm:p-14">
                   <Reveal delay={0.4} y={20}>
@@ -75,7 +75,7 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
                     <div className="mt-12 flex items-center gap-4 relative z-10">
                       <div className="w-12 h-12 rounded-full overflow-hidden border border-border flex items-center justify-center">
                         <Image
-                          src="/images/headshot.png"
+                          src="/images/headshot.jpeg"
                           alt="Avatar"
                           width={48}
                           height={48}

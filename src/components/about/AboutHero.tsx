@@ -40,7 +40,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
           >
             <div
               className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
-               
+
             >
               <div>
                 <Reveal delay={0.2}>
@@ -83,11 +83,11 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
           >
             <div
               className="bg-section-alt rounded-xl overflow-hidden relative group min-h-[500px] border border-card-border shadow-card h-full"
-               
+
             >
               <ParallaxImage offset={30} className="w-full h-full">
                 <Image
-                  src="/images/headshot.png" alt="Jeevan Jose portrait" fill
+                  src="/images/headshot.jpeg" alt="Jeevan Jose portrait" fill
                   sizes="(min-width: 768px) 420px, 100vw" priority
                   className="object-cover grayscale group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-700"
                 />
@@ -96,7 +96,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
               <div className="absolute top-6 left-6">
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/25 px-4 py-2 text-white backdrop-blur-md">
                   <MapPin size={13} />
-                  <span className="text-[10px] font-extrabold uppercase tracking-[0.16em]">Vadodara, India</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-[0.16em]">Kerala, India</span>
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
@@ -122,7 +122,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
               >
                 <div
                   className="bg-section-alt rounded-xl p-6 sm:p-8 border border-card-border shadow-card flex items-center justify-between gap-4 h-full"
-                   
+
                 >
                   <div>
                     <p className="text-3xl sm:text-4xl font-heading font-extrabold text-foreground">{stat.value}</p>

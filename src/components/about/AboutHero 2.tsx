@@ -40,7 +40,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
           >
             <div
               className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-[var(--color-card-border)] flex flex-col justify-between h-full"
-               
+
             >
               <div>
                 <Reveal delay={0.2}>
@@ -83,11 +83,11 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
           >
             <div
               className="bg-section-alt rounded-xl overflow-hidden relative group min-h-[500px] border border-[var(--color-card-border)] h-full"
-               
+
             >
               <ParallaxImage offset={30} className="w-full h-full">
                 <Image
-                  src="/images/headshot.png" alt="Jeevan Jose portrait" fill
+                  src="/images/headshot.jpeg" alt="Jeevan Jose portrait" fill
                   sizes="(min-width: 768px) 420px, 100vw" priority
                   className="object-cover grayscale group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-700"
                 />
@@ -122,7 +122,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
               >
                 <div
                   className="bg-section-alt rounded-xl p-6 sm:p-8 border border-[var(--color-card-border)] flex items-center justify-between gap-4 h-full"
-                   
+
                 >
                   <div>
                     <p className="text-3xl sm:text-4xl font-heading font-black text-foreground">{stat.value}</p>

@@ -11,7 +11,8 @@ export interface NormalizedProject {
   githubUrl?: string;
   publishedDate: string;
   body?: unknown;
-  info?: {
+  caseStudy?: any[];
+  projectInfo?: {
     client: string;
     industry: string;
     year: string;
@@ -24,4 +25,5 @@ export interface NormalizedProject {
   features?: { title: string; description: string; iconName: string }[];
   techStack?: { frontend: string[]; backend: string[]; database: string[]; devops: string[] };
   metrics?: ProjectMetric[];
+
 }

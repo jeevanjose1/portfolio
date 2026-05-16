@@ -105,7 +105,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
                 <ParallaxImage offset={20} className="w-full h-full">
                   <div className="absolute inset-0 grayscale-[0.25] contrast-[1.05] brightness-[0.98] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700">
                     <Image
-                      src="/images/headshot.png"
+                      src="/images/headshot.jpeg"
                       alt="Portrait"
                       fill
                       priority

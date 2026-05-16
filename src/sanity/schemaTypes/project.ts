@@ -95,11 +95,95 @@ export const projectType = defineType({
       ],
     }),
 
-    // --- Case Study Body ---
+    // --- Case Study Sections (New) ---
+    defineField({
+      name: 'caseStudy',
+      title: 'Case Study Sections',
+      type: 'array',
+      of: [
+        {
+          name: 'textSection',
+          type: 'object',
+          title: 'Text Section',
+          fields: [
+            { name: 'heading', type: 'string', title: 'Section Heading' },
+            { name: 'content', type: 'array', of: [{ type: 'block' }], title: 'Content' },
+          ],
+        },
+        {
+          name: 'imageSection',
+          type: 'object',
+          title: 'Image Section',
+          fields: [
+            { name: 'image', type: 'image', options: { hotspot: true }, title: 'Image' },
+            { name: 'caption', type: 'string', title: 'Caption' },
+            { 
+              name: 'layout', 
+              type: 'string', 
+              title: 'Layout',
+              options: {
+                list: [
+                  { title: 'Contained', value: 'contained' },
+                  { title: 'Full Width', value: 'full' },
+                ],
+              },
+              initialValue: 'contained'
+            },
+          ],
+        },
+        {
+          name: 'splitSection',
+          type: 'object',
+          title: 'Split Text & Image',
+          fields: [
+            { name: 'heading', type: 'string', title: 'Heading' },
+            { name: 'content', type: 'array', of: [{ type: 'block' }], title: 'Content' },
+            { name: 'image', type: 'image', options: { hotspot: true }, title: 'Image' },
+            { 
+              name: 'imagePosition', 
+              type: 'string', 
+              title: 'Image Position',
+              options: {
+                list: [
+                  { title: 'Left', value: 'left' },
+                  { title: 'Right', value: 'right' },
+                ],
+              },
+              initialValue: 'right'
+            },
+          ],
+        },
+        {
+          name: 'gallerySection',
+          type: 'object',
+          title: 'Image Gallery',
+          fields: [
+            { 
+              name: 'images', 
+              type: 'array', 
+              of: [{ type: 'image', options: { hotspot: true } }],
+              title: 'Images'
+            },
+            { 
+              name: 'gridColumns', 
+              type: 'number', 
+              title: 'Grid Columns',
+              options: {
+                list: [2, 3],
+              },
+              initialValue: 2
+            },
+          ],
+        },
+      ],
+    }),
+
+    // --- Legacy Case Study Body ---
     defineField({
       name: 'body',
-      title: 'Case Study Content',
+      title: 'Legacy Body Content (Deprecated)',
       type: 'array',
+      description: 'Please move content to Case Study Sections above.',
       of: [
         { type: 'block' },
         {
