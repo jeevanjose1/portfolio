@@ -27,7 +27,7 @@ function ServiceCard({ service, index }: { service: SanityService | ServiceItem;
       className="h-full"
     >
       <article
-        className="group bg-section-alt rounded-xl border border-card-border p-7 sm:p-9 shadow-sm transition-all duration-300 hover:border-accent-25 hover:-translate-y-0.5 hover:shadow-lg h-full flex flex-col"
+        className="group bg-section-alt rounded-xl border border-card-border p-7 sm:p-9 shadow-sm transition-all duration-300 hover:border-accent-25  h-full flex flex-col"
          
       >
         <div className="flex items-start justify-between gap-4 mb-10">

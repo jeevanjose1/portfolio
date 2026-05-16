@@ -12,7 +12,7 @@ import ToolsModal from "@/components/ui/ToolsModal";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
+  // { label: "Services", href: "/services" },
   { label: "Works", href: "/works" },
   { label: "Contact", href: "/contact" },
 ];
@@ -87,28 +87,33 @@ export default function Navbar() {
           {/* Utilities Group */}
           <div className="flex items-center gap-2">
             <AnimatePresence>
-              {utilitiesOpen && (
-                <motion.div
-                  initial={{ opacity: 0, x: 20, scale: 0.9 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: 20, scale: 0.9 }}
-                  className="flex items-center gap-2"
-                >
-                  {/* Tools Toggle */}
-                  <button
-                    onClick={() => setToolsOpen(true)}
-                    className="w-10 h-10 rounded-lg bg-surface-2 border border-border flex items-center justify-center text-foreground transition-all duration-200 hover:bg-surface-3 active:scale-95"
-                    title="Custom Tools"
-                  >
-                    <Wrench size={17} className="text-accent group-hover:text-accent transition-colors" />
-                  </button>
-                  <PaletteSelector />
-                  <ThemeToggle />
-                </motion.div>
-              )}
+              <>
+
+                {/*
+    {utilitiesOpen && (
+      <motion.div
+        initial={{ opacity: 0, x: 20, scale: 0.9 }}
+        animate={{ opacity: 1, x: 0, scale: 1 }}
+        exit={{ opacity: 0, x: 20, scale: 0.9 }}
+        className="flex items-center gap-2"
+      >
+        <button
+          onClick={() => setToolsOpen(true)}
+          className="w-10 h-10 rounded-lg bg-surface-2 border border-border flex items-center justify-center"
+        >
+          <Wrench size={17} />
+        </button>
+      </motion.div>
+    )}
+    */}
+
+
+                <PaletteSelector />
+                <ThemeToggle />
+              </>
             </AnimatePresence>
 
-            <button
+            {/* <button
               onClick={() => setUtilitiesOpen(!utilitiesOpen)}
               className={`w-10 h-10 rounded-lg border flex items-center justify-center transition-all duration-300 ${utilitiesOpen
                 ? "bg-accent text-background border-accent"
@@ -117,7 +122,7 @@ export default function Navbar() {
               title={utilitiesOpen ? "Close Utilities" : "Show Utilities"}
             >
               {utilitiesOpen ? <X size={18} /> : <ChevronLeft size={18} />}
-            </button>
+            </button> */}
           </div>
 
           <Link

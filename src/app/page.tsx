@@ -25,7 +25,7 @@ export default async function Home() {
         <HeroSection data={pageHome} stats={siteSettings?.globalStats} socialLinks={siteSettings?.socialLinks} />
         <ServicesPreview services={services.filter(s => s.isMain)} />
         <FeaturedWorks projects={featuredProjects} />
-        <Testimonials testimonials={testimonials} />
+        {/* <Testimonials testimonials={testimonials} /> */}
         <CTABanner data={siteSettings?.ctaBanner} />
       </div>
       <ScrollPath />

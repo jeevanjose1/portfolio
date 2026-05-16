@@ -58,7 +58,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
                 </Reveal>
 
                 <Reveal delay={0.3} y={30} blur>
-                  <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-heading font-extrabold text-foreground leading-[1.02] mb-8">
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-extrabold text-foreground leading-[1.02] mb-8">
                     {welcome}
                     <br />
                     <span className="font-heading font-medium text-foreground-80">

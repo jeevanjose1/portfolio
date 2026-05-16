@@ -53,7 +53,7 @@ export default function ServiceHero({ service }: { service: SanityService | Main
                 </Reveal>
 
                 <Reveal delay={0.3} blur>
-                  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-foreground leading-[1.1] mb-6">
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-foreground leading-[1.1] mb-6">
                     {service.title}
                   </h1>
                 </Reveal>

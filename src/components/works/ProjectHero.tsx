@@ -60,15 +60,9 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
               </div>
               <Reveal delay={0.3} blur>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-foreground leading-tight mb-8">
-                  {project.title.split(" ").map((word, i) =>
-                    i === 1 ? (
-                      <span key={i} className="text-accent">
-                        {word}{" "}
-                      </span>
-                    ) : (
-                      word + " "
-                    )
-                  )}
+
+                  {project.title}
+
                 </h1>
               </Reveal>
               <Reveal delay={0.4} y={20}>
