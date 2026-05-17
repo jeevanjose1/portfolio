@@ -70,7 +70,7 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
                 className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-card-border shadow-card text-foreground relative overflow-hidden h-full"
                  
               >
-                <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px] rounded-xl" />
+                <div className="absolute inset-0 opacity-[0.04] pattern-grid bg-[size:28px_28px] rounded-xl" />
                 <div className="relative z-10">
                   <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center mb-8">
                     <Sparkles size={22} className="text-accent" />

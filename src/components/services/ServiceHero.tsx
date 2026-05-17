@@ -106,8 +106,7 @@ export default function ServiceHero({ service }: { service: SanityService | Main
               <div
                 className="bg-section-alt rounded-lg p-8 sm:p-10 border border-border flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[220px]  h-full"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-50" />
-                <div className="absolute inset-0 opacity-[0.045] dark:opacity-[0.06] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />
+                <div className="absolute inset-0 opacity-[0.045] dark:opacity-[0.06] pattern-grid bg-[size:28px_28px]" />
 
                 <div className="w-16 h-16 rounded-lg bg-background flex items-center justify-center mb-4 border border-border group-hover:scale-110 transition-transform duration-500 relative z-10 shadow-sm shrink-0">
                   <Icon size={28} className="text-accent" />

@@ -23,7 +23,7 @@ export default function CTABanner({ data }: { data?: { heading?: string; subtext
             className="relative rounded-xl py-16 lg:py-20 px-8 sm:px-12 lg:px-16 overflow-hidden border border-card-border bg-section-alt shadow-card flex flex-col lg:flex-row items-center justify-between gap-10"
           >
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-20 to-transparent" />
-            <div className="absolute inset-0 opacity-[0.035] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:32px_32px] rounded-xl" />
+            <div className="absolute inset-0 opacity-[0.035] pattern-grid bg-[size:32px_32px] rounded-xl" />
 
             <div className="relative z-10 text-center lg:text-left">
               <Reveal delay={0.2} className="mx-auto lg:mx-0">

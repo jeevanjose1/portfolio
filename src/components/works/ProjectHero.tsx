@@ -133,8 +133,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
                     priority
                     className="object-cover group-hover:scale-105 transition-transform duration-1000"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 to-accent/5" />
-                  <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] [background-size:28px_28px]" />
+                  <div className="absolute inset-0 opacity-[0.05] pattern-grid bg-[size:28px_28px]" />
                 </div>
               </ImageLightbox>
             </Reveal>

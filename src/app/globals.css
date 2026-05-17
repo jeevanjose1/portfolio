@@ -339,6 +339,12 @@ h6 {
     pointer-events: none;
     opacity: 0.6;
   }
+
+  /* Grid pattern background */
+  .pattern-grid {
+    background-image: linear-gradient(to right, var(--color-primary) 1px, transparent 1px),
+                      linear-gradient(to bottom, var(--color-primary) 1px, transparent 1px);
+  }
 }
 
 /* ─── Marquee Animation ─── */

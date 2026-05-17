@@ -19,13 +19,12 @@ export default function PageTransition({ children }: { children: React.ReactNode
   const pathname = usePathname();
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
       <motion.div key={pathname} className="h-full">
         <FrozenRouter>
           {/* Slide IN overlay */}
           <motion.div
-            className="fixed left-0 w-full h-screen z-[9999] pointer-events-none"
-            style={{ backgroundColor: "var(--color-contrast-bg)" }}
+            className="fixed left-0 w-full h-screen z-[9999] pointer-events-none bg-contrast-bg"
             initial={{ top: "100%" }}
             animate={{ top: "100%" }}
             exit={{ top: "0%" }}
@@ -33,8 +32,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
           />
           {/* Slide OUT overlay */}
           <motion.div
-            className="fixed left-0 w-full h-screen z-[9999] pointer-events-none"
-            style={{ backgroundColor: "var(--color-contrast-bg)" }}
+            className="fixed left-0 w-full h-screen z-[9999] pointer-events-none bg-contrast-bg"
             initial={{ top: "0%" }}
             animate={{ top: "-100%" }}
             exit={{ top: "-100%" }}
