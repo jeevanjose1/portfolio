@@ -136,8 +136,8 @@ export default function HeroSection({ data, profileImage }: { data?: SanityPageH
             <div className="flex marquee-track gap-12 items-center whitespace-nowrap px-6">
               {[
                 "React.js", "Next.js", "TypeScript", "Node.js", "Flutter",
-                "GraphQL", "PostgreSQL", "AWS Cloud", "Docker", "TailwindCSS",
-                "Sanity CMS", "Framer Motion", "MongoDB", "Express"
+                "GraphQL", "PostgreSQL", , "Docker",
+                "MongoDB", "Nest.js", "React Native", 'Anthropic', 'AI'
               ].map((tech) => (
                 <div key={tech} className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-accent" />
