@@ -24,7 +24,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
         <FrozenRouter>
           {/* Slide IN overlay */}
           <motion.div
-            className="fixed left-0 w-full h-screen z-[9999] pointer-events-none bg-contrast-bg"
+            className="fixed left-0 w-full h-svh z-[9999] pointer-events-none bg-contrast-bg"
             initial={{ top: "100%" }}
             animate={{ top: "100%" }}
             exit={{ top: "0%" }}
@@ -32,7 +32,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
           />
           {/* Slide OUT overlay */}
           <motion.div
-            className="fixed left-0 w-full h-screen z-[9999] pointer-events-none bg-contrast-bg"
+            className="fixed left-0 w-full h-svh z-[9999] pointer-events-none bg-contrast-bg"
             initial={{ top: "0%" }}
             animate={{ top: "-100%" }}
             exit={{ top: "-110svh" }}
