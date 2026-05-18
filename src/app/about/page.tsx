@@ -15,7 +15,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "About — Jeevan Jose | Full-Stack Developer Portfolio",
   description:
-    "Learn about my journey, technical skills, work experience, and what drives me as a full-stack developer and mobile engineer based in Vadodara, India.",
+    "Learn about my journey, technical skills, work experience, and what drives me as a full-stack developer and mobile engineer based in Kerala, India.",
 };
 
 export default async function AboutPage() {

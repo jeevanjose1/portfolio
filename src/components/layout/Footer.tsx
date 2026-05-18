@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {  ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/constants";
 import { SanitySiteSettings } from "@/sanity/types";
@@ -36,7 +36,7 @@ export default function Footer({ siteSettings }: { siteSettings?: SanitySiteSett
     <footer className="bg-section-alt py-20 border-t border-border transition-colors duration-300">
       <div className="section-container !py-0">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
-          
+
           {/* Column 1: Brand & Bio */}
           <div className="md:col-span-5">
             <Link href="/" className="text-2xl font-heading font-extrabold tracking-tighter hover:opacity-80 transition-opacity inline-block mb-6">
@@ -74,10 +74,10 @@ export default function Footer({ siteSettings }: { siteSettings?: SanitySiteSett
             </h4>
             <div className="flex flex-col gap-4">
               {socialLinks.map((link) => (
-                <a 
-                  key={link.label} 
-                  href={link.href} 
-                  target="_blank" 
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between p-4 rounded-xl border border-border hover:border-accent hover:bg-surface-2 transition-all group"
                 >
@@ -95,9 +95,9 @@ export default function Footer({ siteSettings }: { siteSettings?: SanitySiteSett
         {/* Bottom Bar */}
         <div className="mt-20 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-6">
           <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground">
-            © {currentYear} — Vadodara, India
+            © {currentYear} — Kerala, India
           </p>
-          <button 
+          <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground hover:text-accent transition-colors flex items-center gap-2"
           >
