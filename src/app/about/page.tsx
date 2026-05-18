@@ -27,8 +27,8 @@ export default async function AboutPage() {
 
   return (
     <>
-      <AboutHero data={pageAbout} />
-      <MyStory storyText={pageAbout?.myStoryText} timeline={pageAbout?.timeline} />
+      <AboutHero data={pageAbout} profileImage={siteSettings?.profileImage} />
+      <MyStory storyText={pageAbout?.myStoryText} timeline={pageAbout?.timeline} profileImage={siteSettings?.profileImage} />
       <SkillsGrid skillGroups={pageAbout?.skillGroups} />
       <ExperienceCards experiences={experiences} workHistory={(pageAbout)?.workHistory} />
       <EducationCerts education={pageAbout?.education} certifications={pageAbout?.certifications} />

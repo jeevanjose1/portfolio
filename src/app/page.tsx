@@ -20,7 +20,7 @@ export default async function Home() {
   return (
     <main className="relative overflow-hidden">
       <div className="relative z-[200]">
-        <HeroSection data={pageHome} stats={siteSettings?.globalStats} socialLinks={siteSettings?.socialLinks} />
+        <HeroSection data={pageHome} stats={siteSettings?.globalStats} socialLinks={siteSettings?.socialLinks} profileImage={siteSettings?.profileImage} />
         <ServicesPreview services={services.filter(s => s.isMain)} />
         <FeaturedWorks projects={featuredProjects} />
         {/* <Testimonials testimonials={testimonials} /> */}

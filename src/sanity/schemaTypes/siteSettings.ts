@@ -21,6 +21,15 @@ export const siteSettings = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'profileImage',
+      title: 'Global Profile Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      description: 'Used in the Home Hero, About Hero, and My Story sections.',
+    }),
+    defineField({
       name: 'socialLinks',
       title: 'Social Links',
       type: 'array',

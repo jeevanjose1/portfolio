@@ -5,10 +5,13 @@ import Timeline from "@/components/Timeline";
 import { timelineData as fallbackTimelineData, myStoryText as fallbackMyStoryText } from "@/lib/data";
 import type { TimelineItem } from "@/lib/data";
 import { Reveal } from "@/components/animations/Reveal";
+import type { Image as SanityImage } from "sanity";
+import { urlForImage } from "@/sanity/lib/image";
 
-export default function MyStory({ storyText, timeline }: { storyText?: string, timeline?: TimelineItem[] }) {
+export default function MyStory({ storyText, timeline, profileImage }: { storyText?: string, timeline?: TimelineItem[], profileImage?: SanityImage }) {
   const text = storyText || fallbackMyStoryText;
   const items = timeline || fallbackTimelineData;
+  const imageUrl = profileImage ? urlForImage(profileImage).url() : "/images/headshot.jpeg";
 
   return (
     <section className="bg-background relative transition-colors duration-300">
@@ -75,7 +78,7 @@ export default function MyStory({ storyText, timeline }: { storyText?: string, t
                     <div className="mt-12 flex items-center gap-4 relative z-10">
                       <div className="w-12 h-12 rounded-full overflow-hidden border border-border flex items-center justify-center">
                         <Image
-                          src="/images/headshot.jpeg"
+                          src={imageUrl}
                           alt="Avatar"
                           width={48}
                           height={48}

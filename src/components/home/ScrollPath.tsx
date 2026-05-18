@@ -13,7 +13,7 @@ export default function ScrollPath() {
   const pathLength = useTransform(smoothProgress, [0.02, 0.92], [0, 1]);
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="absolute inset-x-0 top-0 pointer-events-none z-0 overflow-hidden" style={{ height: "100%" }}>
       <svg
         width="100%"
         height="100%"

@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Reveal } from "@/components/animations/Reveal";
 import { ParallaxImage } from "@/components/animations/ParallaxImage";
 import { SanityPageAbout } from "@/sanity/types";
+import type { Image as SanityImage } from "sanity";
+import { urlForImage } from "@/sanity/lib/image";
 
 const fallbackAboutHeroData = {
   badge: "About Me",
@@ -20,11 +22,12 @@ const fallbackAboutHeroData = {
   ],
 };
 
-export default function AboutHero({ data }: { data?: SanityPageAbout }) {
+export default function AboutHero({ data, profileImage }: { data?: SanityPageAbout, profileImage?: SanityImage }) {
   const badge = data?.heroBadge || fallbackAboutHeroData.badge;
   const heading = data?.heroHeading || fallbackAboutHeroData.heading;
   const paragraphs = data?.heroParagraphs || fallbackAboutHeroData.paragraphs;
   const stats = data?.heroStats || fallbackAboutHeroData.stats;
+  const imageUrl = profileImage ? urlForImage(profileImage).url() : "/images/headshot.jpeg";
 
   return (
     <section className="min-h-[100svh] flex items-center pb-12 transition-colors duration-300">
@@ -87,7 +90,7 @@ export default function AboutHero({ data }: { data?: SanityPageAbout }) {
             >
               <ParallaxImage offset={30} className="w-full h-full">
                 <Image
-                  src="/images/headshot.jpeg" alt="Jeevan Jose portrait" fill
+                  src={imageUrl} alt="Jeevan Jose portrait" fill
                   sizes="(min-width: 768px) 420px, 100vw" priority
                   className="object-cover grayscale group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-700"
                 />

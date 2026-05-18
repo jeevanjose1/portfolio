@@ -18,7 +18,7 @@ export default function ContactHero() {
           >
             <div
               className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
-               
+
             >
               <div>
                 <Reveal delay={0.2}>
@@ -43,7 +43,7 @@ export default function ContactHero() {
                   <a href="#contact-form" className="btn-primary gap-2.5">
                     Send Project Brief <ArrowDown size={15} />
                   </a>
-                  <a href="mailto:jeevanjose1997.com" className="btn-secondary gap-2.5">
+                  <a href="mailto:jeevanjose1997@gmail.com" className="btn-secondary gap-2.5">
                     Email Directly <Mail size={15} />
                   </a>
                 </div>
@@ -62,7 +62,7 @@ export default function ContactHero() {
             >
               <div
                 className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-card-border shadow-card text-foreground relative overflow-hidden h-full"
-                 
+
               >
                 <div className="absolute inset-0 opacity-[0.04] pattern-grid bg-[size:28px_28px] rounded-xl" />
                 <div className="relative z-10">

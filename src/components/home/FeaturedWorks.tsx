@@ -104,7 +104,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
                     </div>
 
                     <div className="flex items-center gap-8">
-                      <p className="hidden lg:block text-sm text-muted-foreground max-w-xs text-right leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <p className="hidden lg:line-clamp-2 text-sm text-muted-foreground max-w-xs text-right leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                         {description}
                       </p>
                       <div className="w-14 h-14 rounded-lg border border-border bg-section-alt flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-background group-hover:border-accent transition-all duration-300 rotate-[-45deg] group-hover:rotate-0 shrink-0">
@@ -135,7 +135,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
               left: 0,
               pointerEvents: "none",
               zIndex: 1000,
-             
+
             }}
             className="hidden md:block shadow-xl w-[340px] h-[210px] rounded-xl overflow-hidden border border-accent-15 bg-section-alt"
           >

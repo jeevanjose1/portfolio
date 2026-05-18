@@ -25,7 +25,7 @@ export default function ContactInfo() {
     >
       <div
         className="bg-background rounded-xl p-8 sm:p-10 lg:p-12 border border-card-border shadow-card h-full"
-         
+
       >
         <h2 className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent mb-8">{"//"} Information</h2>
 

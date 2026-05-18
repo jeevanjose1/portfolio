@@ -113,6 +113,7 @@ export interface SanitySiteSettings {
   title: string;
   description?: string;
   email?: string;
+  profileImage?: Image;
   socialLinks?: {
     label: string;
     href: string;

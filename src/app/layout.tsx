@@ -23,13 +23,30 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Jeevan Jose ",
-  description: "Portfolio of a full-stack developer specializing in modern web applications, clean architecture, and exceptional user experiences.",
-  keywords: ["full-stack developer", "web developer", "portfolio", "React", "Next.js"],
+  metadataBase: new URL("https://jeevanjose.com"),
+  title: "Jeevan Jose",
+  description: "Full-stack developer and mobile engineer specializing in building scalable web apps, mobile experiences, and cloud solutions for startups and businesses.",
+  keywords: ["full-stack developer", "web developer", "mobile engineer", "portfolio", "React", "Next.js", "Flutter", "freelance developer India"],
   openGraph: {
-    title: "Jeevan Jose",
-    description: "Portfolio of a full-stack developer specializing in modern web applications.",
+    title: "Jeevan Jose — Full-Stack Developer & Mobile Engineer",
+    description: "Full-stack developer and mobile engineer specializing in scalable web apps, mobile experiences, and cloud solutions.",
     type: "website",
+    url: "https://jeevanjose.com",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Jeevan Jose — Full-Stack Developer & Mobile Engineer",
+      },
+    ],
+    siteName: "Jeevan Jose Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jeevan Jose — Full-Stack Developer & Mobile Engineer",
+    description: "Full-stack developer and mobile engineer specializing in scalable web apps, mobile experiences, and cloud solutions.",
+    images: ["/og-image.png"],
   },
 };
 

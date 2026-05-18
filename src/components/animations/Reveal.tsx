@@ -21,7 +21,7 @@ export const Reveal = ({
   width = "fit-content",
   className = "",
   delay = 0,
-  duration = 0.8,
+  duration = 0.65,
   y = 40,
   x = 0,
   scale = 1,
@@ -29,7 +29,9 @@ export const Reveal = ({
   staggerChildren = 0,
 }: RevealProps) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  // margin: "10px" means the animation triggers as the element enters the viewport
+  // (not 60px after entry), preventing the "stuck blur" issue
+  const isInView = useInView(ref, { once: true, margin: "10px" });
   const mainControls = useAnimation();
 
   useEffect(() => {
@@ -47,18 +49,18 @@ export const Reveal = ({
             y,
             x,
             scale,
-            filter: blur ? "blur(10px)" : "none",
+            ...(blur ? { filter: "blur(8px)" } : {}),
           },
           visible: {
             opacity: 1,
             y: 0,
             x: 0,
             scale: 1,
-            filter: "blur(0px)",
+            ...(blur ? { filter: "blur(0px)" } : {}),
             transition: {
               duration,
-              delay: delay,
-              ease: [0.25, 0.1, 0.25, 1], // Premium easing
+              delay,
+              ease: [0.25, 0.1, 0.25, 1],
               staggerChildren,
             },
           },
@@ -88,7 +90,7 @@ export const RevealStagger = ({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "0px" }}
       variants={{
         visible: {
           transition: {

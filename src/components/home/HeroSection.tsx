@@ -7,6 +7,8 @@ import type { SocialLink } from "@/lib/data";
 import { SanityPageHome } from "@/sanity/types";
 import { Reveal } from "@/components/animations/Reveal";
 import { ParallaxImage } from "@/components/animations/ParallaxImage";
+import type { Image as SanityImage } from "sanity";
+import { urlForImage } from "@/sanity/lib/image";
 
 const fallbackHeroData = {
   badge: "✦ Available for freelance work",
@@ -20,13 +22,14 @@ const fallbackHeroData = {
 
 
 
-export default function HeroSection({ data }: { data?: SanityPageHome, stats?: { value: string; label: string }[], socialLinks?: SocialLink[] }) {
+export default function HeroSection({ data, stats, socialLinks, profileImage }: { data?: SanityPageHome, stats?: { value: string; label: string }[], socialLinks?: SocialLink[], profileImage?: SanityImage }) {
   const badge = data?.heroBadge || fallbackHeroData.badge;
   const heading = data?.heroHeading || fallbackHeroData.heading;
   const welcome = data?.welcome || fallbackHeroData.welcome;
 
   const subheadline = data?.heroSubheadline || fallbackHeroData.subheadline;
   const ctaPrimary = data?.ctaPrimary || fallbackHeroData.ctaPrimary;
+  const imageUrl = profileImage ? urlForImage(profileImage).url() : "/images/headshot.jpeg";
 
   return (
     <section id="home" className="min-h-svh flex items-center transition-colors duration-300">
@@ -105,7 +108,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
                 <ParallaxImage offset={20} className="w-full h-full">
                   <div className="absolute inset-0 grayscale-[0.25] contrast-[1.05] brightness-[0.98] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700">
                     <Image
-                      src="/images/headshot.jpeg"
+                      src={imageUrl}
                       alt="Portrait"
                       fill
                       priority
@@ -145,9 +148,9 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
               ))}
               {/* Duplicate for seamless loop */}
               {[
-                "React.js", "Next.js", "TypeScript", "Node.js", "Flutter",
-                "GraphQL", "PostgreSQL", "AWS Cloud", "Docker", "TailwindCSS",
-                "Sanity CMS", "Framer Motion", "MongoDB", "Express"
+                "React.js", "Next.js", "TypeScript", "Node.js",
+                "GraphQL", "PostgreSQL", "Docker", "TailwindCSS",
+                "AI", "Anthropic", "MongoDB", "Nest,js", "React Native"
               ].map((tech) => (
                 <div key={tech + "-loop"} className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-accent" />

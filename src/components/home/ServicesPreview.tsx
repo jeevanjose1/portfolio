@@ -28,7 +28,7 @@ function ServiceCard({ service, index }: { service: SanityService | ServiceItem;
     >
       <article
         className="group bg-section-alt rounded-xl border border-card-border p-7 sm:p-9 shadow-sm transition-all duration-300 hover:border-accent-25  h-full flex flex-col"
-         
+
       >
         <div className="flex items-start justify-between gap-4 mb-10">
           <div>
@@ -51,7 +51,7 @@ function ServiceCard({ service, index }: { service: SanityService | ServiceItem;
         <h3 className="text-xl font-heading font-bold text-foreground mb-3">
           {service.title}
         </h3>
-        <p className="text-sm line-clamp-3 text-muted-foreground leading-relaxed mb-8 flex-grow">
+        <p className="text-sm line-clamp-4 text-muted-foreground leading-relaxed mb-8 ">
           {service.description}
         </p>
 
@@ -78,7 +78,7 @@ export default function ServicesPreview({ services }: { services: SanityService[
         >
           <div
             className="bg-section-alt rounded-xl border border-card-border shadow-card p-8 sm:p-10 lg:p-12 flex flex-col justify-between h-full"
-             
+
           >
             <div>
               <Reveal delay={0.2}>
@@ -91,7 +91,7 @@ export default function ServicesPreview({ services }: { services: SanityService[
               </Reveal>
               <Reveal delay={0.4}>
                 <p className="text-muted-foreground text-sm sm:text-base leading-7 max-w-3xl">
-                  The home page stays brief. For the full background, skills, and story, head to the About page.
+                  I specialize in full-stack web and mobile development, turning complex problems into elegant, scalable solutions. Learn more about my journey, technical stack, and core values on the About page.
                 </p>
               </Reveal>
             </div>
