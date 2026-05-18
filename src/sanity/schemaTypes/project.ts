@@ -1,0 +1,249 @@
+import { defineField, defineType } from 'sanity'
+
+export const projectType = defineType({
+  name: 'project',
+  title: 'Project',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'description',
+      title: 'Short Description',
+      type: 'text',
+      rows: 3,
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'thumbnail',
+      title: 'Project Thumbnail (Card)',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'heroImage',
+      title: 'Project Hero (Details Page)',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: {
+        layout: 'tags',
+      },
+    }),
+    defineField({
+      name: 'publishedAt',
+      title: 'Published at',
+      type: 'datetime',
+    }),
+    defineField({
+      name: 'link',
+      title: 'Live Project Link',
+      type: 'url',
+    }),
+    defineField({
+      name: 'githubUrl',
+      title: 'GitHub Link',
+      type: 'url',
+    }),
+    defineField({
+      name: 'isFeatured',
+      title: 'Featured Project',
+      type: 'boolean',
+      description: 'Show this project in the featured section',
+      initialValue: false,
+    }),
+
+    // --- Project Intelligence ---
+    defineField({
+      name: 'projectInfo',
+      title: 'Project Intelligence',
+      type: 'object',
+      fields: [
+        { name: 'client', type: 'string', title: 'Client' },
+        { name: 'industry', type: 'string', title: 'Industry' },
+        { name: 'year', type: 'string', title: 'Year' },
+        { name: 'platform', type: 'string', title: 'Platform' },
+        { name: 'duration', type: 'string', title: 'Duration' },
+        { name: 'role', type: 'string', title: 'Role' },
+        { name: 'teamSize', type: 'string', title: 'Team Size' },
+        { name: 'status', type: 'string', title: 'Status' },
+      ],
+    }),
+
+    // --- Case Study Sections (New) ---
+    defineField({
+      name: 'caseStudy',
+      title: 'Case Study Sections',
+      type: 'array',
+      of: [
+        {
+          name: 'textSection',
+          type: 'object',
+          title: 'Text Section',
+          fields: [
+            { name: 'heading', type: 'string', title: 'Section Heading' },
+            { name: 'content', type: 'array', of: [{ type: 'block' }], title: 'Content' },
+          ],
+        },
+        {
+          name: 'imageSection',
+          type: 'object',
+          title: 'Image Section',
+          fields: [
+            { name: 'image', type: 'image', options: { hotspot: true }, title: 'Image' },
+            { name: 'caption', type: 'string', title: 'Caption' },
+            { 
+              name: 'layout', 
+              type: 'string', 
+              title: 'Layout',
+              options: {
+                list: [
+                  { title: 'Contained', value: 'contained' },
+                  { title: 'Full Width', value: 'full' },
+                ],
+              },
+              initialValue: 'contained'
+            },
+          ],
+        },
+        {
+          name: 'splitSection',
+          type: 'object',
+          title: 'Split Text & Image',
+          fields: [
+            { name: 'heading', type: 'string', title: 'Heading' },
+            { name: 'content', type: 'array', of: [{ type: 'block' }], title: 'Content' },
+            { name: 'image', type: 'image', options: { hotspot: true }, title: 'Image' },
+            { 
+              name: 'imagePosition', 
+              type: 'string', 
+              title: 'Image Position',
+              options: {
+                list: [
+                  { title: 'Left', value: 'left' },
+                  { title: 'Right', value: 'right' },
+                ],
+              },
+              initialValue: 'right'
+            },
+          ],
+        },
+        {
+          name: 'gallerySection',
+          type: 'object',
+          title: 'Image Gallery',
+          fields: [
+            { 
+              name: 'images', 
+              type: 'array', 
+              of: [{ type: 'image', options: { hotspot: true } }],
+              title: 'Images'
+            },
+            { 
+              name: 'gridColumns', 
+              type: 'number', 
+              title: 'Grid Columns',
+              options: {
+                list: [2, 3],
+              },
+              initialValue: 2
+            },
+          ],
+        },
+      ],
+    }),
+
+    // --- Legacy Case Study Body ---
+    defineField({
+      name: 'body',
+      title: 'Legacy Body Content (Deprecated)',
+      type: 'array',
+      description: 'Please move content to Case Study Sections above.',
+      of: [
+        { type: 'block' },
+        {
+          type: 'image',
+          options: { hotspot: true },
+        },
+      ],
+    }),
+
+    // --- Features ---
+    defineField({
+      name: 'features',
+      title: 'Key Modules / Features',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', type: 'string', title: 'Feature Title' },
+            { name: 'description', type: 'text', title: 'Description', rows: 2 },
+            { name: 'iconName', type: 'string', title: 'Lucide Icon Name (e.g. Activity, Zap, Shield)' },
+          ],
+        },
+      ],
+    }),
+
+    // --- Tech Stack ---
+    defineField({
+      name: 'techStack',
+      title: 'Technology Stack',
+      type: 'object',
+      fields: [
+        { name: 'frontend', type: 'array', of: [{ type: 'string' }], title: 'Frontend Layer' },
+        { name: 'backend', type: 'array', of: [{ type: 'string' }], title: 'Backend Layer' },
+        { name: 'database', type: 'array', of: [{ type: 'string' }], title: 'Database Layer' },
+        { name: 'devops', type: 'array', of: [{ type: 'string' }], title: 'Infrastructure' },
+      ],
+    }),
+
+    // --- Metrics ---
+    defineField({
+      name: 'metrics',
+      title: 'Impact Metrics',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'label', type: 'string', title: 'Label (e.g. Performance Boost)' },
+            { name: 'numericValue', type: 'number', title: 'Numeric Value' },
+            { name: 'suffix', type: 'string', title: 'Suffix (e.g. %, ms, X)' },
+          ],
+        },
+      ],
+    }),
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'thumbnail',
+    },
+  },
+})

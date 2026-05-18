@@ -1,14 +1,12 @@
-// Site-wide constants — update these with your real info
 export const siteConfig = {
-  name: "Your Name",
-  title: "Your Name — Full-Stack Developer",
+  name: "Jeevan Jose",
+  title: "Jeevan Jose — Full-Stack Developer & Mobile Engineer",
   description:
-    "Portfolio of a full-stack developer specializing in modern web applications, clean architecture, and exceptional user experiences.",
-  url: "https://yoursite.com",
-  email: "hello@example.com",
+    "Full-stack developer and mobile engineer specializing in building scalable web apps, mobile experiences, and cloud solutions for startups and businesses.",
+  email: "hello@jeevanjose.com",
   socials: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    twitter: "https://twitter.com",
+    github: "https://github.com/jeevanjose1",
+    linkedin: "https://www.linkedin.com/in/jeevan-jose-a64838198/",
   },
 };
+

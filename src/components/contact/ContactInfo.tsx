@@ -1,129 +1,112 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Mail, MapPin, Clock, Briefcase, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Clock, Briefcase, ArrowUpRight } from "lucide-react";
+import { siteConfig } from "@/lib/constants";
+import { Reveal } from "@/components/animations/Reveal";
 
-const GithubIcon = ({ size, className }: { size: number; className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-    <path d="M9 18c-4.51 2-5-2-7-2" />
+const GithubIcon = ({ className }: { className?: string }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 50 50">
+    <path fill="currentColor" d="M17.791,46.836C18.502,46.53,19,45.823,19,45v-5.4c0-0.197,0.016-0.402,0.041-0.61C19.027,38.994,19.014,38.997,19,39 c0,0-3,0-3.6,0c-1.5,0-2.8-0.6-3.4-1.8c-0.7-1.3-1-3.5-2.8-4.7C8.9,32.3,9.1,32,9.7,32c0.6,0.1,1.9,0.9,2.7,2c0.9,1.1,1.8,2,3.4,2 c2.487,0,3.82-0.125,4.622-0.555C21.356,34.056,22.649,33,24,33v-0.025c-5.668-0.182-9.289-2.066-10.975-4.975 c-3.665,0.042-6.856,0.405-8.677,0.707c-0.058-0.327-0.108-0.656-0.151-0.987c1.797-0.296,4.843-0.647,8.345-0.714 c-0.112-0.276-0.209-0.559-0.291-0.849c-3.511-0.178-6.541-0.039-8.187,0.097c-0.02-0.332-0.047-0.663-0.051-0.999 c1.649-0.135,4.597-0.27,8.018-0.111c-0.079-0.5-0.13-1.011-0.13-1.543c0-1.7,0.6-3.5,1.7-5c-0.5-1.7-1.2-5.3,0.2-6.6 c2.7,0,4.6,1.3,5.5,2.1C21,13.4,22.9,13,25,13s4,0.4,5.6,1.1c0.9-0.8,2.8-2.1,5.5-2.1c1.5,1.4,0.7,5,0.2,6.6c1.1,1.5,1.7,3.2,1.6,5 c0,0.484-0.045,0.951-0.11,1.409c3.499-0.172,6.527-0.034,8.204,0.102c-0.002,0.337-0.033,0.666-0.051,0.999 c-1.671-0.138-4.775-0.28-8.359-0.089c-0.089,0.336-0.197,0.663-0.325,0.98c3.546,0.046,6.665,0.389,8.548,0.689 c-0.043,0.332-0.093,0.661-0.151,0.987c-1.912-0.306-5.171-0.664-8.879-0.682C35.112,30.873,31.557,32.75,26,32.969V33 c2.6,0,5,3.9,5,6.6V45c0,0.823,0.498,1.53,1.209,1.836C41.37,43.804,48,35.164,48,25C48,12.318,37.683,2,25,2S2,12.318,2,25 C2,35.164,8.63,43.804,17.791,46.836z" />
   </svg>
 );
 
-const UpworkIcon = ({ size, className }: { size: number; className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M17.6,9.1c-1.8,0-3.1,1.1-3.6,2.9L12,12l-1.5-4H7.8v7.4c0,1.5-1.2,2.7-2.7,2.7S2.4,16.9,2.4,15.4V8H0v7.4c0,2.8,2.3,5.1,5.1,5.1 s5.1-2.3,5.1-5.1v-3.7l1.3,3.7h2.5l1-2.9c0.7,1.8,2.3,3.2,4.6,3.2c3.5,0,5.4-2.5,5.4-6.5C24.9,10.6,22.1,9.1,17.6,9.1z M17.6,13.6 c-1,0-1.8-0.9-1.8-2s0.8-2,1.8-2s1.8,0.9,1.8,2S18.6,13.6,17.6,13.6z"/>
+const LinkedinIcon = ({ className }: { className?: string }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 50 50">
+    <path fill="currentColor" d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z" />
   </svg>
 );
-
-const LinkedinIcon = ({ size, className }: { size: number; className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-  </svg>
-);
-
 export default function ContactInfo() {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6 }}
-      className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8"
+    <Reveal
+      width="100%"
+      delay={0.1}
+      y={30}
+      duration={1}
     >
-      <h2 className="text-2xl font-heading font-bold text-primary mb-6">Contact Details</h2>
-      
-      <div className="space-y-6 mb-8">
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-accent shrink-0">
-            <Mail size={20} />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-gray-500 mb-1">Email</p>
-            <a href="mailto:hello@yourname.com" className="text-primary font-medium hover:text-accent transition-colors">
-              hello@yourname.com
-            </a>
-          </div>
-        </div>
-        
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-accent shrink-0">
-            <MapPin size={20} />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-gray-500 mb-1">Location</p>
-            <p className="text-primary font-medium">Vadodara, Gujarat, India</p>
-          </div>
+      <div
+        className="bg-background rounded-xl p-6 sm:p-10 lg:p-12 border border-card-border shadow-card h-full"
+
+      >
+        <h2 className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent mb-8">{"//"} Information</h2>
+
+        <div className="space-y-8 mb-16">
+          {[
+            { icon: Mail, label: "Email", value: "jeevanjose1997@gmail.com", href: "mailto:hello@jeevanjose.com" },
+            { icon: MapPin, label: "Location", value: "Kochi, Kerala, India" },
+            { icon: Clock, label: "Response", value: "Within 24 hours" },
+            { icon: Briefcase, label: "Availability", value: "Open for projects" }
+          ].map((item, i) => (
+            <Reveal
+              key={item.label}
+              width="100%"
+              delay={0.2 + i * 0.1}
+              y={10}
+            >
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 rounded-full bg-accent-10 flex items-center justify-center text-accent shrink-0 border border-accent-20">
+                  <item.icon size={22} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-1">{item.label}</p>
+                  {item.href ? (
+                    <a href={item.href} className="text-sm sm:text-lg font-heading font-extrabold text-foreground hover:text-accent transition-colors break-all sm:break-normal">
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-sm sm:text-lg font-heading font-extrabold text-foreground break-words">{item.value}</p>
+                  )}
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
 
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-accent shrink-0">
-            <Clock size={20} />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-gray-500 mb-1">Response Time</p>
-            <p className="text-primary font-medium">Within 24 hours</p>
-          </div>
+        <div className="h-px bg-border mb-10" />
+
+        <h2 className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent mb-8">{"//"} Profiles</h2>
+        <div className="grid grid-cols-1 gap-3 mb-10">
+          {[
+            { icon: LinkedinIcon, name: "LinkedIn", href: siteConfig.socials.linkedin },
+            { icon: GithubIcon, name: "GitHub", href: siteConfig.socials.github },
+          ].map((social, i) => (
+            <Reveal
+              key={social.name}
+              width="100%"
+              delay={0.6 + i * 0.1}
+              y={10}
+            >
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-5 bg-section-alt border border-card-border rounded-xl hover:border-accent hover:bg-background transition-all duration-300 group w-full"
+              >
+                <span className="flex items-center gap-4 text-sm font-extrabold uppercase tracking-[0.16em] text-foreground">
+                  <social.icon className="text-foreground group-hover:text-accent group-hover:scale-110 transition-all duration-300" />
+                  {social.name}
+                </span>
+                <ArrowUpRight size={18} className="text-muted-foreground group-hover:text-accent transition-colors" />
+              </a>
+            </Reveal>
+          ))}
         </div>
 
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-accent shrink-0">
-            <Briefcase size={20} />
+        <Reveal delay={0.9} y={20} width="100%">
+          <div className="bg-primary w-full rounded-xl p-8 text-background relative overflow-hidden"  >
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-6">
+
+                <span className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-background">Live Availability</span>
+              </div>
+              <p className="text-2xl font-heading font-extrabold mb-2">I&apos;m Online.</p>
+              <p className="text-xs text-background-60 font-medium tracking-wide">
+                Mon–Fri 6PM–10PM IST<br />
+                Weekends Available
+              </p>
+            </div>
           </div>
-          <div>
-            <p className="text-sm font-semibold text-gray-500 mb-1">Status</p>
-            <p className="text-primary font-medium">Open to freelance projects</p>
-          </div>
-        </div>
+        </Reveal>
       </div>
-
-      <div className="border-t border-gray-100 my-8" />
-
-      <h2 className="text-xl font-heading font-bold text-primary mb-6">Find Me On</h2>
-      <div className="grid grid-cols-2 gap-4 mb-8">
-        <a href="#" className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-accent hover:text-accent text-gray-700 transition-colors group">
-          <span className="flex items-center gap-2 text-sm font-semibold">
-            <UpworkIcon size={16} className="text-green-600 group-hover:text-accent" />
-            Upwork
-          </span>
-          <ExternalLink size={14} className="text-gray-400 group-hover:text-accent" />
-        </a>
-        <a href="#" className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-accent hover:text-accent text-gray-700 transition-colors group">
-          <span className="flex items-center gap-2 text-sm font-semibold">
-            <LinkedinIcon size={16} className="text-blue-700 group-hover:text-accent" />
-            LinkedIn
-          </span>
-          <ExternalLink size={14} className="text-gray-400 group-hover:text-accent" />
-        </a>
-        <a href="#" className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-accent hover:text-accent text-gray-700 transition-colors group">
-          <span className="flex items-center gap-2 text-sm font-semibold">
-            <GithubIcon size={16} className="text-gray-900 group-hover:text-accent" />
-            GitHub
-          </span>
-          <ExternalLink size={14} className="text-gray-400 group-hover:text-accent" />
-        </a>
-        <a href="#" className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-accent hover:text-accent text-gray-700 transition-colors group">
-          <span className="flex items-center gap-2 text-sm font-semibold">
-            <span className="w-4 h-4 rounded-full bg-black text-white flex items-center justify-center text-[10px] group-hover:bg-accent">C</span>
-            Contra
-          </span>
-          <ExternalLink size={14} className="text-gray-400 group-hover:text-accent" />
-        </a>
-      </div>
-
-      <div className="border-t border-gray-100 my-8" />
-
-      <h2 className="text-xl font-heading font-bold text-primary mb-4">Working Hours</h2>
-      <p className="text-gray-600 text-sm leading-relaxed mb-6">
-        Mon–Fri 6PM–10PM IST<br />
-        + Weekends fully available
-      </p>
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-50 rounded-full border border-green-100">
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-        </span>
-        <span className="text-xs font-bold text-green-700 uppercase tracking-wide">Currently Available</span>
-      </div>
-    </motion.div>
+    </Reveal>
   );
 }

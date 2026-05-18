@@ -2,6 +2,9 @@ import { notFound } from "next/navigation";
 import { projectsData } from "@/lib/data";
 import ProjectDetails from "@/components/works/ProjectDetails";
 import type { Metadata } from "next";
+import { client } from "@/sanity/lib/client";
+import { projectBySlugQuery, projectsQuery, siteSettingsQuery } from "@/sanity/lib/queries";
+import { SanityProject } from "@/sanity/types";
 
 interface PageProps {
   params: {
@@ -9,16 +12,27 @@ interface PageProps {
   };
 }
 
+export const revalidate = 300;
+
 // Generate static routes at build time for all projects
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await client.fetch(projectsQuery);
+
+  if (projects && projects.length > 0) {
+    return projects.map((project: SanityProject) => ({
+      slug: project.slug,
+    }));
+  }
+
   return projectsData.map((project) => ({
     slug: project.slug,
   }));
 }
 
 // Generate dynamic metadata based on the project
-export function generateMetadata({ params }: PageProps): Metadata {
-  const project = projectsData.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const project = await client.fetch(projectBySlugQuery, { slug: params.slug })
+    || projectsData.find((p) => p.slug === params.slug);
 
   if (!project) {
     return {
@@ -27,17 +41,27 @@ export function generateMetadata({ params }: PageProps): Metadata {
   }
 
   return {
-    title: `${project.title} — Case Study | Your Name`,
-    description: project.longDescription,
+    title: `${project.title} — Case Study | Jeevan Jose`,
+    description: project.description || project.longDescription,
   };
 }
 
-export default function ProjectPage({ params }: PageProps) {
-  const project = projectsData.find((p) => p.slug === params.slug);
+export default async function ProjectPage({ params }: PageProps) {
+  const [project, siteSettings, allProjects] = await Promise.all([
+    client.fetch(projectBySlugQuery, { slug: params.slug })
+    || projectsData.find((p) => p.slug === params.slug),
+    client.fetch(siteSettingsQuery),
+    client.fetch(projectsQuery),
+  ]);
 
   if (!project) {
     notFound();
   }
 
-  return <ProjectDetails project={project} />;
+  const relatedProjects = allProjects
+  
+    ?.filter((p: any) => p.slug !== params.slug)
+    ?.slice(0, 3) || [];
+
+  return <ProjectDetails project={project} siteSettings={siteSettings} relatedProjects={relatedProjects} />;
 }

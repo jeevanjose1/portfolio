@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 
 interface AccordionProps {
   question: string;
@@ -13,19 +13,19 @@ export default function Accordion({ question, answer }: AccordionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border border-gray-200 rounded-xl bg-white overflow-hidden mb-4 last:mb-0 transition-shadow duration-200 hover:shadow-sm">
+    <div className={`rounded-lg bg-background border mb-4 last:mb-0 transition-all duration-500 overflow-hidden ${isOpen ? 'border-accent-30 shadow-2xl shadow-black/5' : 'border-border hover:border-accent-20'}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
+        className="w-full flex items-center justify-between p-8 text-left focus:outline-none group"
       >
-        <h3 className="text-base font-semibold text-primary">{question}</h3>
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="flex-shrink-0 ml-4 w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-accent"
+        <h3 className={`text-xl font-heading font-extrabold tracking-tight transition-colors duration-300 ${isOpen ? 'text-accent' : 'text-foreground'}`}>
+          {question}
+        </h3>
+        <div
+          className={`flex-shrink-0 ml-6 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-accent text-background rotate-180' : 'bg-section-alt text-muted-foreground group-hover:bg-accent-10 group-hover:text-accent'}`}
         >
-          <ChevronDown size={18} />
-        </motion.div>
+          {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+        </div>
       </button>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -35,12 +35,16 @@ export default function Accordion({ question, answer }: AccordionProps) {
             animate="open"
             exit="collapsed"
             variants={{
-              open: { opacity: 1, height: "auto" },
-              collapsed: { opacity: 0, height: 0 },
+              open: { opacity: 1, height: "auto", scale: 1 },
+              collapsed: { opacity: 0, height: 0, scale: 0.98 },
             }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{
+              height: { type: "spring", damping: 20, stiffness: 100 },
+              opacity: { duration: 0.2 },
+              scale: { type: "spring", damping: 20, stiffness: 100 }
+            }}
           >
-            <div className="p-5 pt-0 text-gray-500 text-sm leading-relaxed border-t border-gray-100">
+            <div className="px-8 pb-8 text-muted-foreground font-body leading-relaxed border-t border-border pt-6 mx-8">
               {answer}
             </div>
           </motion.div>

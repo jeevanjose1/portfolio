@@ -1,41 +1,44 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Accordion from "@/components/Accordion";
 import { faqData } from "@/lib/data";
+import { SanityFAQ } from "@/sanity/types";
+import { Reveal } from "@/components/animations/Reveal";
 
-export default function FAQ() {
+export default function FAQ({ faqs }: { faqs: SanityFAQ[] }) {
+  const displayData = faqs.length > 0 ? faqs : faqData;
+
   return (
-    <section className="bg-section-alt">
-      <div className="section-container max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-primary">
-            Common Questions
-          </h2>
-          <div className="w-12 h-1 bg-accent rounded-full mx-auto mt-4" />
-        </motion.div>
+    <section className="bg-section-alt py-12 transition-colors duration-300">
+      <div className="section-container max-w-5xl">
+        <div className="mb-20">
+          <Reveal delay={0.1}>
+            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
+              {"//"} Questions
+            </p>
+          </Reveal>
+          <Reveal delay={0.2} blur>
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
+              Common FAQ.
+            </h2>
+          </Reveal>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="w-full"
-        >
-          {faqData.map((faq) => (
-            <Accordion
-              key={faq.question}
-              question={faq.question}
-              answer={faq.answer}
-            />
+        <div className="w-full space-y-4">
+          {displayData.map((faq, i) => (
+            <Reveal
+              key={i}
+              width="100%"
+              delay={i * 0.1}
+              y={20}
+            >
+              <Accordion
+                question={faq.question}
+                answer={faq.answer}
+              />
+            </Reveal>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -6,23 +6,34 @@ import EducationCerts from "@/components/about/EducationCerts";
 import BeyondCode from "@/components/about/BeyondCode";
 import CTABanner from "@/components/home/CTABanner";
 import type { Metadata } from "next";
+import { client } from "@/sanity/lib/client";
+import { experienceQuery, pageAboutQuery, siteSettingsQuery } from "@/sanity/lib/queries";
+import { SanityExperience, SanityPageAbout, SanitySiteSettings } from "@/sanity/types";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "About — Your Name | Full-Stack Developer Portfolio",
+  title: "About — Jeevan Jose | Full-Stack Developer Portfolio",
   description:
-    "Learn about my journey, technical skills, work experience, and what drives me as a full-stack developer and mobile engineer based in Vadodara, India.",
+    "Learn about my journey, technical skills, work experience, and what drives me as a full-stack developer and mobile engineer based in Kerala, India.",
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const [experiences, pageAbout, siteSettings] = await Promise.all([
+    client.fetch<SanityExperience[]>(experienceQuery),
+    client.fetch<SanityPageAbout>(pageAboutQuery),
+    client.fetch<SanitySiteSettings>(siteSettingsQuery),
+  ]);
+
   return (
     <>
-      <AboutHero />
-      <MyStory />
-      <SkillsGrid />
-      <ExperienceCards />
-      <EducationCerts />
-      <BeyondCode />
-      <CTABanner />
+      <AboutHero data={pageAbout} profileImage={siteSettings?.profileImage} />
+      <MyStory storyText={pageAbout?.myStoryText} timeline={pageAbout?.timeline} profileImage={siteSettings?.profileImage} />
+      <SkillsGrid skillGroups={pageAbout?.skillGroups} />
+      <ExperienceCards experiences={experiences} workHistory={(pageAbout)?.workHistory} />
+      <EducationCerts education={pageAbout?.education} certifications={pageAbout?.certifications} />
+      <BeyondCode items={pageAbout?.beyondCode} />
+      <CTABanner data={siteSettings?.ctaBanner} />
     </>
   );
 }

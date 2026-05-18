@@ -1,74 +1,169 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence, useSpring, useMotionValue } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { featuredWorksData } from "@/lib/data";
+import { SanityProject } from "@/sanity/types";
+import { urlForImage } from "@/sanity/lib/image";
+import { Reveal } from "@/components/animations/Reveal";
 
-export default function FeaturedWorks() {
+export default function FeaturedWorks({ projects }: { projects: SanityProject[] }) {
+  const [activeProject, setActiveProject] = useState<number | null>(null);
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springConfig = { stiffness: 100, damping: 20, mass: 0.6 };
+  const floatX = useSpring(mouseX, springConfig);
+  const floatY = useSpring(mouseY, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    mouseX.set(e.clientX + 24);
+    mouseY.set(e.clientY - 130);
+  };
+
+  const displayData = projects.length > 0 ? projects : featuredWorksData;
+
   return (
-    <section id="works" className="bg-section-alt">
-      <div className="section-container">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.5 }} className="text-center mb-14">
-          <p className="text-accent text-sm font-medium uppercase tracking-wide mb-2">Portfolio</p>
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-primary">Recent Projects</h2>
-          <div className="w-12 h-1 bg-accent rounded-full mx-auto mt-4" />
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {featuredWorksData.map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: i * 0.15, duration: 0.45 }}
-              className="card overflow-hidden group"
-            >
-              {/* Image Placeholder */}
-              <div className="relative h-52 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden">
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-lg bg-white/80 flex items-center justify-center mx-auto mb-3">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-                      <circle cx="9" cy="9" r="2" />
-                      <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-                    </svg>
-                  </div>
-                  <p className="text-sm font-medium text-gray-400">{project.title}</p>
-                </div>
-                <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-lg font-heading font-semibold text-primary mb-2">{project.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-4">{project.description}</p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full bg-blue-50 text-accent text-xs font-medium">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <Link href={project.linkHref} className="inline-flex items-center gap-1.5 text-accent text-sm font-medium hover:gap-2.5 transition-all duration-200">
-                  View Project <ArrowRight size={14} />
-                </Link>
-              </div>
-            </motion.div>
-          ))}
+    <section
+      id="works"
+      className="bg-section-alt transition-colors duration-300 relative overflow-hidden"
+      onMouseMove={handleMouseMove}
+    >
+      <div className="section-container relative z-10">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-5">
+          <div>
+            <Reveal delay={0.1}>
+              <p className="section-label mb-4">{"// "} Recent Artifacts</p>
+            </Reveal>
+            <Reveal delay={0.2} blur>
+              <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground leading-tight">
+                Featured Projects.
+              </h2>
+            </Reveal>
+          </div>
+          <Reveal delay={0.3} x={20}>
+            <Link href="/works" className="group btn-secondary gap-2 shrink-0">
+              All Case Studies
+              <ArrowUpRight size={17} className="group-hover:rotate-45 transition-transform" />
+            </Link>
+          </Reveal>
         </div>
 
-        {/* View All Link */}
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3, duration: 0.4 }} className="text-center mt-12">
-          <Link href="/works" className="inline-flex items-center gap-2 text-accent font-medium hover:gap-3 transition-all duration-200">
-            View All Projects <ArrowRight size={16} />
-          </Link>
-        </motion.div>
+        {/* Project list */}
+        <div className="flex flex-col">
+          {displayData.map((project, i) => {
+            const isSanity = "_id" in project;
+            const title = project.title;
+            const slug = isSanity
+              ? project.slug
+              : (project as { linkHref: string }).linkHref.split("/").pop();
+            const tags = isSanity
+              ? (project as SanityProject).categories
+              : (project as { tags: string[] }).tags;
+            const description = project.description;
+
+            return (
+              <Reveal
+                key={title}
+                width="100%"
+                delay={i * 0.1}
+                y={30}
+                className="relative"
+              >
+                <div
+                  onMouseEnter={() => setActiveProject(i)}
+                  onMouseLeave={() => setActiveProject(null)}
+                >
+                  <Link
+                    href={`/works/${slug}`}
+                    className="group flex flex-col md:flex-row md:items-center justify-between py-9 gap-8 border-t border-border transition-all duration-300 hover:px-4 hover:bg-background/70"
+                  >
+                    <div className="flex-1">
+                      <div className="flex items-center gap-5 mb-5">
+                        <span className="text-[11px] font-bold text-accent opacity-45 tabular-nums">
+                          0{i + 1}
+                        </span>
+                        <div className="flex gap-2">
+                          {tags.slice(0, 2).map((tag: string) => (
+                            <span
+                              key={tag}
+                              className="text-[9px] font-bold uppercase tracking-[0.12em] text-muted-foreground border border-border px-2.5 py-1 rounded-md"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <h3 className="text-xl sm:text-3xl lg:text-3xl sm:text-4xl font-heading font-extrabold text-foreground group-hover:text-accent transition-all duration-300">
+                        {title}
+                      </h3>
+                    </div>
+
+                    <div className="flex items-center gap-8">
+                      <p className="hidden lg:line-clamp-2 text-sm text-muted-foreground max-w-xs text-right leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        {description}
+                      </p>
+                      <div className="w-14 h-14 rounded-lg border border-border bg-section-alt flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-background group-hover:border-accent transition-all duration-300 rotate-[-45deg] group-hover:rotate-0 shrink-0">
+                        <ArrowUpRight size={22} />
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </Reveal>
+            );
+          })}
+          <div className="h-px bg-border/50 w-full" />
+        </div>
       </div>
+
+      {/* Floating cursor preview */}
+      <AnimatePresence>
+        {activeProject !== null && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.82, rotate: -4 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0.82, rotate: 4 }}
+            style={{
+              x: floatX,
+              y: floatY,
+              position: "fixed",
+              top: 0,
+              left: 0,
+              pointerEvents: "none",
+              zIndex: 1000,
+
+            }}
+            className="hidden md:block shadow-xl w-[340px] h-[210px] rounded-xl overflow-hidden border border-accent-15 bg-section-alt"
+          >
+            <motion.div
+              key={activeProject}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.25 }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src={
+                  "_id" in displayData[activeProject]
+                    ? (displayData[activeProject] as SanityProject).thumbnail?.asset
+                      ? urlForImage((displayData[activeProject] as SanityProject).thumbnail!).url()
+                      : "/images/project-1.svg"
+                    : (displayData[activeProject] as { image: string }).image || "/images/project-1.svg"
+                }
+                alt={displayData[activeProject].title}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

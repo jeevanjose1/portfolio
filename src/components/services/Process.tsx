@@ -1,44 +1,46 @@
 "use client";
 
-import { motion } from "framer-motion";
 import ProcessStep from "@/components/ProcessStep";
-import { processData } from "@/lib/data";
+import { processData as fallbackProcessData } from "@/lib/data";
+import type { ProcessStepItem } from "@/lib/data";
+import { Reveal } from "@/components/animations/Reveal";
 
-export default function Process() {
+export default function Process({ steps }: { steps?: ProcessStepItem[] }) {
+  const displaySteps = steps || fallbackProcessData;
   return (
-    <section className="bg-white">
+    <section className="bg-section-alt transition-colors duration-300">
       <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-primary">
-            How I Work
-          </h2>
-          <div className="w-12 h-1 bg-accent rounded-full mx-auto mt-4" />
-        </motion.div>
+        <div className="mb-24">
+          <Reveal delay={0.1}>
+            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
+              {"//"} Strategy
+            </p>
+          </Reveal>
+          <Reveal delay={0.2} blur>
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
+              Execution Flow.
+            </h2>
+          </Reveal>
+        </div>
 
-        <div className="flex flex-col md:flex-row relative max-w-5xl mx-auto">
-          {processData.map((step, i) => (
-            <motion.div
+        <div className="flex flex-col md:flex-row relative max-w-6xl mx-auto items-start">
+          {displaySteps.map((step, i) => (
+            <Reveal
               key={step.title}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: i * 0.2, duration: 0.5 }}
-              className="flex-1 flex flex-col items-center"
+              width="100%"
+              delay={i * 0.2}
+              y={30}
+              blur
+              className="flex-1"
             >
               <ProcessStep
                 number={step.number}
                 iconName={step.iconName}
                 title={step.title}
                 description={step.description}
-                isLast={i === processData.length - 1}
+                isLast={i === displaySteps.length - 1}
               />
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

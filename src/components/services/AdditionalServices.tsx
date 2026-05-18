@@ -1,52 +1,62 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ShoppingCart, Network, BarChart3, Code2 } from "lucide-react";
+import { ShoppingCart, Network, BarChart3, Code2, Shield, Zap, Search, Globe, Smartphone, Monitor } from "lucide-react";
 import { additionalServicesData } from "@/lib/data";
+import { SanityService } from "@/sanity/types";
+import { Reveal } from "@/components/animations/Reveal";
 
-const iconMap = { ShoppingCart, Network, BarChart3, Code2 } as const;
+const iconMap: Record<string, React.ElementType> = {
+  ShoppingCart, Network, BarChart3, Code2, Shield, Zap, Search, Globe, Smartphone, Monitor
+};
 
-export default function AdditionalServices() {
+function AdditionalServiceCard({ service, index }: { service: SanityService | { title: string; iconName: string; description: string }; index: number }) {
+  const Icon = iconMap[service.iconName] || Search;
+
   return (
-    <section className="bg-section-alt">
-      <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-primary">
-            Also Available
-          </h2>
-          <div className="w-12 h-1 bg-accent rounded-full mx-auto mt-4" />
-        </motion.div>
+    <Reveal
+      width="100%"
+      delay={index * 0.1}
+      y={30}
+      blur
+      className="h-full"
+    >
+      <div
+        className="bg-section-alt p-8 sm:p-10 rounded-xl border border-card-border group hover:border-accent-30 hover:-translate-y-0.5 transition-all duration-500 h-full flex flex-col"
+         
+      >
+        <div className="w-12 h-12 rounded-xl bg-background border border-card-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300 shrink-0">
+          <Icon size={24} className="text-accent group-hover:text-background transition-colors" />
+        </div>
+        <h3 className="text-lg font-heading font-extrabold text-foreground mb-3 uppercase tracking-tight">{service.title}</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed font-body italic flex-grow">
+          &ldquo;{service.description}&rdquo;
+        </p>
+      </div>
+    </Reveal>
+  );
+}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {additionalServicesData.map((service, i) => {
-            const Icon = iconMap[service.iconName];
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ delay: i * 0.1, duration: 0.45 }}
-                className="card p-6 flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300"
-              >
-                <div className="w-12 h-12 rounded-lg bg-white border border-gray-100 flex items-center justify-center shadow-sm mb-4 group-hover:border-blue-200 transition-colors duration-300">
-                  <Icon size={24} className="text-accent" />
-                </div>
-                <h3 className="text-base font-heading font-semibold text-primary mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {service.description}
-                </p>
-              </motion.div>
-            );
-          })}
+export default function AdditionalServices({ services, additionalItems }: { services: SanityService[], additionalItems?: { title: string; iconName: string; description: string }[] }) {
+  const displayData = additionalItems && additionalItems.length > 0 ? additionalItems : (services.length > 0 ? services : additionalServicesData);
+
+  return (
+    <section className="bg-background relative z-20 transition-colors duration-300">
+      <div className="section-container">
+        <div className="mb-14">
+          <Reveal delay={0.1}>
+            <p className="section-label mb-4">{"// "} More Capabilities</p>
+          </Reveal>
+          <Reveal delay={0.2} blur>
+            <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-foreground">
+              Additional Services.
+            </h2>
+          </Reveal>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {displayData.map((service, i) => (
+            <AdditionalServiceCard key={service.title} service={service} index={i} />
+          ))}
         </div>
       </div>
     </section>

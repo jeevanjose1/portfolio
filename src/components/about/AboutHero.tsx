@@ -1,139 +1,143 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Download } from "lucide-react";
-import { aboutHeroData } from "@/lib/data";
+import { ArrowRight, Award, Download, MapPin, Sparkles } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Reveal } from "@/components/animations/Reveal";
+import { ParallaxImage } from "@/components/animations/ParallaxImage";
+import { SanityPageAbout } from "@/sanity/types";
+import type { Image as SanityImage } from "sanity";
+import { urlForImage } from "@/sanity/lib/image";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.12, duration: 0.5, ease: "easeOut" as const },
-  }),
+const fallbackAboutHeroData = {
+  badge: "About Me",
+  heading: "Passionate Developer. Problem Solver. Builder.",
+  paragraphs: [
+    "With over 4 years of hands-on experience in software development, I specialize in building full-stack web applications, cross-platform mobile apps, and scalable cloud solutions.",
+  ],
+  stats: [
+    { value: "4+", label: "Years" },
+    { value: "20+", label: "Projects" },
+    { value: "5+", label: "Industries" },
+  ],
 };
 
-export default function AboutHero() {
-  const headingLines = aboutHeroData.heading.split("\n");
+export default function AboutHero({ data, profileImage }: { data?: SanityPageAbout, profileImage?: SanityImage }) {
+  const badge = data?.heroBadge || fallbackAboutHeroData.badge;
+  const heading = data?.heroHeading || fallbackAboutHeroData.heading;
+  const paragraphs = data?.heroParagraphs || fallbackAboutHeroData.paragraphs;
+  const stats = data?.heroStats || fallbackAboutHeroData.stats;
+  const imageUrl = profileImage ? urlForImage(profileImage).url() : "/images/headshot.jpeg";
 
   return (
-    <section className="bg-section-alt">
-      <div className="section-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* ─── Photo Placeholder ─── */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative mx-auto lg:mx-0 max-w-sm w-full"
+    <section className="min-h-[100svh] flex items-center pb-12 transition-colors duration-300">
+      <div className="section-container w-full">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 auto-rows-auto">
+
+          {/* Text card */}
+          <Reveal
+            width="100%"
+            className="md:col-span-7"
+            y={60}
+            duration={1}
           >
-            <div className="aspect-[3/4] rounded-2xl shadow-lg bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden flex items-center justify-center relative">
-              {/* Abstract developer illustration */}
-              <svg viewBox="0 0 300 400" fill="none" className="w-full h-full absolute inset-0">
-                <rect width="300" height="400" fill="url(#aboutGrad)" />
-                <defs>
-                  <linearGradient id="aboutGrad" x1="0" y1="0" x2="300" y2="400">
-                    <stop offset="0%" stopColor="#E0E7FF" />
-                    <stop offset="100%" stopColor="#DBEAFE" />
-                  </linearGradient>
-                </defs>
-                {/* Abstract shapes */}
-                <circle cx="150" cy="140" r="60" fill="#BFDBFE" opacity="0.6" />
-                <circle cx="150" cy="140" r="40" fill="#93C5FD" opacity="0.4" />
-                <rect x="100" y="210" width="100" height="120" rx="12" fill="#BFDBFE" opacity="0.5" />
-                <rect x="110" y="230" width="80" height="8" rx="4" fill="#2563EB" opacity="0.3" />
-                <rect x="110" y="248" width="60" height="8" rx="4" fill="#2563EB" opacity="0.2" />
-                <rect x="110" y="266" width="70" height="8" rx="4" fill="#2563EB" opacity="0.25" />
-                <rect x="110" y="284" width="40" height="8" rx="4" fill="#2563EB" opacity="0.15" />
-                {/* Code brackets */}
-                <path d="M70 180L50 200L70 220" stroke="#2563EB" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" opacity="0.3" />
-                <path d="M230 180L250 200L230 220" stroke="#2563EB" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" opacity="0.3" />
-              </svg>
-              <div className="relative z-10 text-center">
-                <div className="w-20 h-20 rounded-full bg-white/60 mx-auto flex items-center justify-center mb-3">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+            <div
+              className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
+
+            >
+              <div>
+                <Reveal delay={0.2}>
+                  <span className="hero-badge">
+                    <Sparkles size={13} />
+                    {badge}
+                  </span>
+                </Reveal>
+                <Reveal delay={0.3} y={30} blur>
+                  <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-heading font-extrabold text-foreground leading-[1.08] mb-5 whitespace-pre-line">
+                    {heading}
+                  </h1>
+                </Reveal>
+                <Reveal delay={0.4} y={20}>
+                  <p className="text-muted-foreground text-base sm:text-lg max-w-xl leading-relaxed">
+                    {paragraphs[0]}
+                  </p>
+                </Reveal>
+              </div>
+              <Reveal delay={0.5} y={20}>
+                <div className="mt-10 flex flex-wrap items-center gap-4">
+                  <a href="/resume.pdf" download className="btn-primary gap-2.5">
+                    Download Resume <Download size={15} />
+                  </a>
+                  <Link href="/contact" className="btn-secondary gap-2.5">
+                    Start a Conversation <ArrowRight size={15} />
+                  </Link>
                 </div>
-                <p className="text-sm font-medium text-blue-600/60">Your Photo</p>
+              </Reveal>
+            </div>
+          </Reveal>
+
+          {/* Portrait card */}
+          <Reveal
+            width="100%"
+            className="md:col-span-5"
+            delay={0.3}
+            duration={1.2}
+            scale={1.05}
+          >
+            <div
+              className="bg-section-alt rounded-xl overflow-hidden relative group min-h-[500px] border border-card-border shadow-card h-full"
+
+            >
+              <ParallaxImage offset={30} className="w-full h-full">
+                <Image
+                  src={imageUrl} alt="Jeevan Jose portrait" fill
+                  sizes="(min-width: 768px) 420px, 100vw" priority
+                  className="object-cover grayscale group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-700"
+                />
+              </ParallaxImage>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
+              <div className="absolute top-6 left-6">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/25 px-4 py-2 text-white backdrop-blur-md">
+                  <MapPin size={13} />
+                  <span className="text-[10px] font-extrabold uppercase tracking-[0.16em]">Kerala, India</span>
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
+                <Reveal delay={0.8} y={20}>
+                  <p className="text-white/50 text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">Working Style</p>
+                  <p className="text-white text-2xl font-heading font-extrabold leading-tight max-w-xs">
+                    Calm execution, clean systems, thoughtful product decisions.
+                  </p>
+                </Reveal>
               </div>
             </div>
-            {/* Decorative element */}
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-accent/10 -z-10" />
-            <div className="absolute -top-4 -left-4 w-16 h-16 rounded-xl bg-blue-100/50 -z-10" />
-          </motion.div>
+          </Reveal>
 
-          {/* ─── Content ─── */}
-          <motion.div initial="hidden" animate="visible">
-            {/* Badge */}
-            <motion.div custom={0} variants={fadeUp} className="mb-5">
-              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#EFF6FF] text-accent text-sm font-medium">
-                {aboutHeroData.badge}
-              </span>
-            </motion.div>
-
-            {/* Heading */}
-            <motion.h1
-              custom={1}
-              variants={fadeUp}
-              className="text-3xl sm:text-4xl lg:text-[2.75rem] font-heading font-bold text-gray-900 leading-tight mb-6"
-            >
-              {headingLines.map((line, i) => (
-                <span key={i}>
-                  {line}
-                  {i < headingLines.length - 1 && <br />}
-                </span>
-              ))}
-            </motion.h1>
-
-            {/* Paragraphs */}
-            {aboutHeroData.paragraphs.map((para, i) => (
-              <motion.p
-                key={i}
-                custom={2 + i}
-                variants={fadeUp}
-                className="text-gray-500 leading-relaxed mb-4"
+          {/* Stats row */}
+          <div className="md:col-span-12 grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {stats.slice(0, 3).map((stat: { label: string; value: string }, i: number) => (
+              <Reveal
+                key={stat.label}
+                width="100%"
+                delay={0.6 + i * 0.1}
+                y={30}
+                blur
               >
-                {para}
-              </motion.p>
-            ))}
+                <div
+                  className="bg-section-alt rounded-xl p-6 sm:p-8 border border-card-border shadow-card flex items-center justify-between gap-4 h-full"
 
-            {/* Stat Row */}
-            <motion.div
-              custom={4}
-              variants={fadeUp}
-              className="flex items-center gap-6 mt-6 mb-8"
-            >
-              {aboutHeroData.stats.map((stat, i) => (
-                <div key={stat.label} className="flex items-center gap-6">
-                  <div className="text-center">
-                    <p className="text-2xl font-heading font-bold text-accent">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-gray-400 font-medium mt-0.5">
-                      {stat.label}
-                    </p>
+                >
+                  <div>
+                    <p className="text-2xl sm:text-3xl sm:text-4xl font-heading font-extrabold text-foreground">{stat.value}</p>
+                    <p className="text-sm text-muted-foreground mt-1.5 font-medium">{stat.label}</p>
                   </div>
-                  {i < aboutHeroData.stats.length - 1 && (
-                    <div className="w-px h-10 bg-gray-200" />
-                  )}
+                  <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center text-accent shrink-0">
+                    <Award size={20} />
+                  </div>
                 </div>
-              ))}
-            </motion.div>
-
-            {/* CTA */}
-            <motion.div custom={5} variants={fadeUp}>
-              <a
-                href="/cv.pdf"
-                download
-                className="btn-primary inline-flex items-center gap-2"
-              >
-                Download CV
-                <Download size={16} />
-              </a>
-            </motion.div>
-          </motion.div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,83 +1,67 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Layout, Server, Smartphone, Cloud } from "lucide-react";
-import { skillGroups } from "@/lib/data";
+import { skillGroups as fallbackSkillGroups } from "@/lib/data";
 import type { SkillGroup, SkillItem } from "@/lib/data";
-
-const iconMap = { Layout, Server, Smartphone, Cloud } as const;
-
-function SkillBar({ skill, inView }: { skill: SkillItem; inView: boolean }) {
-  return (
-    <div className="mb-4 last:mb-0">
-      <div className="flex justify-between items-center mb-1.5">
-        <span className="text-sm font-medium text-gray-700">{skill.name}</span>
-        <span className="text-xs font-semibold text-accent">{skill.proficiency}%</span>
-      </div>
-      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-        <motion.div
-          className="h-full bg-gradient-to-r from-blue-500 to-accent rounded-full"
-          initial={{ width: 0 }}
-          animate={inView ? { width: `${skill.proficiency}%` } : { width: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-        />
-      </div>
-    </div>
-  );
-}
+import * as LucideIcons from "lucide-react";
+import { Reveal } from "@/components/animations/Reveal";
 
 function SkillGroupCard({ group, index }: { group: SkillGroup; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const Icon = iconMap[group.iconName];
+  // @ts-expect-error - indexing LucideIcons with a string
+  const Icon = LucideIcons[group.iconName] || LucideIcons.Layout;
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ delay: index * 0.1, duration: 0.45 }}
-      className="card p-7"
+    <Reveal
+      width="100%"
+      delay={index * 0.1}
+      y={40}
+      blur
+      className="h-full!"
     >
-      <div className="flex items-center gap-3 mb-5">
-        <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
-          <Icon size={20} className="text-accent" />
+      <div
+        className="bg-background rounded-xl p-6 sm:p-10 border border-card-border shadow-card hover:border-accent-20 hover:-translate-y-0.5 transition-all duration-500 h-full flex flex-col"
+         
+      >
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-12 h-12 rounded-xl bg-accent-10 flex items-center justify-center border border-accent-15">
+            <Icon size={22} className="text-accent" />
+          </div>
+          <h3 className="text-xl font-heading font-extrabold text-foreground uppercase tracking-tight">
+            {group.title}
+          </h3>
         </div>
-        <h3 className="text-lg font-heading font-semibold text-primary">
-          {group.title}
-        </h3>
+        <div className="flex flex-wrap gap-2.5">
+          {group.skills.map((skill: SkillItem) => (
+            <div
+              key={skill.name}
+              className="px-4 py-2 bg-surface-2 border border-border rounded-full group/skill hover:border-accent-30 hover:bg-accent-5 transition-all duration-200 cursor-default"
+            >
+              <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-muted-foreground group-hover/skill:text-accent transition-colors">
+                {skill.name}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
-      {group.skills.map((skill) => (
-        <SkillBar key={skill.name} skill={skill} inView={inView} />
-      ))}
-    </motion.div>
+    </Reveal>
   );
 }
 
-export default function SkillsGrid() {
+export default function SkillsGrid({ skillGroups }: { skillGroups?: SkillGroup[] }) {
+  const displayGroups = skillGroups || fallbackSkillGroups;
   return (
-    <section className="bg-section-alt">
+    <section className="bg-section-alt transition-colors duration-300">
       <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
-          <p className="text-accent text-sm font-medium uppercase tracking-wide mb-2">
-            Expertise
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-primary">
-            Technical Skills
-          </h2>
-          <div className="w-12 h-1 bg-accent rounded-full mx-auto mt-4" />
-        </motion.div>
+        <div className="mb-14">
+          <Reveal delay={0.1}>
+            <p className="section-label mb-4">{"// "} Expertise</p>
+          </Reveal>
+          <Reveal delay={0.2} blur>
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">Technical Arsenal.</h2>
+          </Reveal>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {skillGroups.map((group, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+          {displayGroups.map((group, i) => (
             <SkillGroupCard key={group.title} group={group} index={i} />
           ))}
         </div>

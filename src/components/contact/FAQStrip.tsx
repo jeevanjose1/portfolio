@@ -1,38 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { HelpCircle } from "lucide-react";
 
 export default function FAQStrip() {
   return (
-    <section className="bg-section-alt py-16 lg:py-24 border-t border-gray-100">
+    <section className="bg-background border-t border-border transition-colors duration-300">
       <div className="section-container">
+        <div className="mb-16">
+          <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">{"//"} Quick Answers</p>
+          <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-foreground">Common Inquiries.</h2>
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h3 className="font-heading font-bold text-primary mb-2 text-lg">International clients?</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Yes, I work with clients worldwide via Upwork, Contra, and direct engagement. Time zones are not an issue.
-            </p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h3 className="font-heading font-bold text-primary mb-2 text-lg">Response time?</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Within 24 hours on weekdays, and 48 hours on weekends. Urgent matters are prioritized.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h3 className="font-heading font-bold text-primary mb-2 text-lg">Sign NDAs?</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Absolutely — I am happy to sign an NDA before we start any discussion about your intellectual property.
-            </p>
-          </div>
+          {[{ q: "International clients?", a: "Yes, I work with clients worldwide via Upwork, Contra, and direct engagement. Time zones are not an issue." },
+          { q: "Response time?", a: "Within 24 hours on weekdays, and 48 hours on weekends. Urgent matters are prioritized." },
+          { q: "Sign NDAs?", a: "Absolutely — I am happy to sign an NDA before we start any discussion about your intellectual property." }
+          ].map((item) => (
+            <div key={item.q} className="bg-section-alt p-6 sm:p-10 rounded-lg border border-border hover:border-accent-20 transition-colors group">
+              <div className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-background transition-colors">
+                <HelpCircle size={18} className="text-accent group-hover:text-background transition-colors" />
+              </div>
+              <h3 className="font-heading font-extrabold text-foreground mb-4 text-xl tracking-tight">{item.q}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed font-body">
+                {item.a}
+              </p>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

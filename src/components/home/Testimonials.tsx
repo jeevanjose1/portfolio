@@ -1,54 +1,72 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { testimonialsData } from "@/lib/data";
+import { SanityTestimonial } from "@/sanity/types";
+import { Reveal } from "@/components/animations/Reveal";
 
-export default function Testimonials() {
+export default function Testimonials({ testimonials }: { testimonials: SanityTestimonial[] }) {
+  const displayData =
+    testimonials.length > 0
+      ? testimonials
+      : testimonialsData.map((t) => ({
+          _id: t.name, name: t.name, role: t.company, content: t.quote, rating: t.rating,
+        }));
+
   return (
-    <section className="bg-white">
+    <section id="testimonials" className="transition-colors duration-300">
       <div className="section-container">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.5 }} className="text-center mb-14">
-          <p className="text-accent text-sm font-medium uppercase tracking-wide mb-2">Testimonials</p>
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-primary">What Clients Say</h2>
-          <div className="w-12 h-1 bg-accent rounded-full mx-auto mt-4" />
-        </motion.div>
+        <div className="text-center mb-16">
+          <Reveal delay={0.1} className="mx-auto">
+            <p className="section-label mb-4">{"// "} Client Feedback</p>
+          </Reveal>
+          <Reveal delay={0.2} blur className="mx-auto">
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">What Clients Say.</h2>
+          </Reveal>
+          <Reveal delay={0.4} className="mx-auto">
+            <div className="w-16 h-px bg-accent-25 mx-auto mt-8" />
+          </Reveal>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonialsData.map((t, i) => (
-            <motion.div
-              key={t.name}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: i * 0.12, duration: 0.45 }}
-              className="card p-7 border-l-4 border-l-accent"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+          {displayData.map((t, i) => (
+            <Reveal
+              key={t._id}
+              width="100%"
+              delay={i * 0.1}
+              y={30}
+              blur
+              className="h-full"
             >
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: t.rating }).map((_, si) => (
-                  <Star key={si} size={16} className="fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-
-              {/* Quote */}
-              <p className="text-gray-600 text-sm leading-relaxed mb-6 italic">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-
-              {/* Avatar + Info */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center flex-shrink-0">
-                  <span className="text-sm font-bold text-accent">
-                    {t.name.charAt(0)}
-                  </span>
-                </div>
+              <div
+                className="bg-section-alt rounded-xl p-10 sm:p-12 border border-card-border shadow-card flex flex-col justify-between group hover:border-accent-25 transition-all duration-500 h-full"
+                 
+              >
                 <div>
-                  <p className="text-sm font-semibold text-primary">{t.name}</p>
-                  <p className="text-xs text-gray-400">{t.company}</p>
+                  <div className="flex gap-1.5 mb-8">
+                    {Array.from({ length: (t as SanityTestimonial).rating || 5 }).map((_, si) => (
+                      <Star key={si} size={13} className="fill-accent text-accent" />
+                    ))}
+                  </div>
+                  <p className="text-foreground-75 text-lg leading-relaxed mb-10 italic font-body">
+                    &ldquo;{t.content}&rdquo;
+                  </p>
+                </div>
+                <div className="flex items-center gap-4 pt-8 border-t border-border/60">
+                  <div className="w-11 h-11 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center shrink-0 group-hover:bg-accent transition-all duration-300">
+                    <span className="text-sm font-extrabold text-accent group-hover:text-background transition-colors">
+                      {t.name.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-extrabold text-foreground uppercase tracking-tight">{t.name}</p>
+                    <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mt-0.5">
+                      {t.role}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

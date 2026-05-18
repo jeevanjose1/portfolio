@@ -1,269 +1,167 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { heroData, statsData, socialLinks } from "@/lib/data";
 import type { SocialLink } from "@/lib/data";
+import { SanityPageHome } from "@/sanity/types";
+import { Reveal } from "@/components/animations/Reveal";
+import { ParallaxImage } from "@/components/animations/ParallaxImage";
+import type { Image as SanityImage } from "sanity";
+import { urlForImage } from "@/sanity/lib/image";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.12, duration: 0.5, ease: "easeOut" as const },
-  }),
+const fallbackHeroData = {
+  badge: "✦ Available for freelance work",
+  heading: "Full-Stack Developer &\nMobile Engineer",
+  subheadline: "I build scalable web apps, mobile apps, and cloud solutions that help startups and businesses grow.",
+  ctaPrimary: { label: "View My Work", href: "/works" },
+  welcome: 'Hey, I am'
 };
 
-const statFade = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { delay: 0.6 + i * 0.15, duration: 0.45, ease: "easeOut" as const },
-  }),
-};
 
-function SocialIcon({ link }: { link: SocialLink }) {
-  return (
-    <motion.a
-      href={link.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={link.label}
-      className="p-2.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-blue-50 hover:text-accent transition-colors duration-200"
-      whileHover={{ scale: 1.15 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill={link.label === "Upwork" ? "currentColor" : "none"}
-        stroke={link.label === "Upwork" ? "none" : "currentColor"}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        {link.svgPaths.map((d, i) => (
-          <path key={i} d={d} />
-        ))}
-        {link.svgExtras?.map((extra, i) => {
-          if (extra.type === "rect") {
-            return <rect key={`e-${i}`} {...extra.attrs} />;
-          }
-          if (extra.type === "circle") {
-            return <circle key={`e-${i}`} {...extra.attrs} />;
-          }
-          return null;
-        })}
-      </svg>
-    </motion.a>
-  );
-}
 
-export default function HeroSection() {
-  const headingLines = heroData.heading.split("\n");
+
+
+export default function HeroSection({ data, profileImage }: { data?: SanityPageHome, stats?: { value: string; label: string }[], socialLinks?: SocialLink[], profileImage?: SanityImage }) {
+  const badge = data?.heroBadge || fallbackHeroData.badge;
+  const heading = data?.heroHeading || fallbackHeroData.heading;
+  const welcome = data?.welcome || fallbackHeroData.welcome;
+
+  const subheadline = data?.heroSubheadline || fallbackHeroData.subheadline;
+  const ctaPrimary = data?.ctaPrimary || fallbackHeroData.ctaPrimary;
+  const imageUrl = profileImage ? urlForImage(profileImage).url() : "/images/headshot.jpeg";
 
   return (
-    <section id="home" className="relative overflow-hidden bg-white">
-      {/* Background gradient orb */}
-      <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-blue-500/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-blue-500/3 blur-3xl pointer-events-none" />
+    <section id="home" className="min-h-svh flex items-center transition-colors duration-300">
+      <div className="section-container w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5">
 
-      <div className="section-container min-h-[calc(100vh-4rem)] flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-8 items-center w-full">
-          {/* ─── Left Column (3/5 = 60%) ─── */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            className="lg:col-span-3"
+          {/* ── Main Text & CTA Card ── */}
+          <Reveal
+            width="100%"
+            className="lg:col-span-8 order-2 lg:order-1"
+            y={40}
+            duration={1}
           >
-            {/* Badge */}
-            <motion.div custom={0} variants={fadeUp} className="mb-6">
-              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#EFF6FF] text-accent text-sm font-medium">
-                {heroData.badge}
-              </span>
-            </motion.div>
+            <div
+              className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-16 xl:p-20 flex flex-col justify-between h-full min-h-[560px] border border-card-border shadow-card relative overflow-hidden"
 
-            {/* Heading */}
-            <motion.h1
-              custom={1}
-              variants={fadeUp}
-              className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-5xl font-heading font-bold text-gray-900 leading-tight mb-6"
             >
-              {headingLines.map((line, i) => (
-                <span key={i}>
-                  {line}
-                  {i < headingLines.length - 1 && <br />}
-                </span>
-              ))}
-            </motion.h1>
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-20 to-transparent" />
 
-            {/* Subheadline */}
-            <motion.p
-              custom={2}
-              variants={fadeUp}
-              className="text-gray-500 text-lg max-w-lg mb-8 leading-relaxed"
-            >
-              {heroData.subheadline}
-            </motion.p>
+              <div className="relative z-10">
+                <Reveal delay={0.2}>
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-2 border border-border text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground mb-8">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                    </span>
+                    {badge}
+                  </div>
+                </Reveal>
 
-            {/* CTA Buttons */}
-            <motion.div
-              custom={3}
-              variants={fadeUp}
-              className="flex flex-wrap gap-4 mb-8"
-            >
-              <Link
-                href={heroData.ctaPrimary.href}
-                className="btn-primary inline-flex items-center gap-2"
-              >
-                {heroData.ctaPrimary.label}
-                <ArrowRight size={16} />
-              </Link>
-              <a
-                href={heroData.ctaSecondary.href}
-                download
-                className="btn-secondary inline-flex items-center gap-2"
-              >
-                {heroData.ctaSecondary.label}
-                <Download size={16} />
-              </a>
-            </motion.div>
+                <Reveal delay={0.3} y={30} blur>
+                  <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-extrabold text-foreground leading-[1.02] mb-8">
+                    {welcome}
+                    <br />
+                    <span className="font-heading font-medium text-foreground-80">
+                      {heading.split('\n')[0]}
+                    </span>
+                    <br />
+                    {heading.split('\n')[1] || ""}
+                  </h1>
+                </Reveal>
 
-            {/* Social Icons */}
-            <motion.div
-              custom={4}
-              variants={fadeUp}
-              className="flex items-center gap-3"
-            >
-              {socialLinks.map((link) => (
-                <SocialIcon key={link.label} link={link} />
-              ))}
-            </motion.div>
-          </motion.div>
+                <Reveal delay={0.4} y={20}>
+                  <p className="text-muted-foreground text-base sm:text-lg max-w-2xl leading-8 font-body">
+                    {subheadline}
+                  </p>
+                </Reveal>
+              </div>
 
-          {/* ─── Right Column (2/5 = 40%) ─── */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-2 relative hidden lg:block"
-          >
-            {/* Code-themed SVG Illustration */}
-            <div className="relative w-full aspect-square max-w-md mx-auto">
-              <svg viewBox="0 0 400 400" fill="none" className="w-full h-full">
-                {/* Background circle */}
-                <circle cx="200" cy="200" r="180" fill="#EFF6FF" opacity="0.5" />
-                <circle cx="200" cy="200" r="140" fill="#DBEAFE" opacity="0.4" />
+              <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 relative z-10">
+                <Reveal delay={0.5} y={20}>
+                  <Link href={ctaPrimary.href} className="btn-primary gap-3 px-9 py-4 text-[12px]">
+                    {ctaPrimary.label}
+                    <ArrowRight size={18} />
+                  </Link>
+                </Reveal>
 
-                {/* Code bracket left < */}
-                <path
-                  d="M140 160L100 200L140 240"
-                  stroke="#2563EB"
-                  strokeWidth="8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  opacity="0.8"
-                />
 
-                {/* Code bracket right > */}
-                <path
-                  d="M260 160L300 200L260 240"
-                  stroke="#2563EB"
-                  strokeWidth="8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  opacity="0.8"
-                />
-
-                {/* Forward slash / */}
-                <path
-                  d="M220 140L180 260"
-                  stroke="#93C5FD"
-                  strokeWidth="6"
-                  strokeLinecap="round"
-                  opacity="0.7"
-                />
-
-                {/* Decorative dots */}
-                <circle cx="120" cy="120" r="6" fill="#2563EB" opacity="0.3" />
-                <circle cx="300" cy="130" r="4" fill="#93C5FD" opacity="0.5" />
-                <circle cx="80" cy="280" r="5" fill="#BFDBFE" opacity="0.6" />
-                <circle cx="320" cy="290" r="7" fill="#2563EB" opacity="0.2" />
-
-                {/* Decorative rectangles (code blocks) */}
-                <rect x="150" y="290" width="100" height="8" rx="4" fill="#BFDBFE" opacity="0.5" />
-                <rect x="170" y="306" width="60" height="8" rx="4" fill="#DBEAFE" opacity="0.4" />
-                <rect x="150" y="90" width="80" height="8" rx="4" fill="#BFDBFE" opacity="0.4" />
-                <rect x="165" y="106" width="50" height="8" rx="4" fill="#DBEAFE" opacity="0.3" />
-
-                {/* Floating geometric shapes */}
-                <rect x="60" cy="180" y="180" width="24" height="24" rx="4" fill="#2563EB" opacity="0.15" transform="rotate(15 72 192)" />
-                <rect x="310" y="170" width="20" height="20" rx="4" fill="#93C5FD" opacity="0.25" transform="rotate(-10 320 180)" />
-
-                {/* Terminal-like element */}
-                <rect x="160" y="170" width="80" height="60" rx="8" fill="white" stroke="#DBEAFE" strokeWidth="2" />
-                <circle cx="175" cy="183" r="3" fill="#EF4444" opacity="0.6" />
-                <circle cx="187" cy="183" r="3" fill="#F59E0B" opacity="0.6" />
-                <circle cx="199" cy="183" r="3" fill="#22C55E" opacity="0.6" />
-                <rect x="170" y="198" width="30" height="4" rx="2" fill="#2563EB" opacity="0.4" />
-                <rect x="170" y="208" width="50" height="4" rx="2" fill="#93C5FD" opacity="0.3" />
-                <rect x="170" y="218" width="20" height="4" rx="2" fill="#BFDBFE" opacity="0.3" />
-              </svg>
-
-              {/* Floating Stat Cards */}
-              {statsData.map((stat, i) => {
-                const positions = [
-                  "top-4 -left-4",
-                  "top-1/2 -right-6 -translate-y-1/2",
-                  "bottom-8 -left-2",
-                ];
-                return (
-                  <motion.div
-                    key={stat.label}
-                    custom={i}
-                    initial="hidden"
-                    animate="visible"
-                    variants={statFade}
-                    className={`absolute ${positions[i]} bg-white rounded-xl shadow-lg border border-gray-100 px-5 py-3.5`}
-                  >
-                    <p className="text-2xl font-heading font-bold text-accent">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-gray-500 font-medium">
-                      {stat.label}
-                    </p>
-                  </motion.div>
-                );
-              })}
+              </div>
             </div>
-          </motion.div>
+          </Reveal>
 
-          {/* Mobile Stats Row */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            className="lg:hidden col-span-1 grid grid-cols-3 gap-4"
-          >
-            {statsData.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                custom={i}
-                variants={statFade}
-                className="bg-white rounded-xl shadow-md border border-gray-100 px-4 py-4 text-center"
+          {/* ── Portrait & Highlights ── */}
+          <div className="lg:col-span-4 flex flex-col gap-4 lg:gap-5 order-1 lg:order-2">
+            {/* Portrait Card */}
+            <Reveal
+              width="100%"
+              delay={0.3}
+              duration={1.2}
+              className="h-full"
+            >
+              <div
+                className="bg-section-alt rounded-xl overflow-hidden relative group h-full min-h-[400px] border border-card-border shadow-card"
+
               >
-                <p className="text-2xl font-heading font-bold text-accent">
-                  {stat.value}
-                </p>
-                <p className="text-xs text-gray-500 font-medium">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+                <ParallaxImage offset={20} className="w-full h-full">
+                  <div className="absolute inset-0 grayscale-[0.25] contrast-[1.05] brightness-[0.98] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700">
+                    <Image
+                      src={imageUrl}
+                      alt="Portrait"
+                      fill
+                      priority
+                      className="object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
+                    />
+                  </div>
+                </ParallaxImage>
+
+
+              </div>
+            </Reveal>
+
+          </div>
+
+          {/* ── Tech Marquee ── */}
+
         </div>
+        <Reveal
+          width="100%"
+          delay={0.4}
+          y={20}
+          className="lg:col-span-12 mt-5"
+        >
+          <div className="bg-section-alt rounded-xl border border-card-border shadow-sm overflow-hidden py-4">
+            <div className="flex marquee-track gap-12 items-center whitespace-nowrap px-6">
+              {[
+                "React.js", "Next.js", "TypeScript", "Node.js", "Flutter",
+                "GraphQL", "PostgreSQL", "AWS Cloud", "Docker", "TailwindCSS",
+                "Sanity CMS", "Framer Motion", "MongoDB", "Express"
+              ].map((tech) => (
+                <div key={tech} className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                    {tech}
+                  </span>
+                </div>
+              ))}
+              {/* Duplicate for seamless loop */}
+              {[
+                "React.js", "Next.js", "TypeScript", "Node.js",
+                "GraphQL", "PostgreSQL", "Docker", "TailwindCSS",
+                "AI", "Anthropic", "MongoDB", "Nest,js", "React Native"
+              ].map((tech) => (
+                <div key={tech + "-loop"} className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                    {tech}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -59,28 +59,63 @@ export interface CTABannerData {
   buttonLabel: string;
   buttonHref: string;
 }
+export interface CustomToolItem {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  category: string;
+  href: string;
+  featured?: boolean;
+}
 
-// ─── Hero Data ───
-
-export const heroData: HeroData = {
-  badge: "✦ Available for freelance work",
-  heading: "Full-Stack Developer &\nMobile Engineer",
-  subheadline:
-    "I build scalable web apps, mobile apps, and cloud solutions that help startups and businesses grow.",
-  ctaPrimary: { label: "View My Work", href: "/works" },
-  ctaSecondary: { label: "Download CV", href: "/cv.pdf" },
-};
-
-export const statsData: StatCard[] = [
-  { value: "4+", label: "Years Experience" },
-  { value: "20+", label: "Projects Delivered" },
-  { value: "10+", label: "Happy Clients" },
+export const customToolsData: CustomToolItem[] = [
+  {
+    id: "scope-estimator",
+    title: "Project Scope Estimator",
+    description: "Quickly estimate project timelines and budgets based on specific features and complexity.",
+    icon: "Calculator",
+    category: "Planning",
+    href: "/tools/scope-estimator",
+    featured: true,
+  },
+  {
+    id: "seo-audit",
+    title: "SEO Health Check",
+    description: "A lightweight tool to analyze on-page SEO factors and technical performance metrics.",
+    icon: "Search",
+    category: "Marketing",
+    href: "/tools/seo-audit",
+    featured: true,
+  },
+  {
+    id: "color-palette",
+    title: "Accessibility Palette Gen",
+    description: "Generate WCAG-compliant color palettes for your digital products instantly.",
+    icon: "Palette",
+    category: "Design",
+    href: "/tools/palette-gen",
+    featured: true,
+  },
+  {
+    id: "tech-stack",
+    title: "Stack Recommender",
+    description: "Input your project requirements and get a recommended modern tech stack.",
+    icon: "Layers",
+    category: "Development",
+    href: "/tools/stack-recommender",
+    featured: true,
+  },
 ];
+
+
+
+
 
 export const socialLinks: SocialLink[] = [
   {
     label: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/jeevanjose",
     svgPaths: [
       "M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4",
       "M9 18c-4.51 2-5-2-7-2",
@@ -88,7 +123,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/jeevanjose",
     svgPaths: [
       "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z",
     ],
@@ -99,29 +134,13 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: "Upwork",
-    href: "https://upwork.com",
+    href: "https://www.upwork.com/freelancers/~jeevanjose",
     svgPaths: [
       "M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703 0 1.491-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z",
     ],
   },
 ];
 
-// ─── Tech Stack Data ───
-
-export const techStackData: TechItem[] = [
-  { name: "React", icon: "react" },
-  { name: "Node.js", icon: "nodejs" },
-  { name: "Flutter", icon: "flutter" },
-  { name: "TypeScript", icon: "typescript" },
-  { name: "MongoDB", icon: "mongodb" },
-  { name: "PostgreSQL", icon: "postgresql" },
-  { name: "AWS", icon: "aws" },
-  { name: "Docker", icon: "docker" },
-  { name: "Firebase", icon: "firebase" },
-  { name: "Next.js", icon: "nextjs" },
-];
-
-// ─── Services Data ───
 
 export const servicesData: ServiceItem[] = [
   {
@@ -228,7 +247,7 @@ export interface SkillItem {
 
 export interface SkillGroup {
   title: string;
-  iconName: "Layout" | "Server" | "Smartphone" | "Cloud";
+  iconName: string;
   skills: SkillItem[];
 }
 
@@ -252,26 +271,11 @@ export interface CertificationItem {
 }
 
 export interface BeyondCodeItem {
-  iconName: "GitBranch" | "Users" | "BookOpen";
+  iconName: string;
   title: string;
   description: string;
 }
 
-// ─── About Hero ───
-
-export const aboutHeroData: AboutHeroData = {
-  badge: "About Me",
-  heading: "Passionate Developer.\nProblem Solver. Builder.",
-  paragraphs: [
-    "With over 4 years of hands-on experience in software development, I specialize in building full-stack web applications, cross-platform mobile apps, and scalable cloud solutions. Based in Vadodara, India, I work with startups and businesses worldwide to turn their ideas into production-ready products.",
-    "I'm driven by a love for clean, maintainable code and a deep curiosity for emerging technologies. Every project I take on is an opportunity to solve real problems and create lasting impact through thoughtful engineering.",
-  ],
-  stats: [
-    { value: "4+", label: "Years" },
-    { value: "20+", label: "Projects" },
-    { value: "5+", label: "Industries" },
-  ],
-};
 
 // ─── Timeline ───
 
@@ -445,11 +449,27 @@ export interface ServicesHeroData {
 
 export interface MainServiceItem {
   iconName: "Monitor" | "Smartphone" | "Cloud";
+  slug: string;
   title: string;
+  tagline: string;
   description: string;
   features: string[];
+  heroFeatures: string[];
   startingPrice: string;
   linkHref: string;
+  whatYouGet: Array<{ icon: string; title: string; description: string }>;
+  techStack: Array<{ category: string; techs: string[] }>;
+  process: Array<{ step: string; title: string; description: string; duration: string }>;
+  packages: Array<{
+    name: string;
+    price: string;
+    label: string;
+    features: Array<{ text: string; included: boolean }>;
+    highlighted: boolean;
+  }>;
+  faqs: Array<{ question: string; answer: string }>;
+  relatedCategory: string;
+  isMain?: boolean;
 }
 
 export interface AdditionalServiceItem {
@@ -460,7 +480,7 @@ export interface AdditionalServiceItem {
 
 export interface ProcessStepItem {
   number: string;
-  iconName: "Search" | "FileText" | "Code" | "Rocket";
+  iconName: string;
   title: string;
   description: string;
 }
@@ -479,28 +499,283 @@ export const servicesHeroData: ServicesHeroData = {
 export const mainServicesData: MainServiceItem[] = [
   {
     iconName: "Monitor",
+    slug: "web-app-development",
     title: "Web App Development",
+    tagline: "Scalable, high-performance web applications built for growth.",
     description: "Custom web applications built with modern frameworks to deliver fast, secure, and scalable experiences.",
     features: ["Responsive UI", "REST APIs", "Database Design", "Authentication", "Cloud Deployment"],
+    heroFeatures: [
+      "SEO-Optimized SPAs & SSR",
+      "Sub-second load times",
+      "Responsive across all devices",
+      "Secure authentication",
+      "Scalable cloud architecture"
+    ],
     startingPrice: "From $500",
-    linkHref: "/contact",
+    linkHref: "/services/web-app-development",
+    relatedCategory: "Web Apps",
+    whatYouGet: [
+      { icon: "Palette", title: "Custom UI/UX Design", description: "Bespoke user interfaces tailored to your brand identity with a focus on conversion and accessibility." },
+      { icon: "Zap", title: "High-Performance Frontend", description: "Built with React and Next.js for blazing fast rendering and excellent SEO capabilities." },
+      { icon: "Server", title: "Robust Backend APIs", description: "Secure and scalable RESTful or GraphQL APIs powered by Node.js and Express/NestJS." },
+      { icon: "Database", title: "Database Architecture", description: "Optimized database design using PostgreSQL or MongoDB for data integrity and speed." },
+      { icon: "Shield", title: "Enterprise Security", description: "Implementation of JWT authentication, role-based access, and data encryption." },
+      { icon: "Gauge", title: "Analytics & Monitoring", description: "Integration with tools like Google Analytics and Sentry to track performance and errors." }
+    ],
+    techStack: [
+      { category: "Frontend", techs: ["React", "Next.js", "Tailwind CSS", "TypeScript"] },
+      { category: "Backend", techs: ["Node.js", "Express", "GraphQL", "Prisma"] },
+      { category: "Database", techs: ["PostgreSQL", "MongoDB", "Redis"] },
+      { category: "Infrastructure", techs: ["Vercel", "AWS", "Docker"] }
+    ],
+    process: [
+      { step: "01", title: "Discovery Call", duration: "Day 1", description: "I discuss your vision, target audience, technical requirements, and business goals to ensure perfect alignment." },
+      { step: "02", title: "Architecture & Planning", duration: "Day 2-3", description: "I create a technical architecture document, database schema, and project roadmap with clear milestones." },
+      { step: "03", title: "UI/UX Prototyping", duration: "Week 1", description: "Designing high-fidelity Figma mockups for your approval before writing any code." },
+      { step: "04", title: "Development Sprints", duration: "Week 2-5", description: "Agile development with weekly updates and a staging environment where you can track progress." },
+      { step: "05", title: "QA & Testing", duration: "Week 6", description: "Comprehensive testing including unit tests, integration tests, and cross-browser compatibility checks." },
+      { step: "06", title: "Launch & Handover", duration: "Week 7", description: "Deployment to production, DNS configuration, and handing over all documentation and source code." }
+    ],
+    packages: [
+      {
+        name: "Starter",
+        price: "$500",
+        label: "Landing Page",
+        highlighted: false,
+        features: [
+          { text: "Up to 5 Pages", included: true },
+          { text: "Mobile Responsive", included: true },
+          { text: "Contact Form Integration", included: true },
+          { text: "CMS Integration", included: false },
+          { text: "User Authentication", included: false },
+          { text: "Custom Backend", included: false }
+        ]
+      },
+      {
+        name: "Professional",
+        price: "$1,500",
+        label: "Business Web App",
+        highlighted: true,
+        features: [
+          { text: "Up to 15 Pages", included: true },
+          { text: "Mobile Responsive", included: true },
+          { text: "User Authentication", included: true },
+          { text: "Custom Dashboard", included: true },
+          { text: "Database Integration", included: true },
+          { text: "Payment Processing", included: false }
+        ]
+      },
+      {
+        name: "Enterprise",
+        price: "Custom",
+        label: "SaaS Platform",
+        highlighted: false,
+        features: [
+          { text: "Unlimited Pages", included: true },
+          { text: "Complex Architectures", included: true },
+          { text: "Multi-tenant Support", included: true },
+          { text: "Payment Subscriptions", included: true },
+          { text: "Advanced Analytics", included: true },
+          { text: "Post-launch Support", included: true }
+        ]
+      }
+    ],
+    faqs: [
+      { question: "Do you use templates or custom code?", answer: "I build entirely custom solutions tailored to your specific needs. While I use UI libraries like Tailwind CSS for efficiency, the architecture and design are bespoke to your project." },
+      { question: "Will the web app be mobile-friendly?", answer: "Yes, 100%. I use a mobile-first approach ensuring your web application looks and functions perfectly on smartphones, tablets, and desktop displays." },
+      { question: "Can you integrate with our existing CRM/ERP?", answer: "Absolutely. I have extensive experience integrating with third-party APIs including Salesforce, HubSpot, Stripe, and custom internal systems." },
+      { question: "Who owns the source code?", answer: "You do. Upon final payment, full intellectual property rights and source code are transferred to you. I will provide access to the Git repository." }
+    ]
   },
   {
     iconName: "Smartphone",
+    slug: "mobile-app-development",
     title: "Mobile App Development",
+    tagline: "Cross-platform iOS & Android apps that users love — built with Flutter.",
     description: "Cross-platform mobile applications that provide native-like performance and seamless user experiences.",
     features: ["iOS + Android", "Flutter/React Native", "Firebase", "Push Notifications", "App Store Deployment"],
+    heroFeatures: [
+      "Cross-platform (iOS + Android)",
+      "60fps smooth performance",
+      "Offline-first capability",
+      "Push notifications",
+      "App Store & Play Store deployment"
+    ],
     startingPrice: "From $800",
-    linkHref: "/contact",
+    linkHref: "/services/mobile-app-development",
+    relatedCategory: "Mobile Apps",
+    whatYouGet: [
+      { icon: "Palette", title: "Beautiful UI/UX Design", description: "Custom wireframes and pixel-perfect designs before a single line of code is written." },
+      { icon: "Smartphone", title: "iOS & Android from One Codebase", description: "Built with Flutter for native performance on both platforms, saving time and cost." },
+      { icon: "Server", title: "Full Backend Integration", description: "Connect to REST APIs, Firebase, or custom Node.js backends seamlessly." },
+      { icon: "Shield", title: "Secure Authentication", description: "Email, Google, Apple Sign-In with biometric support and session management." },
+      { icon: "Bell", title: "Push Notifications", description: "Firebase Cloud Messaging for real-time engagement and re-targeting." },
+      { icon: "Upload", title: "Store Submission & Deployment", description: "Full App Store and Play Store submission handling including metadata and screenshots." }
+    ],
+    techStack: [
+      { category: "Primary", techs: ["Flutter", "Dart"] },
+      { category: "State Management", techs: ["Riverpod", "Bloc", "Provider"] },
+      { category: "Backend", techs: ["Firebase", "Node.js", "REST APIs"] },
+      { category: "Payments", techs: ["Razorpay", "Stripe", "PayPal"] },
+      { category: "Maps", techs: ["Google Maps", "Mapbox"] },
+      { category: "Storage", techs: ["Firebase Storage", "AWS S3"] }
+    ],
+    process: [
+      { step: "01", title: "Discovery Call", duration: "Day 1", description: "I discuss your app idea, target users, core features, and business goals. I ask the right questions to understand what success looks like for you." },
+      { step: "02", title: "Proposal & Planning", duration: "Day 2–3", description: "I send a detailed proposal with wireframe sketches, tech recommendations, timeline, and fixed-price quote. No surprises." },
+      { step: "03", title: "UI/UX Design", duration: "Week 1", description: "I design all app screens in Figma. You review, give feedback, and approve before development starts." },
+      { step: "04", title: "Development Sprints", duration: "Week 2–6", description: "I build in weekly sprints with a working demo every Friday. You can test on your real device throughout." },
+      { step: "05", title: "Testing & QA", duration: "Week 7", description: "Full testing on multiple devices, OS versions, and screen sizes. Bug fixes until it's perfect." },
+      { step: "06", title: "Launch & Handover", duration: "Week 8", description: "App Store & Play Store submission. I hand over all source code, credentials, and documentation." }
+    ],
+    packages: [
+      {
+        name: "Starter",
+        price: "$800",
+        label: "Simple App",
+        highlighted: false,
+        features: [
+          { text: "Up to 5 screens", included: true },
+          { text: "iOS + Android", included: true },
+          { text: "Basic authentication", included: true },
+          { text: "Firebase backend", included: true },
+          { text: "1 revision round", included: true },
+          { text: "Custom animations", included: false },
+          { text: "Payment integration", included: false }
+        ]
+      },
+      {
+        name: "Professional",
+        price: "$1,800",
+        label: "Business App",
+        highlighted: true,
+        features: [
+          { text: "Up to 15 screens", included: true },
+          { text: "iOS + Android", included: true },
+          { text: "Social login + biometrics", included: true },
+          { text: "Custom backend API", included: true },
+          { text: "Payment integration", included: true },
+          { text: "Push notifications", included: true },
+          { text: "3 revision rounds", included: true },
+          { text: "Admin dashboard", included: false }
+        ]
+      },
+      {
+        name: "Enterprise",
+        price: "Custom",
+        label: "Full Product",
+        highlighted: false,
+        features: [
+          { text: "Unlimited screens", included: true },
+          { text: "iOS + Android + Web", included: true },
+          { text: "Full auth system", included: true },
+          { text: "Custom backend + admin panel", included: true },
+          { text: "Payment + subscriptions", included: true },
+          { text: "Analytics dashboard", included: true },
+          { text: "Unlimited revisions", included: true },
+          { text: "3 months post-launch support", included: true }
+        ]
+      }
+    ],
+    faqs: [
+      { question: "Flutter vs React Native — which do you use and why?", answer: "I primarily use Flutter. It offers superior performance with its customized rendering engine (Impeller/Skia), incredibly smooth 60fps animations, and a more consistent UI across iOS and Android without native bridge bottlenecks." },
+      { question: "Will my app work on both iPhone and Android?", answer: "Yes, 100%. Writing the code once in Flutter generates native binaries for both iOS and Android, ensuring identical feature sets and rapid updates." },
+      { question: "Do I own the source code after the project?", answer: "Yes, the source code is entirely yours upon final payment. I provide full transfer of the GitHub repository and all associated assets." },
+      { question: "How do you handle app updates after launch?", answer: "I offer 30 days of free bug-fixing post-launch. For ongoing feature updates and OS compatibility maintenance, I offer competitive monthly retainer packages." },
+      { question: "Can you integrate with my existing backend/API?", answer: "Absolutely. I can connect the mobile app to any existing REST or GraphQL APIs, handling authentication, state management, and offline caching." },
+      { question: "What if I need changes during development?", answer: "My agile sprint process includes weekly reviews. Minor changes are accommodated easily. For significant scope changes, I discuss the impact on timeline and budget before proceeding." }
+    ]
   },
   {
     iconName: "Cloud",
+    slug: "cloud-devops",
     title: "Cloud & DevOps",
+    tagline: "Scalable, secure, and automated infrastructure for your applications.",
     description: "Robust cloud infrastructure and automated pipelines to ensure your applications run reliably and scale effortlessly.",
     features: ["AWS/GCP Setup", "Docker & Kubernetes", "CI/CD Pipelines", "Monitoring", "Security Hardening"],
+    heroFeatures: [
+      "Zero-downtime deployments",
+      "Automated CI/CD pipelines",
+      "High availability architecture",
+      "Infrastructure as Code (IaC)",
+      "24/7 Monitoring setup"
+    ],
     startingPrice: "From $300",
-    linkHref: "/contact",
-  },
+    linkHref: "/services/cloud-devops",
+    relatedCategory: "APIs",
+    whatYouGet: [
+      { icon: "Server", title: "Server Provisioning", description: "Setup and configuration of robust cloud servers on AWS, GCP, or DigitalOcean." },
+      { icon: "Box", title: "Containerization", description: "Dockerizing your applications for consistent environments across development and production." },
+      { icon: "Workflow", title: "CI/CD Pipelines", description: "Automated testing and deployment workflows using GitHub Actions or GitLab CI." },
+      { icon: "Shield", title: "Security Hardening", description: "Implementation of firewalls, SSL, VPCs, and secure IAM policies." },
+      { icon: "Activity", title: "Monitoring & Logging", description: "Setting up Datadog, Prometheus, or Grafana for real-time observability." },
+      { icon: "Database", title: "Database Management", description: "Automated backups, replication, and performance tuning for your databases." }
+    ],
+    techStack: [
+      { category: "Cloud Providers", techs: ["AWS", "Google Cloud", "DigitalOcean", "Vercel"] },
+      { category: "Containerization", techs: ["Docker", "Kubernetes", "Docker Compose"] },
+      { category: "CI/CD", techs: ["GitHub Actions", "GitLab CI", "Jenkins"] },
+      { category: "Infrastructure as Code", techs: ["Terraform", "AWS CloudFormation"] }
+    ],
+    process: [
+      { step: "01", title: "Infrastructure Audit", duration: "Day 1", description: "Reviewing your current deployment process, architecture, and identifying bottlenecks." },
+      { step: "02", title: "Architecture Design", duration: "Day 2", description: "Designing a scalable and secure cloud architecture diagram tailored to your traffic needs." },
+      { step: "03", title: "Containerization", duration: "Week 1", description: "Writing Dockerfiles and docker-compose configurations for your application services." },
+      { step: "04", title: "CI/CD Implementation", duration: "Week 2", description: "Building automated pipelines for code linting, testing, and zero-downtime deployments." },
+      { step: "05", title: "Cloud Provisioning", duration: "Week 3", description: "Setting up VPCs, Load Balancers, SSL, and databases in your chosen cloud provider." },
+      { step: "06", title: "Migration & Handover", duration: "Week 4", description: "Smoothly migrating traffic to the new infrastructure and providing runbooks." }
+    ],
+    packages: [
+      {
+        name: "Basic Setup",
+        price: "$300",
+        label: "Startup",
+        highlighted: false,
+        features: [
+          { text: "Single Server Setup", included: true },
+          { text: "Basic Dockerization", included: true },
+          { text: "SSL Certificate", included: true },
+          { text: "Simple CI/CD Pipeline", included: true },
+          { text: "Load Balancing", included: false },
+          { text: "Auto-scaling", included: false }
+        ]
+      },
+      {
+        name: "Professional",
+        price: "$900",
+        label: "Growing Business",
+        highlighted: true,
+        features: [
+          { text: "Multi-server Architecture", included: true },
+          { text: "Advanced CI/CD Pipeline", included: true },
+          { text: "Managed Database Setup", included: true },
+          { text: "Load Balancing", included: true },
+          { text: "Basic Monitoring", included: true },
+          { text: "Auto-scaling", included: false }
+        ]
+      },
+      {
+        name: "Enterprise",
+        price: "Custom",
+        label: "High Traffic",
+        highlighted: false,
+        features: [
+          { text: "Kubernetes Cluster", included: true },
+          { text: "Auto-scaling Infrastructure", included: true },
+          { text: "High Availability Setup", included: true },
+          { text: "Advanced Observability", included: true },
+          { text: "Infrastructure as Code", included: true },
+          { text: "24/7 SLA Support", included: true }
+        ]
+      }
+    ],
+    faqs: [
+      { question: "Which cloud provider do you recommend?", answer: "It depends on your needs and budget. Vercel is great for React/Next.js frontends. DigitalOcean is excellent for cost-effective monoliths. AWS is best for complex, highly scalable enterprise architectures." },
+      { question: "Will my site go down during migration?", answer: "No. I use zero-downtime migration strategies. I set up the new infrastructure in parallel, sync the databases, and simply switch DNS records when everything is tested and ready." },
+      { question: "Can you help lower our AWS bill?", answer: "Yes! Infrastructure optimization is a key service. I audit oversized instances, implement auto-scaling to match traffic, and identify orphaned resources to reduce costs." },
+      { question: "Do you provide emergency support?", answer: "I offer retained SLA agreements for enterprise clients that guarantee rapid response times for infrastructure emergencies." }
+    ]
+  }
 ];
 
 export const additionalServicesData: AdditionalServiceItem[] = [
@@ -586,14 +861,7 @@ export const faqData: FAQItem[] = [
 
 export type FilterCategory = "All" | "Web Apps" | "Mobile Apps" | "E-commerce" | "Dashboards" | "APIs";
 
-export const filterCategoriesData: FilterCategory[] = [
-  "All",
-  "Web Apps",
-  "Mobile Apps",
-  "E-commerce",
-  "Dashboards",
-  "APIs",
-];
+
 
 export interface ProjectFeature {
   iconName: string;
@@ -632,6 +900,7 @@ export interface ProjectItem {
   title: string;
   description: string;
   longDescription: string;
+  image: string;
   categories: FilterCategory[];
   tags: string[];
   liveUrl?: string;
@@ -649,10 +918,9 @@ export const projectsData: ProjectItem[] = [
     title: "E-commerce Platform",
     description: "Full-featured online store with real-time inventory management and payment processing",
     longDescription: "A comprehensive e-commerce solution built to handle high-volume traffic and complex inventory needs. The platform integrates seamlessly with multiple payment gateways and provides a robust admin dashboard for order management and analytics.",
+    image: "/images/project-1.svg",
     categories: ["All", "Web Apps", "E-commerce"],
     tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    liveUrl: "#",
-    githubUrl: "#",
     features: [
       { iconName: "ShoppingCart", title: "Shopping Cart & Checkout", description: "Frictionless checkout experience with guest checkout support." },
       { iconName: "CreditCard", title: "Payment Gateway", description: "Secure payments via Stripe and PayPal integration." },
@@ -690,10 +958,9 @@ export const projectsData: ProjectItem[] = [
     title: "SaaS Analytics Dashboard",
     description: "Multi-tenant analytics platform with real-time data visualization and custom reports",
     longDescription: "A scalable B2B SaaS platform that aggregates data from multiple sources to provide actionable insights. Designed with a multi-tenant architecture to ensure data isolation and security for enterprise clients.",
+    image: "/images/project-2.svg",
     categories: ["All", "Web Apps", "Dashboards"],
     tags: ["React", "Chart.js", "PostgreSQL", "AWS"],
-    liveUrl: "#",
-    githubUrl: "#",
     features: [
       { iconName: "BarChart3", title: "Custom Reports", description: "Drag-and-drop report builder for tailored insights." },
       { iconName: "Activity", title: "Real-time Analytics", description: "Live data streaming and updates." },
@@ -731,10 +998,9 @@ export const projectsData: ProjectItem[] = [
     title: "Flutter Shopping App",
     description: "Cross-platform iOS & Android e-commerce app with seamless checkout",
     longDescription: "A high-performance mobile shopping application built with Flutter. Delivers a native-like experience on both iOS and Android from a single codebase, featuring complex animations and real-time backend synchronization.",
+    image: "/images/project-3.svg",
     categories: ["All", "Mobile Apps", "E-commerce"],
     tags: ["Flutter", "Firebase", "Razorpay"],
-    liveUrl: "#",
-    githubUrl: "#",
     features: [
       { iconName: "Smartphone", title: "Cross-platform", description: "Native performance on iOS and Android." },
       { iconName: "Zap", title: "Fast Checkout", description: "One-click buying and saved payment methods." },
@@ -772,9 +1038,9 @@ export const projectsData: ProjectItem[] = [
     title: "REST API Platform",
     description: "Scalable REST API with JWT auth, rate limiting, and auto-generated Swagger docs",
     longDescription: "A robust, enterprise-grade RESTful API designed to power multiple frontend applications. Built with security and scalability in mind, featuring comprehensive rate limiting, caching, and automated documentation.",
+    image: "/images/project-1.svg",
     categories: ["All", "APIs"],
     tags: ["Node.js", "Express", "PostgreSQL", "Docker"],
-    githubUrl: "#",
     features: [
       { iconName: "Key", title: "JWT Authentication", description: "Secure token-based auth with refresh tokens." },
       { iconName: "Shield", title: "Rate Limiting", description: "DDoS protection and API quota management." },
@@ -812,10 +1078,9 @@ export const projectsData: ProjectItem[] = [
     title: "Real Estate Web App",
     description: "Property listing platform with map integration, search filters, and agent dashboard",
     longDescription: "A modern real estate marketplace connecting buyers, sellers, and agents. Features an interactive map-based search, virtual tours integration, and a comprehensive CRM dashboard for real estate agents to manage their listings.",
+    image: "/images/project-2.svg",
     categories: ["All", "Web Apps"],
     tags: ["React", "Node.js", "Google Maps API", "MongoDB"],
-    liveUrl: "#",
-    githubUrl: "#",
     features: [
       { iconName: "Map", title: "Interactive Maps", description: "Google Maps integration with custom clustering." },
       { iconName: "Filter", title: "Advanced Search", description: "Multi-faceted filtering with instant results." },
@@ -853,9 +1118,9 @@ export const projectsData: ProjectItem[] = [
     title: "HR Management SaaS",
     description: "Complete HR platform with attendance tracking, payroll, and employee self-service",
     longDescription: "An all-in-one Human Resources platform designed to streamline operations for mid-sized companies. Automates payroll processing, simplifies leave management, and provides a self-service portal for employees.",
+    image: "/images/project-3.svg",
     categories: ["All", "Web Apps", "Dashboards"],
     tags: ["React", "Node.js", "MongoDB", "AWS S3"],
-    liveUrl: "#",
     features: [
       { iconName: "Clock", title: "Time Tracking", description: "Automated attendance and timesheet management." },
       { iconName: "DollarSign", title: "Payroll Processing", description: "One-click payroll generation and tax calculations." },
