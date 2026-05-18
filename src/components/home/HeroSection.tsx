@@ -44,7 +44,7 @@ export default function HeroSection({ data, profileImage }: { data?: SanityPageH
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-16 xl:p-20 flex flex-col justify-between h-full min-h-[560px] border border-card-border shadow-card relative overflow-hidden"
+              className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-16 xl:p-20 flex flex-col justify-between h-full md:min-h-[560px] border border-card-border shadow-card relative overflow-hidden"
 
             >
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-20 to-transparent" />
