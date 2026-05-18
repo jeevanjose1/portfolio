@@ -42,7 +42,7 @@
   /* ── Shadows ── */
   --shadow-xs: 0 1px 2px rgb(15 23 42 / 0.04);
   --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.05), 0 8px 24px -20px rgb(15 23 42 / 0.22);
-  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 18px 48px -36px rgb(15 23 42 / 0.26);
+  /* --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 18px 48px -36px rgb(15 23 42 / 0.26); */
   --shadow-lg: 0 1px 2px rgb(15 23 42 / 0.05), 0 28px 70px -42px rgb(15 23 42 / 0.32);
   --shadow-xl: 0 1px 2px rgb(15 23 42 / 0.05), 0 40px 90px -48px rgb(15 23 42 / 0.38);
   --shadow-glow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 14%, transparent), 0 18px 52px -38px rgb(15 23 42 / 0.28);
@@ -222,7 +222,7 @@ h6 {
 
   /* ── Layout ── */
   .section-container {
-    @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 sm:py-20 lg:py-24;
+    @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 sm:py-16 lg:py-20;
   }
 
   /* ── Cards ── */

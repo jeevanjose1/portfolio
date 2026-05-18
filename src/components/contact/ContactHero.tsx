@@ -43,7 +43,7 @@ export default function ContactHero() {
                   <a href="#contact-form" className="btn-primary gap-2.5">
                     Send Project Brief <ArrowDown size={15} />
                   </a>
-                  <a href="mailto:hello@jeevanjose.com" className="btn-secondary gap-2.5">
+                  <a href="mailto:jeevanjose1997.com" className="btn-secondary gap-2.5">
                     Email Directly <Mail size={15} />
                   </a>
                 </div>

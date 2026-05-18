@@ -29,7 +29,7 @@ export default function HeroSection({ data }: { data?: SanityPageHome, stats?: {
   const ctaPrimary = data?.ctaPrimary || fallbackHeroData.ctaPrimary;
 
   return (
-    <section id="home" className="min-h-[100svh] flex items-center transition-colors duration-300">
+    <section id="home" className="min-h-svh flex items-center transition-colors duration-300">
       <div className="section-container w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5">
 

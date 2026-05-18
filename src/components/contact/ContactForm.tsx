@@ -2,14 +2,13 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, CheckCircle2, Send } from "lucide-react";
+import { ArrowRight, CheckCircle2, Send, XCircle, RotateCcw } from "lucide-react";
 import { Reveal } from "@/components/animations/Reveal";
 
 interface FormData {
   name: string;
   email: string;
   projectType: string;
-  budget: string;
   timeline: string;
   message: string;
 }
@@ -20,19 +19,21 @@ interface FormErrors {
   message?: string;
 }
 
+type FormState = "idle" | "success" | "error";
+
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     projectType: "Web App",
-    budget: "$1000–$3000",
     timeline: "1–3 months",
     message: "",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [formState, setFormState] = useState<FormState>("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("Something went wrong. Please try again.");
 
   const validateForm = () => {
     const newErrors: FormErrors = {};
@@ -56,42 +57,47 @@ export default function ContactForm() {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        setIsSuccess(true);
+        setFormState("success");
       } else {
         const data = await response.json();
-        alert(data.error || "Failed to send message. Please try again later.");
+        setErrorMessage(data.error || "Failed to send message. Please try again later.");
+        setFormState("error");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("An unexpected error occurred. Please try again later.");
+      setErrorMessage("An unexpected error occurred. Please try again later.");
+      setFormState("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const handleReset = () => {
+    setFormState("idle");
+    setErrors({});
+  };
+
+  const handleRetry = () => {
+    setFormState("idle");
+  };
+
   return (
-    <Reveal
-      width="100%"
-      delay={0.2}
-      y={30}
-      duration={1}
-    >
-      <div
-        className="bg-background rounded-xl p-10 sm:p-12 border border-card-border shadow-card relative overflow-hidden min-h-[600px]"
-      >
+    <Reveal width="100%" delay={0.2} y={30} duration={1}>
+      <div className="bg-background rounded-xl p-10 sm:p-12 border border-card-border shadow-card relative overflow-hidden min-h-[600px]">
         <AnimatePresence mode="wait">
-          {isSuccess ? (
+
+          {/* ── Success ── */}
+          {formState === "success" && (
             <motion.div
               key="success"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
               className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center bg-background z-10"
             >
               <div className="w-20 h-20 rounded-lg bg-accent-10 flex items-center justify-center mb-8 border border-accent-20">
@@ -102,16 +108,50 @@ export default function ContactForm() {
                 Thanks for sharing the brief. I&apos;ll review it and respond within 24 business hours.
               </p>
               <button
-                onClick={() => {
-                  setFormData({ ...formData, message: "" });
-                  setIsSuccess(false);
-                }}
+                onClick={handleReset}
                 className="px-8 py-4 rounded-lg bg-accent text-background font-extrabold uppercase tracking-[0.16em] text-xs hover:bg-accent-80 transition-colors"
               >
                 Send Another Message
               </button>
             </motion.div>
-          ) : (
+          )}
+
+          {/* ── Error ── */}
+          {formState === "error" && (
+            <motion.div
+              key="error"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center bg-background z-10"
+            >
+              <div className="w-20 h-20 rounded-lg bg-red-50 flex items-center justify-center mb-8 border border-red-100">
+                <XCircle size={42} className="text-red-500" />
+              </div>
+              <h3 className="text-3xl font-heading font-extrabold text-foreground mb-4">Something Went Wrong</h3>
+              <p className="text-muted-foreground text-base sm:text-lg mb-10 max-w-sm font-body">
+                {errorMessage}
+              </p>
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <button
+                  onClick={handleRetry}
+                  className="px-8 py-4 rounded-lg bg-accent text-background font-extrabold uppercase tracking-[0.16em] text-xs hover:bg-accent-80 transition-colors inline-flex items-center gap-2"
+                >
+                  <RotateCcw size={14} />
+                  Try Again
+                </button>
+                <button
+                  onClick={handleReset}
+                  className="px-8 py-4 rounded-lg border border-card-border text-muted-foreground font-extrabold uppercase tracking-[0.16em] text-xs hover:border-accent hover:text-foreground transition-colors"
+                >
+                  Start Over
+                </button>
+              </div>
+            </motion.div>
+          )}
+
+          {/* ── Form ── */}
+          {formState === "idle" && (
             <motion.div
               key="form"
               initial={{ opacity: 0 }}
@@ -138,7 +178,7 @@ export default function ContactForm() {
                       placeholder="Your name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className={`w-full px-5 py-4 rounded-xl border ${errors.name ? 'border-red-400 focus:ring-red-400/20' : 'border-border focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground placeholder:text-muted-foreground-40 text-sm`}
+                      className={`w-full px-5 py-4 rounded-xl border ${errors.name ? "border-red-400 focus:ring-red-400/20" : "border-border focus:border-accent focus:ring-accent/10"} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground placeholder:text-muted-foreground-40 text-sm`}
                       aria-label="Full Name"
                       aria-invalid={!!errors.name}
                     />
@@ -152,7 +192,7 @@ export default function ContactForm() {
                       placeholder="you@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className={`w-full px-5 py-4 rounded-xl border ${errors.email ? 'border-red-400 focus:ring-red-400/20' : 'border-border focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground placeholder:text-muted-foreground-40 text-sm`}
+                      className={`w-full px-5 py-4 rounded-xl border ${errors.email ? "border-red-400 focus:ring-red-400/20" : "border-border focus:border-accent focus:ring-accent/10"} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground placeholder:text-muted-foreground-40 text-sm`}
                       aria-label="Email Address"
                       aria-invalid={!!errors.email}
                     />
@@ -213,7 +253,7 @@ export default function ContactForm() {
                     placeholder="Tell me about your project, goals, and any specific requirements..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className={`w-full px-5 py-4 rounded-xl border ${errors.message ? 'border-red-400 focus:ring-red-400/20' : 'border-border focus:border-accent focus:ring-accent/10'} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground resize-none placeholder:text-muted-foreground-40 text-sm`}
+                    className={`w-full px-5 py-4 rounded-xl border ${errors.message ? "border-red-400 focus:ring-red-400/20" : "border-border focus:border-accent focus:ring-accent/10"} outline-none focus:ring-4 transition-all bg-surface-2 font-medium text-foreground resize-none placeholder:text-muted-foreground-40 text-sm`}
                     aria-label="Message"
                     aria-invalid={!!errors.message}
                   />
@@ -236,13 +276,13 @@ export default function ContactForm() {
                     </>
                   )}
                 </button>
-
                 <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground">
                   No spam. Just a practical reply.
                 </p>
               </div>
             </motion.div>
           )}
+
         </AnimatePresence>
       </div>
     </Reveal>
