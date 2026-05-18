@@ -29,7 +29,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
   return (
     <section className="bg-background">
       <div className="section-container">
-        <div className="mb-8">
+        <div className="mb-8 mt-6 md:mt-0">
           <Reveal delay={0.1}>
             <Link
               href="/works"
