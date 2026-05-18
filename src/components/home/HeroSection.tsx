@@ -22,7 +22,7 @@ const fallbackHeroData = {
 
 
 
-export default function HeroSection({ data, stats, socialLinks, profileImage }: { data?: SanityPageHome, stats?: { value: string; label: string }[], socialLinks?: SocialLink[], profileImage?: SanityImage }) {
+export default function HeroSection({ data, profileImage }: { data?: SanityPageHome, stats?: { value: string; label: string }[], socialLinks?: SocialLink[], profileImage?: SanityImage }) {
   const badge = data?.heroBadge || fallbackHeroData.badge;
   const heading = data?.heroHeading || fallbackHeroData.heading;
   const welcome = data?.welcome || fallbackHeroData.welcome;
@@ -44,7 +44,7 @@ export default function HeroSection({ data, stats, socialLinks, profileImage }: 
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-8 sm:p-12 lg:p-16 xl:p-20 flex flex-col justify-between h-full min-h-[560px] border border-card-border shadow-card relative overflow-hidden"
+              className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-16 xl:p-20 flex flex-col justify-between h-full min-h-[560px] border border-card-border shadow-card relative overflow-hidden"
 
             >
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-20 to-transparent" />
@@ -61,7 +61,7 @@ export default function HeroSection({ data, stats, socialLinks, profileImage }: 
                 </Reveal>
 
                 <Reveal delay={0.3} y={30} blur>
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-extrabold text-foreground leading-[1.02] mb-8">
+                  <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-extrabold text-foreground leading-[1.02] mb-8">
                     {welcome}
                     <br />
                     <span className="font-heading font-medium text-foreground-80">

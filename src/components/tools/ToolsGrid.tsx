@@ -137,7 +137,7 @@ export default function ToolsGrid() {
                 <Reveal width="100%" delay={index * 0.05} y={40} className="h-full">
                   <Link
                     href={tool.href}
-                    className="group relative flex flex-col h-full p-8 md:p-10 rounded-xl bg-surface-1 border border-card-border overflow-hidden transition-all duration-700 hover:border-accent/40"
+                    className="group relative flex flex-col h-full p-6 md:p-10 rounded-xl bg-surface-1 border border-card-border overflow-hidden transition-all duration-700 hover:border-accent/40"
                   >
                     {/* Abstract Icon Backdrop */}
                     <div className="absolute -bottom-10 -right-10 opacity-[0.03] group-hover:opacity-[0.08] group-hover:scale-110 group-hover:-rotate-12 transition-all duration-1000 ease-out pointer-events-none">
@@ -161,7 +161,7 @@ export default function ToolsGrid() {
                             {tool.category}
                           </span>
                         </div>
-                        <h3 className="text-3xl md:text-4xl font-heading font-extrabold tracking-tight mb-4 group-hover:text-accent transition-colors duration-300">
+                        <h3 className="text-3xl md:text-3xl sm:text-4xl font-heading font-extrabold tracking-tight mb-4 group-hover:text-accent transition-colors duration-300">
                           {tool.title}
                         </h3>
                         <p className="text-muted-foreground text-sm md:text-lg max-w-md leading-relaxed font-medium">

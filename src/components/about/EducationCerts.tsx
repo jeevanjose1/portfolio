@@ -24,7 +24,7 @@ export default function EducationCerts({ education, certifications }: { educatio
             </p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
               Credentials.
             </h2>
           </Reveal>
@@ -37,7 +37,7 @@ export default function EducationCerts({ education, certifications }: { educatio
             y={30}
             duration={1}
           >
-            <div className="bg-background rounded-xl p-10 border border-card-border shadow-card h-full"  >
+            <div className="bg-background rounded-xl p-6 sm:p-10 border border-card-border shadow-card h-full"  >
               <div className="flex items-center gap-3 mb-10">
                 <div className="w-10 h-10 rounded-full bg-accent-10 flex items-center justify-center border border-accent-20">
                   <GraduationCap size={20} className="text-accent" />

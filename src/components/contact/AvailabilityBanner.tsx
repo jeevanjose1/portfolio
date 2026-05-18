@@ -22,7 +22,7 @@ export default function AvailabilityBanner() {
               </span>
               <span className="text-[10px] font-extrabold text-foreground uppercase tracking-[0.16em]">Active Availability</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-foreground leading-tight">
+            <h2 className="text-3xl sm:text-2xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-foreground leading-tight">
               Currently booking <span className="text-accent font-heading font-semibold">select projects</span>.
             </h2>
           </div>

@@ -26,7 +26,7 @@ export default function ProjectTechStack({ project }: { project: NormalizedProje
 
         {/* Header */}
         <Reveal delay={0.1} blur>
-          <h2 className="text-4xl font-heading font-extrabold text-foreground mb-12">
+          <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-foreground mb-12">
             Technology Stack.
           </h2>
         </Reveal>
@@ -35,7 +35,7 @@ export default function ProjectTechStack({ project }: { project: NormalizedProje
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {layers.map(([layer, techs], i) => (
             <Reveal key={layer} width="100%" delay={i * 0.1} y={24} blur>
-              <div className="bg-section-alt p-8 rounded-lg border border-border h-full">
+              <div className="bg-section-alt p-6 sm:p-8 rounded-lg border border-border h-full">
 
                 {/* Layer label */}
                 <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-accent mb-6">

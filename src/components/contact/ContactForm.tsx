@@ -88,7 +88,7 @@ export default function ContactForm() {
 
   return (
     <Reveal width="100%" delay={0.2} y={30} duration={1}>
-      <div className="bg-background rounded-xl p-10 sm:p-12 border border-card-border shadow-card relative overflow-hidden min-h-[600px]">
+      <div className="bg-background rounded-xl p-6 sm:p-10 lg:p-12 border border-card-border shadow-card relative overflow-hidden min-h-[600px]">
         <AnimatePresence mode="wait">
 
           {/* ── Success ── */}
@@ -103,7 +103,7 @@ export default function ContactForm() {
               <div className="w-20 h-20 rounded-lg bg-accent-10 flex items-center justify-center mb-8 border border-accent-20">
                 <CheckCircle2 size={42} className="text-accent" />
               </div>
-              <h3 className="text-3xl font-heading font-extrabold text-foreground mb-4">Message Sent</h3>
+              <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-foreground mb-4">Message Sent</h3>
               <p className="text-muted-foreground text-base sm:text-lg mb-10 max-w-sm font-body">
                 Thanks for sharing the brief. I&apos;ll review it and respond within 24 business hours.
               </p>
@@ -128,7 +128,7 @@ export default function ContactForm() {
               <div className="w-20 h-20 rounded-lg bg-red-50 flex items-center justify-center mb-8 border border-red-100">
                 <XCircle size={42} className="text-red-500" />
               </div>
-              <h3 className="text-3xl font-heading font-extrabold text-foreground mb-4">Something Went Wrong</h3>
+              <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-foreground mb-4">Something Went Wrong</h3>
               <p className="text-muted-foreground text-base sm:text-lg mb-10 max-w-sm font-body">
                 {errorMessage}
               </p>
@@ -164,7 +164,7 @@ export default function ContactForm() {
                   <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">{"//"} Project Brief</p>
                 </Reveal>
                 <Reveal delay={0.2} blur>
-                  <h2 className="text-3xl font-heading font-extrabold text-foreground">Tell me what you need.</h2>
+                  <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-foreground">Tell me what you need.</h2>
                 </Reveal>
               </div>
 

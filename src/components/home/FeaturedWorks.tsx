@@ -40,7 +40,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
               <p className="section-label mb-4">{"// "} Recent Artifacts</p>
             </Reveal>
             <Reveal delay={0.2} blur>
-              <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground leading-tight">
+              <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground leading-tight">
                 Featured Projects.
               </h2>
             </Reveal>
@@ -98,7 +98,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
                           ))}
                         </div>
                       </div>
-                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-foreground group-hover:text-accent transition-all duration-300">
+                      <h3 className="text-xl sm:text-3xl lg:text-3xl sm:text-4xl font-heading font-extrabold text-foreground group-hover:text-accent transition-all duration-300">
                         {title}
                       </h3>
                     </div>

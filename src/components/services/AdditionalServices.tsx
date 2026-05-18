@@ -47,7 +47,7 @@ export default function AdditionalServices({ services, additionalItems }: { serv
             <p className="section-label mb-4">{"// "} More Capabilities</p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-3xl font-heading font-extrabold text-foreground">
+            <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-foreground">
               Additional Services.
             </h2>
           </Reveal>

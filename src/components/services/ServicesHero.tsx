@@ -36,7 +36,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
                   </span>
                 </Reveal>
                 <Reveal delay={0.3} y={30} blur>
-                  <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-extrabold text-foreground leading-[1.08] mb-5 whitespace-pre-line">
+                  <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-heading font-extrabold text-foreground leading-[1.08] mb-5 whitespace-pre-line">
                     {heading}
                   </h1>
                 </Reveal>
@@ -78,7 +78,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
                     <CheckCircle2 size={22} className="text-accent" />
                   </div>
                   <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-3">Delivery Model</p>
-                  <h2 className="text-3xl font-heading font-extrabold leading-tight">Strategy, build, deploy, iterate.</h2>
+                  <h2 className="text-2xl sm:text-3xl font-heading font-extrabold leading-tight">Strategy, build, deploy, iterate.</h2>
                 </div>
               </div>
             </Reveal>

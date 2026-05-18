@@ -49,7 +49,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-lg p-8 sm:p-12 border border-border h-full flex flex-col"
+              className="bg-section-alt rounded-lg p-6 sm:p-10 lg:p-12 border border-border h-full flex flex-col"
             >
               <div className="mb-8">
                 <Reveal delay={0.2} y={10}>
@@ -59,7 +59,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
                 </Reveal>
               </div>
               <Reveal delay={0.3} blur>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-foreground leading-tight mb-8">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-foreground leading-tight mb-8">
 
                   {project.title}
 

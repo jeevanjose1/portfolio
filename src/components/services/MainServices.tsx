@@ -82,7 +82,7 @@ export default function MainServices({ services }: { services: SanityService[] }
             <p className="section-label mb-4">{"// "} Expertise</p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
               Core Solutions.
             </h2>
           </Reveal>

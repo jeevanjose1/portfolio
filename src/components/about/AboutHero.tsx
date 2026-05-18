@@ -42,7 +42,7 @@ export default function AboutHero({ data, profileImage }: { data?: SanityPageAbo
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
+              className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
 
             >
               <div>
@@ -53,7 +53,7 @@ export default function AboutHero({ data, profileImage }: { data?: SanityPageAbo
                   </span>
                 </Reveal>
                 <Reveal delay={0.3} y={30} blur>
-                  <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-extrabold text-foreground leading-[1.08] mb-5 whitespace-pre-line">
+                  <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-heading font-extrabold text-foreground leading-[1.08] mb-5 whitespace-pre-line">
                     {heading}
                   </h1>
                 </Reveal>
@@ -128,7 +128,7 @@ export default function AboutHero({ data, profileImage }: { data?: SanityPageAbo
 
                 >
                   <div>
-                    <p className="text-3xl sm:text-4xl font-heading font-extrabold text-foreground">{stat.value}</p>
+                    <p className="text-2xl sm:text-3xl sm:text-4xl font-heading font-extrabold text-foreground">{stat.value}</p>
                     <p className="text-sm text-muted-foreground mt-1.5 font-medium">{stat.label}</p>
                   </div>
                   <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center text-accent shrink-0">

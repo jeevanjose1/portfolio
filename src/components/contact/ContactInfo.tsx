@@ -24,7 +24,7 @@ export default function ContactInfo() {
       duration={1}
     >
       <div
-        className="bg-background rounded-xl p-8 sm:p-10 lg:p-12 border border-card-border shadow-card h-full"
+        className="bg-background rounded-xl p-6 sm:p-10 lg:p-12 border border-card-border shadow-card h-full"
 
       >
         <h2 className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent mb-8">{"//"} Information</h2>
@@ -49,11 +49,11 @@ export default function ContactInfo() {
                 <div>
                   <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-1">{item.label}</p>
                   {item.href ? (
-                    <a href={item.href} className="text-lg font-heading font-extrabold text-foreground hover:text-accent transition-colors">
+                    <a href={item.href} className="text-sm sm:text-lg font-heading font-extrabold text-foreground hover:text-accent transition-colors break-all sm:break-normal">
                       {item.value}
                     </a>
                   ) : (
-                    <p className="text-lg font-heading font-extrabold text-foreground">{item.value}</p>
+                    <p className="text-sm sm:text-lg font-heading font-extrabold text-foreground break-words">{item.value}</p>
                   )}
                 </div>
               </div>

@@ -17,7 +17,7 @@ export default function WhatYouGet({ service }: { service: SanityService | MainS
             </p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
               What&apos;s Included.
             </h2>
           </Reveal>

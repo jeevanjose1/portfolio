@@ -17,7 +17,7 @@ function BeyondCard({ item, index }: { item: BeyondCodeItem; index: number }) {
       className="h-full"
     >
       <div
-        className="bg-background rounded-xl p-10 border border-card-border shadow-card hover:border-accent-30 hover:-translate-y-0.5 transition-all duration-500 group relative overflow-hidden h-full flex flex-col"
+        className="bg-background rounded-xl p-6 sm:p-10 border border-card-border shadow-card hover:border-accent-30 hover:-translate-y-0.5 transition-all duration-500 group relative overflow-hidden h-full flex flex-col"
       >
         <LucideIcons.Sparkles size={48} className="absolute -top-4 -right-4 text-accent opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
 
@@ -45,7 +45,7 @@ export default function BeyondCode({ items }: { items?: BeyondCodeItem[] }) {
             <p className="section-label mb-4">{"// "} Personal</p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
               Beyond the IDE.
             </h2>
           </Reveal>

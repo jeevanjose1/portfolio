@@ -17,7 +17,7 @@ export default function ContactHero() {
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
+              className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
 
             >
               <div>
@@ -28,7 +28,7 @@ export default function ContactHero() {
                   </span>
                 </Reveal>
                 <Reveal delay={0.3} blur>
-                  <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-extrabold text-foreground leading-[1.08] mb-5">
+                  <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-heading font-extrabold text-foreground leading-[1.08] mb-5">
                     Tell me what you&apos;re building. I&apos;ll help shape the next step.
                   </h1>
                 </Reveal>
@@ -61,7 +61,7 @@ export default function ContactHero() {
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-card-border shadow-card text-foreground relative overflow-hidden h-full"
+                className="bg-section-alt rounded-xl p-6 sm:p-10 min-h-[220px] border border-card-border shadow-card text-foreground relative overflow-hidden h-full"
 
               >
                 <div className="absolute inset-0 opacity-[0.04] pattern-grid bg-[size:28px_28px] rounded-xl" />
@@ -70,7 +70,7 @@ export default function ContactHero() {
                     <Calendar size={22} className="text-accent" />
                   </div>
                   <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-3">Availability</p>
-                  <h2 className="text-3xl font-heading font-extrabold leading-tight">Open for thoughtful freelance work.</h2>
+                  <h2 className="text-2xl sm:text-3xl font-heading font-extrabold leading-tight">Open for thoughtful freelance work.</h2>
                 </div>
               </div>
             </Reveal>

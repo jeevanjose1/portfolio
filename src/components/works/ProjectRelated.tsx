@@ -18,7 +18,7 @@ export default function ProjectRelated({ projects }: { projects: SanityProject[]
                 Discovery
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground tracking-tight">
               Explore More.
             </h2>
           </div>

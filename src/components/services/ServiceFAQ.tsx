@@ -17,7 +17,7 @@ export default function ServiceFAQ({ service }: { service: SanityService | MainS
             </p>
           </Reveal>
           <Reveal delay={0.2} blur className="mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
               Frequently Asked Questions.
             </h2>
           </Reveal>

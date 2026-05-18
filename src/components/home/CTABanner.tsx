@@ -20,7 +20,7 @@ export default function CTABanner({ data }: { data?: { heading?: string; subtext
           duration={1}
         >
           <div
-            className="relative rounded-xl py-16 lg:py-20 px-8 sm:px-12 lg:px-16 overflow-hidden border border-card-border bg-section-alt shadow-card flex flex-col lg:flex-row items-center justify-between gap-10"
+            className="relative rounded-xl py-12 lg:py-20 px-6 sm:px-12 lg:px-16 overflow-hidden border border-card-border bg-section-alt shadow-card flex flex-col lg:flex-row items-center justify-between gap-10"
           >
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-20 to-transparent" />
             <div className="absolute inset-0 opacity-[0.035] pattern-grid bg-[size:32px_32px] rounded-xl" />
@@ -34,7 +34,7 @@ export default function CTABanner({ data }: { data?: { heading?: string; subtext
               </Reveal>
 
               <Reveal delay={0.3} blur className="mx-auto lg:mx-0">
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-foreground leading-[1.05] mb-6 whitespace-pre-line">
+                <h2 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-foreground leading-[1.05] mb-6 whitespace-pre-line">
                   {heading}
                 </h2>
               </Reveal>

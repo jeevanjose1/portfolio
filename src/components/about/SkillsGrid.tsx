@@ -18,7 +18,7 @@ function SkillGroupCard({ group, index }: { group: SkillGroup; index: number }) 
       className="h-full!"
     >
       <div
-        className="bg-background rounded-xl p-10 border border-card-border shadow-card hover:border-accent-20 hover:-translate-y-0.5 transition-all duration-500 h-full flex flex-col"
+        className="bg-background rounded-xl p-6 sm:p-10 border border-card-border shadow-card hover:border-accent-20 hover:-translate-y-0.5 transition-all duration-500 h-full flex flex-col"
          
       >
         <div className="flex items-center gap-4 mb-8">
@@ -56,7 +56,7 @@ export default function SkillsGrid({ skillGroups }: { skillGroups?: SkillGroup[]
             <p className="section-label mb-4">{"// "} Expertise</p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">Technical Arsenal.</h2>
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">Technical Arsenal.</h2>
           </Reveal>
         </div>
 

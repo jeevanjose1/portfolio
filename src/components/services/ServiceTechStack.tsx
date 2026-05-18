@@ -16,7 +16,7 @@ export default function ServiceTechStack({ service }: { service: SanityService |
             </p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground mb-6">
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground mb-6">
               Technologies I Use.
             </h2>
           </Reveal>

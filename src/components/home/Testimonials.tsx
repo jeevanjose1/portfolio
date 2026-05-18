@@ -21,7 +21,7 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
             <p className="section-label mb-4">{"// "} Client Feedback</p>
           </Reveal>
           <Reveal delay={0.2} blur className="mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">What Clients Say.</h2>
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">What Clients Say.</h2>
           </Reveal>
           <Reveal delay={0.4} className="mx-auto">
             <div className="w-16 h-px bg-accent-25 mx-auto mt-8" />

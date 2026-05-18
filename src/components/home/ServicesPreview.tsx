@@ -27,7 +27,7 @@ function ServiceCard({ service, index }: { service: SanityService | ServiceItem;
       className="h-full"
     >
       <article
-        className="group bg-section-alt rounded-xl border border-card-border p-7 sm:p-9 shadow-sm transition-all duration-300 hover:border-accent-25  h-full flex flex-col"
+        className="group bg-section-alt rounded-xl border border-card-border p-5 sm:p-8 shadow-sm transition-all duration-300 hover:border-accent-25  h-full flex flex-col"
 
       >
         <div className="flex items-start justify-between gap-4 mb-10">
@@ -77,7 +77,7 @@ export default function ServicesPreview({ services }: { services: SanityService[
           duration={1}
         >
           <div
-            className="bg-section-alt rounded-xl border border-card-border shadow-card p-8 sm:p-10 lg:p-12 flex flex-col justify-between h-full"
+            className="bg-section-alt rounded-xl border border-card-border shadow-card p-6 sm:p-10 lg:p-12 flex flex-col justify-between h-full"
 
           >
             <div>
@@ -85,7 +85,7 @@ export default function ServicesPreview({ services }: { services: SanityService[
                 <p className="section-label mb-5">What I Build</p>
               </Reveal>
               <Reveal delay={0.3} blur>
-                <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-foreground leading-tight mb-5">
+                <h2 className="text-2xl sm:text-3xl sm:text-4xl font-heading font-extrabold text-foreground leading-tight mb-5">
                   Practical software for real business needs.
                 </h2>
               </Reveal>

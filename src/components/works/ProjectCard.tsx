@@ -58,7 +58,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
           </div>
 
           {/* Content */}
-          <div className="p-8 sm:p-10 flex flex-col ">
+          <div className="p-6 sm:p-10 flex flex-col ">
             <div className="flex flex-wrap gap-2 mb-5">
               {project.categories?.slice(0, 3).map((tag) => (
                 <span key={tag} className="text-[10px] font-bold uppercase tracking-wider bg-surface-2 text-muted-foreground px-3 py-1 rounded-full border border-border">

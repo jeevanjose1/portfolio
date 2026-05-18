@@ -43,7 +43,7 @@ export default function WorksPhilosophy() {
             </Reveal>
 
             <Reveal delay={0.2} blur>
-              <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground tracking-tight leading-[1.1] mb-8">
+              <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground tracking-tight leading-[1.1] mb-8">
                 Building with <br /> precision & purpose.
               </h2>
             </Reveal>

@@ -21,7 +21,7 @@ export default function MyStory({ storyText, timeline, profileImage }: { storyTe
             <p className="section-label mb-4">{"// "} Origins</p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
               My Journey.
             </h2>
           </Reveal>
@@ -36,7 +36,7 @@ export default function MyStory({ storyText, timeline, profileImage }: { storyTe
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-10 border border-card-border shadow-card h-full"
+              className="bg-section-alt rounded-xl p-6 sm:p-10 border border-card-border shadow-card h-full"
 
             >
               <h3 className="text-sm font-extrabold uppercase tracking-[0.16em] text-muted-foreground mb-10">
@@ -53,7 +53,7 @@ export default function MyStory({ storyText, timeline, profileImage }: { storyTe
                 className="bg-section-alt rounded-xl border border-card-border shadow-card"
 
               >
-                <div className="p-10 sm:p-14">
+                <div className="p-6 sm:p-14">
                   <Reveal delay={0.4} y={20}>
                     <h3 className="text-2xl font-heading font-extrabold text-foreground mb-8 relative z-10">
                       Engineering with <br />

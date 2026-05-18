@@ -42,7 +42,7 @@ const portableTextComponents = {
       </p>
     ),
     h1: ({ children }: any) => (
-      <h1 className="text-3xl font-heading font-extrabold text-foreground mt-12 mb-5 tracking-tight leading-tight">
+      <h1 className="text-2xl sm:text-3xl font-heading font-extrabold text-foreground mt-12 mb-5 tracking-tight leading-tight">
         {children}
       </h1>
     ),
@@ -332,7 +332,7 @@ export default function ProjectContent({ project }: { project: NormalizedProject
             </p>
           </Reveal>
           <Reveal delay={0.15} blur>
-            <h2 className="text-3xl lg:text-4xl font-heading font-extrabold text-foreground tracking-tight leading-tight">
+            <h2 className="text-3xl lg:text-3xl sm:text-4xl font-heading font-extrabold text-foreground tracking-tight leading-tight">
               Case Study Overview
             </h2>
           </Reveal>

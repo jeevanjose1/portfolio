@@ -18,7 +18,7 @@ export default function FAQ({ faqs }: { faqs: SanityFAQ[] }) {
             </p>
           </Reveal>
           <Reveal delay={0.2} blur>
-            <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground">
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
               Common FAQ.
             </h2>
           </Reveal>

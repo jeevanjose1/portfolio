@@ -31,7 +31,7 @@ export default function FilterBar({
                 </p>
               </Reveal>
               <Reveal delay={0.2} blur>
-                <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-foreground tracking-tighter leading-[0.9]">
+                <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground tracking-tighter leading-[0.9]">
                   Specialized  Expertise
                 </h2>
               </Reveal>
