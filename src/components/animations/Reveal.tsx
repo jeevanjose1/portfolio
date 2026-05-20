@@ -21,23 +21,15 @@ export const Reveal = ({
   width = "fit-content",
   className = "",
   delay = 0,
-  // Ignoring these props to enforce standard animation site-wide
-  duration: _duration,
-  y: _y,
-  x: _x,
-  scale: _scale,
-  blur: _blur,
+  duration = 0.8,
+  y = 30,
+  x = 0,
+  scale = 1,
+  blur = true,
   staggerChildren = 0,
 }: RevealProps) => {
-  // Standard animation values for consistency
-  const duration = 0.8;
-  const y = 30;
-  const x = 0;
-  const scale = 1;
-  const blur = true;
   const ref = useRef(null);
-  // margin: "10px" means the animation triggers as the element enters the viewport
-  // (not 60px after entry), preventing the "stuck blur" issue
+
   const isInView = useInView(ref, { once: true, margin: "10px" });
   const mainControls = useAnimation();
 
