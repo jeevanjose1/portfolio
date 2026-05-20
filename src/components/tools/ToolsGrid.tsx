@@ -135,7 +135,7 @@ export default function ToolsGrid() {
                 className={config}
               >
                 <Reveal width="100%" delay={index * 0.05} y={40} className="h-full">
-                  <Link
+                  <Link scroll={false}
                     href={tool.href}
                     className="group relative flex flex-col h-full p-6 md:p-10 rounded-xl bg-surface-1 border border-card-border overflow-hidden transition-all duration-700 hover:border-accent/40"
                   >

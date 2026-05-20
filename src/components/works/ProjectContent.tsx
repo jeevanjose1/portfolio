@@ -398,7 +398,7 @@ export default function ProjectContent({ project }: { project: NormalizedProject
                       <p className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-muted-foreground/60 mb-3 text-center">
                         Partner with me
                       </p>
-                      <Link
+                      <Link scroll={false}
                         href="/contact"
                         className="btn-primary w-full inline-flex items-center justify-center gap-2 uppercase tracking-[0.14em] text-xs font-extrabold py-3 rounded-lg transition-all duration-300 hover:gap-3"
                       >

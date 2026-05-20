@@ -3,27 +3,27 @@ import { experienceData } from "@/lib/data";
 import { SanityExperience } from "@/sanity/types";
 import { Reveal } from "@/components/animations/Reveal";
 
-export default function ExperienceCards({ 
-  experiences, 
-  workHistory 
-}: { 
-  experiences: SanityExperience[]; 
+export default function ExperienceCards({
+  experiences,
+  workHistory
+}: {
+  experiences: SanityExperience[];
   workHistory?: any[];
 }) {
   const displayData = (workHistory && workHistory.length > 0)
     ? workHistory.map((wh) => ({
-        company: wh.company,
-        role: wh.role,
-        dateRange: wh.duration,
-        achievements: wh.points || [],
-      }))
+      company: wh.company,
+      role: wh.role,
+      dateRange: wh.duration,
+      achievements: wh.points || [],
+    }))
     : experiences.length > 0
       ? experiences.map((exp) => ({
-          company: exp.title,
-          role: exp.subtitle,
-          dateRange: exp.year,
-          achievements: exp.description.split("\n").filter((l: string) => l.trim() !== ""),
-        }))
+        company: exp.title,
+        role: exp.subtitle,
+        dateRange: exp.year,
+        achievements: exp.description.split("\n").filter((l: string) => l.trim() !== ""),
+      }))
       : experienceData;
 
   return (
@@ -42,18 +42,18 @@ export default function ExperienceCards({
 
         <div className="max-w-4xl">
           {displayData.map((exp, i) => (
-            // ✅ Plain wrapper owns the timeline chrome — no overflow clipping
             <div key={i} className="relative pl-12 sm:pl-16 group">
 
-              {/* Continuous vertical line — spans full card height */}
-              <div className="absolute left-0 top-0 bottom-0 w-px bg-border group-hover:bg-accent-30 transition-colors duration-500" />
+              {/* Continuous vertical line — spans card height but stops for the last item */}
+              <div className={`absolute left-0 top-3 ${i === displayData.length - 1 ? 'h-3' : 'bottom-0'} w-px bg-border group-hover:bg-accent-30 transition-colors duration-500`} />
 
               {/* Dot — sits outside Reveal so it's never clipped */}
               <div className="absolute left-[-4px] top-3 w-2.5 h-2.5 rounded-full bg-accent ring-4 ring-background z-10 transition-transform duration-300 group-hover:scale-125" />
 
               {/* Reveal wraps only the card content */}
               <Reveal width="100%" delay={i * 0.1} y={30}>
-                <div className="pb-16">
+                <div className={i < displayData.length - 1 ? "pb-16" : ""}>
+
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-2">

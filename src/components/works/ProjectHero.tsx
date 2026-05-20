@@ -31,7 +31,7 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
       <div className="section-container">
         <div className="mb-8 mt-6 md:mt-0">
           <Reveal delay={0.1}>
-            <Link
+            <Link scroll={false}
               href="/works"
               className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground hover:text-accent flex items-center gap-2 transition-colors w-fit"
             >
@@ -72,20 +72,6 @@ export default function ProjectHero({ project }: { project: NormalizedProject })
               </Reveal>
 
               <div className="flex flex-wrap gap-2 mb-16">
-                {/* {project.tags.map((tag, i) => (
-                  <Reveal
-                    key={tag}
-                    delay={0.5 + i * 0.1}
-                    y={10}
-                    scale={0.9}
-                  >
-                    <span
-                      className="text-[10px] font-extrabold uppercase tracking-[0.16em] bg-background border border-border text-muted-foreground px-4 py-2 rounded-lg shadow-sm block"
-                    >
-                      {tag}
-                    </span>
-                  </Reveal>
-                ))} */}
               </div>
 
               <Reveal delay={0.6} y={20}>

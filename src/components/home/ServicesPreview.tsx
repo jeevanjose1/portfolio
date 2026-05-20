@@ -39,7 +39,7 @@ function ServiceCard({ service, index }: { service: SanityService | ServiceItem;
               <Icon size={22} />
             </div>
           </div>
-          <Link
+          <Link scroll={false}
             href={href}
             aria-label={`Open ${service.title}`}
             className="h-10 w-10 rounded-lg border border-border bg-surface-2 flex items-center justify-center text-muted-foreground transition-all duration-300 group-hover:border-accent group-hover:text-accent group-hover:bg-accent-5"
@@ -85,7 +85,7 @@ export default function ServicesPreview({ services }: { services: SanityService[
                 <p className="section-label mb-5">What I Build</p>
               </Reveal>
               <Reveal delay={0.3} blur>
-                <h2 className="text-2xl sm:text-3xl sm:text-4xl font-heading font-extrabold text-foreground leading-tight mb-5">
+                <h2 className="text-2xl sm:text-4xl font-heading font-extrabold text-foreground leading-tight mb-5">
                   Practical software for real business needs.
                 </h2>
               </Reveal>
@@ -97,7 +97,7 @@ export default function ServicesPreview({ services }: { services: SanityService[
             </div>
 
             <Reveal delay={0.5} y={20}>
-              <Link href="/about" className="btn-secondary mt-10 gap-2 w-fit">
+              <Link scroll={false} href="/about" className="btn-secondary mt-10 gap-2 w-fit">
                 About Me
                 <ArrowUpRight size={14} />
               </Link>

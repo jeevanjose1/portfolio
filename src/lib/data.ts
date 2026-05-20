@@ -837,10 +837,7 @@ export const faqData: FAQItem[] = [
     question: "Do you work with international clients?",
     answer: "Yes! I work with clients all over the world. I am accustomed to working across different time zones and ensure smooth communication through regular updates and flexible meeting times.",
   },
-  {
-    question: "What payment methods do you accept?",
-    answer: "I accept payments via bank transfer, PayPal, and major credit cards through secure invoicing platforms. Projects typically require a deposit upfront, with the remainder tied to specific project milestones.",
-  },
+
   {
     question: "Do you provide post-launch support?",
     answer: "Absolutely. Every project includes a standard 30-day bug-fix guarantee after launch. I also offer ongoing retainer packages for maintenance, updates, and adding new features as your business grows.",

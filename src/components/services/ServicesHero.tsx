@@ -26,7 +26,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
           >
             <div
               className="bg-section-alt rounded-xl p-10 sm:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
-               
+
             >
               <div>
                 <Reveal delay={0.2}>
@@ -46,12 +46,12 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
                   </p>
                 </Reveal>
               </div>
-              <Reveal delay={0.5} y={20}>
+              <Reveal width="100%" delay={0.5} y={20}>
                 <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <Link href="/contact" className="btn-primary gap-2.5">
+                  <Link scroll={false} href="/contact" className="btn-primary gap-2.5 w-full md:w-fit">
                     Discuss a Project <ArrowRight size={15} />
                   </Link>
-                  <Link href="/works" className="btn-secondary gap-2.5">
+                  <Link scroll={false} href="/works" className="btn-secondary gap-2.5 w-full md:w-fit">
                     View Proof
                   </Link>
                 </div>
@@ -70,7 +70,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
             >
               <div
                 className="bg-section-alt rounded-xl p-8 sm:p-10 min-h-[220px] border border-card-border shadow-card text-foreground relative overflow-hidden h-full"
-                 
+
               >
                 <div className="absolute inset-0 opacity-[0.04] pattern-grid bg-[size:28px_28px] rounded-xl" />
                 <div className="relative z-10">
@@ -87,7 +87,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
             <Reveal width="100%" delay={0.5} y={20} duration={1}>
               <div
                 className="bg-section-alt h-full rounded-xl p-8 border border-card-border"
-                 
+
               >
                 <p className="text-lg font-body italic text-muted-foreground leading-relaxed">
                   &ldquo;Good software isn&apos;t just code that works — it&apos;s a system that scales, adapts, and outlasts the sprint it was born in.&rdquo;
@@ -108,7 +108,7 @@ export default function ServicesHero({ data }: { data?: SanityPageServices, main
               >
                 <div
                   className="bg-section-alt rounded-xl p-6 border border-card-border shadow-card flex items-center gap-3 h-full"
-                   
+
                 >
                   <CheckCircle2 size={17} className="text-accent shrink-0" />
                   <span className="text-sm font-extrabold uppercase tracking-[0.16em] text-foreground">{item}</span>

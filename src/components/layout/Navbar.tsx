@@ -12,8 +12,9 @@ import ToolsModal from "@/components/ui/ToolsModal";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  // { label: "Services", href: "/services" },
   { label: "Works", href: "/works" },
+  { label: "Services", href: "/services" },
+
   { label: "Contact", href: "/contact" },
 ];
 
@@ -49,7 +50,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <Link
+          <Link scroll={false}
             href="/"
             className="text-lg font-heading font-extrabold text-foreground select-none shrink-0 hover:opacity-80 transition-opacity"
           >
@@ -64,7 +65,7 @@ export default function Navbar() {
               pathname === link.href ||
               (link.href !== "/" && pathname.startsWith(link.href));
             return (
-              <Link
+              <Link scroll={false}
                 key={link.label}
                 href={link.href}
                 className={`
@@ -83,48 +84,10 @@ export default function Navbar() {
 
         {/* Right Side */}
         <div className="flex items-center gap-2">
-          {/* Utilities Group */}
-          <div className="flex items-center gap-2">
-            <AnimatePresence>
-              <>
+          <PaletteSelector />
+          <ThemeToggle />
 
-                {/*
-    {utilitiesOpen && (
-      <motion.div
-        initial={{ opacity: 0, x: 20, scale: 0.9 }}
-        animate={{ opacity: 1, x: 0, scale: 1 }}
-        exit={{ opacity: 0, x: 20, scale: 0.9 }}
-        className="flex items-center gap-2"
-      >
-        <button
-          onClick={() => setToolsOpen(true)}
-          className="w-10 h-10 rounded-lg bg-surface-2 border border-border flex items-center justify-center"
-        >
-          <Wrench size={17} />
-        </button>
-      </motion.div>
-    )}
-    */}
-
-
-                <PaletteSelector />
-                <ThemeToggle />
-              </>
-            </AnimatePresence>
-
-            {/* <button
-              onClick={() => setUtilitiesOpen(!utilitiesOpen)}
-              className={`w-10 h-10 rounded-lg border flex items-center justify-center transition-all duration-300 ${utilitiesOpen
-                ? "bg-accent text-background border-accent"
-                : "bg-surface-2 border-border text-muted-foreground hover:text-foreground"
-                }`}
-              title={utilitiesOpen ? "Close Utilities" : "Show Utilities"}
-            >
-              {utilitiesOpen ? <X size={18} /> : <ChevronLeft size={18} />}
-            </button> */}
-          </div>
-
-          <Link
+          <Link scroll={false}
             href="/contact"
             className="hidden md:inline-flex btn-primary py-3 px-5 text-[10px] rounded-lg ml-1"
           >
@@ -157,7 +120,7 @@ export default function Navbar() {
                     (link.href !== "/" && pathname.startsWith(link.href));
                   return (
                     <li key={link.label}>
-                      <Link
+                      <Link scroll={false}
                         href={link.href}
                         onClick={() => setMobileOpen(false)}
                         className={`
@@ -174,7 +137,7 @@ export default function Navbar() {
                   );
                 })}
                 <li className="mt-1 pt-1 border-t border-border">
-                  <Link
+                  <Link scroll={false}
                     href="/contact"
                     onClick={() => setMobileOpen(false)}
                     className="block py-3 px-4 text-[11px] font-bold uppercase tracking-[0.14em] rounded-lg bg-accent text-background text-center"

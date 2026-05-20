@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Award, Download, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Clock, Download, Globe2, Layers, MapPin, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/animations/Reveal";
@@ -16,9 +16,9 @@ const fallbackAboutHeroData = {
     "With over 4 years of hands-on experience in software development, I specialize in building full-stack web applications, cross-platform mobile apps, and scalable cloud solutions.",
   ],
   stats: [
-    { value: "4+", label: "Years" },
-    { value: "20+", label: "Projects" },
-    { value: "5+", label: "Industries" },
+    { value: "4+", label: "Years Experience" },
+    { value: "20+", label: "Projects Shipped" },
+    { value: "5+", label: "Industries Served" },
   ],
 };
 
@@ -30,7 +30,7 @@ export default function AboutHero({ data, profileImage }: { data?: SanityPageAbo
   const imageUrl = profileImage ? urlForImage(profileImage).url() : "/images/headshot.jpeg";
 
   return (
-    <section className="min-h-[100svh] flex items-center pb-12 transition-colors duration-300">
+    <section className="min-h-[100svh] flex mt-6 md:mt-0 items-center transition-colors duration-300">
       <div className="section-container w-full">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 auto-rows-auto">
 
@@ -63,12 +63,12 @@ export default function AboutHero({ data, profileImage }: { data?: SanityPageAbo
                   </p>
                 </Reveal>
               </div>
-              <Reveal delay={0.5} y={20}>
+              <Reveal width="100%" delay={0.5} y={20}>
                 <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <a href="/resume.pdf" download className="btn-primary gap-2.5">
+                  <a href="/resume.pdf" download className="btn-primary gap-2.5  w-full md:w-fit">
                     Download Resume <Download size={15} />
                   </a>
-                  <Link href="/contact" className="btn-secondary gap-2.5">
+                  <Link scroll={false} href="/contact" className="btn-secondary gap-2.5  w-full md:w-fit">
                     Start a Conversation <ArrowRight size={15} />
                   </Link>
                 </div>
@@ -115,28 +115,30 @@ export default function AboutHero({ data, profileImage }: { data?: SanityPageAbo
 
           {/* Stats row */}
           <div className="md:col-span-12 grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {stats.slice(0, 3).map((stat: { label: string; value: string }, i: number) => (
-              <Reveal
-                key={stat.label}
-                width="100%"
-                delay={0.6 + i * 0.1}
-                y={30}
-                blur
-              >
-                <div
-                  className="bg-section-alt rounded-xl p-6 sm:p-8 border border-card-border shadow-card flex items-center justify-between gap-4 h-full"
-
+            {stats.slice(0, 3).map((stat: { label: string; value: string }, i: number) => {
+              const StatIcon = [Clock, Layers, Globe2][i];
+              return (
+                <Reveal
+                  key={stat.label}
+                  width="100%"
+                  delay={0.6 + i * 0.1}
+                  y={30}
+                  blur
                 >
-                  <div>
-                    <p className="text-2xl sm:text-3xl sm:text-4xl font-heading font-extrabold text-foreground">{stat.value}</p>
-                    <p className="text-sm text-muted-foreground mt-1.5 font-medium">{stat.label}</p>
+                  <div
+                    className="bg-section-alt rounded-xl p-6 sm:p-8 border border-card-border shadow-card flex items-center justify-between gap-4 h-full"
+                  >
+                    <div>
+                      <p className="text-2xl sm:text-4xl font-heading font-extrabold text-foreground">{stat.value}</p>
+                      <p className="text-sm text-muted-foreground mt-1.5 font-medium">{stat.label}</p>
+                    </div>
+                    <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center text-accent shrink-0">
+                      <StatIcon size={20} />
+                    </div>
                   </div>
-                  <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center text-accent shrink-0">
-                    <Award size={20} />
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </div>

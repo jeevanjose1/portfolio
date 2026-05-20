@@ -31,7 +31,7 @@ export default function RelatedServices({
     .slice(0, 2); // Show top 2 related services
 
   return (
-    <section className="bg-background py-24 transition-colors duration-300">
+    <section className="bg-background  transition-colors duration-300">
       <div className="section-container !py-0">
         <div className="mb-14">
           <Reveal delay={0.1}>
@@ -63,7 +63,7 @@ export default function RelatedServices({
                 blur
                 className="h-full"
               >
-                <GradientCard className="h-full border border-card-border p-8 sm:p-10 flex flex-col bg-background transition-all duration-500 hover:border-accent-25 hover:-translate-y-0.5 group" >
+                <GradientCard className="h-full border border-card-border p-8 sm:p-10 flex flex-col bg-background transition-all duration-500 hover:border-accent-25  group" >
                   <div className="w-14 h-14 rounded-xl bg-surface-2 border border-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300 shrink-0">
                     <Icon size={26} className="text-accent group-hover:text-background transition-colors" />
                   </div>
@@ -87,7 +87,7 @@ export default function RelatedServices({
                   )}
 
                   <div className="pt-6 border-t border-border mt-auto flex items-center justify-between relative z-10">
-                    <Link
+                    <Link scroll={false}
                       href={`/services/${typeof service.slug === 'string' ? service.slug : (service as any).slug}`}
                       className="group/btn flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-accent hover:text-foreground transition-colors duration-300"
                     >

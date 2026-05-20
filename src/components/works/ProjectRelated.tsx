@@ -23,7 +23,7 @@ export default function ProjectRelated({ projects }: { projects: SanityProject[]
             </h2>
           </div>
           
-          <Link
+          <Link scroll={false}
             href="/works"
             className="group flex items-center gap-3 text-xs font-extrabold uppercase tracking-[0.16em] text-muted-foreground hover:text-accent transition-all"
           >

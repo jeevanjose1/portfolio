@@ -72,7 +72,7 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
                     ))}
                   </ul>
 
-                  <Link
+                  <Link scroll={false}
                     href="/contact"
                     className={`w-full py-4 rounded-lg font-extrabold uppercase tracking-[0.16em] text-xs text-center transition-all duration-300 ${pkg.highlighted
                       ? "bg-white text-slate-900 hover:bg-gray-100 dark:bg-white dark:text-accent"
@@ -94,7 +94,7 @@ export default function PricingPackages({ service }: { service: MainServiceItem 
             <p className="text-muted-foreground font-body mb-4">
               Not sure which package is right for you? Let&apos;s discuss your requirements first.
             </p>
-            <Link
+            <Link scroll={false}
               href="/contact"
               className="inline-flex items-center gap-2 text-accent font-extrabold uppercase tracking-[0.16em] text-sm hover:text-foreground transition-colors"
             >

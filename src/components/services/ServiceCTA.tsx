@@ -33,7 +33,7 @@ export default function ServiceCTA({ title }: ServiceCTAProps) {
               </Reveal>
               <Reveal delay={0.4} y={20} className="mx-auto">
                 <div className="flex flex-wrap items-center justify-center gap-4">
-                  <Link
+                  <Link scroll={false}
                     href="/contact"
                     className="btn-primary"
                   >

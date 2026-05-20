@@ -24,7 +24,7 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
           >
             <div
               className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
-               
+
             >
               <div>
                 <Reveal delay={0.2}>
@@ -44,12 +44,12 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
                   </p>
                 </Reveal>
               </div>
-              <Reveal delay={0.5} y={20}>
+              <Reveal width="100%" delay={0.5} y={20}>
                 <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <a href="#projects" className="btn-primary gap-2.5">
+                  <a href="#projects" className="btn-primary gap-2.5 w-full md:w-fit">
                     Explore Projects <ArrowDown size={15} />
                   </a>
-                  <Link href="/contact" className="btn-secondary gap-2.5">
+                  <Link scroll={false} href="/contact" className="btn-secondary gap-2.5 w-full md:w-fit">
                     Build Something Similar <ArrowRight size={15} />
                   </Link>
                 </div>
@@ -68,7 +68,7 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
             >
               <div
                 className="bg-section-alt rounded-xl p-6 sm:p-10 min-h-[220px] border border-card-border shadow-card text-foreground relative overflow-hidden h-full"
-                 
+
               >
                 <div className="absolute inset-0 opacity-[0.04] pattern-grid bg-[size:28px_28px] rounded-xl" />
                 <div className="relative z-10">
@@ -89,15 +89,14 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
                   delay={0.5 + i * 0.1}
                   y={20}
                 >
-                  <Link
+                  <Link scroll={false}
                     href={`/works/${project.slug}`}
-                    className="bg-section-alt rounded-xl p-4 border border-card-border shadow-card flex items-center justify-between gap-4 group hover:border-accent-30 transition-all duration-300 block"
-                    style={{ boxShadow: "var(--shadow-sm)" }}
+                    className="bg-section-alt rounded-xl p-4 border border-card-border shadow-card flex items-center justify-between gap-4 group hover:border-accent-30 transition-all duration-300"
                   >
                     <div className="flex items-center justify-between gap-4">
                       <div>
                         <p className="text-sm font-heading font-extrabold text-foreground leading-snug">{project.title}</p>
-                        <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground mt-1">
+                        <p className="text-[10px] truncate max-w-40 font-extrabold uppercase tracking-[0.16em] text-muted-foreground mt-1">
                           {project.categories?.[0] || "Project"}
                         </p>
                       </div>
@@ -112,9 +111,9 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
           {/* Stats row */}
           <div className="md:col-span-12 grid grid-cols-1 sm:grid-cols-3 gap-5">
             {[
-              { label: "Projects",   value: `${projects.length}+`, icon: FolderGit2 },
-              { label: "Core Focus", value: "SaaS / Apps",             icon: Gauge },
-              { label: "Outcome",    value: "Launch Ready",            icon: BarChart3 },
+              { label: "Projects", value: `${projects.length}+`, icon: FolderGit2 },
+              { label: "Core Focus", value: "SaaS / Apps", icon: Gauge },
+              { label: "Outcome", value: "Launch Ready", icon: BarChart3 },
             ].map((item, i) => {
               const Icon = item.icon;
               return (
@@ -127,10 +126,10 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
                 >
                   <div
                     className="bg-section-alt rounded-xl p-6 sm:p-8 border border-card-border shadow-card flex items-center justify-between gap-4 h-full"
-                     
+
                   >
                     <div>
-                      <p className="text-xl sm:text-2xl sm:text-3xl font-heading font-extrabold text-foreground">{item.value}</p>
+                      <p className="text-xl sm:text-3xl font-heading font-extrabold text-foreground">{item.value}</p>
                       <p className="text-sm text-muted-foreground mt-1.5 font-medium">{item.label}</p>
                     </div>
                     <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center text-accent shrink-0">

@@ -9,7 +9,7 @@ import { Reveal } from "@/components/animations/Reveal";
 export default function ProcessTimeline({ service }: { service: SanityService | MainServiceItem }) {
   const steps = service.process || [];
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"],
@@ -22,7 +22,7 @@ export default function ProcessTimeline({ service }: { service: SanityService | 
   });
 
   return (
-    <section className="bg-background py-16 transition-colors duration-300" ref={containerRef}>
+    <section className="bg-background  transition-colors duration-300" ref={containerRef}>
       <div className="section-container">
         <div className="mb-16 text-center">
           <Reveal delay={0.1} className="mx-auto">
@@ -40,9 +40,9 @@ export default function ProcessTimeline({ service }: { service: SanityService | 
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline Vertical Line (Background) */}
           <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-border dark:bg-border/30 -translate-x-1/2 rounded-full" />
-          
+
           {/* Timeline Vertical Line (Animated Progress) */}
-          <motion.div 
+          <motion.div
             className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-accent -translate-x-1/2 rounded-full origin-top"
             style={{ scaleY }}
           />
@@ -52,7 +52,7 @@ export default function ProcessTimeline({ service }: { service: SanityService | 
               const isEven = i % 2 === 0;
               return (
                 <div key={i} className="relative grid grid-cols-1 md:grid-cols-2 items-center min-h-[180px]">
-                  
+
                   {/* Timeline Dot */}
                   <div className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-background border-4 border-border dark:border-accent-20 flex items-center justify-center -translate-x-1/2 z-50 font-extrabold text-foreground ">
                     {step.step}
