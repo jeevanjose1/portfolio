@@ -20,7 +20,7 @@ export default async function WorksPage() {
   let projects: SanityProject[] = [];
   let siteSettings: SanitySiteSettings | null = null;
   let fetchError = false;
-  
+
   try {
     const [fetchedProjects, fetchedSettings] = await Promise.all([
       client.fetch<SanityProject[]>(projectsQuery),
@@ -29,13 +29,13 @@ export default async function WorksPage() {
     projects = fetchedProjects;
     siteSettings = fetchedSettings;
   } catch (error) {
-    console.error("Sanity fetch failed:", error);
+    console.error(" fetch failed:", error);
     fetchError = true;
   }
 
-  const displayProjects = projects && projects.length > 0 
-    ? projects 
-    : (fetchError ? (projectsData as unknown as SanityProject[]) : []); 
+  const displayProjects = projects && projects.length > 0
+    ? projects
+    : (fetchError ? (projectsData as unknown as SanityProject[]) : []);
 
   return (
     <>

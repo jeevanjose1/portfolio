@@ -29,11 +29,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     sanityProjects = await client.fetch(projectsQuery);
     sanityServices = await client.fetch(servicesQuery);
   } catch (error) {
-    console.error("Failed to fetch Sanity data for sitemap:", error);
+    console.error("Failed to fetch  data for sitemap:", error);
   }
 
   // Generate Project Routes
-  const projectSlugs = sanityProjects?.length > 0 
+  const projectSlugs = sanityProjects?.length > 0
     ? sanityProjects.map((p) => p.slug)
     : projectsData.map((p) => p.slug);
 
@@ -45,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Generate Service Routes
-  const serviceSlugs = sanityServices?.length > 0 
+  const serviceSlugs = sanityServices?.length > 0
     ? sanityServices.map((s) => s.slug)
     : mainServicesData.map((s) => s.slug);
 

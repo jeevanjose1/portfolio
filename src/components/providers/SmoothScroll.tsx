@@ -6,9 +6,9 @@ import Lenis from "lenis";
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const isStudio = pathname.startsWith("/studio");
 
   useEffect(() => {
-    const isStudio = pathname.startsWith("/studio");
     if (isStudio) return;
 
     const lenis = new Lenis({
@@ -33,7 +33,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       cancelAnimationFrame(rafId);
       lenis.destroy();
     };
-  }, [pathname.startsWith("/studio")]);
+  }, [isStudio]);
 
   return <>{children}</>;
 }
