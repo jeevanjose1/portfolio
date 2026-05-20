@@ -30,17 +30,17 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
     : (projectVisuals[project.slug] ?? "/images/project-1.svg");
 
   return (
-    <Link href={`/works/${project.slug}`} className="block h-full outline-none focus:ring-2 focus:ring-accent rounded-xl group">
+    <Link scroll={false} href={`/works/${project.slug}`} className="block h-full outline-none focus:ring-2 focus:ring-accent rounded-xl group">
       <div className="h-full">
-        <GradientCard className="bg-background border border-card-border overflow-hidden group-hover:border-accent-25 transition-all duration-500 flex flex-col h-full p-2" >
+        <GradientCard className="bg-background border border-card-border overflow-hidden group-hover:border-accent-25 transition-all duration-500 flex flex-col h-full">
 
           {/* Image */}
-          <div className="relative aspect-video bg-section-alt rounded-xl overflow-hidden">
+          <div className="relative aspect-video bg-section-alt overflow-hidden">
             <Image src={visualSrc} alt={`${project.title} preview`} fill
               sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-background/10 to-accent/10" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-background/10 to-accent/5" />
 
             {/* Category badge */}
             <div className="absolute top-4 left-4 z-20">
@@ -50,7 +50,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
             </div>
 
             {/* Hover overlay */}
-            <div className="absolute inset-0 bg-accent-55 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px] z-10">
+            <div className="absolute inset-0 bg-accent/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center z-10">
               <div className="w-14 h-14 rounded-full bg-background flex items-center justify-center text-accent transform scale-75 group-hover:scale-100 transition-transform duration-500 shadow-xl">
                 <ArrowUpRight size={22} />
               </div>
@@ -58,7 +58,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
           </div>
 
           {/* Content */}
-          <div className="p-6 sm:p-10 flex flex-col ">
+          <div className="p-6 sm:p-8 flex flex-col">
             <div className="flex flex-wrap gap-2 mb-5">
               {project.categories?.slice(0, 3).map((tag) => (
                 <span key={tag} className="text-[10px] font-bold uppercase tracking-wider bg-surface-2 text-muted-foreground px-3 py-1 rounded-full border border-border">
@@ -70,7 +70,7 @@ export default function ProjectCard({ project }: { project: ProjectItem | Sanity
             <h3 className="text-2xl font-heading font-extrabold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
               {project.title}
             </h3>
-            <p className="text-muted-foreground  text-sm leading-relaxed line-clamp-3 mb-8 flex-grow font-body">
+            <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-8 flex-grow font-body">
               {project.description}
             </p>
 

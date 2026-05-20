@@ -46,7 +46,7 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
             </Reveal>
           </div>
           <Reveal delay={0.3} x={20}>
-            <Link href="/works" className="group btn-secondary gap-2 shrink-0">
+            <Link scroll={false} href="/works" className="group btn-secondary gap-2 shrink-0">
               All Case Studies
               <ArrowUpRight size={17} className="group-hover:rotate-45 transition-transform" />
             </Link>
@@ -78,9 +78,9 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
                   onMouseEnter={() => setActiveProject(i)}
                   onMouseLeave={() => setActiveProject(null)}
                 >
-                  <Link
+                  <Link scroll={false}
                     href={`/works/${slug}`}
-                    className="group flex flex-col md:flex-row md:items-center justify-between py-9 gap-8 border-t border-border transition-all duration-300 hover:px-4 hover:bg-background/70"
+                    className="group flex flex-col md:flex-row md:items-center justify-between py-9 gap-8 border-t border-border transition-all duration-300 hover:pl-4 hover:bg-background/50 rounded-r-xl"
                   >
                     <div className="flex-1">
                       <div className="flex items-center gap-5 mb-5">

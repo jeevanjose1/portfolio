@@ -7,11 +7,11 @@ import { SanityService } from "@/sanity/types";
 import type { MainServiceItem } from "@/lib/data";
 import { Reveal } from "@/components/animations/Reveal";
 
-export default function RelatedWorks({ 
-  service, 
-  allProjects 
-}: { 
-  service: SanityService | MainServiceItem; 
+export default function RelatedWorks({
+  service,
+  allProjects
+}: {
+  service: SanityService | MainServiceItem;
   allProjects?: any[];
 }) {
   const relatedCategory = (service as any).relatedCategory || (service.isMain ? "Web Apps" : "Mobile Apps");
@@ -23,7 +23,7 @@ export default function RelatedWorks({
   const relatedProjects = source
     .filter((project) => {
       const categories = project.categories || [];
-      return categories.some((cat: string) => 
+      return categories.some((cat: string) =>
         cat.toLowerCase() === relatedCategory.toLowerCase()
       );
     })
@@ -49,7 +49,7 @@ export default function RelatedWorks({
           </div>
 
           <Reveal delay={0.3} x={20}>
-            <Link
+            <Link scroll={false}
               href="/works"
               className="inline-flex items-center gap-2 text-foreground font-extrabold uppercase tracking-[0.16em] text-sm hover:text-accent transition-colors"
             >

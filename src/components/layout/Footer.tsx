@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronUp } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/constants";
 import { SanitySiteSettings } from "@/sanity/types";
@@ -10,7 +10,7 @@ import { SanitySiteSettings } from "@/sanity/types";
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  // { label: "Services", href: "/services" },
+  { label: "Services", href: "/services" },
   { label: "Works", href: "/works" },
   { label: "Contact", href: "/contact" },
 ];
@@ -39,7 +39,7 @@ export default function Footer({ siteSettings }: { siteSettings?: SanitySiteSett
 
           {/* Column 1: Brand & Bio */}
           <div className="md:col-span-5">
-            <Link href="/" className="text-2xl font-heading font-extrabold tracking-tighter hover:opacity-80 transition-opacity inline-block mb-6">
+            <Link scroll={false} href="/" className="text-2xl font-heading font-extrabold tracking-tighter hover:opacity-80 transition-opacity inline-block mb-6">
               JEEVAN<span className="opacity-40">JOSE</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-8 font-body">
@@ -59,7 +59,7 @@ export default function Footer({ siteSettings }: { siteSettings?: SanitySiteSett
             <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-accent transition-colors font-body">
+                  <Link scroll={false} href={link.href} className="text-sm text-muted-foreground hover:text-accent transition-colors font-body">
                     {link.label}
                   </Link>
                 </li>
@@ -99,9 +99,10 @@ export default function Footer({ siteSettings }: { siteSettings?: SanitySiteSett
           </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground hover:text-accent transition-colors flex items-center gap-2"
+            className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground hover:text-accent transition-colors flex items-center gap-2 group"
           >
-            Back to top <ArrowUpRight size={14} className="-rotate-45" />
+            Back to top
+            <ChevronUp size={15} className="group-hover:-translate-y-0.5 transition-transform duration-200" />
           </button>
         </div>
       </div>

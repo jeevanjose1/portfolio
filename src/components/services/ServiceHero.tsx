@@ -18,11 +18,11 @@ export default function ServiceHero({ service }: { service: SanityService | Main
     : (service as MainServiceItem).heroFeatures || (service as SanityService).features || [];
 
   return (
-    <section className="min-h-[72vh] flex items-center bg-background pt-32 pb-6">
+    <section className="min-h-[72vh] flex items-center bg-background pt-20 md:pt-32 ">
       <div className="section-container w-full pt-0">
         <div className="mb-8">
           <Reveal delay={0.1}>
-            <Link
+            <Link scroll={false}
               href="/services"
               className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground hover:text-accent flex items-center gap-2 transition-colors w-fit"
             >
@@ -73,18 +73,18 @@ export default function ServiceHero({ service }: { service: SanityService | Main
                 </Reveal>
               </div>
 
-              <Reveal delay={0.6} y={20}>
+              <Reveal width="100%" delay={0.6} y={20}>
                 <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <Link
+                  <Link scroll={false}
                     href="/contact"
-                    className="btn-primary inline-flex items-center gap-2"
+                    className="btn-primary w-full md:w-fit inline-flex items-center gap-2"
                   >
                     Start a Project
                     <ArrowRight size={18} />
                   </Link>
-                  <Link
+                  <Link scroll={false}
                     href="/works"
-                    className="inline-flex items-center gap-2 px-6 py-4 rounded-lg font-extrabold uppercase tracking-[0.16em] text-sm text-foreground bg-background border border-border hover:border-accent hover:bg-accent-5 transition-all duration-300"
+                    className="inline-flex w-full md:w-fit items-center justify-center gap-2 px-6 py-4 rounded-lg font-extrabold uppercase tracking-[0.16em] text-sm text-foreground bg-background border border-border hover:border-accent hover:bg-accent-5 transition-all duration-300"
                   >
                     View {relatedCategory}
                   </Link>

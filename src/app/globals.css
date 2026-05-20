@@ -42,7 +42,7 @@
   /* ── Shadows ── */
   --shadow-xs: 0 1px 2px rgb(15 23 42 / 0.04);
   --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.05), 0 8px 24px -20px rgb(15 23 42 / 0.22);
-  /* --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 18px 48px -36px rgb(15 23 42 / 0.26); */
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 32px -12px rgb(15 23 42 / 0.10), 0 1px 0 rgb(255 255 255 / 0.8) inset;
   --shadow-lg: 0 1px 2px rgb(15 23 42 / 0.05), 0 28px 70px -42px rgb(15 23 42 / 0.32);
   --shadow-xl: 0 1px 2px rgb(15 23 42 / 0.05), 0 40px 90px -48px rgb(15 23 42 / 0.38);
   --shadow-glow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 14%, transparent), 0 18px 52px -38px rgb(15 23 42 / 0.28);
@@ -189,7 +189,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -228,20 +227,20 @@ h6 {
   /* ── Cards ── */
   .card {
     @apply bg-section-alt border border-card-border rounded-xl shadow-card transition-colors duration-300;
-    
+
   }
 
   .card-hover {
     @apply transition-all duration-300 hover:border-accent-25 hover:-translate-y-0.5 hover:shadow-lg;
-    
+
   }
 
-  
+
 
   /* ── Buttons ── */
   .btn-primary {
     @apply bg-accent text-background rounded-lg px-7 py-3.5 font-heading font-bold uppercase tracking-[0.14em] text-[11px] shadow-sm transition-all duration-300 hover:bg-accent-hover active:scale-[0.98] inline-flex items-center justify-center;
-    
+
   }
 
   .btn-primary:hover {
@@ -293,6 +292,7 @@ h6 {
 }
 
 @layer base {
+
   a,
   button,
   input,
@@ -343,7 +343,7 @@ h6 {
   /* Grid pattern background */
   .pattern-grid {
     background-image: linear-gradient(to right, var(--color-primary) 1px, transparent 1px),
-                      linear-gradient(to bottom, var(--color-primary) 1px, transparent 1px);
+      linear-gradient(to bottom, var(--color-primary) 1px, transparent 1px);
   }
 }
 
@@ -365,6 +365,20 @@ h6 {
 
 .marquee-track:hover {
   animation-play-state: paused;
+}
+
+/* Marquee container fade edges */
+.marquee-fade {
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%);
 }
 
 /* ─── Slow Spin Animations ─── */

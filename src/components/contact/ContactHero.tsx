@@ -38,12 +38,12 @@ export default function ContactHero() {
                   </p>
                 </Reveal>
               </div>
-              <Reveal delay={0.5} y={20}>
+              <Reveal width="100%" delay={0.5} y={20}>
                 <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <a href="#contact-form" className="btn-primary gap-2.5">
+                  <a href="#contact-form" className="btn-primary gap-2.5 w-full md:w-fit">
                     Send Project Brief <ArrowDown size={15} />
                   </a>
-                  <a href="mailto:jeevanjose1997@gmail.com" className="btn-secondary gap-2.5">
+                  <a href="mailto:jeevanjose1997@gmail.com" className="btn-secondary gap-2.5 w-full md:w-fit">
                     Email Directly <Mail size={15} />
                   </a>
                 </div>
@@ -94,7 +94,6 @@ export default function ContactHero() {
                   >
                     <div
                       className="bg-section-alt flex flex-col justify-between rounded-xl p-5 border border-card-border h-full"
-                      style={{ boxShadow: "var(--shadow-sm)" }}
                     >
                       <div className="h-10 w-10 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center text-accent mb-5">
                         <Icon size={18} />

@@ -22,7 +22,7 @@ export default function NotFound() {
           The page you are looking for doesn&apos;t exist or has been moved.
         </p>
 
-        <Link
+        <Link scroll={false}
           href="/"
           className="btn-primary gap-2.5 mx-auto"
         >

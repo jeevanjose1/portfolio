@@ -53,7 +53,7 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
                   </p>
                 </div>
                 <div className="flex items-center gap-4 pt-8 border-t border-border/60">
-                  <div className="w-11 h-11 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center shrink-0 group-hover:bg-accent transition-all duration-300">
+                  <div className="w-11 h-11 rounded-full bg-accent-10 border border-accent-15 flex items-center justify-center shrink-0 group-hover:bg-accent transition-all duration-300">
                     <span className="text-sm font-extrabold text-accent group-hover:text-background transition-colors">
                       {t.name.charAt(0)}
                     </span>

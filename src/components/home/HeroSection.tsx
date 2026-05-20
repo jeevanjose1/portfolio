@@ -18,9 +18,11 @@ const fallbackHeroData = {
   welcome: 'Hey, I am'
 };
 
-
-
-
+const techStack = [
+  "React.js", "Next.js", "TypeScript", "Node.js", "Flutter",
+  "GraphQL", "PostgreSQL", "Docker", "MongoDB",
+  "Nest.js", "React Native", "Anthropic", "AI & LLMs", "TailwindCSS",
+];
 
 export default function HeroSection({ data, profileImage }: { data?: SanityPageHome, stats?: { value: string; label: string }[], socialLinks?: SocialLink[], profileImage?: SanityImage }) {
   const badge = data?.heroBadge || fallbackHeroData.badge;
@@ -44,8 +46,7 @@ export default function HeroSection({ data, profileImage }: { data?: SanityPageH
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-16 xl:p-20 flex flex-col justify-between h-full min-h-[560px] border border-card-border shadow-card relative overflow-hidden"
-
+              className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-16 xl:p-20 flex flex-col justify-between h-full md:min-h-[560px] border border-card-border shadow-card relative overflow-hidden"
             >
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-20 to-transparent" />
 
@@ -80,14 +81,12 @@ export default function HeroSection({ data, profileImage }: { data?: SanityPageH
               </div>
 
               <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 relative z-10">
-                <Reveal delay={0.5} y={20}>
-                  <Link href={ctaPrimary.href} className="btn-primary gap-3 px-9 py-4 text-[12px]">
+                <Reveal width="100%" delay={0.5} y={20}>
+                  <Link scroll={false} href={ctaPrimary.href} className="btn-primary gap-3 px-9 w-full md:w-fit py-4 text-[12px]">
                     {ctaPrimary.label}
                     <ArrowRight size={18} />
                   </Link>
                 </Reveal>
-
-
               </div>
             </div>
           </Reveal>
@@ -103,7 +102,6 @@ export default function HeroSection({ data, profileImage }: { data?: SanityPageH
             >
               <div
                 className="bg-section-alt rounded-xl overflow-hidden relative group h-full min-h-[400px] border border-card-border shadow-card"
-
               >
                 <ParallaxImage offset={20} className="w-full h-full">
                   <div className="absolute inset-0 grayscale-[0.25] contrast-[1.05] brightness-[0.98] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700">
@@ -116,44 +114,33 @@ export default function HeroSection({ data, profileImage }: { data?: SanityPageH
                     />
                   </div>
                 </ParallaxImage>
-
-
               </div>
             </Reveal>
-
           </div>
-
-          {/* ── Tech Marquee ── */}
-
         </div>
+
+        {/* ── Tech Marquee ── */}
         <Reveal
           width="100%"
           delay={0.4}
           y={20}
           className="lg:col-span-12 mt-5"
         >
-          <div className="bg-section-alt rounded-xl border border-card-border shadow-sm overflow-hidden py-4">
+          <div className="bg-section-alt rounded-xl border border-card-border shadow-sm overflow-hidden py-4 marquee-fade">
             <div className="flex marquee-track gap-12 items-center whitespace-nowrap px-6">
-              {[
-                "React.js", "Next.js", "TypeScript", "Node.js", "Flutter",
-                "GraphQL", "PostgreSQL", , "Docker",
-                "MongoDB", "Nest.js", "React Native", 'Anthropic', 'AI'
-              ].map((tech) => (
+              {/* Primary list */}
+              {techStack.map((tech) => (
                 <div key={tech} className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
                   <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
                     {tech}
                   </span>
                 </div>
               ))}
               {/* Duplicate for seamless loop */}
-              {[
-                "React.js", "Next.js", "TypeScript", "Node.js",
-                "GraphQL", "PostgreSQL", "Docker", "TailwindCSS",
-                "AI", "Anthropic", "MongoDB", "Nest,js", "React Native"
-              ].map((tech) => (
+              {techStack.map((tech) => (
                 <div key={tech + "-loop"} className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
                   <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
                     {tech}
                   </span>

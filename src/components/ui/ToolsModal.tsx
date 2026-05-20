@@ -65,7 +65,7 @@ export default function ToolsModal({ isOpen, onClose }: ToolsModalProps) {
                 {customToolsData.slice(0, 4).map((tool) => {
                   const Icon = iconMap[tool.icon] || Layers;
                   return (
-                    <Link
+                    <Link scroll={false}
                       key={tool.id}
                       href={tool.href}
                       onClick={onClose}
@@ -94,7 +94,7 @@ export default function ToolsModal({ isOpen, onClose }: ToolsModalProps) {
 
               {/* Footer */}
               <div className="p-6 bg-surface-2/30 border-t border-border flex justify-center">
-                <Link
+                <Link scroll={false}
                   href="/tools"
                   onClick={onClose}
                   className="group flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-accent hover:text-accent-hover transition-colors"

@@ -73,7 +73,10 @@ export default async function RootLayout({
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem={false}>
           <SmoothScroll>
             <Navbar />
-            <MainContent>{children}</MainContent>
+            <MainContent>{children}
+
+            </MainContent>
+
             <Footer siteSettings={siteSettings} />
           </SmoothScroll>
         </ThemeProvider>

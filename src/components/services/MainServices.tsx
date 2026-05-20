@@ -58,7 +58,7 @@ function MainServiceCard({ service, index }: { service: SanityService | MainServ
         )}
 
         <div className="pt-6 border-t border-border mt-auto flex items-center justify-between relative z-10">
-          <Link
+          <Link scroll={false}
             href={`/services/${service.slug}`}
             className="group/btn flex items-center hover:underline gap-2 text-sm font-extrabold uppercase tracking-[0.16em] text-accent hover:text-foreground transition-colors duration-300"
           >

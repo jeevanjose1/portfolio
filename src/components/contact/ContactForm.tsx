@@ -125,7 +125,7 @@ export default function ContactForm() {
               exit={{ opacity: 0, scale: 0.9 }}
               className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center bg-background z-10"
             >
-              <div className="w-20 h-20 rounded-lg bg-red-50 flex items-center justify-center mb-8 border border-red-100">
+              <div className="w-20 h-20 rounded-lg bg-red-500/10 flex items-center justify-center mb-8 border border-red-500/20">
                 <XCircle size={42} className="text-red-500" />
               </div>
               <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-foreground mb-4">Something Went Wrong</h3>
