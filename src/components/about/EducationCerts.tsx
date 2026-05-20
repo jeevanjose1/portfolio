@@ -20,7 +20,7 @@ export default function EducationCerts({ education, certifications }: { educatio
         <div className="mb-14">
           <Reveal delay={0.1}>
             <p className="section-label mb-4">
-              {"//"} Academic & Industry
+              Academic & Industry
             </p>
           </Reveal>
           <Reveal delay={0.2} blur>
@@ -37,7 +37,7 @@ export default function EducationCerts({ education, certifications }: { educatio
             y={30}
             duration={1}
           >
-            <div className="bg-background rounded-xl p-6 sm:p-10 border border-card-border shadow-card h-full"  >
+            <div className="bg-background rounded-xl p-6 sm:p-10 border border-card-border h-full"  >
               <div className="flex items-center gap-3 mb-10">
                 <div className="w-10 h-10 rounded-full bg-accent-10 flex items-center justify-center border border-accent-20">
                   <GraduationCap size={20} className="text-accent" />
@@ -84,9 +84,8 @@ export default function EducationCerts({ education, certifications }: { educatio
                     width="100%"
                     delay={0.4 + i * 0.1}
                     y={20}
-                    blur
                   >
-                    <div className="bg-background rounded-xl p-6 flex items-start gap-5 border border-card-border shadow-card hover:border-accent-20 hover:-translate-y-0.5 transition-all duration-300 group h-full"  >
+                    <div className="bg-background rounded-xl p-6 flex items-start gap-5 border border-card-border hover:border-accent-20 hover:-translate-y-0.5 transition-all duration-300 group h-full"  >
                       <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 border ${colorClass} group-hover:scale-110 transition-transform`}>
                         <span className="text-[10px] font-extrabold">{cert.iconLabel}</span>
                       </div>

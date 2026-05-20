@@ -12,9 +12,7 @@ export default function Process({ steps }: { steps?: ProcessStepItem[] }) {
       <div className="section-container">
         <div className="mb-24">
           <Reveal delay={0.1}>
-            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
-              {"//"} Strategy
-            </p>
+            <p className="section-label mb-3">How It Works</p>
           </Reveal>
           <Reveal delay={0.2} blur>
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
@@ -29,8 +27,7 @@ export default function Process({ steps }: { steps?: ProcessStepItem[] }) {
               key={step.title}
               width="100%"
               delay={i * 0.2}
-              y={30}
-              blur
+              y={20}
               className="flex-1"
             >
               <ProcessStep

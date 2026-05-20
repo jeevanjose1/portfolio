@@ -1,35 +1,30 @@
 "use client";
 
-import { ShoppingCart, Network, BarChart3, Code2, Shield, Zap, Search, Globe, Smartphone, Monitor } from "lucide-react";
+import * as LucideIcons from "lucide-react";
 import { additionalServicesData } from "@/lib/data";
 import { SanityService } from "@/sanity/types";
 import { Reveal } from "@/components/animations/Reveal";
 
-const iconMap: Record<string, React.ElementType> = {
-  ShoppingCart, Network, BarChart3, Code2, Shield, Zap, Search, Globe, Smartphone, Monitor
-};
-
 function AdditionalServiceCard({ service, index }: { service: SanityService | { title: string; iconName: string; description: string }; index: number }) {
-  const Icon = iconMap[service.iconName] || Search;
+  // @ts-expect-error - dynamic indexing LucideIcons
+  const Icon = LucideIcons[service.iconName] || LucideIcons.Code2;
 
   return (
     <Reveal
       width="100%"
-      delay={index * 0.1}
-      y={30}
-      blur
+      delay={index * 0.08}
+      y={20}
       className="h-full"
     >
       <div
         className="bg-section-alt p-8 sm:p-10 rounded-xl border border-card-border group hover:border-accent-30 hover:-translate-y-0.5 transition-all duration-500 h-full flex flex-col"
-         
       >
         <div className="w-12 h-12 rounded-xl bg-background border border-card-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300 shrink-0">
           <Icon size={24} className="text-accent group-hover:text-background transition-colors" />
         </div>
         <h3 className="text-lg font-heading font-extrabold text-foreground mb-3 uppercase tracking-tight">{service.title}</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed font-body italic flex-grow">
-          &ldquo;{service.description}&rdquo;
+        <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
+          {service.description}
         </p>
       </div>
     </Reveal>
@@ -44,9 +39,9 @@ export default function AdditionalServices({ services, additionalItems }: { serv
       <div className="section-container">
         <div className="mb-14">
           <Reveal delay={0.1}>
-            <p className="section-label mb-4">{"// "} More Capabilities</p>
+            <p className="section-label mb-4">More Capabilities</p>
           </Reveal>
-          <Reveal delay={0.2} blur>
+          <Reveal delay={0.2}>
             <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-foreground">
               Additional Services.
             </h2>

@@ -39,9 +39,7 @@ export default function ProcessStep({
       <h3 className="text-xl font-heading font-extrabold text-foreground mb-4 uppercase tracking-tight transition-colors">
         {title}
       </h3>
-      <p className="text-[10px] text-muted-foreground font-extrabold uppercase tracking-[0.16em] mb-4 opacity-70">
-        Execution
-      </p>
+
       <p className="text-sm text-muted-foreground leading-relaxed max-w-[220px] mx-auto font-body">
         {description}
       </p>

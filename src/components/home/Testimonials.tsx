@@ -18,7 +18,7 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
       <div className="section-container">
         <div className="text-center mb-16">
           <Reveal delay={0.1} className="mx-auto">
-            <p className="section-label mb-4">{"// "} Client Feedback</p>
+            <p className="section-label mb-4">Client Feedback</p>
           </Reveal>
           <Reveal delay={0.2} blur className="mx-auto">
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">What Clients Say.</h2>
@@ -34,13 +34,11 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
               key={t._id}
               width="100%"
               delay={i * 0.1}
-              y={30}
-              blur
+              y={20}
               className="h-full"
             >
               <div
                 className="bg-section-alt rounded-xl p-10 sm:p-12 border border-card-border shadow-card flex flex-col justify-between group hover:border-accent-25 transition-all duration-500 h-full"
-                 
               >
                 <div>
                   <div className="flex gap-1.5 mb-8">
@@ -48,7 +46,7 @@ export default function Testimonials({ testimonials }: { testimonials: SanityTes
                       <Star key={si} size={13} className="fill-accent text-accent" />
                     ))}
                   </div>
-                  <p className="text-foreground-75 text-lg leading-relaxed mb-10 italic font-body">
+                  <p className="text-foreground-75 text-lg leading-relaxed mb-10 font-body">
                     &ldquo;{t.content}&rdquo;
                   </p>
                 </div>

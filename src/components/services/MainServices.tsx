@@ -1,6 +1,6 @@
 "use client";
 
-import { Monitor, Smartphone, Cloud, CheckCircle2, CheckCircle, ArrowUpRight, Globe, Zap, Shield, Search } from "lucide-react";
+import { Monitor, Smartphone, Cloud, CheckCircle2, ArrowUpRight, Globe, Zap, Shield, Search } from "lucide-react";
 import Link from "next/link";
 import { mainServicesData } from "@/lib/data";
 import type { MainServiceItem } from "@/lib/data";
@@ -8,14 +8,15 @@ import { SanityService } from "@/sanity/types";
 import GradientCard from "@/components/ui/GradientCard";
 import { Reveal } from "@/components/animations/Reveal";
 
-const CheckIcon = CheckCircle2 || CheckCircle;
-
 const iconMap: Record<string, React.ElementType> = {
   Monitor, Smartphone, Cloud, Globe, Zap, Shield, Search
 };
 
+// Per-index fallback icons so cards never look identical
+const fallbackIcons: React.ElementType[] = [Monitor, Smartphone, Cloud];
+
 function MainServiceCard({ service, index }: { service: SanityService | MainServiceItem; index: number }) {
-  const Icon = iconMap[service.iconName] || Monitor;
+  const Icon = iconMap[service.iconName] || fallbackIcons[index % fallbackIcons.length] || Monitor;
   const isSanity = '_id' in service;
 
   const features = isSanity
@@ -26,11 +27,10 @@ function MainServiceCard({ service, index }: { service: SanityService | MainServ
     <Reveal
       width="100%"
       delay={index * 0.1}
-      y={30}
-      blur
+      y={20}
       className="h-full"
     >
-      <GradientCard className="h-full border border-card-border p-8 sm:p-10 flex flex-col bg-background transition-all duration-500 hover:border-accent-25 group" >
+      <GradientCard className="h-full border border-card-border p-8 sm:p-10 flex flex-col bg-background transition-all duration-500 hover:border-accent-25 group">
         <div className="w-14 h-14 rounded-xl bg-surface-2 border border-border flex items-center justify-center mb-6 group-hover:bg-accent transition-all duration-300 shrink-0">
           <Icon size={26} className="text-accent group-hover:text-background transition-colors" />
         </div>
@@ -38,9 +38,8 @@ function MainServiceCard({ service, index }: { service: SanityService | MainServ
         <h3 className="text-2xl font-heading font-extrabold text-foreground mb-3 group-hover:text-accent transition-colors duration-300 uppercase tracking-tight">
           {service.title}
         </h3>
-        <p className="text-muted-foreground line-clamp-4    leading-relaxed mb-8  font-body italic text-sm">
-          &ldquo;{service.description}&rdquo;
-          
+        <p className="text-muted-foreground line-clamp-4 leading-relaxed mb-8 text-sm">
+          {service.description}
         </p>
 
         {features.length > 0 && (
@@ -49,7 +48,7 @@ function MainServiceCard({ service, index }: { service: SanityService | MainServ
               const text = typeof feature === 'string' ? feature : feature.title;
               return (
                 <li key={i} className="flex items-start gap-3">
-                  <CheckIcon size={16} className="text-accent mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 size={16} className="text-accent mt-0.5 flex-shrink-0" />
                   <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-muted-foreground">{text}</span>
                 </li>
               );
@@ -79,9 +78,9 @@ export default function MainServices({ services }: { services: SanityService[] }
       <div className="section-container">
         <div className="mb-14">
           <Reveal delay={0.1}>
-            <p className="section-label mb-4">{"// "} Expertise</p>
+            <p className="section-label mb-4">Expertise</p>
           </Reveal>
-          <Reveal delay={0.2} blur>
+          <Reveal delay={0.2}>
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
               Core Solutions.
             </h2>

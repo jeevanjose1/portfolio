@@ -18,7 +18,7 @@ export default function MyStory({ storyText, timeline, profileImage }: { storyTe
       <div className="section-container">
         <div className="mb-14">
           <Reveal delay={0.1}>
-            <p className="section-label mb-4">{"// "} Origins</p>
+            <p className="section-label mb-4">My Story</p>
           </Reveal>
           <Reveal delay={0.2} blur>
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
@@ -63,7 +63,7 @@ export default function MyStory({ storyText, timeline, profileImage }: { storyTe
 
                   <div className="space-y-6 relative z-10">
                     <Reveal delay={0.5} y={20}>
-                      <p className="text-muted-foreground leading-relaxed text-lg font-body italic">
+                      <p className="text-muted-foreground leading-relaxed text-lg font-body">
                         &ldquo;{text.split(".")[0]}.&rdquo;
                       </p>
                     </Reveal>

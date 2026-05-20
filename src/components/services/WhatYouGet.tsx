@@ -12,9 +12,7 @@ export default function WhatYouGet({ service }: { service: SanityService | MainS
       <div className="section-container">
         <div className="mb-16">
           <Reveal delay={0.1}>
-            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
-              {"//"} Value Proposition
-            </p>
+            <p className="section-label mb-3">Value Proposition</p>
           </Reveal>
           <Reveal delay={0.2} blur>
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
@@ -33,7 +31,6 @@ export default function WhatYouGet({ service }: { service: SanityService | MainS
                 width="100%"
                 delay={i * 0.1}
                 y={30}
-                blur
                 className="h-full"
               >
                 <div

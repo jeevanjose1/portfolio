@@ -7,20 +7,17 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import PaletteSelector from "@/components/ui/PaletteSelector";
-import ToolsModal from "@/components/ui/ToolsModal";
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Works", href: "/works" },
   { label: "Services", href: "/services" },
-
   { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [toolsOpen, setToolsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isStudio = pathname.startsWith("/studio");
@@ -87,6 +84,7 @@ export default function Navbar() {
           <PaletteSelector />
           <ThemeToggle />
 
+
           <Link scroll={false}
             href="/contact"
             className="hidden md:inline-flex btn-primary py-3 px-5 text-[10px] rounded-lg ml-1"
@@ -150,8 +148,6 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </div>
-      {/* Tools Modal */}
-      <ToolsModal isOpen={toolsOpen} onClose={() => setToolsOpen(false)} />
     </header>
   );
 }

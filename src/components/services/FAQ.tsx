@@ -13,13 +13,11 @@ export default function FAQ({ faqs }: { faqs: SanityFAQ[] }) {
       <div className="section-container max-w-5xl">
         <div className="mb-20">
           <Reveal delay={0.1}>
-            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
-              {"//"} Questions
-            </p>
+            <p className="section-label mb-3">FAQ</p>
           </Reveal>
           <Reveal delay={0.2} blur>
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
-              Common FAQ.
+              Common Questions.
             </h2>
           </Reveal>
         </div>

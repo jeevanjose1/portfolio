@@ -11,9 +11,7 @@ export default function ServiceTechStack({ service }: { service: SanityService |
       <div className="section-container">
         <div className="mb-16">
           <Reveal delay={0.1}>
-            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
-              {"//"} The Stack
-            </p>
+            <p className="section-label mb-3">The Stack</p>
           </Reveal>
           <Reveal delay={0.2} blur>
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground mb-6">
@@ -34,7 +32,6 @@ export default function ServiceTechStack({ service }: { service: SanityService |
               width="100%"
               delay={0.1 + i * 0.1}
               y={30}
-              blur
               className="h-full"
             >
               <div

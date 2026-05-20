@@ -31,7 +31,7 @@ export default function ExperienceCards({
       <div className="section-container">
         <div className="mb-16">
           <Reveal delay={0.1}>
-            <p className="section-label mb-4">{"// "} Professional Path</p>
+            <p className="section-label mb-4">Professional Path</p>
           </Reveal>
           <Reveal delay={0.2} blur>
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">

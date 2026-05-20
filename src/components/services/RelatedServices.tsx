@@ -35,9 +35,7 @@ export default function RelatedServices({
       <div className="section-container !py-0">
         <div className="mb-14">
           <Reveal delay={0.1}>
-            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
-              {"//"} Keep Exploring
-            </p>
+            <p className="section-label mb-3">Keep Exploring</p>
           </Reveal>
           <Reveal delay={0.2} blur>
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
@@ -60,7 +58,6 @@ export default function RelatedServices({
                 width="100%"
                 delay={i * 0.15}
                 y={30}
-                blur
                 className="h-full"
               >
                 <GradientCard className="h-full border border-card-border p-8 sm:p-10 flex flex-col bg-background transition-all duration-500 hover:border-accent-25  group" >

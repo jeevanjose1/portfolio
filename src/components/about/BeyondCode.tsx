@@ -42,7 +42,7 @@ export default function BeyondCode({ items }: { items?: BeyondCodeItem[] }) {
       <div className="section-container">
         <div className="mb-14">
           <Reveal delay={0.1}>
-            <p className="section-label mb-4">{"// "} Personal</p>
+            <p className="section-label mb-4">Beyond the Code</p>
           </Reveal>
           <Reveal delay={0.2} blur>
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">

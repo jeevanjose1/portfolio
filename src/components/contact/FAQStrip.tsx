@@ -8,7 +8,7 @@ export default function FAQStrip() {
     <section className="bg-background border-t border-border transition-colors duration-300">
       <div className="section-container">
         <div className="mb-16">
-          <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">{"//"} Quick Answers</p>
+          <p className="section-label mb-3">Quick Answers</p>
           <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-foreground">Common Inquiries.</h2>
         </div>
         <motion.div
