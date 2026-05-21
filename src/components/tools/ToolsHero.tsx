@@ -6,8 +6,8 @@ export default function ToolsHero() {
   return (
     <div className="relative mb-16 md:mb-20">
       <Reveal delay={0.1} y={20}>
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-border text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-6">
-          {"//"} Utility Ecosystem
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-10 border border-accent-15 text-accent font-bold text-[10px] uppercase tracking-[0.16em] mb-8">
+          Utility Ecosystem
         </div>
       </Reveal>
 

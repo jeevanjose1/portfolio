@@ -24,10 +24,10 @@ export default function ContactInfo() {
       duration={1}
     >
       <div
-        className="bg-background rounded-xl p-6 sm:p-10 lg:p-12 border border-card-border shadow-card h-full"
+        className="bg-background rounded-xl p-6 sm:p-10 lg:p-12 border border-card-border h-full"
 
       >
-        <h2 className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent mb-8">{"//"} Information</h2>
+        <h2 className="section-label mb-8">Information</h2>
 
         <div className="space-y-8 mb-16">
           {[
@@ -63,7 +63,7 @@ export default function ContactInfo() {
 
         <div className="h-px bg-border mb-10" />
 
-        <h2 className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent mb-8">{"//"} Profiles</h2>
+        <h2 className="section-label mb-8">Profiles</h2>
         <div className="grid grid-cols-1 gap-3 mb-10">
           {[
             { icon: LinkedinIcon, name: "LinkedIn", href: siteConfig.socials.linkedin },

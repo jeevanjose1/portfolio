@@ -37,9 +37,7 @@ export default function RelatedWorks({
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
             <Reveal delay={0.1}>
-              <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
-                {"//"} Portfolio
-              </p>
+              <p className="section-label mb-3">Portfolio</p>
             </Reveal>
             <Reveal delay={0.2} blur>
               <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">
@@ -65,7 +63,6 @@ export default function RelatedWorks({
               width="100%"
               delay={i * 0.1}
               y={30}
-              blur
               className="h-full"
             >
               <ProjectCard project={project} />

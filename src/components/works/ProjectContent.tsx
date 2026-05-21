@@ -326,14 +326,11 @@ export default function ProjectContent({ project }: { project: NormalizedProject
         {/* ── Page Header ── */}
         <div className="mb-10 lg:mb-12">
           <Reveal delay={0.05}>
-            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
-              <span className="w-4 h-[2px] bg-accent inline-block" />
-              Strategy
-            </p>
+            <p className="section-label mb-3">Case Study</p>
           </Reveal>
           <Reveal delay={0.15} blur>
             <h2 className="text-3xl lg:text-3xl sm:text-4xl font-heading font-extrabold text-foreground tracking-tight leading-tight">
-              Case Study Overview
+              Project Overview
             </h2>
           </Reveal>
         </div>

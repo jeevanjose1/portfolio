@@ -13,8 +13,7 @@ function SkillGroupCard({ group, index }: { group: SkillGroup; index: number }) 
     <Reveal
       width="100%"
       delay={index * 0.1}
-      y={40}
-      blur
+      y={20}
       className="h-full!"
     >
       <div
@@ -53,7 +52,7 @@ export default function SkillsGrid({ skillGroups }: { skillGroups?: SkillGroup[]
       <div className="section-container">
         <div className="mb-14">
           <Reveal delay={0.1}>
-            <p className="section-label mb-4">{"// "} Expertise</p>
+            <p className="section-label mb-4">Expertise</p>
           </Reveal>
           <Reveal delay={0.2} blur>
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">Technical Arsenal.</h2>

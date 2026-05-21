@@ -35,11 +35,7 @@ export default function WorksPhilosophy() {
           {/* Sticky Left Sidebar */}
           <div className="lg:col-span-5 lg:sticky lg:top-32 h-fit">
             <Reveal delay={0.1}>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-accent">
-                 {'//'} The Methodology
-                </span>
-              </div>
+              <p className="section-label mb-6">The Methodology</p>
             </Reveal>
 
             <Reveal delay={0.2} blur>
@@ -63,8 +59,7 @@ export default function WorksPhilosophy() {
                 <Reveal
                   key={p.title}
                   delay={0.4 + (i * 0.1)}
-                  y={30}
-                  blur
+                  y={20}
                   className="group"
                 >
                   <div className="space-y-6 p-8 rounded-xl bg-surface-2 border border-card-border hover:border-accent/30 transition-all duration-500  hover:shadow-accent/5">

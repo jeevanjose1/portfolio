@@ -17,7 +17,7 @@ export default function ContactHero() {
             duration={1}
           >
             <div
-              className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-12 min-h-[500px] border border-card-border shadow-card flex flex-col justify-between h-full"
+              className="bg-section-alt rounded-xl p-6 sm:p-10 lg:p-12 min-h-[500px] border border-card-border flex flex-col justify-between h-full"
 
             >
               <div>
@@ -61,10 +61,9 @@ export default function ContactHero() {
               className="h-full"
             >
               <div
-                className="bg-section-alt rounded-xl p-6 sm:p-10 min-h-[220px] border border-card-border shadow-card text-foreground relative overflow-hidden h-full"
+                className="bg-section-alt rounded-xl p-6 sm:p-10 min-h-[220px] border border-card-border text-foreground relative overflow-hidden h-full"
 
               >
-                <div className="absolute inset-0 opacity-[0.04] pattern-grid bg-[size:28px_28px] rounded-xl" />
                 <div className="relative z-10">
                   <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center mb-8">
                     <Calendar size={22} className="text-accent" />
@@ -90,7 +89,6 @@ export default function ContactHero() {
                     width="100%"
                     delay={0.5 + i * 0.1}
                     y={20}
-                    blur
                   >
                     <div
                       className="bg-section-alt flex flex-col justify-between rounded-xl p-5 border border-card-border h-full"

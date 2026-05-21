@@ -189,6 +189,7 @@ export const featuredWorksData = [
 
 // ─── Testimonials Data ───
 
+// TODO: Replace with real client testimonials — names, companies, and quotes below are placeholders.
 export const testimonialsData: TestimonialItem[] = [
   {
     quote:
@@ -361,6 +362,7 @@ export const skillGroups: SkillGroup[] = [
 
 // ─── Experience ───
 
+// TODO: Replace 'TechCorp Solutions' and 'StartupHub Inc.' with your real employer names.
 export const experienceData: ExperienceItem[] = [
   {
     company: "TechCorp Solutions",
@@ -396,6 +398,7 @@ export const educationData: EducationItem[] = [
 
 // ─── Certifications ───
 
+// TODO: Verify these are your actual certifications. Remove any that are not real.
 export const certificationsData: CertificationItem[] = [
   {
     name: "AWS Certified Cloud Practitioner",

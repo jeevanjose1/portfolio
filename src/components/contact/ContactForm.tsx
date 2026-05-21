@@ -88,7 +88,7 @@ export default function ContactForm() {
 
   return (
     <Reveal width="100%" delay={0.2} y={30} duration={1}>
-      <div className="bg-background rounded-xl p-6 sm:p-10 lg:p-12 border border-card-border shadow-card relative overflow-hidden min-h-[600px]">
+      <div className="bg-background rounded-xl p-6 sm:p-10 lg:p-12 border border-card-border relative overflow-hidden min-h-[600px]">
         <AnimatePresence mode="wait">
 
           {/* ── Success ── */}
@@ -161,7 +161,7 @@ export default function ContactForm() {
             >
               <div className="mb-10 sm:mb-12">
                 <Reveal delay={0.1}>
-                  <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">{"//"} Project Brief</p>
+                  <p className="section-label mb-3">Project Brief</p>
                 </Reveal>
                 <Reveal delay={0.2} blur>
                   <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-foreground">Tell me what you need.</h2>
@@ -265,7 +265,7 @@ export default function ContactForm() {
                 <button
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto px-10 py-5 rounded-lg bg-accent text-background font-extrabold uppercase tracking-[0.16em] text-xs flex justify-center items-center gap-3 hover:bg-accent-90 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-accent-10"
+                  className="w-full sm:w-auto px-10 py-5 rounded-lg bg-accent text-background font-extrabold uppercase tracking-[0.16em] text-xs flex justify-center items-center gap-3 hover:bg-accent-90 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <div className="w-5 h-5 border-2 border-background border-t-transparent rounded-lg animate-spin" />

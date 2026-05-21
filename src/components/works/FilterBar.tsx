@@ -26,13 +26,11 @@ export default function FilterBar({
           <div className="flex flex-col lg:flex-row justify-between gap-10">
             <div className="space-y-4">
               <Reveal delay={0.1}>
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.3em] text-accent flex items-center gap-2">
-                  {"//"} Project Archive
-                </p>
+                <p className="section-label">Project Archive</p>
               </Reveal>
               <Reveal delay={0.2} blur>
                 <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground tracking-tighter leading-[0.9]">
-                  Specialized  Expertise
+                  Specialized Expertise
                 </h2>
               </Reveal>
             </div>
@@ -44,7 +42,7 @@ export default function FilterBar({
               {categories.map((cat, i) => {
                 const isActive = activeFilter === cat.name;
                 return (
-                  <Reveal key={cat.name} delay={0.3 + (i * 0.05)} y={10} blur>
+                  <Reveal key={cat.name} delay={0.3 + (i * 0.05)} y={10}>
                     <button
                       onClick={() => onFilterChange(cat.name)}
                       className={`

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence, useSpring, useMotionValue } from "framer-motion";
+
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,35 +10,21 @@ import { urlForImage } from "@/sanity/lib/image";
 import { Reveal } from "@/components/animations/Reveal";
 
 export default function FeaturedWorks({ projects }: { projects: SanityProject[] }) {
-  const [activeProject, setActiveProject] = useState<number | null>(null);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springConfig = { stiffness: 100, damping: 20, mass: 0.6 };
-  const floatX = useSpring(mouseX, springConfig);
-  const floatY = useSpring(mouseY, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    mouseX.set(e.clientX + 24);
-    mouseY.set(e.clientY - 130);
-  };
-
   const displayData = projects.length > 0 ? projects : featuredWorksData;
 
   return (
     <section
       id="works"
-      className="bg-section-alt transition-colors duration-300 relative overflow-hidden"
-      onMouseMove={handleMouseMove}
+      className="bg-section-alt transition-colors duration-300"
     >
-      <div className="section-container relative z-10">
+      <div className="section-container">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-5">
           <div>
             <Reveal delay={0.1}>
-              <p className="section-label mb-4">{"// "} Recent Artifacts</p>
+              <p className="section-label mb-4">Selected Work</p>
             </Reveal>
-            <Reveal delay={0.2} blur>
+            <Reveal delay={0.2}>
               <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground leading-tight">
                 Featured Projects.
               </h2>
@@ -66,104 +51,73 @@ export default function FeaturedWorks({ projects }: { projects: SanityProject[] 
               : (project as { tags: string[] }).tags;
             const description = project.description;
 
+            // Thumbnail for inline preview
+            const thumbnailUrl = isSanity
+              ? (project as SanityProject).thumbnail?.asset
+                ? urlForImage((project as SanityProject).thumbnail!).url()
+                : null
+              : (project as { image: string }).image || null;
+
             return (
               <Reveal
                 key={title}
                 width="100%"
-                delay={i * 0.1}
-                y={30}
+                delay={i * 0.08}
+                y={20}
                 className="relative"
               >
-                <div
-                  onMouseEnter={() => setActiveProject(i)}
-                  onMouseLeave={() => setActiveProject(null)}
+                <Link scroll={false}
+                  href={`/works/${slug}`}
+                  className="group flex flex-col md:flex-row md:items-center justify-between py-9 gap-8 border-t border-border transition-all duration-300 hover:pl-4 hover:bg-background/50 rounded-r-xl"
                 >
-                  <Link scroll={false}
-                    href={`/works/${slug}`}
-                    className="group flex flex-col md:flex-row md:items-center justify-between py-9 gap-8 border-t border-border transition-all duration-300 hover:pl-4 hover:bg-background/50 rounded-r-xl"
-                  >
-                    <div className="flex-1">
-                      <div className="flex items-center gap-5 mb-5">
-                        <span className="text-[11px] font-bold text-accent opacity-45 tabular-nums">
-                          0{i + 1}
-                        </span>
-                        <div className="flex gap-2">
-                          {tags.slice(0, 2).map((tag: string) => (
-                            <span
-                              key={tag}
-                              className="text-[9px] font-bold uppercase tracking-[0.12em] text-muted-foreground border border-border px-2.5 py-1 rounded-md"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-5 mb-5">
+                      <span className="text-[11px] font-bold text-accent opacity-45 tabular-nums">
+                        0{i + 1}
+                      </span>
+                      <div className="flex gap-2">
+                        {tags.slice(0, 2).map((tag: string) => (
+                          <span
+                            key={tag}
+                            className="text-[9px] font-bold uppercase tracking-[0.12em] text-muted-foreground border border-border px-2.5 py-1 rounded-md"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                       </div>
-                      <h3 className="text-xl sm:text-3xl lg:text-3xl sm:text-4xl font-heading font-extrabold text-foreground group-hover:text-accent transition-all duration-300">
-                        {title}
-                      </h3>
                     </div>
+                    <h3 className="text-xl sm:text-3xl lg:text-3xl font-heading font-extrabold text-foreground group-hover:text-accent transition-all duration-300">
+                      {title}
+                    </h3>
+                  </div>
 
-                    <div className="flex items-center gap-8">
-                      <p className="hidden lg:line-clamp-2 text-sm text-muted-foreground max-w-xs text-right leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        {description}
-                      </p>
-                      <div className="w-14 h-14 rounded-lg border border-border bg-section-alt flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-background group-hover:border-accent transition-all duration-300 rotate-[-45deg] group-hover:rotate-0 shrink-0">
-                        <ArrowUpRight size={22} />
+                  <div className="flex items-center gap-6">
+                    {/* Inline thumbnail — visible on hover, desktop only */}
+                    {thumbnailUrl && (
+                      <div className="hidden lg:block w-[160px] h-[100px] rounded-lg overflow-hidden border border-border shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+                        <Image
+                          src={thumbnailUrl}
+                          alt={title}
+                          width={160}
+                          height={100}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
+                    )}
+                    <p className="hidden lg:line-clamp-2 text-sm text-muted-foreground max-w-xs text-right leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+                      {description}
+                    </p>
+                    <div className="w-14 h-14 rounded-lg border border-border bg-section-alt flex items-center justify-center text-muted-foreground group-hover:bg-accent group-hover:text-background group-hover:border-accent transition-all duration-300 rotate-[-45deg] group-hover:rotate-0 shrink-0">
+                      <ArrowUpRight size={22} />
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </Reveal>
             );
           })}
           <div className="h-px bg-border/50 w-full" />
         </div>
       </div>
-
-      {/* Floating cursor preview */}
-      <AnimatePresence>
-        {activeProject !== null && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.82, rotate: -4 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            exit={{ opacity: 0, scale: 0.82, rotate: 4 }}
-            style={{
-              x: floatX,
-              y: floatY,
-              position: "fixed",
-              top: 0,
-              left: 0,
-              pointerEvents: "none",
-              zIndex: 1000,
-
-            }}
-            className="hidden md:block shadow-xl w-[340px] h-[210px] rounded-xl overflow-hidden border border-accent-15 bg-section-alt"
-          >
-            <motion.div
-              key={activeProject}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.25 }}
-              className="relative w-full h-full"
-            >
-              <Image
-                src={
-                  "_id" in displayData[activeProject]
-                    ? (displayData[activeProject] as SanityProject).thumbnail?.asset
-                      ? urlForImage((displayData[activeProject] as SanityProject).thumbnail!).url()
-                      : "/images/project-1.svg"
-                    : (displayData[activeProject] as { image: string }).image || "/images/project-1.svg"
-                }
-                alt={displayData[activeProject].title}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

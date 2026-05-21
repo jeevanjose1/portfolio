@@ -26,9 +26,7 @@ export default function ProcessTimeline({ service }: { service: SanityService | 
       <div className="section-container">
         <div className="mb-16 text-center">
           <Reveal delay={0.1} className="mx-auto">
-            <p className="text-accent text-[10px] font-extrabold uppercase tracking-[0.16em] mb-3">
-              {"//"} Step by Step
-            </p>
+            <p className="section-label mb-3">Working Process</p>
           </Reveal>
           <Reveal delay={0.2} blur className="mx-auto">
             <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-foreground">

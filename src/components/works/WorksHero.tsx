@@ -28,7 +28,7 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
             >
               <div>
                 <Reveal delay={0.2}>
-                  <span className="hero-badge">
+                  <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-10 border border-accent-15 text-accent font-bold text-[10px] uppercase tracking-[0.16em] mb-8">
                     <FolderGit2 size={13} />
                     Selected Portfolio
                   </span>
@@ -70,8 +70,7 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
                 className="bg-section-alt rounded-xl p-6 sm:p-10 min-h-[220px] border border-card-border shadow-card text-foreground relative overflow-hidden h-full"
 
               >
-                <div className="absolute inset-0 opacity-[0.04] pattern-grid bg-[size:28px_28px] rounded-xl" />
-                <div className="relative z-10">
+              <div className="relative z-10">
                   <div className="h-12 w-12 rounded-xl bg-accent-10 border border-accent-15 flex items-center justify-center mb-8">
                     <Sparkles size={22} className="text-accent" />
                   </div>
@@ -122,7 +121,6 @@ export default function WorksHero({ projects }: { projects: (SanityProject | Pro
                   width="100%"
                   delay={0.7 + i * 0.1}
                   y={20}
-                  blur
                 >
                   <div
                     className="bg-section-alt rounded-xl p-6 sm:p-8 border border-card-border shadow-card flex items-center justify-between gap-4 h-full"

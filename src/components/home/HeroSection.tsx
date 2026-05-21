@@ -11,7 +11,7 @@ import type { Image as SanityImage } from "sanity";
 import { urlForImage } from "@/sanity/lib/image";
 
 const fallbackHeroData = {
-  badge: "✦ Available for freelance work",
+  badge: "Available for freelance work",
   heading: "Full-Stack Developer &\nMobile Engineer",
   subheadline: "I build scalable web apps, mobile apps, and cloud solutions that help startups and businesses grow.",
   ctaPrimary: { label: "View My Work", href: "/works" },
