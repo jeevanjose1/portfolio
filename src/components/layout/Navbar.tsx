@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import ThemeToggle from "@/components/ui/ThemeToggle";
-import PaletteSelector from "@/components/ui/PaletteSelector";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -81,7 +80,7 @@ export default function Navbar() {
 
         {/* Right Side */}
         <div className="flex items-center gap-2">
-          <PaletteSelector />
+          {/* <PaletteSelector /> */}
           <ThemeToggle />
 
 

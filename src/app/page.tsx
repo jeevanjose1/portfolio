@@ -1,7 +1,6 @@
 import HeroSection from "@/components/home/HeroSection";
 import ServicesPreview from "@/components/home/ServicesPreview";
 import FeaturedWorks from "@/components/home/FeaturedWorks";
-import Testimonials from "@/components/home/Testimonials";
 import CTABanner from "@/components/home/CTABanner";
 import { client } from "@/sanity/lib/client";
 import { featuredProjectsQuery, servicesQuery, pageHomeQuery, siteSettingsQuery, testimonialsQuery } from "@/sanity/lib/queries";
@@ -10,7 +9,7 @@ import { SanityProject, SanityService, SanityPageHome, SanitySiteSettings, Sanit
 export const revalidate = 300;
 
 export default async function Home() {
-  const [featuredProjects, services, pageHome, siteSettings, testimonials] = await Promise.all([
+  const [featuredProjects, services, pageHome, siteSettings] = await Promise.all([
     client.fetch<SanityProject[]>(featuredProjectsQuery),
     client.fetch<SanityService[]>(servicesQuery),
     client.fetch<SanityPageHome>(pageHomeQuery),
@@ -23,7 +22,7 @@ export default async function Home() {
       <HeroSection data={pageHome} stats={siteSettings?.globalStats} socialLinks={siteSettings?.socialLinks} profileImage={siteSettings?.profileImage} />
       <ServicesPreview services={services.filter(s => s.isMain)} />
       <FeaturedWorks projects={featuredProjects} />
-      <Testimonials testimonials={testimonials} />
+      {/* <Testimonials testimonials={testimonials} /> */}
       <CTABanner data={siteSettings?.ctaBanner} />
     </main>
   );
