@@ -18,8 +18,8 @@ const serviceNumbers = ["01", "02", "03"];
 
 function ServiceCard({ service, index }: { service: SanityService | ServiceItem; index: number }) {
   const Icon = iconMap[service.iconName] || fallbackIcons[index % fallbackIcons.length] || Monitor;
-  const isSanity = "_id" in service;
-  const href = isSanity ? `/services/${service.slug}` : (service as ServiceItem).linkHref;
+  // const isSanity = "_id" in service;
+  // const href = isSanity ? `/services/${service.slug}` : (service as ServiceItem).linkHref;
 
   return (
     <Reveal
@@ -41,7 +41,7 @@ function ServiceCard({ service, index }: { service: SanityService | ServiceItem;
             </div>
           </div>
           <Link scroll={false}
-            href={href}
+            href={'#'}
             aria-label={`Open ${service.title}`}
             className="h-10 w-10 rounded-lg border border-border bg-surface-2 flex items-center justify-center text-muted-foreground transition-all duration-300 group-hover:border-accent group-hover:text-accent group-hover:bg-accent-5"
           >
