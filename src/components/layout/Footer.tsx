@@ -10,7 +10,7 @@ import { SanitySiteSettings } from "@/sanity/types";
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
+  // { label: "Services", href: "/services" },
   { label: "Works", href: "/works" },
   { label: "Contact", href: "/contact" },
 ];
